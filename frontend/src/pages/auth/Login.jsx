@@ -27,9 +27,11 @@ function Login() {
 
       setLoading(true);
 
- const response = await axios.post(
+console.log(import.meta.env.VITE_API_URL);
 
-  "https://https://dizitaladda.onrender.com/api/auth/login",
+const response = await axios.post(
+
+  `${import.meta.env.VITE_API_URL}/api/auth/login`,
 
   {
 
