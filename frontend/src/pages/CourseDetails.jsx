@@ -326,62 +326,63 @@ function CourseDetails() {
 
                 {
 
-                  lectures.map((lecture) => (
+  lectures.map((lecture) => (
 
-                    <div
-                      key={lecture.id}
-                      className="bg-white p-8 rounded-3xl shadow-lg"
-                    >
+    <div
+      key={lecture.id}
+      className="bg-white p-8 rounded-3xl shadow-lg"
+    >
 
-                      {/* TITLE */}
+      {/* TITLE */}
 
-                      <h2 className="text-3xl font-bold text-slate-800 mb-6">
+      <h2 className="text-3xl font-bold text-slate-800 mb-6">
 
-                        {lecture.title}
+        {lecture.title}
 
-                      </h2>
+      </h2>
 
-                      {/* VIDEO */}
+      {/* VIDEO */}
 
-                      <video
-                        controls
-                        className="w-full rounded-2xl"
-                      >
+      <video
+        controls
+        controlsList="nodownload"
+        className="w-full rounded-2xl"
+      >
 
-                        <source
-                          src={lecture.video_url}
-                          type="video/mp4"
-                        />
+        <source
+          src={lecture.video_url}
+          type="video/mp4"
+        />
 
-                      </video>
+      </video>
 
-                      {/* NOTES */}
+      {/* DOWNLOAD NOTES */}
 
-                      {
+      {
 
-                        lecture.notes_url && (
+        lecture.notes_url && (
 
-                          <a
-                            href={lecture.notes_url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-block mt-6 bg-blue-900 text-white px-8 py-4 rounded-2xl text-lg font-semibold hover:bg-blue-800 transition"
-                          >
+          <a
+            href={lecture.notes_url}
+            target="_blank"
+            rel="noreferrer"
+            download
+            className="inline-block mt-6 bg-blue-900 text-white px-8 py-4 rounded-2xl text-lg font-semibold hover:bg-blue-800 transition"
+          >
 
-                            Download Notes
+            Download Notes
 
-                          </a>
+          </a>
 
-                        )
+        )
 
-                      }
+      }
 
-                    </div>
+    </div>
 
-                  ))
+  ))
 
-                }
-
+}
               </div>
 
             )

@@ -2,6 +2,73 @@ import React, { useState } from "react";
 
 import TeacherSidebar from "../../components/teacher/TeacherSidebar";
 
+
+const multer = require("multer");
+
+const {
+
+  CloudinaryStorage
+
+} = require("multer-storage-cloudinary");
+
+const cloudinary = require("../config/cloudinary");
+
+
+// VIDEO STORAGE
+
+const videoStorage = new CloudinaryStorage({
+
+  cloudinary,
+
+  params: {
+
+    folder: "lms_videos",
+
+    resource_type: "video",
+
+  },
+
+});
+
+
+// PDF STORAGE
+
+const notesStorage = new CloudinaryStorage({
+
+  cloudinary,
+
+  params: {
+
+    folder: "lms_notes",
+
+    resource_type: "raw",
+
+  },
+
+});
+
+
+const uploadVideo = multer({
+
+  storage: videoStorage,
+
+});
+
+const uploadNotes = multer({
+
+  storage: notesStorage,
+
+});
+
+
+module.exports = {
+
+  uploadVideo,
+
+  uploadNotes,
+
+};
+
 const UploadLecture = () => {
   await axios.post(
 
