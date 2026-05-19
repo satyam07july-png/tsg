@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-
+import PopularCourses from "./components/PopularCourses";
 import About from "./pages/About";
 import LandingPage from "./pages/landing/LandingPage";
 import Login from "./pages/auth/Login";
