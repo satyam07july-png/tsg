@@ -107,7 +107,7 @@ function LandingPage() {
         </div>
 
       </section>
-     <PopularCourses />
+    
 
      <Features />
 
