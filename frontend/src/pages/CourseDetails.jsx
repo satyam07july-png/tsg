@@ -12,11 +12,19 @@ function CourseDetails() {
 
   const [course, setCourse] = useState(null);
 
+  const [lectures, setLectures] = useState([]);
+
+
   useEffect(() => {
 
     fetchCourse();
 
+    fetchLectures();
+
   }, []);
+
+
+  // FETCH COURSE
 
   const fetchCourse = async () => {
 
@@ -24,7 +32,7 @@ function CourseDetails() {
 
       const response = await axios.get(
 
-        `http://https://https://dizitaladda.onrender.com/api/courses/${id}`
+        `${import.meta.env.VITE_API_URL}/api/courses/${id}`
 
       );
 
@@ -39,6 +47,32 @@ function CourseDetails() {
     }
 
   };
+
+
+  // FETCH LECTURES
+
+  const fetchLectures = async () => {
+
+    try {
+
+      const response = await axios.get(
+
+        `${import.meta.env.VITE_API_URL}/api/lectures/course/${id}`
+
+      );
+
+      setLectures(response.data);
+
+    }
+
+    catch (error) {
+
+      console.log(error);
+
+    }
+
+  };
+
 
   // ENROLL FUNCTION
 
@@ -66,7 +100,7 @@ function CourseDetails() {
 
       const response = await axios.post(
 
-        "http://https://https://dizitaladda.onrender.com/api/enrollments/enroll",
+        `${import.meta.env.VITE_API_URL}/api/enrollments/enroll`,
 
         {
 
@@ -98,6 +132,7 @@ function CourseDetails() {
 
   };
 
+
   // LOADING
 
   if (!course) {
@@ -113,6 +148,7 @@ function CourseDetails() {
     );
 
   }
+
 
   return (
 
@@ -247,15 +283,65 @@ function CourseDetails() {
               </div>
 
               <Link
-              to={`/payment/${course.id}`}
-               className="bg-blue-900 text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-blue-800 transition"
+                to={`/payment/${course.id}`}
+                className="bg-blue-900 text-white px-10 py-5 rounded-2xl text-lg font-semibold hover:bg-blue-800 transition"
               >
 
                 Proceed To Payment
 
-               </Link>
+              </Link>
 
             </div>
+
+          </div>
+
+        </div>
+
+
+        {/* LECTURES SECTION */}
+
+        <div className="mt-20">
+
+          <h1 className="text-4xl font-bold mb-10">
+
+            Course Lectures
+
+          </h1>
+
+          <div className="space-y-10">
+
+            {
+
+              lectures.map((lecture) => (
+
+                <div
+                  key={lecture.id}
+                  className="bg-white p-6 rounded-3xl shadow-lg"
+                >
+
+                  <h2 className="text-2xl font-bold mb-5">
+
+                    {lecture.title}
+
+                  </h2>
+
+                  <video
+                    controls
+                    className="w-full rounded-2xl"
+                  >
+
+                    <source
+                      src={lecture.video_url}
+                      type="video/mp4"
+                    />
+
+                  </video>
+
+                </div>
+
+              ))
+
+            }
 
           </div>
 
