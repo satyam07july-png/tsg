@@ -35,15 +35,20 @@ require("./config/passport");
 const app = express();
 
 
+// ==========================
 // MIDDLEWARES
+// ==========================
 
 app.use(express.json());
+
+
+// CORS FIX
 
 app.use(
 
   cors({
 
-    origin: "*",
+    origin: "https://dizitaladda.vercel.app",
 
     methods: [
 
@@ -73,7 +78,8 @@ app.use(
 
 );
 
-app.options("*", cors());
+
+// SESSION
 
 app.use(
 
@@ -89,9 +95,15 @@ app.use(
 
 );
 
+
+// PASSPORT
+
 app.use(passport.initialize());
 
 app.use(passport.session());
+
+
+// HELMET
 
 app.use(
 
@@ -104,7 +116,9 @@ app.use(
 );
 
 
+// ==========================
 // ROUTES
+// ==========================
 
 app.use("/api/auth", authRoutes);
 
@@ -125,7 +139,9 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/lectures", lectureRoutes);
 
 
+// ==========================
 // HEALTH CHECK
+// ==========================
 
 app.get("/", (req, res) => {
 
@@ -149,7 +165,9 @@ app.get(
 );
 
 
+// ==========================
 // SERVER
+// ==========================
 
 const PORT = process.env.PORT || 5000;
 
