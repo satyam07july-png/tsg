@@ -1,105 +1,24 @@
 import React, { useState } from "react";
 
+import axios from "axios";
+
 import TeacherSidebar from "../../components/teacher/TeacherSidebar";
 
-
-const multer = require("multer");
-
-const {
-
-  CloudinaryStorage
-
-} = require("multer-storage-cloudinary");
-
-const cloudinary = require("../config/cloudinary");
-
-
-// VIDEO STORAGE
-
-const videoStorage = new CloudinaryStorage({
-
-  cloudinary,
-
-  params: {
-
-    folder: "lms_videos",
-
-    resource_type: "video",
-
-  },
-
-});
-
-
-// PDF STORAGE
-
-const notesStorage = new CloudinaryStorage({
-
-  cloudinary,
-
-  params: {
-
-    folder: "lms_notes",
-
-    resource_type: "raw",
-
-  },
-
-});
-
-
-const uploadVideo = multer({
-
-  storage: videoStorage,
-
-});
-
-const uploadNotes = multer({
-
-  storage: notesStorage,
-
-});
-
-
-module.exports = {
-
-  uploadVideo,
-
-  uploadNotes,
-
-};
-
 const UploadLecture = () => {
-  await axios.post(
-
-  `${import.meta.env.VITE_API_URL}/api/lectures/upload`,
-
-  {
-
-    title,
-
-    video_url: videoUrl,
-
-    notes_url: notesUrl,
-
-    course_id: selectedCourse,
-
-  }
-
-);
-  const [notesUrl, setNotesUrl] = useState("");
 
   const [lectureData, setLectureData] = useState({
 
     title: "",
 
-    course: "",
+    course_id: "",
 
-    video: null,
+    video_url: "",
 
-    notes: null
+    notes_url: ""
 
   });
+
+  // INPUT CHANGE
 
   const handleChange = (e) => {
 
@@ -113,37 +32,35 @@ const UploadLecture = () => {
 
   };
 
-  const handleVideoChange = (e) => {
+  // SUBMIT
 
-    setLectureData({
-
-      ...lectureData,
-
-      video: e.target.files[0]
-
-    });
-
-  };
-
-  const handleNotesChange = (e) => {
-
-    setLectureData({
-
-      ...lectureData,
-
-      notes: e.target.files[0]
-
-    });
-
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
 
     e.preventDefault();
 
-    console.log(lectureData);
+    try {
 
-    alert("Lecture Uploaded Successfully");
+      const response = await axios.post(
+
+        `${import.meta.env.VITE_API_URL}/api/lectures/upload`,
+
+        lectureData
+
+      );
+
+      alert("Lecture Uploaded Successfully 🚀");
+
+      console.log(response.data);
+
+    }
+
+    catch (error) {
+
+      console.log(error);
+
+      alert("Upload Failed");
+
+    }
 
   };
 
@@ -168,7 +85,7 @@ const UploadLecture = () => {
             className="space-y-6"
           >
 
-            {/* Lecture Title */}
+            {/* TITLE */}
 
             <div>
 
@@ -179,97 +96,76 @@ const UploadLecture = () => {
               </label>
 
               <input
-              type="text"
-              placeholder="PDF Notes URL"
-              value={notesUrl}
-              onChange={(e) => setNotesUrl(e.target.value)}
-            />
-
-            </div>
-
-            {/* Select Course */}
-
-            <div>
-
-              <label className="block mb-2 font-medium">
-
-                Select Course
-
-              </label>
-
-              <select
-                name="course"
+                type="text"
+                name="title"
+                placeholder="Enter lecture title"
                 className="w-full border p-4 rounded-xl outline-none"
                 onChange={handleChange}
-              >
-
-                <option value="">
-
-                  Choose Course
-
-                </option>
-
-                <option>
-
-                  React JS
-
-                </option>
-
-                <option>
-
-                  Data Science
-
-                </option>
-
-                <option>
-
-                  Machine Learning
-
-                </option>
-
-              </select>
+              />
 
             </div>
 
-            {/* Upload Video */}
+            {/* COURSE ID */}
 
             <div>
 
               <label className="block mb-2 font-medium">
 
-                Upload Video
+                Course ID
 
               </label>
 
               <input
-                type="file"
-                accept="video/*"
+                type="number"
+                name="course_id"
+                placeholder="Enter course ID"
                 className="w-full border p-4 rounded-xl outline-none"
-                onChange={handleVideoChange}
+                onChange={handleChange}
               />
 
             </div>
 
-            {/* Upload Notes */}
+            {/* VIDEO URL */}
 
             <div>
 
               <label className="block mb-2 font-medium">
 
-                Upload Notes PDF
+                Video URL
 
               </label>
 
               <input
-                type="file"
-                accept=".pdf"
+                type="text"
+                name="video_url"
+                placeholder="Paste Cloudinary Video URL"
                 className="w-full border p-4 rounded-xl outline-none"
-                onChange={handleNotesChange}
+                onChange={handleChange}
               />
 
             </div>
 
-            {/* Submit Button */}
+            {/* NOTES URL */}
+
+            <div>
+
+              <label className="block mb-2 font-medium">
+
+                Notes PDF URL
+
+              </label>
+
+              <input
+                type="text"
+                name="notes_url"
+                placeholder="Paste Cloudinary PDF URL"
+                className="w-full border p-4 rounded-xl outline-none"
+                onChange={handleChange}
+              />
+
+            </div>
+
+            {/* BUTTON */}
 
             <button
               type="submit"
