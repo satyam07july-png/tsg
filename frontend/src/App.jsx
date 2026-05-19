@@ -28,6 +28,7 @@ import Notifications from "./pages/admin/Notifications";
 import Settings from "./pages/admin/Settings";
 import MyCourses from "./pages/teacher/MyCourses";
 import UploadLecture from "./pages/teacher/UploadLecture";
+import PopularCourses from "../components/PopularCourses";
 function App() {
 
   return (
