@@ -16,35 +16,35 @@ const uploadLecture = async (req, res) => {
 
     const videoUrl = req.file.path;
 
-    const newLecture = await pool.query(
+  const lecture = await pool.query(
 
-      `
-      INSERT INTO lectures
-      (
-        title,
-        course,
-        video_url,
-        teacher_id
-      )
+  `
+  INSERT INTO lectures
+  (
+    title,
+    video_url,
+    notes_url,
+    course_id
+  )
 
-      VALUES ($1, $2, $3, $4)
+  VALUES ($1, $2, $3, $4)
 
-      RETURNING *
-      `,
+  RETURNING *
+  `,
 
-      [
+  [
 
-        title,
+    title,
 
-        course,
+    video_url,
 
-        videoUrl,
+    notes_url,
 
-        teacher_id
+    course_id
 
-      ]
+  ]
 
-    );
+);
 
     res.status(201).json({
 

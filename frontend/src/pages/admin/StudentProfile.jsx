@@ -10,8 +10,17 @@ import {
   FaMoneyBillWave,
   FaDownload,
 } from "react-icons/fa";
+import { useEffect, useState } from "react";
+
+import axios from "axios";
 
 function StudentProfile() {
+  const [courses, setCourses] = useState([]);
+  useEffect(() => {
+
+  fetchCourses();
+
+}, []);
 
   const { id } = useParams();
 
@@ -65,30 +74,28 @@ function StudentProfile() {
     );
 
   }
+// course 
+  const fetchCourses = async () => {
 
-  // COURSES
-  const courses = [
+  try {
 
-    {
-      id: 1,
-      name: "Full Stack Development",
-      teacher: "Rahul Verma",
-      progress: "82%",
-      duration: "6 Months",
-      performance: "Excellent",
-    },
+    const response = await axios.get(
 
-    {
-      id: 2,
-      name: "Machine Learning",
-      teacher: "Amit Sharma",
-      progress: "61%",
-      duration: "4 Months",
-      performance: "Good",
-    },
+      `${import.meta.env.VITE_API_URL}/api/courses`
 
-  ];
+    );
 
+    setCourses(response.data);
+
+  }
+
+  catch (error) {
+
+    console.log(error);
+
+  }
+
+};
   // ASSIGNMENTS
   const assignments = [
 

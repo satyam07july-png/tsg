@@ -156,7 +156,9 @@ function CourseDetails() {
 
       <div className="max-w-7xl mx-auto">
 
-        <div className="grid grid-cols-2 gap-14">
+        {/* COURSE SECTION */}
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14">
 
           {/* LEFT */}
 
@@ -276,7 +278,7 @@ function CourseDetails() {
 
                 <p className="text-5xl font-bold text-blue-900 mt-3">
 
-                  {course.price}
+                  ₹ {course.price}
 
                 </p>
 
@@ -300,50 +302,91 @@ function CourseDetails() {
 
         {/* LECTURES SECTION */}
 
-        <div className="mt-20">
+        <div className="mt-24">
 
-          <h1 className="text-4xl font-bold mb-10">
+          <h1 className="text-5xl font-bold text-slate-800 mb-12">
 
             Course Lectures
 
           </h1>
 
-          <div className="space-y-10">
+          {
 
-            {
+            lectures.length === 0 ? (
 
-              lectures.map((lecture) => (
+              <div className="bg-white p-10 rounded-3xl text-center text-slate-500 text-2xl shadow-sm">
 
-                <div
-                  key={lecture.id}
-                  className="bg-white p-6 rounded-3xl shadow-lg"
-                >
+                No Lectures Uploaded Yet
 
-                  <h2 className="text-2xl font-bold mb-5">
+              </div>
 
-                    {lecture.title}
+            ) : (
 
-                  </h2>
+              <div className="space-y-10">
 
-                  <video
-                    controls
-                    className="w-full rounded-2xl"
-                  >
+                {
 
-                    <source
-                      src={lecture.video_url}
-                      type="video/mp4"
-                    />
+                  lectures.map((lecture) => (
 
-                  </video>
+                    <div
+                      key={lecture.id}
+                      className="bg-white p-8 rounded-3xl shadow-lg"
+                    >
 
-                </div>
+                      {/* TITLE */}
 
-              ))
+                      <h2 className="text-3xl font-bold text-slate-800 mb-6">
 
-            }
+                        {lecture.title}
 
-          </div>
+                      </h2>
+
+                      {/* VIDEO */}
+
+                      <video
+                        controls
+                        className="w-full rounded-2xl"
+                      >
+
+                        <source
+                          src={lecture.video_url}
+                          type="video/mp4"
+                        />
+
+                      </video>
+
+                      {/* NOTES */}
+
+                      {
+
+                        lecture.notes_url && (
+
+                          <a
+                            href={lecture.notes_url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-block mt-6 bg-blue-900 text-white px-8 py-4 rounded-2xl text-lg font-semibold hover:bg-blue-800 transition"
+                          >
+
+                            Download Notes
+
+                          </a>
+
+                        )
+
+                      }
+
+                    </div>
+
+                  ))
+
+                }
+
+              </div>
+
+            )
+
+          }
 
         </div>
 

@@ -10,8 +10,18 @@ import {
   FaChalkboardTeacher,
   FaCalendarAlt,
 } from "react-icons/fa";
+import { useEffect, useState } from "react";
+
+import axios from "axios";
 
 function TeacherProfile() {
+const [courses, setCourses] = useState([]);
+useEffect(() => {
+
+  fetchCourses();
+
+}, []);
+
 
   const { id } = useParams();
 
@@ -76,28 +86,27 @@ function TeacherProfile() {
 
   }
 
-  // COURSES
-  const courses = [
+  const fetchCourses = async () => {
 
-    {
-      id: 1,
-      name: "Full Stack Development",
-      students: 220,
-      duration: "6 Months",
-      earnings: "₹2.4L",
-      status: "Active",
-    },
+  try {
 
-    {
-      id: 2,
-      name: "React Masterclass",
-      students: 200,
-      duration: "3 Months",
-      earnings: "₹1.8L",
-      status: "Running",
-    },
+    const response = await axios.get(
 
-  ];
+      `${import.meta.env.VITE_API_URL}/api/courses`
+
+    );
+
+    setCourses(response.data);
+
+  }
+
+  catch (error) {
+
+    console.log(error);
+
+  }
+
+};
 
   // LIVE CLASSES
   const liveClasses = [

@@ -1,23 +1,35 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-function PopularCourses() {
+import axios from "axios";
+function Courses() {
+const [courses, setCourses] = useState([]);
+useEffect(() => {
 
-  const courses = [
-    {
-      title: "Web Development",
-      students: "1,200 Students",
-    },
+  fetchCourses();
 
-    {
-      title: "Data Science",
-      students: "950 Students",
-    },
+}, []);
+const fetchCourses = async () => {
 
-    {
-      title: "Graphic Designing",
-      students: "700 Students",
-    },
-  ];
+  try {
+
+    const response = await axios.get(
+
+      `${import.meta.env.VITE_API_URL}/api/courses`
+
+    );
+
+    setCourses(response.data);
+
+  }
+
+  catch (error) {
+
+    console.log(error);
+
+  }
+
+};
 
   return (
 

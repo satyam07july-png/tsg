@@ -7,34 +7,39 @@ import {
   FaEdit,
   FaTrash,
 } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
+import axios from "axios";
 function Courses() {
+const [courses, setCourses] = useState([]);
+useEffect(() => {
 
-  const courses = [
+  fetchCourses();
 
-    {
-      id: 1,
-      title: "Full Stack Web Development",
-      teacher: "Rahul Sharma",
-      students: 1240,
-      duration: "6 Months",
-      price: "₹12,999",
-      image:
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-    },
+}, []);
 
-    {
-      id: 2,
-      title: "Data Science & AI",
-      teacher: "Priya Verma",
-      students: 920,
-      duration: "8 Months",
-      price: "₹18,999",
-      image:
-        "https://images.unsplash.com/photo-1555949963-aa79dcee981c",
-    },
+const fetchCourses = async () => {
 
-  ];
+  try {
+
+    const response = await axios.get(
+
+      `${import.meta.env.VITE_API_URL}/api/courses`
+
+    );
+
+    setCourses(response.data);
+
+  }
+
+  catch (error) {
+
+    console.log(error);
+
+  }
+
+};
+  
 
   return (
 

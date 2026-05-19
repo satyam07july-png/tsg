@@ -3,6 +3,24 @@ import React, { useState } from "react";
 import TeacherSidebar from "../../components/teacher/TeacherSidebar";
 
 const UploadLecture = () => {
+  await axios.post(
+
+  `${import.meta.env.VITE_API_URL}/api/lectures/upload`,
+
+  {
+
+    title,
+
+    video_url: videoUrl,
+
+    notes_url: notesUrl,
+
+    course_id: selectedCourse,
+
+  }
+
+);
+  const [notesUrl, setNotesUrl] = useState("");
 
   const [lectureData, setLectureData] = useState({
 
@@ -94,12 +112,11 @@ const UploadLecture = () => {
               </label>
 
               <input
-                type="text"
-                name="title"
-                placeholder="Enter lecture title"
-                className="w-full border p-4 rounded-xl outline-none"
-                onChange={handleChange}
-              />
+              type="text"
+              placeholder="PDF Notes URL"
+              value={notesUrl}
+              onChange={(e) => setNotesUrl(e.target.value)}
+            />
 
             </div>
 
