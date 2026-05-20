@@ -6,6 +6,7 @@ require("../config/cloudinary");
 const pool =
 require("../config/db");
 
+
 // =========================
 // UPLOAD LECTURE
 // =========================
@@ -99,7 +100,7 @@ const uploadLecture = async (req, res) => {
           streamifier
 
             .createReadStream(
-              req.files.video[0].buffer
+              req.files?.video?.[0]?.buffer
             )
 
             .pipe(stream);
@@ -153,7 +154,7 @@ const uploadLecture = async (req, res) => {
           streamifier
 
             .createReadStream(
-              req.files.pdf[0].buffer
+              req.files?.pdf?.[0]?.buffer
             )
 
             .pipe(stream);
@@ -213,7 +214,7 @@ const uploadLecture = async (req, res) => {
 
         description,
 
-        course_id,
+        parseInt(course_id),
 
         videoResult.secure_url,
 
@@ -233,7 +234,8 @@ const uploadLecture = async (req, res) => {
 
       description,
 
-      course_id,
+      course_id:
+        parseInt(course_id),
 
       video_url:
         videoResult.secure_url,
@@ -252,7 +254,7 @@ const uploadLecture = async (req, res) => {
     // SUCCESS RESPONSE
     // =========================
 
-    res.status(200).json({
+    return res.status(200).json({
 
       success: true,
 
@@ -270,7 +272,7 @@ const uploadLecture = async (req, res) => {
       error
     );
 
-    res.status(500).json({
+    return res.status(500).json({
 
       success: false,
 
@@ -284,6 +286,7 @@ const uploadLecture = async (req, res) => {
 
 };
 
+
 // =========================
 // GET ALL LECTURES
 // =========================
@@ -294,12 +297,23 @@ const getLectures = async (req, res) => {
 
     const result =
       await pool.query(
-        "SELECT * FROM lectures ORDER BY id DESC"
+
+        `
+        SELECT *
+        FROM lectures
+        ORDER BY id DESC
+        `
+
       );
 
-    res.status(200).json(
-      result.rows
-    );
+    return res.status(200).json({
+
+      success: true,
+
+      lectures:
+        result.rows,
+
+    });
 
   }
 
@@ -310,7 +324,7 @@ const getLectures = async (req, res) => {
       error
     );
 
-    res.status(500).json({
+    return res.status(500).json({
 
       success: false,
 
@@ -322,6 +336,7 @@ const getLectures = async (req, res) => {
   }
 
 };
+
 
 module.exports = {
 
