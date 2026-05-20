@@ -68,7 +68,7 @@ const UploadLecture = () => {
 
       "upload_preset",
 
-      "YOUR_UPLOAD_PRESET"
+      "lms_upload"
 
     );
 
@@ -76,13 +76,13 @@ const UploadLecture = () => {
 
       "cloud_name",
 
-      "YOUR_CLOUD_NAME"
+      "dihf3vdnw"
 
     );
 
     const response = await fetch(
 
-      "https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/video/upload",
+      "https://api.cloudinary.com/v1_1/dihf3vdnw/video/upload",
 
       {
 
@@ -113,7 +113,7 @@ const UploadLecture = () => {
 
       "upload_preset",
 
-      "YOUR_UPLOAD_PRESET"
+      "lms_upload"
 
     );
 
@@ -121,13 +121,13 @@ const UploadLecture = () => {
 
       "cloud_name",
 
-      "YOUR_CLOUD_NAME"
+      "dihf3vdnw"
 
     );
 
     const response = await fetch(
 
-      "https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/raw/upload",
+      "https://api.cloudinary.com/v1_1/dihf3vdnw/raw/upload",
 
       {
 
