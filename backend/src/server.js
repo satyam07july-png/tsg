@@ -45,38 +45,26 @@ app.use(express.json());
 // CORS FIX
 
 app.use(
-
   cors({
-
     origin: "https://dizitaladda.vercel.app",
-
     methods: [
-
       "GET",
-
       "POST",
-
       "PUT",
-
       "DELETE",
-
       "OPTIONS"
-
     ],
-
     allowedHeaders: [
-
       "Content-Type",
-
       "Authorization"
-
     ],
-
     credentials: true,
-
   })
-
 );
+
+// PREFLIGHT FIX
+
+app.options("*", cors());
 
 
 // SESSION
