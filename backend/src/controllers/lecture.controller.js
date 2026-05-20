@@ -3,6 +3,9 @@ const streamifier = require("streamifier");
 const cloudinary =
 require("../config/cloudinary");
 
+const pool =
+require("../config/db");
+
 
 // UPLOAD LECTURE
 
@@ -13,12 +16,43 @@ const uploadLecture = async (req, res) => {
     console.log("FILES:", req.files);
 
     console.log("BODY:", req.body);
-
+// db save
     const {
       title,
       description,
       course_id,
     } = req.body;
+
+    await pool.query(
+
+  `
+  INSERT INTO lectures
+  (
+    title,
+    description,
+    course_id,
+    video_url,
+    notes_url
+  )
+
+  VALUES ($1, $2, $3, $4, $5)
+  `,
+
+  [
+
+    title,
+
+    description,
+
+    course_id,
+
+    videoResult.secure_url,
+
+    pdfResult.secure_url,
+
+  ]
+
+);
 
     // =========================
     // VALIDATION
