@@ -45,8 +45,6 @@ const LearningPage = () => {
           response.data
         );
 
-        // SAFE DATA
-
         const lectureData =
           response.data?.lectures ||
           response.data ||
@@ -55,8 +53,6 @@ const LearningPage = () => {
         setLectures(
           lectureData
         );
-
-        // SELECT FIRST LECTURE
 
         if (
           lectureData?.length > 0
@@ -299,58 +295,6 @@ const LearningPage = () => {
 
             <div>
 
-              {/* LECTURE LIST */}
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-
-                {
-                  lectures?.map(
-                    (lecture) => (
-
-                      <div
-
-                        key={lecture.id}
-
-                        onClick={() =>
-                          setSelectedLecture(
-                            lecture
-                          )
-                        }
-
-                        className={`p-5 rounded-2xl cursor-pointer transition-all shadow-md
-
-                        ${
-                          selectedLecture?.id === lecture.id
-
-                            ? "bg-black text-white"
-
-                            : "bg-white hover:scale-[1.02]"
-                        }
-                        `}
-                      >
-
-                        <h2 className="text-xl font-bold">
-
-                          {lecture.title}
-
-                        </h2>
-
-                        <p className="mt-3 text-sm">
-
-                          {
-                            lecture.description
-                          }
-
-                        </p>
-
-                      </div>
-
-                    )
-                  )
-                }
-
-              </div>
-
               {/* VIDEO PLAYER */}
 
               {
@@ -427,10 +371,197 @@ const LearningPage = () => {
 
                     </div>
 
+                    {/* NEXT VIDEOS */}
+
+                    <div className="mt-12">
+
+                      <div className="flex justify-between items-center mb-6">
+
+                        <h2 className="text-3xl font-bold">
+
+                          Next Lectures
+
+                        </h2>
+
+                        <button
+
+                          onClick={() =>
+                            setActiveSection(
+                              "allLectures"
+                            )
+                          }
+
+                          className="text-blue-600 font-semibold"
+
+                        >
+
+                          View All →
+
+                        </button>
+
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                        {
+                          lectures
+
+                            ?.filter(
+                              (lecture) =>
+                                lecture.id !==
+                                selectedLecture.id
+                            )
+
+                            ?.slice(0, 3)
+
+                            ?.map((lecture) => (
+
+                              <div
+
+                                key={lecture.id}
+
+                                onClick={() =>
+                                  setSelectedLecture(
+                                    lecture
+                                  )
+                                }
+
+                                className="bg-white rounded-2xl overflow-hidden shadow-md cursor-pointer hover:scale-[1.02] transition-all"
+
+                              >
+
+                                {/* VIDEO */}
+
+                                <video
+                                  className="w-full h-[200px] object-cover"
+                                >
+
+                                  <source
+                                    src={lecture.video_url}
+                                  />
+
+                                </video>
+
+                                {/* CONTENT */}
+
+                                <div className="p-4">
+
+                                  <h3 className="text-xl font-bold">
+
+                                    {lecture.title}
+
+                                  </h3>
+
+                                  <p className="text-sm text-zinc-600 mt-2">
+
+                                    {
+                                      lecture.description
+                                    }
+
+                                  </p>
+
+                                </div>
+
+                              </div>
+
+                            ))
+                        }
+
+                      </div>
+
+                    </div>
+
                   </div>
 
                 )
               }
+
+            </div>
+
+          )
+        }
+
+        {/* ======================
+            ALL LECTURES
+        ====================== */}
+
+        {
+          activeSection ===
+          "allLectures" && (
+
+            <div>
+
+              <h1 className="text-4xl font-bold mb-8">
+
+                All Lectures
+
+              </h1>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                {
+                  lectures?.map(
+                    (lecture) => (
+
+                      <div
+
+                        key={lecture.id}
+
+                        onClick={() => {
+
+                          setSelectedLecture(
+                            lecture
+                          );
+
+                          setActiveSection(
+                            "lectures"
+                          );
+
+                        }}
+
+                        className="bg-white rounded-2xl overflow-hidden shadow-md cursor-pointer hover:scale-[1.02] transition-all"
+
+                      >
+
+                        {/* VIDEO */}
+
+                        <video
+                          className="w-full h-[220px] object-cover"
+                        >
+
+                          <source
+                            src={lecture.video_url}
+                          />
+
+                        </video>
+
+                        {/* CONTENT */}
+
+                        <div className="p-5">
+
+                          <h2 className="text-2xl font-bold">
+
+                            {lecture.title}
+
+                          </h2>
+
+                          <p className="mt-3 text-zinc-600">
+
+                            {
+                              lecture.description
+                            }
+
+                          </p>
+
+                        </div>
+
+                      </div>
+
+                    )
+                  )
+                }
+
+              </div>
 
             </div>
 
