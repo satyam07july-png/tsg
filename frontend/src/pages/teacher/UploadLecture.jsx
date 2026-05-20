@@ -45,148 +45,6 @@ const UploadLecture = () => {
 
   };
 
-  // VIDEO CLOUDINARY UPLOAD
-
-  const uploadVideoToCloudinary = async () => {
-
-    try {
-
-      if (!video) {
-
-        alert("Please select a video");
-
-        return null;
-
-      }
-
-      const data = new FormData();
-
-      data.append("file", video);
-
-      data.append(
-        "upload_preset",
-        "lms_upload"
-      );
-
-      console.log("Uploading Video...");
-
-      const response = await fetch(
-        "https://api.cloudinary.com/v1_1/dihf3vdnw/video/upload",
-        {
-          method: "POST",
-          body: data,
-        }
-      );
-
-      console.log(
-        "Video Response Status:",
-        response.status
-      );
-
-      const result = await response.json();
-
-      console.log(
-        "Video Upload Result:",
-        result
-      );
-
-      if (!result.secure_url) {
-
-        throw new Error(
-          result.error?.message ||
-          "Video upload failed"
-        );
-
-      }
-
-      return result.secure_url;
-
-    } catch (error) {
-
-      console.log(
-        "VIDEO UPLOAD ERROR:",
-        error
-      );
-
-      alert(error.message);
-
-      throw error;
-
-    }
-
-  };
-
-  // PDF CLOUDINARY UPLOAD
-
-  const uploadPdfToCloudinary = async () => {
-
-    try {
-
-      if (!pdf) {
-
-        alert("Please select PDF");
-
-        return null;
-
-      }
-
-      const data = new FormData();
-
-      data.append("file", pdf);
-
-      data.append(
-        "upload_preset",
-        "lms_upload"
-      );
-
-      console.log("Uploading PDF...");
-
-      const response = await fetch(
-        "https://api.cloudinary.com/v1_1/dihf3vdnw/raw/upload",
-        {
-          method: "POST",
-          body: data,
-        }
-      );
-
-      console.log(
-        "PDF Response Status:",
-        response.status
-      );
-
-      const result = await response.json();
-
-      console.log(
-        "PDF Upload Result:",
-        result
-      );
-
-      if (!result.secure_url) {
-
-        throw new Error(
-          result.error?.message ||
-          "PDF upload failed"
-        );
-
-      }
-
-      return result.secure_url;
-
-    } catch (error) {
-
-      console.log(
-        "PDF UPLOAD ERROR:",
-        error
-      );
-
-      alert(error.message);
-
-      throw error;
-
-    }
-
-  };
-
   // SUBMIT
 
   const handleSubmit = async (e) => {
@@ -195,30 +53,72 @@ const UploadLecture = () => {
 
     try {
 
+      if (!video) {
+
+        alert("Please select video");
+
+        return;
+
+      }
+
+      if (!pdf) {
+
+        alert("Please select PDF");
+
+        return;
+
+      }
+
       setLoading(true);
 
-      // VIDEO URL
+      const formData = new FormData();
 
-      const videoUrl =
-        await uploadVideoToCloudinary();
+      // TEXT DATA
 
-      // PDF URL
+      formData.append(
+        "title",
+        lectureData.title
+      );
 
-      const pdfUrl =
-        await uploadPdfToCloudinary();
+      formData.append(
+        "description",
+        lectureData.description
+      );
 
-      // SAVE TO DATABASE
+      formData.append(
+        "course_id",
+        lectureData.course_id
+      );
+
+      // FILES
+
+      formData.append(
+        "video",
+        video
+      );
+
+      formData.append(
+        "pdf",
+        pdf
+      );
+
+      console.log(
+        "Sending Files To Backend..."
+      );
+
+      // API CALL
 
       const response = await axios.post(
 
         `${import.meta.env.VITE_API_URL}/api/lectures/upload`,
 
+        formData,
+
         {
-          title: lectureData.title,
-          description: lectureData.description,
-          course_id: lectureData.course_id,
-          video_url: videoUrl,
-          notes_url: pdfUrl,
+          headers: {
+            "Content-Type":
+              "multipart/form-data",
+          },
         }
 
       );
@@ -247,7 +147,10 @@ const UploadLecture = () => {
 
       console.log(error);
 
-      alert("Upload Failed");
+      alert(
+        error.response?.data?.message ||
+        "Upload Failed"
+      );
 
       setLoading(false);
 

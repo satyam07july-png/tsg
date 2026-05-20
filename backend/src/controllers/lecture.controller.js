@@ -1,102 +1,170 @@
-const pool = require("../config/db");
+const streamifier = require("streamifier");
+
+const cloudinary =
+require("../config/cloudinary");
+
+
+// UPLOAD LECTURE
 
 const uploadLecture = async (req, res) => {
 
   try {
 
     const {
+      title,
+      description,
+      course_id,
+    } = req.body;
+
+    // VIDEO CHECK
+
+    if (!req.files.video) {
+
+      return res.status(400).json({
+        success: false,
+        message: "Video is required",
+      });
+
+    }
+
+    // PDF CHECK
+
+    if (!req.files.pdf) {
+
+      return res.status(400).json({
+        success: false,
+        message: "PDF is required",
+      });
+
+    }
+
+    // =========================
+    // VIDEO CLOUDINARY UPLOAD
+    // =========================
+
+    const uploadVideo =
+      () =>
+        new Promise((resolve, reject) => {
+
+          const stream =
+            cloudinary.uploader.upload_stream(
+              {
+                resource_type: "video",
+                folder: "lms_videos",
+              },
+              (error, result) => {
+
+                if (result) {
+
+                  resolve(result);
+
+                } else {
+
+                  reject(error);
+
+                }
+
+              }
+            );
+
+          streamifier
+            .createReadStream(
+              req.files.video[0].buffer
+            )
+            .pipe(stream);
+
+        });
+
+    // =========================
+    // PDF CLOUDINARY UPLOAD
+    // =========================
+
+    const uploadPdf =
+      () =>
+        new Promise((resolve, reject) => {
+
+          const stream =
+            cloudinary.uploader.upload_stream(
+              {
+                resource_type: "raw",
+                folder: "lms_notes",
+              },
+              (error, result) => {
+
+                if (result) {
+
+                  resolve(result);
+
+                } else {
+
+                  reject(error);
+
+                }
+
+              }
+            );
+
+          streamifier
+            .createReadStream(
+              req.files.pdf[0].buffer
+            )
+            .pipe(stream);
+
+        });
+
+    // UPLOAD BOTH
+
+    const videoResult =
+      await uploadVideo();
+
+    const pdfResult =
+      await uploadPdf();
+
+    // =========================
+    // SAVE TO DB
+    // =========================
+
+    const lectureData = {
 
       title,
 
-      course,
+      description,
 
-      teacher_id
+      course_id,
 
-    } = req.body;
+      video_url:
+        videoResult.secure_url,
 
-    const videoUrl = req.file.path;
+      notes_url:
+        pdfResult.secure_url,
 
-  const lecture = await pool.query(
+    };
 
-  `
-  INSERT INTO lectures
-  (
-    title,
-    video_url,
-    notes_url,
-    course_id
-  )
+    console.log(lectureData);
 
-  VALUES ($1, $2, $3, $4)
+    // TODO:
+    // Save in MongoDB
 
-  RETURNING *
-  `,
+    res.status(200).json({
 
-  [
+      success: true,
 
-    title,
+      message:
+        "Lecture Uploaded Successfully 🚀",
 
-    video_url,
-
-    notes_url,
-
-    course_id
-
-  ]
-
-);
-
-    res.status(201).json({
-
-      message: "Lecture Uploaded Successfully",
-
-      lecture: newLecture.rows[0],
+      lecture: lectureData,
 
     });
 
-  }
-
-  catch (error) {
+  } catch (error) {
 
     console.log(error);
 
     res.status(500).json({
 
-      message: "Server Error",
+      success: false,
 
-    });
-
-  }
-
-};
-
-const getLectures = async (req, res) => {
-
-  try {
-
-    const lectures = await pool.query(
-
-      `
-      SELECT * FROM lectures
-      ORDER BY created_at DESC
-      `
-    );
-
-    res.status(200).json(
-
-      lectures.rows
-
-    );
-
-  }
-
-  catch (error) {
-
-    console.log(error);
-
-    res.status(500).json({
-
-      message: "Server Error",
+      message: error.message,
 
     });
 
@@ -105,9 +173,5 @@ const getLectures = async (req, res) => {
 };
 
 module.exports = {
-
   uploadLecture,
-
-  getLectures,
-
 };
