@@ -10,23 +10,37 @@ const helmet = require("helmet");
 
 const passport = require("passport");
 
-const authRoutes = require("./routes/auth.routes");
+// ROUTES
 
-const courseRoutes = require("./routes/course.routes");
+const authRoutes =
+require("./routes/auth.routes");
 
-const activityRoutes = require("./routes/activity.routes");
+const courseRoutes =
+require("./routes/course.routes");
 
-const progressRoutes = require("./routes/progress.routes");
+const activityRoutes =
+require("./routes/activity.routes");
 
-const doubtRoutes = require("./routes/doubt.routes");
+const progressRoutes =
+require("./routes/progress.routes");
 
-const paymentRoutes = require("./routes/payment.routes");
+const doubtRoutes =
+require("./routes/doubt.routes");
 
-const aiRoutes = require("./routes/ai.routes");
+const paymentRoutes =
+require("./routes/payment.routes");
 
-const adminRoutes = require("./routes/admin.routes");
+const aiRoutes =
+require("./routes/ai.routes");
 
-const lectureRoutes = require("./routes/lecture.routes");
+const adminRoutes =
+require("./routes/admin.routes");
+
+const lectureRoutes =
+require("./routes/lecture.routes");
+
+
+// CONFIG
 
 require("./config/db");
 
@@ -39,59 +53,133 @@ const app = express();
 // MIDDLEWARES
 // ==========================
 
+// JSON
+
 app.use(express.json());
 
 
-// CORS FIX
+// ==========================
+// CORS
+// ==========================
+
+const allowedOrigins = [
+
+  "https://dizitaladda.vercel.app",
+
+  "http://localhost:5173",
+
+];
 
 app.use(
+
   cors({
-    origin: "https://dizitaladda.vercel.app",
+
+    origin: function (
+      origin,
+      callback
+    ) {
+
+      // POSTMAN / MOBILE REQUESTS
+
+      if (!origin) {
+
+        return callback(
+          null,
+          true
+        );
+
+      }
+
+      // ALLOW ORIGINS
+
+      if (
+        allowedOrigins.includes(
+          origin
+        )
+      ) {
+
+        return callback(
+          null,
+          true
+        );
+
+      }
+
+      // BLOCK OTHER ORIGINS
+
+      return callback(
+        new Error(
+          "CORS Not Allowed"
+        )
+      );
+
+    },
+
+    credentials: true,
+
     methods: [
       "GET",
       "POST",
       "PUT",
       "DELETE",
-      "OPTIONS"
+      "OPTIONS",
     ],
+
     allowedHeaders: [
       "Content-Type",
-      "Authorization"
+      "Authorization",
     ],
-    credentials: true,
+
   })
+
 );
 
-// PREFLIGHT FIX
 
-app.options("*", cors());
-
-
+// ==========================
 // SESSION
+// ==========================
 
 app.use(
 
   session({
 
-    secret: "lmssecret",
+    secret:
+      process.env.SESSION_SECRET ||
+      "lmssecret",
 
     resave: false,
 
     saveUninitialized: false,
+
+    cookie: {
+
+      secure: true,
+
+      sameSite: "none",
+
+    },
 
   })
 
 );
 
 
+// ==========================
 // PASSPORT
+// ==========================
 
-app.use(passport.initialize());
+app.use(
+  passport.initialize()
+);
 
-app.use(passport.session());
+app.use(
+  passport.session()
+);
 
 
+// ==========================
 // HELMET
+// ==========================
 
 app.use(
 
@@ -108,23 +196,50 @@ app.use(
 // ROUTES
 // ==========================
 
-app.use("/api/auth", authRoutes);
+app.use(
+  "/api/auth",
+  authRoutes
+);
 
-app.use("/api/courses", courseRoutes);
+app.use(
+  "/api/courses",
+  courseRoutes
+);
 
-app.use("/api/activities", activityRoutes);
+app.use(
+  "/api/activities",
+  activityRoutes
+);
 
-app.use("/api/progress", progressRoutes);
+app.use(
+  "/api/progress",
+  progressRoutes
+);
 
-app.use("/api/doubts", doubtRoutes);
+app.use(
+  "/api/doubts",
+  doubtRoutes
+);
 
-app.use("/api/payment", paymentRoutes);
+app.use(
+  "/api/payment",
+  paymentRoutes
+);
 
-app.use("/api/ai", aiRoutes);
+app.use(
+  "/api/ai",
+  aiRoutes
+);
 
-app.use("/api/admin", adminRoutes);
+app.use(
+  "/api/admin",
+  adminRoutes
+);
 
-app.use("/api/lectures", lectureRoutes);
+app.use(
+  "/api/lectures",
+  lectureRoutes
+);
 
 
 // ==========================
@@ -133,12 +248,16 @@ app.use("/api/lectures", lectureRoutes);
 
 app.get("/", (req, res) => {
 
-  res.send("LMS Backend Running 🚀");
+  res.send(
+    "LMS Backend Running 🚀"
+  );
 
 });
 
 
+// ==========================
 // DEVTOOLS FIX
+// ==========================
 
 app.get(
 
@@ -154,13 +273,47 @@ app.get(
 
 
 // ==========================
+// GLOBAL ERROR HANDLER
+// ==========================
+
+app.use(
+  (
+    err,
+    req,
+    res,
+    next
+  ) => {
+
+    console.log(
+      "SERVER ERROR:",
+      err
+    );
+
+    res.status(500).json({
+
+      success: false,
+
+      message:
+        err.message ||
+        "Internal Server Error",
+
+    });
+
+  }
+);
+
+
+// ==========================
 // SERVER
 // ==========================
 
-const PORT = process.env.PORT || 5000;
+const PORT =
+  process.env.PORT || 5000;
 
 app.listen(PORT, () => {
 
-  console.log(`Server running on port ${PORT}`);
+  console.log(
+    `Server running on port ${PORT}`
+  );
 
 });
