@@ -224,35 +224,7 @@ const uploadLecture = async (req, res) => {
 
     );
 
-    // =========================
-    // COURSE CHECK
-    // =========================
-      const courseCheck =
-  await pool.query(
-
-    `
-    SELECT * FROM courses
-    WHERE id = $1
-    `,
-
-    [parseInt(course_id)]
-
-  );
-
-if (
-  courseCheck.rows.length === 0
-) {
-
-  return res.status(404).json({
-
-    success: false,
-
-    message:
-      "Course not found",
-
-  });
-
-}
+    
 
     // =========================
     // FINAL DATA
