@@ -12,11 +12,14 @@ const UploadLecture = () => {
 
     course_id: "",
 
-    video_url: "",
-
     notes_url: ""
 
   });
+
+  const [video, setVideo] = useState(null);
+
+  const [loading, setLoading] = useState(false);
+
 
   // INPUT CHANGE
 
@@ -32,6 +35,61 @@ const UploadLecture = () => {
 
   };
 
+
+  // VIDEO CHANGE
+
+  const handleVideoChange = (e) => {
+
+    setVideo(e.target.files[0]);
+
+  };
+
+
+  // CLOUDINARY VIDEO UPLOAD
+
+  const uploadVideoToCloudinary = async () => {
+
+    const data = new FormData();
+
+    data.append("file", video);
+
+    data.append(
+
+      "upload_preset",
+
+      "YOUR_UPLOAD_PRESET"
+
+    );
+
+    data.append(
+
+      "cloud_name",
+
+      "YOUR_CLOUD_NAME"
+
+    );
+
+    const response = await fetch(
+
+      "https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/video/upload",
+
+      {
+
+        method: "POST",
+
+        body: data,
+
+      }
+
+    );
+
+    const result = await response.json();
+
+    return result.secure_url;
+
+  };
+
+
   // SUBMIT
 
   const handleSubmit = async (e) => {
@@ -40,17 +98,37 @@ const UploadLecture = () => {
 
     try {
 
+      setLoading(true);
+
+      // UPLOAD VIDEO TO CLOUDINARY
+
+      const videoUrl = await uploadVideoToCloudinary();
+
+      // SAVE TO DATABASE
+
       const response = await axios.post(
 
         `${import.meta.env.VITE_API_URL}/api/lectures/upload`,
 
-        lectureData
+        {
+
+          title: lectureData.title,
+
+          course_id: lectureData.course_id,
+
+          video_url: videoUrl,
+
+          notes_url: lectureData.notes_url,
+
+        }
 
       );
 
       alert("Lecture Uploaded Successfully 🚀");
 
       console.log(response.data);
+
+      setLoading(false);
 
     }
 
@@ -60,9 +138,12 @@ const UploadLecture = () => {
 
       alert("Upload Failed");
 
+      setLoading(false);
+
     }
 
   };
+
 
   return (
 
@@ -125,22 +206,21 @@ const UploadLecture = () => {
 
             </div>
 
-            {/* VIDEO URL */}
+            {/* VIDEO FILE */}
 
             <div>
 
               <label className="block mb-2 font-medium">
 
-                Video URL
+                Upload Video
 
               </label>
 
               <input
-                type="text"
-                name="video_url"
-                placeholder="Paste Cloudinary Video URL"
+                type="file"
+                accept="video/*"
                 className="w-full border p-4 rounded-xl outline-none"
-                onChange={handleChange}
+                onChange={handleVideoChange}
               />
 
             </div>
@@ -172,7 +252,15 @@ const UploadLecture = () => {
               className="w-full bg-black text-white py-4 rounded-xl hover:bg-zinc-800 transition-all"
             >
 
-              Upload Lecture
+              {
+
+                loading
+
+                  ? "Uploading..."
+
+                  : "Upload Lecture"
+
+              }
 
             </button>
 
