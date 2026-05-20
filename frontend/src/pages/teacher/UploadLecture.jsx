@@ -10,13 +10,15 @@ const UploadLecture = () => {
 
     title: "",
 
-    course_id: "",
+    description: "",
 
-    notes_url: ""
+    course_id: ""
 
   });
 
   const [video, setVideo] = useState(null);
+
+  const [pdf, setPdf] = useState(null);
 
   const [loading, setLoading] = useState(false);
 
@@ -45,7 +47,16 @@ const UploadLecture = () => {
   };
 
 
-  // CLOUDINARY VIDEO UPLOAD
+  // PDF CHANGE
+
+  const handlePdfChange = (e) => {
+
+    setPdf(e.target.files[0]);
+
+  };
+
+
+  // VIDEO CLOUDINARY UPLOAD
 
   const uploadVideoToCloudinary = async () => {
 
@@ -90,6 +101,51 @@ const UploadLecture = () => {
   };
 
 
+  // PDF CLOUDINARY UPLOAD
+
+  const uploadPdfToCloudinary = async () => {
+
+    const data = new FormData();
+
+    data.append("file", pdf);
+
+    data.append(
+
+      "upload_preset",
+
+      "YOUR_UPLOAD_PRESET"
+
+    );
+
+    data.append(
+
+      "cloud_name",
+
+      "YOUR_CLOUD_NAME"
+
+    );
+
+    const response = await fetch(
+
+      "https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/raw/upload",
+
+      {
+
+        method: "POST",
+
+        body: data,
+
+      }
+
+    );
+
+    const result = await response.json();
+
+    return result.secure_url;
+
+  };
+
+
   // SUBMIT
 
   const handleSubmit = async (e) => {
@@ -100,9 +156,13 @@ const UploadLecture = () => {
 
       setLoading(true);
 
-      // UPLOAD VIDEO TO CLOUDINARY
+      // VIDEO URL
 
       const videoUrl = await uploadVideoToCloudinary();
+
+      // PDF URL
+
+      const pdfUrl = await uploadPdfToCloudinary();
 
       // SAVE TO DATABASE
 
@@ -114,19 +174,21 @@ const UploadLecture = () => {
 
           title: lectureData.title,
 
+          description: lectureData.description,
+
           course_id: lectureData.course_id,
 
           video_url: videoUrl,
 
-          notes_url: lectureData.notes_url,
+          notes_url: pdfUrl,
 
         }
 
       );
 
-      alert("Lecture Uploaded Successfully 🚀");
-
       console.log(response.data);
+
+      alert("Lecture Uploaded Successfully 🚀");
 
       setLoading(false);
 
@@ -186,6 +248,25 @@ const UploadLecture = () => {
 
             </div>
 
+            {/* DESCRIPTION */}
+
+            <div>
+
+              <label className="block mb-2 font-medium">
+
+                Lecture Description
+
+              </label>
+
+              <textarea
+                name="description"
+                placeholder="Enter lecture description"
+                className="w-full border p-4 rounded-xl outline-none h-40"
+                onChange={handleChange}
+              />
+
+            </div>
+
             {/* COURSE ID */}
 
             <div>
@@ -206,7 +287,7 @@ const UploadLecture = () => {
 
             </div>
 
-            {/* VIDEO FILE */}
+            {/* VIDEO */}
 
             <div>
 
@@ -225,22 +306,21 @@ const UploadLecture = () => {
 
             </div>
 
-            {/* NOTES URL */}
+            {/* PDF */}
 
             <div>
 
               <label className="block mb-2 font-medium">
 
-                Notes PDF URL
+                Upload Notes PDF
 
               </label>
 
               <input
-                type="text"
-                name="notes_url"
-                placeholder="Paste Cloudinary PDF URL"
+                type="file"
+                accept=".pdf"
                 className="w-full border p-4 rounded-xl outline-none"
-                onChange={handleChange}
+                onChange={handlePdfChange}
               />
 
             </div>

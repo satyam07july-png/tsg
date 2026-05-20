@@ -8,8 +8,6 @@ function LearningPage() {
 
   const { courseId } = useParams();
 
-  const [activeTab, setActiveTab] = useState("videos");
-
   const [lectures, setLectures] = useState([]);
 
   const [selectedVideo, setSelectedVideo] = useState(null);
@@ -38,8 +36,6 @@ function LearningPage() {
 
       setLectures(response.data);
 
-      // FIRST VIDEO AUTO SELECT
-
       if (response.data.length > 0) {
 
         setSelectedVideo(response.data[0]);
@@ -59,324 +55,166 @@ function LearningPage() {
 
   return (
 
-    <div className="flex min-h-screen bg-zinc-100">
+    <div className="min-h-screen bg-zinc-100 p-10">
 
-      {/* SIDEBAR */}
+      {
 
-      <div className="w-72 bg-black text-white p-8">
+        selectedVideo && (
 
-        <h1 className="text-3xl font-bold mb-12">
+          <div className="bg-white p-8 rounded-3xl shadow-lg">
 
-          Learning Panel
+            {/* TITLE */}
 
-        </h1>
+            <h1 className="text-4xl font-bold mb-6">
 
-        <div className="space-y-5">
+              {selectedVideo.title}
+
+            </h1>
+
+            {/* VIDEO */}
+
+            <video
+              controls
+              controlsList="nodownload"
+              className="w-full rounded-2xl"
+            >
+
+              <source
+                src={selectedVideo.video_url}
+                type="video/mp4"
+              />
+
+            </video>
+
+            {/* DESCRIPTION */}
+
+            <div className="mt-8">
+
+              <h2 className="text-2xl font-bold mb-3">
+
+                About This Lecture
+
+              </h2>
+
+              <p className="text-slate-600 text-lg leading-8">
+
+                {selectedVideo.description}
+
+              </p>
+
+            </div>
+
+            {/* DOWNLOAD NOTES */}
+
+            {
+
+              selectedVideo.notes_url && (
+
+                <a
+                  href={selectedVideo.notes_url}
+                  target="_blank"
+                  rel="noreferrer"
+                  download
+                  className="inline-block mt-8 bg-blue-900 text-white px-8 py-4 rounded-2xl"
+                >
+
+                  Download Notes
+
+                </a>
+
+              )
+
+            }
+
+          </div>
+
+        )
+
+      }
+
+
+      {/* NEXT VIDEOS */}
+
+      <div className="mt-12">
+
+        <div className="flex justify-between items-center mb-8">
+
+          <h2 className="text-3xl font-bold">
+
+            Next Videos
+
+          </h2>
 
           <button
-            onClick={() => setActiveTab("videos")}
-            className="w-full text-left p-4 rounded-xl bg-zinc-800 hover:bg-zinc-700"
+            onClick={() =>
+              setShowAllVideos(!showAllVideos)
+            }
+            className="bg-black text-white px-6 py-3 rounded-xl"
           >
 
-            Videos
+            {
 
-          </button>
+              showAllVideos
 
-          <button
-            onClick={() => setActiveTab("assignments")}
-            className="w-full text-left p-4 rounded-xl bg-zinc-800 hover:bg-zinc-700"
-          >
+                ? "Show Less"
 
-            Assignments
+                : "View All"
 
-          </button>
-
-          <button
-            onClick={() => setActiveTab("tests")}
-            className="w-full text-left p-4 rounded-xl bg-zinc-800 hover:bg-zinc-700"
-          >
-
-            Tests
-
-          </button>
-
-          <button
-            onClick={() => setActiveTab("marks")}
-            className="w-full text-left p-4 rounded-xl bg-zinc-800 hover:bg-zinc-700"
-          >
-
-            Marks
+            }
 
           </button>
 
         </div>
 
-      </div>
 
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 
-      {/* MAIN CONTENT */}
+          {
 
-      <div className="flex-1 p-10">
+            (showAllVideos
 
+              ? lectures
 
-        {/* VIDEOS TAB */}
+              : lectures.slice(0, 3)
 
-        {
+            ).map((lecture) => (
 
-          activeTab === "videos" && (
-
-            <div>
-
-              {/* MAIN VIDEO */}
-
-              {
-
-                selectedVideo && (
-
-                  <div className="bg-white p-8 rounded-3xl shadow-lg">
-
-                    <h1 className="text-4xl font-bold mb-6">
-
-                      {selectedVideo.title}
-
-                    </h1>
-
-                    <video
-                      controls
-                      controlsList="nodownload"
-                      className="w-full rounded-2xl"
-                    >
-
-                      <source
-                        src={selectedVideo.video_url}
-                        type="video/mp4"
-                      />
-
-                    </video>
-
-                  </div>
-
-                )
-
-              }
-
-
-              {/* NEXT VIDEOS */}
-
-              <div className="mt-12">
-
-                <div className="flex justify-between items-center mb-8">
-
-                  <h2 className="text-3xl font-bold">
-
-                    Course Videos
-
-                  </h2>
-
-                  <button
-                    onClick={() =>
-                      setShowAllVideos(!showAllVideos)
-                    }
-                    className="bg-black text-white px-6 py-3 rounded-xl"
-                  >
-
-                    {
-
-                      showAllVideos
-
-                        ? "Show Less"
-
-                        : "View All"
-
-                    }
-
-                  </button>
-
-                </div>
-
-
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-
-                  {
-
-                    (showAllVideos
-
-                      ? lectures
-
-                      : lectures.slice(0, 3)
-
-                    ).map((lecture) => (
-
-                      <div
-                        key={lecture.id}
-                        onClick={() =>
-                          setSelectedVideo(lecture)
-                        }
-                        className="bg-white rounded-3xl shadow-lg overflow-hidden cursor-pointer hover:scale-105 transition-all"
-                      >
-
-                        <video
-                          className="w-full h-56 object-cover"
-                        >
-
-                          <source
-                            src={lecture.video_url}
-                            type="video/mp4"
-                          />
-
-                        </video>
-
-                        <div className="p-5">
-
-                          <h3 className="text-2xl font-bold">
-
-                            {lecture.title}
-
-                          </h3>
-
-                        </div>
-
-                      </div>
-
-                    ))
-
-                  }
-
-                </div>
-
-              </div>
-
-            </div>
-
-          )
-
-        }
-
-
-        {/* ASSIGNMENTS TAB */}
-
-        {
-
-          activeTab === "assignments" && (
-
-            <div>
-
-              <h1 className="text-5xl font-bold mb-10">
-
-                Assignments
-
-              </h1>
-
-              <div className="space-y-6">
-
-                {
-
-                  lectures.map((lecture) => (
-
-                    lecture.notes_url && (
-
-                      <div
-                        key={lecture.id}
-                        className="bg-white p-8 rounded-3xl shadow-lg flex justify-between items-center"
-                      >
-
-                        <h2 className="text-2xl font-bold">
-
-                          {lecture.title}
-
-                        </h2>
-
-                        <a
-                          href={lecture.notes_url}
-                          target="_blank"
-                          rel="noreferrer"
-                          download
-                          className="bg-blue-900 text-white px-8 py-4 rounded-2xl"
-                        >
-
-                          Download Notes
-
-                        </a>
-
-                      </div>
-
-                    )
-
-                  ))
-
+              <div
+                key={lecture.id}
+                onClick={() =>
+                  setSelectedVideo(lecture)
                 }
+                className="bg-white rounded-3xl shadow-lg overflow-hidden cursor-pointer hover:scale-105 transition-all"
+              >
 
-              </div>
-
-            </div>
-
-          )
-
-        }
-
-
-        {/* TESTS TAB */}
-
-        {
-
-          activeTab === "tests" && (
-
-            <div>
-
-              <h1 className="text-5xl font-bold mb-10">
-
-                Online Tests
-
-              </h1>
-
-              <div className="bg-white p-8 rounded-3xl shadow-lg">
-
-                <button
-                  className="bg-green-600 text-white px-8 py-4 rounded-2xl"
+                <video
+                  className="w-full h-56 object-cover"
                 >
 
-                  Start Test
+                  <source
+                    src={lecture.video_url}
+                    type="video/mp4"
+                  />
 
-                </button>
+                </video>
 
-              </div>
+                <div className="p-5">
 
-            </div>
+                  <h3 className="text-2xl font-bold">
 
-          )
+                    {lecture.title}
 
-        }
+                  </h3>
 
-
-        {/* MARKS TAB */}
-
-        {
-
-          activeTab === "marks" && (
-
-            <div>
-
-              <h1 className="text-5xl font-bold mb-10">
-
-                Your Marks
-
-              </h1>
-
-              <div className="bg-white p-8 rounded-3xl shadow-lg">
-
-                <h2 className="text-3xl font-bold">
-
-                  85 / 100
-
-                </h2>
+                </div>
 
               </div>
 
-            </div>
+            ))
 
-          )
+          }
 
-        }
+        </div>
 
       </div>
 
