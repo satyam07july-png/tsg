@@ -1,349 +1,60 @@
-const streamifier = require("streamifier");
+const express = require("express");
 
-const cloudinary =
-require("../config/cloudinary");
+const router = express.Router();
 
-const pool =
-require("../config/db");
+const multer = require("multer");
+
+const {
+  uploadLecture,
+  getLectures,
+} = require(
+  "../controllers/lecture.controller"
+);
+
+
+// MEMORY STORAGE
+
+const storage = multer.memoryStorage();
+
+const upload = multer({
+  storage,
+});
 
 
 // =========================
 // UPLOAD LECTURE
 // =========================
 
-const uploadLecture = async (req, res) => {
+router.post(
 
-  try {
+  "/upload",
 
-    console.log("FILES:", req.files);
+  upload.fields([
 
-    console.log("BODY:", req.body);
+    {
+      name: "video",
+      maxCount: 1,
+    },
 
-    const {
-      title,
-      description,
-      course_id,
-    } = req.body;
+    {
+      name: "pdf",
+      maxCount: 1,
+    },
 
-    // =========================
-    // VALIDATION
-    // =========================
+  ]),
 
-    if (!req.files?.video) {
+  uploadLecture
 
-      return res.status(400).json({
-
-        success: false,
-
-        message: "Video is required",
-
-      });
-
-    }
-
-    if (!req.files?.pdf) {
-
-      return res.status(400).json({
-
-        success: false,
-
-        message: "PDF is required",
-
-      });
-
-    }
-
-    // =========================
-    // VIDEO CLOUDINARY UPLOAD
-    // =========================
-
-    const uploadVideo =
-      () =>
-        new Promise((resolve, reject) => {
-
-          const stream =
-            cloudinary.uploader.upload_stream(
-
-              {
-                resource_type: "video",
-                folder: "lms_videos",
-              },
-
-              (error, result) => {
-
-                if (error) {
-
-                  console.log(
-                    "VIDEO CLOUDINARY ERROR:",
-                    error
-                  );
-
-                  reject(error);
-
-                }
-
-                else {
-
-                  console.log(
-                    "VIDEO UPLOADED:",
-                    result
-                  );
-
-                  resolve(result);
-
-                }
-
-              }
-
-            );
-
-          streamifier
-
-            .createReadStream(
-              req.files?.video?.[0]?.buffer
-            )
-
-            .pipe(stream);
-
-        });
-
-    // =========================
-    // PDF CLOUDINARY UPLOAD
-    // =========================
-
-    const uploadPdf =
-      () =>
-        new Promise((resolve, reject) => {
-
-          const stream =
-            cloudinary.uploader.upload_stream(
-
-              {
-                resource_type: "raw",
-                folder: "lms_notes",
-              },
-
-              (error, result) => {
-
-                if (error) {
-
-                  console.log(
-                    "PDF CLOUDINARY ERROR:",
-                    error
-                  );
-
-                  reject(error);
-
-                }
-
-                else {
-
-                  console.log(
-                    "PDF UPLOADED:",
-                    result
-                  );
-
-                  resolve(result);
-
-                }
-
-              }
-
-            );
-
-          streamifier
-
-            .createReadStream(
-              req.files?.pdf?.[0]?.buffer
-            )
-
-            .pipe(stream);
-
-        });
-
-    // =========================
-    // UPLOAD VIDEO
-    // =========================
-
-    console.log("Uploading Video...");
-
-    const videoResult =
-      await uploadVideo();
-
-    console.log(
-      "Video URL:",
-      videoResult.secure_url
-    );
-
-    // =========================
-    // UPLOAD PDF
-    // =========================
-
-    console.log("Uploading PDF...");
-
-    const pdfResult =
-      await uploadPdf();
-
-    console.log(
-      "PDF URL:",
-      pdfResult.secure_url
-    );
-
-    // =========================
-    // SAVE TO DATABASE
-    // =========================
-
-    await pool.query(
-
-      `
-      INSERT INTO lectures
-      (
-        title,
-        description,
-        course_id,
-        video_url,
-        notes_url
-      )
-
-      VALUES ($1, $2, $3, $4, $5)
-      `,
-
-      [
-
-        title,
-
-        description,
-
-        parseInt(course_id),
-
-        videoResult.secure_url,
-
-        pdfResult.secure_url,
-
-      ]
-
-    );
-
-    
-
-    // =========================
-    // FINAL DATA
-    // =========================
-
-    const lectureData = {
-
-      title,
-
-      description,
-
-      course_id:
-        parseInt(course_id),
-
-      video_url:
-        videoResult.secure_url,
-
-      notes_url:
-        pdfResult.secure_url,
-
-    };
-
-    console.log(
-      "LECTURE DATA:",
-      lectureData
-    );
-
-    // =========================
-    // SUCCESS RESPONSE
-    // =========================
-
-    return res.status(200).json({
-
-      success: true,
-
-      message:
-        "Lecture Uploaded Successfully 🚀",
-
-      lecture: lectureData,
-
-    });
-
-  } catch (error) {
-
-    console.log(
-      "UPLOAD ERROR:",
-      error
-    );
-
-    return res.status(500).json({
-
-      success: false,
-
-      message:
-        error.message ||
-        "Internal Server Error",
-
-    });
-
-  }
-
-};
+);
 
 
 // =========================
-// GET ALL LECTURES
+// GET LECTURES
 // =========================
 
-const getLectures = async (req, res) => {
+router.get(
+  "/",
+  getLectures
+);
 
-  try {
-
-    const result =
-      await pool.query(
-
-        `
-        SELECT *
-        FROM lectures
-        ORDER BY id DESC
-        `
-
-      );
-
-    return res.status(200).json({
-
-      success: true,
-
-      lectures:
-        result.rows,
-
-    });
-
-  }
-
-  catch (error) {
-
-    console.log(
-      "GET LECTURES ERROR:",
-      error
-    );
-
-    return res.status(500).json({
-
-      success: false,
-
-      message:
-        "Failed to fetch lectures",
-
-    });
-
-  }
-
-};
-
-
-module.exports = {
-
-  uploadLecture,
-
-  getLectures,
-
-};
+module.exports = router;

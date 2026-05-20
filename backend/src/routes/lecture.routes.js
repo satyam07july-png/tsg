@@ -2,17 +2,26 @@ const express = require("express");
 
 const router = express.Router();
 
-const upload =
-require("../middleware/upload");
+const multer = require("multer");
 
 const {
   uploadLecture,
+  getLectures,
 } = require(
   "../controllers/lecture.controller"
 );
 
 
-// UPLOAD LECTURE
+// MULTER
+
+const storage = multer.memoryStorage();
+
+const upload = multer({
+  storage,
+});
+
+
+// UPLOAD ROUTE
 
 router.post(
 
@@ -34,6 +43,14 @@ router.post(
 
   uploadLecture
 
+);
+
+
+// GET LECTURES
+
+router.get(
+  "/",
+  getLectures
 );
 
 module.exports = router;
