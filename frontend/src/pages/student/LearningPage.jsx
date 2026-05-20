@@ -127,6 +127,206 @@ const LearningPage = () => {
             📚 Lectures
 
           </div>
+          {
+  activeSection ===
+  "lectures" && (
+
+    <div>
+
+      {
+        selectedLecture && (
+
+          <div>
+
+            {/* MAIN VIDEO */}
+
+            <div className="bg-black rounded-3xl overflow-hidden shadow-xl">
+
+              <video
+                controls
+                className="w-full h-[650px] bg-black"
+              >
+
+                <source
+                  src={
+                    selectedLecture.video_url
+                  }
+
+                  type="video/mp4"
+
+                />
+
+              </video>
+
+            </div>
+
+            {/* VIDEO DETAILS */}
+
+            <div className="mt-8 bg-white rounded-3xl p-8 shadow-md">
+
+              <h1 className="text-4xl font-bold">
+
+                {
+                  selectedLecture.title
+                }
+
+              </h1>
+
+              <p className="text-zinc-600 mt-4 text-lg leading-relaxed">
+
+                {
+                  selectedLecture.description
+                }
+
+              </p>
+
+              {/* ACTION BUTTONS */}
+
+              <div className="flex gap-4 mt-8">
+
+                {/* NOTES */}
+
+                <a
+
+                  href={
+                    selectedLecture.notes_url
+                  }
+
+                  target="_blank"
+
+                  rel="noreferrer"
+
+                  className="bg-black text-white px-6 py-3 rounded-xl"
+
+                >
+
+                  Download Notes
+
+                </a>
+
+                {/* COMPLETE */}
+
+                <button className="bg-green-500 text-white px-6 py-3 rounded-xl">
+
+                  Mark Complete
+
+                </button>
+
+              </div>
+
+            </div>
+
+            {/* NEXT VIDEOS */}
+
+            <div className="mt-12">
+
+              <div className="flex justify-between items-center mb-8">
+
+                <h2 className="text-3xl font-bold">
+
+                  Continue Learning
+
+                </h2>
+
+                <button
+
+                  onClick={() =>
+                    setActiveSection(
+                      "allLectures"
+                    )
+                  }
+
+                  className="text-blue-600 font-semibold text-lg"
+
+                >
+
+                  View All →
+
+                </button>
+
+              </div>
+
+              {/* HORIZONTAL VIDEOS */}
+
+              <div className="flex gap-6 overflow-x-auto pb-4">
+
+                {
+                  lectures
+
+                    ?.filter(
+                      (lecture) =>
+                        lecture.id !==
+                        selectedLecture.id
+                    )
+
+                    ?.map((lecture) => (
+
+                      <div
+
+                        key={lecture.id}
+
+                        onClick={() =>
+                          setSelectedLecture(
+                            lecture
+                          )
+                        }
+
+                        className="min-w-[350px] bg-white rounded-3xl overflow-hidden shadow-md cursor-pointer hover:scale-[1.02] transition-all"
+
+                      >
+
+                        {/* VIDEO */}
+
+                        <video
+                          className="w-full h-[220px] object-cover"
+                        >
+
+                          <source
+                            src={
+                              lecture.video_url
+                            }
+                          />
+
+                        </video>
+
+                        {/* CONTENT */}
+
+                        <div className="p-5">
+
+                          <h3 className="text-2xl font-bold">
+
+                            {lecture.title}
+
+                          </h3>
+
+                          <p className="text-zinc-600 mt-3">
+
+                            {
+                              lecture.description
+                            }
+
+                          </p>
+
+                        </div>
+
+                      </div>
+
+                    ))
+                }
+
+              </div>
+
+            </div>
+
+          </div>
+
+        )
+      }
+
+    </div>
+
+  )
+}
 
           {/* ASSIGNMENTS */}
 
