@@ -1,21 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState,
+} from "react";
 
 import axios from "axios";
 
-import { useParams } from "react-router-dom";
+const LearningPage = () => {
 
-function LearningPage() {
+  const [lectures, setLectures] =
+    useState([]);
 
-  const { courseId } = useParams();
+  const [selectedLecture,
+    setSelectedLecture] =
+    useState(null);
 
-  const [lectures, setLectures] = useState([]);
+  const [activeSection,
+    setActiveSection] =
+    useState("lectures");
 
-  const [selectedVideo, setSelectedVideo] = useState(null);
-
-  const [showAllVideos, setShowAllVideos] = useState(false);
-
-
+  // ======================
   // FETCH LECTURES
+  // ======================
 
   useEffect(() => {
 
@@ -23,198 +28,544 @@ function LearningPage() {
 
   }, []);
 
+  const fetchLectures =
+    async () => {
 
-  const fetchLectures = async () => {
+      try {
 
-    try {
+        const response =
+          await axios.get(
 
-      const response = await axios.get(
+            `${import.meta.env.VITE_API_URL}/api/lectures`
 
-        `${import.meta.env.VITE_API_URL}/api/lectures/course/${courseId}`
+          );
 
-      );
+        setLectures(
+          response.data.lectures
+        );
 
-      setLectures(response.data);
+        if (
+          response.data.lectures.length > 0
+        ) {
 
-      if (response.data.length > 0) {
+          setSelectedLecture(
+            response.data.lectures[0]
+          );
 
-        setSelectedVideo(response.data[0]);
+        }
+
+      } catch (error) {
+
+        console.log(error);
 
       }
 
-    }
-
-    catch (error) {
-
-      console.log(error);
-
-    }
-
-  };
-
+    };
 
   return (
 
-    <div className="min-h-screen bg-zinc-100 p-10">
+    <div className="flex h-screen bg-zinc-100">
 
-      {
+      {/* ======================
+          SIDEBAR
+      ====================== */}
 
-        selectedVideo && (
+      <div className="w-[320px] bg-white border-r flex flex-col">
 
-          <div className="bg-white p-8 rounded-3xl shadow-lg">
+        {/* LOGO */}
 
-            {/* TITLE */}
+        <div className="p-6 border-b">
 
-            <h1 className="text-4xl font-bold mb-6">
+          <h1 className="text-3xl font-bold">
 
-              {selectedVideo.title}
+            LMS Panel
 
-            </h1>
+          </h1>
 
-            {/* VIDEO */}
+        </div>
 
-            <video
-              controls
-              controlsList="nodownload"
-              className="w-full rounded-2xl"
-            >
+        {/* MENU */}
 
-              <source
-                src={selectedVideo.video_url}
-                type="video/mp4"
-              />
+        <div className="flex-1 p-4 space-y-3 overflow-y-auto">
 
-            </video>
+          {/* LECTURES */}
 
-            {/* DESCRIPTION */}
+          <div
 
-            <div className="mt-8">
-
-              <h2 className="text-2xl font-bold mb-3">
-
-                About This Lecture
-
-              </h2>
-
-              <p className="text-slate-600 text-lg leading-8">
-
-                {selectedVideo.description}
-
-              </p>
-
-            </div>
-
-            {/* DOWNLOAD NOTES */}
-
-            {
-
-              selectedVideo.notes_url && (
-
-                <a
-                  href={selectedVideo.notes_url}
-                  target="_blank"
-                  rel="noreferrer"
-                  download
-                  className="inline-block mt-8 bg-blue-900 text-white px-8 py-4 rounded-2xl"
-                >
-
-                  Download Notes
-
-                </a>
-
+            onClick={() =>
+              setActiveSection(
+                "lectures"
               )
-
             }
+
+            className={`p-4 rounded-xl cursor-pointer transition-all
+
+            ${
+              activeSection ===
+              "lectures"
+
+                ? "bg-black text-white"
+
+                : "bg-zinc-100 hover:bg-zinc-200"
+            }
+            `}
+          >
+
+            📚 Lectures
 
           </div>
 
-        )
+          {/* ASSIGNMENTS */}
 
-      }
+          <div
 
-
-      {/* NEXT VIDEOS */}
-
-      <div className="mt-12">
-
-        <div className="flex justify-between items-center mb-8">
-
-          <h2 className="text-3xl font-bold">
-
-            Next Videos
-
-          </h2>
-
-          <button
             onClick={() =>
-              setShowAllVideos(!showAllVideos)
+              setActiveSection(
+                "assignments"
+              )
             }
-            className="bg-black text-white px-6 py-3 rounded-xl"
+
+            className={`p-4 rounded-xl cursor-pointer transition-all
+
+            ${
+              activeSection ===
+              "assignments"
+
+                ? "bg-black text-white"
+
+                : "bg-zinc-100 hover:bg-zinc-200"
+            }
+            `}
           >
 
-            {
+            📝 Assignments
 
-              showAllVideos
+          </div>
 
-                ? "Show Less"
+          {/* TESTS */}
 
-                : "View All"
+          <div
 
+            onClick={() =>
+              setActiveSection(
+                "tests"
+              )
             }
+
+            className={`p-4 rounded-xl cursor-pointer transition-all
+
+            ${
+              activeSection ===
+              "tests"
+
+                ? "bg-black text-white"
+
+                : "bg-zinc-100 hover:bg-zinc-200"
+            }
+            `}
+          >
+
+            🧠 Tests
+
+          </div>
+
+          {/* NOTES */}
+
+          <div
+
+            onClick={() =>
+              setActiveSection(
+                "notes"
+              )
+            }
+
+            className={`p-4 rounded-xl cursor-pointer transition-all
+
+            ${
+              activeSection ===
+              "notes"
+
+                ? "bg-black text-white"
+
+                : "bg-zinc-100 hover:bg-zinc-200"
+            }
+            `}
+          >
+
+            📄 Notes
+
+          </div>
+
+          {/* PROGRESS */}
+
+          <div
+
+            onClick={() =>
+              setActiveSection(
+                "progress"
+              )
+            }
+
+            className={`p-4 rounded-xl cursor-pointer transition-all
+
+            ${
+              activeSection ===
+              "progress"
+
+                ? "bg-black text-white"
+
+                : "bg-zinc-100 hover:bg-zinc-200"
+            }
+            `}
+          >
+
+            📈 Progress
+
+          </div>
+
+          {/* CERTIFICATE */}
+
+          <div
+
+            onClick={() =>
+              setActiveSection(
+                "certificate"
+              )
+            }
+
+            className={`p-4 rounded-xl cursor-pointer transition-all
+
+            ${
+              activeSection ===
+              "certificate"
+
+                ? "bg-black text-white"
+
+                : "bg-zinc-100 hover:bg-zinc-200"
+            }
+            `}
+          >
+
+            🏆 Certificate
+
+          </div>
+
+        </div>
+
+        {/* FOOTER */}
+
+        <div className="p-4 border-t">
+
+          <button className="w-full bg-red-500 hover:bg-red-600 transition-all text-white py-3 rounded-xl">
+
+            Logout
 
           </button>
 
         </div>
 
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+      {/* ======================
+          MAIN CONTENT
+      ====================== */}
 
-          {
+      <div className="flex-1 overflow-y-auto p-8">
 
-            (showAllVideos
+        {/* ======================
+            LECTURES SECTION
+        ====================== */}
 
-              ? lectures
+        {
+          activeSection ===
+          "lectures" && (
 
-              : lectures.slice(0, 3)
+            <div>
 
-            ).map((lecture) => (
+              {/* LECTURE LIST */}
 
-              <div
-                key={lecture.id}
-                onClick={() =>
-                  setSelectedVideo(lecture)
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+
+                {
+                  lectures.map(
+                    (lecture) => (
+
+                      <div
+
+                        key={lecture.id}
+
+                        onClick={() =>
+                          setSelectedLecture(
+                            lecture
+                          )
+                        }
+
+                        className={`p-5 rounded-2xl cursor-pointer transition-all shadow-md
+
+                        ${
+                          selectedLecture?.id === lecture.id
+
+                            ? "bg-black text-white"
+
+                            : "bg-white hover:scale-[1.02]"
+                        }
+                        `}
+                      >
+
+                        <h2 className="text-xl font-bold">
+
+                          {lecture.title}
+
+                        </h2>
+
+                        <p className="mt-3 text-sm">
+
+                          {
+                            lecture.description
+                          }
+
+                        </p>
+
+                      </div>
+
+                    )
+                  )
                 }
-                className="bg-white rounded-3xl shadow-lg overflow-hidden cursor-pointer hover:scale-105 transition-all"
-              >
-
-                <video
-                  className="w-full h-56 object-cover"
-                >
-
-                  <source
-                    src={lecture.video_url}
-                    type="video/mp4"
-                  />
-
-                </video>
-
-                <div className="p-5">
-
-                  <h3 className="text-2xl font-bold">
-
-                    {lecture.title}
-
-                  </h3>
-
-                </div>
 
               </div>
 
-            ))
+              {/* VIDEO PLAYER */}
 
-          }
+              {
+                selectedLecture && (
 
-        </div>
+                  <div>
+
+                    <h1 className="text-4xl font-bold mb-4">
+
+                      {
+                        selectedLecture.title
+                      }
+
+                    </h1>
+
+                    <p className="text-zinc-600 mb-8">
+
+                      {
+                        selectedLecture.description
+                      }
+
+                    </p>
+
+                    {/* VIDEO */}
+
+                    <div className="bg-black rounded-2xl overflow-hidden shadow-lg mb-8">
+
+                      <video
+                        controls
+                        className="w-full h-[600px]"
+                      >
+
+                        <source
+
+                          src={
+                            selectedLecture.video_url
+                          }
+
+                          type="video/mp4"
+
+                        />
+
+                      </video>
+
+                    </div>
+
+                    {/* NOTES */}
+
+                    <div className="bg-white p-6 rounded-2xl shadow-md">
+
+                      <h2 className="text-2xl font-bold mb-4">
+
+                        Lecture Notes
+
+                      </h2>
+
+                      <a
+
+                        href={
+                          selectedLecture.notes_url
+                        }
+
+                        target="_blank"
+
+                        rel="noreferrer"
+
+                        className="bg-black text-white px-6 py-3 rounded-xl inline-block"
+
+                      >
+
+                        Download PDF
+
+                      </a>
+
+                    </div>
+
+                  </div>
+
+                )
+              }
+
+            </div>
+
+          )
+        }
+
+        {/* ======================
+            ASSIGNMENTS
+        ====================== */}
+
+        {
+          activeSection ===
+          "assignments" && (
+
+            <div className="bg-white p-8 rounded-2xl shadow-md">
+
+              <h1 className="text-4xl font-bold mb-6">
+
+                Assignments
+
+              </h1>
+
+              <p className="text-zinc-600">
+
+                No assignments uploaded yet.
+
+              </p>
+
+            </div>
+
+          )
+        }
+
+        {/* ======================
+            TESTS
+        ====================== */}
+
+        {
+          activeSection ===
+          "tests" && (
+
+            <div className="bg-white p-8 rounded-2xl shadow-md">
+
+              <h1 className="text-4xl font-bold mb-6">
+
+                Tests
+
+              </h1>
+
+              <p className="text-zinc-600">
+
+                No tests available yet.
+
+              </p>
+
+            </div>
+
+          )
+        }
+
+        {/* ======================
+            NOTES
+        ====================== */}
+
+        {
+          activeSection ===
+          "notes" && (
+
+            <div className="bg-white p-8 rounded-2xl shadow-md">
+
+              <h1 className="text-4xl font-bold mb-6">
+
+                Notes
+
+              </h1>
+
+              <p className="text-zinc-600">
+
+                Download lecture notes here.
+
+              </p>
+
+            </div>
+
+          )
+        }
+
+        {/* ======================
+            PROGRESS
+        ====================== */}
+
+        {
+          activeSection ===
+          "progress" && (
+
+            <div className="bg-white p-8 rounded-2xl shadow-md">
+
+              <h1 className="text-4xl font-bold mb-6">
+
+                Progress
+
+              </h1>
+
+              <div className="w-full bg-zinc-200 h-6 rounded-full overflow-hidden">
+
+                <div className="bg-green-500 h-full w-[70%]"></div>
+
+              </div>
+
+              <p className="mt-4 text-lg">
+
+                70% Course Completed
+
+              </p>
+
+            </div>
+
+          )
+        }
+
+        {/* ======================
+            CERTIFICATE
+        ====================== */}
+
+        {
+          activeSection ===
+          "certificate" && (
+
+            <div className="bg-white p-8 rounded-2xl shadow-md">
+
+              <h1 className="text-4xl font-bold mb-6">
+
+                Certificate
+
+              </h1>
+
+              <p className="text-zinc-600 mb-6">
+
+                Complete the course to unlock your certificate.
+
+              </p>
+
+              <button className="bg-black text-white px-6 py-3 rounded-xl">
+
+                Download Certificate
+
+              </button>
+
+            </div>
+
+          )
+        }
 
       </div>
 
@@ -222,6 +573,6 @@ function LearningPage() {
 
   );
 
-}
+};
 
 export default LearningPage;
