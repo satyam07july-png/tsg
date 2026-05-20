@@ -7,13 +7,9 @@ import TeacherSidebar from "../../components/teacher/TeacherSidebar";
 const UploadLecture = () => {
 
   const [lectureData, setLectureData] = useState({
-
     title: "",
-
     description: "",
-
-    course_id: ""
-
+    course_id: "",
   });
 
   const [video, setVideo] = useState(null);
@@ -22,21 +18,16 @@ const UploadLecture = () => {
 
   const [loading, setLoading] = useState(false);
 
-
   // INPUT CHANGE
 
   const handleChange = (e) => {
 
     setLectureData({
-
       ...lectureData,
-
-      [e.target.name]: e.target.value
-
+      [e.target.name]: e.target.value,
     });
 
   };
-
 
   // VIDEO CHANGE
 
@@ -46,7 +37,6 @@ const UploadLecture = () => {
 
   };
 
-
   // PDF CHANGE
 
   const handlePdfChange = (e) => {
@@ -55,96 +45,147 @@ const UploadLecture = () => {
 
   };
 
-
   // VIDEO CLOUDINARY UPLOAD
 
   const uploadVideoToCloudinary = async () => {
 
-    const data = new FormData();
+    try {
 
-    data.append("file", video);
+      if (!video) {
 
-    data.append(
+        alert("Please select a video");
 
-      "upload_preset",
-
-      "lms_upload"
-
-    );
-
-    data.append(
-
-      "cloud_name",
-
-      "dihf3vdnw"
-
-    );
-
-    const response = await fetch(
-
-      "https://api.cloudinary.com/v1_1/dihf3vdnw/video/upload",
-
-      {
-
-        method: "POST",
-
-        body: data,
+        return null;
 
       }
 
-    );
+      const data = new FormData();
 
-    const result = await response.json();
+      data.append("file", video);
 
-    return result.secure_url;
+      data.append(
+        "upload_preset",
+        "lms_upload"
+      );
+
+      console.log("Uploading Video...");
+
+      const response = await fetch(
+        "https://api.cloudinary.com/v1_1/dihf3vdnw/video/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+
+      console.log(
+        "Video Response Status:",
+        response.status
+      );
+
+      const result = await response.json();
+
+      console.log(
+        "Video Upload Result:",
+        result
+      );
+
+      if (!result.secure_url) {
+
+        throw new Error(
+          result.error?.message ||
+          "Video upload failed"
+        );
+
+      }
+
+      return result.secure_url;
+
+    } catch (error) {
+
+      console.log(
+        "VIDEO UPLOAD ERROR:",
+        error
+      );
+
+      alert(error.message);
+
+      throw error;
+
+    }
 
   };
-
 
   // PDF CLOUDINARY UPLOAD
 
   const uploadPdfToCloudinary = async () => {
 
-    const data = new FormData();
+    try {
 
-    data.append("file", pdf);
+      if (!pdf) {
 
-    data.append(
+        alert("Please select PDF");
 
-      "upload_preset",
-
-      "lms_upload"
-
-    );
-
-    data.append(
-
-      "cloud_name",
-
-      "dihf3vdnw"
-
-    );
-
-    const response = await fetch(
-
-      "https://api.cloudinary.com/v1_1/dihf3vdnw/raw/upload",
-
-      {
-
-        method: "POST",
-
-        body: data,
+        return null;
 
       }
 
-    );
+      const data = new FormData();
 
-    const result = await response.json();
+      data.append("file", pdf);
 
-    return result.secure_url;
+      data.append(
+        "upload_preset",
+        "lms_upload"
+      );
+
+      console.log("Uploading PDF...");
+
+      const response = await fetch(
+        "https://api.cloudinary.com/v1_1/dihf3vdnw/raw/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+
+      console.log(
+        "PDF Response Status:",
+        response.status
+      );
+
+      const result = await response.json();
+
+      console.log(
+        "PDF Upload Result:",
+        result
+      );
+
+      if (!result.secure_url) {
+
+        throw new Error(
+          result.error?.message ||
+          "PDF upload failed"
+        );
+
+      }
+
+      return result.secure_url;
+
+    } catch (error) {
+
+      console.log(
+        "PDF UPLOAD ERROR:",
+        error
+      );
+
+      alert(error.message);
+
+      throw error;
+
+    }
 
   };
-
 
   // SUBMIT
 
@@ -158,11 +199,13 @@ const UploadLecture = () => {
 
       // VIDEO URL
 
-      const videoUrl = await uploadVideoToCloudinary();
+      const videoUrl =
+        await uploadVideoToCloudinary();
 
       // PDF URL
 
-      const pdfUrl = await uploadPdfToCloudinary();
+      const pdfUrl =
+        await uploadPdfToCloudinary();
 
       // SAVE TO DATABASE
 
@@ -171,30 +214,36 @@ const UploadLecture = () => {
         `${import.meta.env.VITE_API_URL}/api/lectures/upload`,
 
         {
-
           title: lectureData.title,
-
           description: lectureData.description,
-
           course_id: lectureData.course_id,
-
           video_url: videoUrl,
-
           notes_url: pdfUrl,
-
         }
 
       );
 
       console.log(response.data);
 
-      alert("Lecture Uploaded Successfully 🚀");
+      alert(
+        "Lecture Uploaded Successfully 🚀"
+      );
+
+      // RESET FORM
+
+      setLectureData({
+        title: "",
+        description: "",
+        course_id: "",
+      });
+
+      setVideo(null);
+
+      setPdf(null);
 
       setLoading(false);
 
-    }
-
-    catch (error) {
+    } catch (error) {
 
       console.log(error);
 
@@ -205,7 +254,6 @@ const UploadLecture = () => {
     }
 
   };
-
 
   return (
 
@@ -244,6 +292,7 @@ const UploadLecture = () => {
                 placeholder="Enter lecture title"
                 className="w-full border p-4 rounded-xl outline-none"
                 onChange={handleChange}
+                value={lectureData.title}
               />
 
             </div>
@@ -263,6 +312,7 @@ const UploadLecture = () => {
                 placeholder="Enter lecture description"
                 className="w-full border p-4 rounded-xl outline-none h-40"
                 onChange={handleChange}
+                value={lectureData.description}
               />
 
             </div>
@@ -278,11 +328,12 @@ const UploadLecture = () => {
               </label>
 
               <input
-                type="number"
+                type="text"
                 name="course_id"
                 placeholder="Enter course ID"
                 className="w-full border p-4 rounded-xl outline-none"
                 onChange={handleChange}
+                value={lectureData.course_id}
               />
 
             </div>
@@ -333,13 +384,9 @@ const UploadLecture = () => {
             >
 
               {
-
                 loading
-
                   ? "Uploading..."
-
                   : "Upload Lecture"
-
               }
 
             </button>
