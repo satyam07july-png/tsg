@@ -6,8 +6,9 @@ require("../config/cloudinary");
 const pool =
 require("../config/db");
 
-
+// =========================
 // UPLOAD LECTURE
+// =========================
 
 const uploadLecture = async (req, res) => {
 
@@ -16,43 +17,12 @@ const uploadLecture = async (req, res) => {
     console.log("FILES:", req.files);
 
     console.log("BODY:", req.body);
-// db save
+
     const {
       title,
       description,
       course_id,
     } = req.body;
-
-    await pool.query(
-
-  `
-  INSERT INTO lectures
-  (
-    title,
-    description,
-    course_id,
-    video_url,
-    notes_url
-  )
-
-  VALUES ($1, $2, $3, $4, $5)
-  `,
-
-  [
-
-    title,
-
-    description,
-
-    course_id,
-
-    videoResult.secure_url,
-
-    pdfResult.secure_url,
-
-  ]
-
-);
 
     // =========================
     // VALIDATION
@@ -113,6 +83,11 @@ const uploadLecture = async (req, res) => {
 
                 else {
 
+                  console.log(
+                    "VIDEO UPLOADED:",
+                    result
+                  );
+
                   resolve(result);
 
                 }
@@ -124,7 +99,7 @@ const uploadLecture = async (req, res) => {
           streamifier
 
             .createReadStream(
-              req.files?.video?.[0]?.buffer
+              req.files.video[0].buffer
             )
 
             .pipe(stream);
@@ -162,6 +137,11 @@ const uploadLecture = async (req, res) => {
 
                 else {
 
+                  console.log(
+                    "PDF UPLOADED:",
+                    result
+                  );
+
                   resolve(result);
 
                 }
@@ -173,7 +153,7 @@ const uploadLecture = async (req, res) => {
           streamifier
 
             .createReadStream(
-              req.files?.pdf?.[0]?.buffer
+              req.files.pdf[0].buffer
             )
 
             .pipe(stream);
@@ -181,7 +161,7 @@ const uploadLecture = async (req, res) => {
         });
 
     // =========================
-    // UPLOAD BOTH
+    // UPLOAD VIDEO
     // =========================
 
     console.log("Uploading Video...");
@@ -190,9 +170,13 @@ const uploadLecture = async (req, res) => {
       await uploadVideo();
 
     console.log(
-      "Video Uploaded:",
+      "Video URL:",
       videoResult.secure_url
     );
+
+    // =========================
+    // UPLOAD PDF
+    // =========================
 
     console.log("Uploading PDF...");
 
@@ -200,8 +184,43 @@ const uploadLecture = async (req, res) => {
       await uploadPdf();
 
     console.log(
-      "PDF Uploaded:",
+      "PDF URL:",
       pdfResult.secure_url
+    );
+
+    // =========================
+    // SAVE TO DATABASE
+    // =========================
+
+    await pool.query(
+
+      `
+      INSERT INTO lectures
+      (
+        title,
+        description,
+        course_id,
+        video_url,
+        notes_url
+      )
+
+      VALUES ($1, $2, $3, $4, $5)
+      `,
+
+      [
+
+        title,
+
+        description,
+
+        course_id,
+
+        videoResult.secure_url,
+
+        pdfResult.secure_url,
+
+      ]
+
     );
 
     // =========================
