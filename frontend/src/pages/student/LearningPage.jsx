@@ -40,23 +40,40 @@ const LearningPage = () => {
 
           );
 
-        setLectures(
-          response.data.lectures
+        console.log(
+          "LECTURES:",
+          response.data
         );
 
+        // SAFE DATA
+
+        const lectureData =
+          response.data?.lectures ||
+          response.data ||
+          [];
+
+        setLectures(
+          lectureData
+        );
+
+        // SELECT FIRST LECTURE
+
         if (
-          response.data.lectures.length > 0
+          lectureData?.length > 0
         ) {
 
           setSelectedLecture(
-            response.data.lectures[0]
+            lectureData[0]
           );
 
         }
 
       } catch (error) {
 
-        console.log(error);
+        console.log(
+          "FETCH ERROR:",
+          error
+        );
 
       }
 
@@ -287,7 +304,7 @@ const LearningPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
 
                 {
-                  lectures.map(
+                  lectures?.map(
                     (lecture) => (
 
                       <div
