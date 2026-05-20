@@ -1,18 +1,38 @@
+
+
 const { Pool } = require("pg");
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+
+  connectionString:
+    process.env.DATABASE_URL,
+
   ssl: {
     rejectUnauthorized: false,
   },
+
 });
 
-pool.connect()
+
+// TEST CONNECTION
+
+pool.query("SELECT NOW()")
+
   .then(() => {
-    console.log("PostgreSQL Connected ✅");
+
+    console.log(
+      "Neon Database Connected ✅"
+    );
+
   })
+
   .catch((err) => {
-    console.log("DB Connection Error ❌", err);
+
+    console.log(
+      "Neon DB Error ❌",
+      err
+    );
+
   });
 
 module.exports = pool;
