@@ -284,6 +284,49 @@ const uploadLecture = async (req, res) => {
 
 };
 
+// =========================
+// GET ALL LECTURES
+// =========================
+
+const getLectures = async (req, res) => {
+
+  try {
+
+    const result =
+      await pool.query(
+        "SELECT * FROM lectures ORDER BY id DESC"
+      );
+
+    res.status(200).json(
+      result.rows
+    );
+
+  }
+
+  catch (error) {
+
+    console.log(
+      "GET LECTURES ERROR:",
+      error
+    );
+
+    res.status(500).json({
+
+      success: false,
+
+      message:
+        "Failed to fetch lectures",
+
+    });
+
+  }
+
+};
+
 module.exports = {
+
   uploadLecture,
+
+  getLectures,
+
 };
