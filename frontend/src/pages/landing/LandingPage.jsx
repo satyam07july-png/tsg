@@ -61,15 +61,31 @@ function LandingPage() {
 
           );
 
-        setCourses(
-          response.data.courses
+        console.log(
+          "COURSE API:",
+          response.data
         );
+
+        // SAFE DATA
+
+        const courseData =
+
+          response.data?.courses ||
+
+          response.data ||
+
+          [];
+
+        setCourses(courseData);
 
       }
 
       catch (error) {
 
-        console.log(error);
+        console.log(
+          "COURSE FETCH ERROR:",
+          error
+        );
 
       }
 
@@ -232,106 +248,118 @@ function LandingPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
           {
-            courses?.map(
-              (course) => (
+            courses?.length > 0 ? (
 
-                <div
+              courses?.map(
+                (course) => (
 
-                  key={course.id}
+                  <div
 
-                  className="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all hover:-translate-y-2"
+                    key={course.id}
 
-                >
+                    className="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all hover:-translate-y-2"
 
-                  {/* IMAGE */}
+                  >
 
-                  <div className="h-[220px] bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center">
+                    {/* IMAGE */}
 
-                    <h1 className="text-white text-3xl font-bold">
+                    <div className="h-[220px] bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center">
 
-                      {course.title}
+                      <h1 className="text-white text-3xl font-bold">
 
-                    </h1>
+                        {course.title}
 
-                  </div>
+                      </h1>
 
-                  {/* CONTENT */}
+                    </div>
 
-                  <div className="p-8">
+                    {/* CONTENT */}
 
-                    <h2 className="text-3xl font-bold">
+                    <div className="p-8">
 
-                      {course.title}
+                      <h2 className="text-3xl font-bold">
 
-                    </h2>
+                        {course.title}
 
-                    <p className="text-gray-600 mt-4 leading-7">
+                      </h2>
 
-                      {
-                        course.description
-                      }
-
-                    </p>
-
-                    {/* DETAILS */}
-
-                    <div className="flex flex-wrap gap-4 mt-6">
-
-                      {/* DURATION */}
-
-                      <div className="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-xl text-sm">
-
-                        <FaClock />
+                      <p className="text-gray-600 mt-4 leading-7">
 
                         {
-                          course.duration
+                          course.description
                         }
+
+                      </p>
+
+                      {/* DETAILS */}
+
+                      <div className="flex flex-wrap gap-4 mt-6">
+
+                        {/* DURATION */}
+
+                        <div className="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-xl text-sm">
+
+                          <FaClock />
+
+                          {
+                            course.duration
+                          }
+
+                        </div>
+
+                        {/* LEVEL */}
+
+                        <div className="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-xl text-sm">
+
+                          <FaSignal />
+
+                          {
+                            course.level
+                          }
+
+                        </div>
 
                       </div>
 
-                      {/* LEVEL */}
+                      {/* PRICE */}
 
-                      <div className="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-xl text-sm">
+                      <div className="mt-8 flex justify-between items-center">
 
-                        <FaSignal />
+                        <h3 className="text-3xl font-bold text-red-500">
 
-                        {
-                          course.level
-                        }
+                          ₹{course.price}
+
+                        </h3>
+
+                        <Link
+
+                          to={`/course/${course.id}`}
+
+                          className="bg-black text-white px-6 py-3 rounded-xl hover:bg-slate-800 transition"
+
+                        >
+
+                          Explore
+
+                        </Link>
 
                       </div>
 
                     </div>
 
-                    {/* PRICE */}
-
-                    <div className="mt-8 flex justify-between items-center">
-
-                      <h3 className="text-3xl font-bold text-red-500">
-
-                        ₹{course.price}
-
-                      </h3>
-
-                      <Link
-
-                        to={`/course/${course.id}`}
-
-                        className="bg-black text-white px-6 py-3 rounded-xl hover:bg-slate-800 transition"
-
-                      >
-
-                        Explore
-
-                      </Link>
-
-                    </div>
-
                   </div>
 
-                </div>
-
+                )
               )
+
+            ) : (
+
+              <div className="col-span-3 text-center text-2xl text-gray-400">
+
+                No Courses Found
+
+              </div>
+
             )
           }
 
