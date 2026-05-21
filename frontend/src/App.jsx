@@ -28,7 +28,8 @@ import Notifications from "./pages/admin/Notifications";
 import Settings from "./pages/admin/Settings";
 import MyCourses from "./pages/teacher/MyCourses";
 import UploadLecture from "./pages/teacher/UploadLecture";
-
+import CourseDetails
+from "./pages/course/CourseDetails";
 function App() {
 
   return (
@@ -152,6 +153,14 @@ function App() {
     path="/upload-lecture"
     element={<UploadLecture />}
   />
+
+  <Route
+
+  path="/course/:id"
+
+  element={<CourseDetails />}
+
+/>
 
     </Routes>
 

@@ -7,7 +7,7 @@ const {
   addCourse,
 
   getCourses,
-
+  getSingleCourse,
 } = require(
   "../controllers/course.controller"
 );
@@ -30,6 +30,15 @@ router.post(
 router.get(
   "/",
   getCourses
+);
+
+// ==========================
+// GET SINGLE COURSE
+// ==========================
+
+router.get(
+  "/:id",
+  getSingleCourse
 );
 
 module.exports = router;
