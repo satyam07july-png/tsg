@@ -11,7 +11,6 @@ import CoursesPage from "./pages/admin/CoursesPage";
 import StudentsPage from "./pages/admin/StudentsPage";
 import RevenuePage from "./pages/admin/RevenuePage";
 import UsersPage from "./pages/admin/UsersPage";
-import CourseDetails from "./pages/CourseDetails";
 import AddCourse from "./pages/admin/AddCourse";
 import ActivityPage from "./pages/admin/ActivityPage";
 import PaymentPage from "./pages/PaymentPage";
@@ -71,11 +70,6 @@ function App() {
       <Route
         path="/about"
         element={<About />}
-      />
-
-      <Route
-        path="/course/:id"
-        element={<CourseDetails />}
       />
 
       <Route
