@@ -112,8 +112,7 @@ function LandingPage() {
 
           <h1 className="text-5xl md:text-7xl font-extrabold mt-6 text-center">
 
-            TEAM GULSHAN SING (TGS)
-
+           TEAM GULSHAN KUMAR (TGK)
           </h1>
 
           {/* WEBSITE */}
