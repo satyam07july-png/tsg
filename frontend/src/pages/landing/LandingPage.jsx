@@ -66,8 +66,6 @@ function LandingPage() {
           response.data
         );
 
-        // SAFE DATA
-
         const courseData =
 
           response.data?.courses ||
@@ -362,6 +360,254 @@ function LandingPage() {
 
             )
           }
+
+        </div>
+
+      </section>
+
+      {/* ==========================
+          INFO SECTIONS
+      ========================== */}
+
+      <section className="max-w-7xl mx-auto px-6 py-10">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          {/* ACADEMY */}
+
+          <div className="bg-white rounded-3xl shadow-md overflow-hidden">
+
+            <div className="bg-red-700 text-white text-center py-5 text-3xl font-bold">
+
+              Academy
+
+            </div>
+
+            <div className="p-6 space-y-5">
+
+              <a
+                href="#"
+                className="block text-blue-700 hover:underline"
+              >
+
+                Full Stack Development Program
+
+              </a>
+
+              <a
+                href="#"
+                className="block text-blue-700 hover:underline"
+              >
+
+                Data Science Masterclass
+
+              </a>
+
+              <a
+                href="#"
+                className="block text-blue-700 hover:underline"
+              >
+
+                AI Engineering Bootcamp
+
+              </a>
+
+              <a
+                href="#"
+                className="block text-blue-700 hover:underline"
+              >
+
+                Python For Beginners
+
+              </a>
+
+            </div>
+
+          </div>
+
+          {/* COMPETITION */}
+
+          <div className="bg-white rounded-3xl shadow-md overflow-hidden">
+
+            <div className="bg-red-700 text-white text-center py-5 text-3xl font-bold">
+
+              Competition
+
+            </div>
+
+            <div className="p-6 space-y-5">
+
+              <a
+                href="#"
+                className="block text-blue-700 hover:underline"
+              >
+
+                SSC CGL Preparation
+
+              </a>
+
+              <a
+                href="#"
+                className="block text-blue-700 hover:underline"
+              >
+
+                Railway Exams Preparation
+
+              </a>
+
+              <a
+                href="#"
+                className="block text-blue-700 hover:underline"
+              >
+
+                Banking Exams Course
+
+              </a>
+
+              <a
+                href="#"
+                className="block text-blue-700 hover:underline"
+              >
+
+                UPSC Interview Training
+
+              </a>
+
+            </div>
+
+          </div>
+
+          {/* SKILLS */}
+
+          <div className="bg-white rounded-3xl shadow-md overflow-hidden">
+
+            <div className="bg-red-700 text-white text-center py-5 text-3xl font-bold">
+
+              Skills
+
+            </div>
+
+            <div className="p-6 space-y-5">
+
+              <a
+                href="#"
+                className="block text-blue-700 hover:underline"
+              >
+
+                Communication Skills
+
+              </a>
+
+              <a
+                href="#"
+                className="block text-blue-700 hover:underline"
+              >
+
+                Interview Preparation
+
+              </a>
+
+              <a
+                href="#"
+                className="block text-blue-700 hover:underline"
+              >
+
+                Resume Building
+
+              </a>
+
+              <a
+                href="#"
+                className="block text-blue-700 hover:underline"
+              >
+
+                Public Speaking
+
+              </a>
+
+            </div>
+
+          </div>
+
+          {/* LATEST VIDEOS */}
+
+          <div className="bg-white rounded-3xl shadow-md overflow-hidden">
+
+            <div className="bg-red-700 text-white text-center py-5 text-3xl font-bold">
+
+              Latest Videos
+
+            </div>
+
+            <div className="p-6 space-y-5">
+
+              <a
+
+                href="https://youtube.com"
+
+                target="_blank"
+
+                rel="noreferrer"
+
+                className="block text-blue-700 hover:underline"
+
+              >
+
+                React Full Course 2026
+
+              </a>
+
+              <a
+
+                href="https://youtube.com"
+
+                target="_blank"
+
+                rel="noreferrer"
+
+                className="block text-blue-700 hover:underline"
+
+              >
+
+                AI Tutorial For Beginners
+
+              </a>
+
+              <a
+
+                href="https://youtube.com"
+
+                target="_blank"
+
+                rel="noreferrer"
+
+                className="block text-blue-700 hover:underline"
+
+              >
+
+                Data Analyst Roadmap
+
+              </a>
+
+              <a
+
+                href="https://youtube.com"
+
+                target="_blank"
+
+                rel="noreferrer"
+
+                className="block text-blue-700 hover:underline"
+
+              >
+
+                Machine Learning Projects
+
+              </a>
+
+            </div>
+
+          </div>
 
         </div>
 
