@@ -202,7 +202,7 @@ function LandingPage() {
 
           <Link
 
-            to="/admin-login"
+            to="/login"
 
             className="text-white py-6 text-center border border-zinc-700 hover:bg-[#9d0033] transition text-lg md:text-xl font-semibold"
 
@@ -216,7 +216,7 @@ function LandingPage() {
 
           <Link
 
-            to="/teacher-login"
+            to="/login"
 
             className="text-white py-6 text-center border border-zinc-700 hover:bg-[#9d0033] transition text-lg md:text-xl font-semibold"
 
@@ -228,17 +228,15 @@ function LandingPage() {
 
           {/* CONTACT */}
 
-          <Link
+          <div
 
-            to="/contact"
-
-            className="text-white py-6 text-center border border-zinc-700 hover:bg-[#9d0033] transition text-lg md:text-xl font-semibold"
+            className="text-white py-6 text-center border border-zinc-700 text-lg md:text-xl font-semibold"
 
           >
 
             CONTACT
 
-          </Link>
+          </div>
 
         </div>
 
@@ -652,6 +650,40 @@ function LandingPage() {
       {/* TESTIMONIALS */}
 
       <Testimonials />
+
+      {/* CONTACT SECTION */}
+
+      <section className="bg-[#9d0033] text-white py-16 mt-20">
+
+        <div className="max-w-7xl mx-auto px-6 text-center">
+
+          <h1 className="text-5xl font-bold">
+
+            Contact Us
+
+          </h1>
+
+          <p className="text-2xl mt-8">
+
+            📞 +91 9876543210
+
+          </p>
+
+          <p className="text-2xl mt-4">
+
+            📧 support@tgs.com
+
+          </p>
+
+          <p className="text-xl mt-6 text-gray-200">
+
+            TEAM GULSHAN SING (TGS)
+
+          </p>
+
+        </div>
+
+      </section>
 
       {/* FOOTER */}
 
