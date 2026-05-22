@@ -119,7 +119,7 @@ function LandingPage() {
 
           <h2 className="text-2xl md:text-3xl font-bold mt-4">
 
-            WWW.TGS.GMAIL.COM
+            WWW.TGk.GMAIL.COM
 
           </h2>
 
@@ -255,7 +255,7 @@ function LandingPage() {
 
         <p className="text-2xl text-gray-700 mt-8 leading-10">
 
-          TEAM GULSHAN SING (TGS)
+          TEAM GULSHAN KUMAR(TGK)
           provides quality education,
           digital learning solutions,
           competition preparation,
