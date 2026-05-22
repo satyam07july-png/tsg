@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 
 import axios from "axios";
 
-import Navbar from "../../components/navbar/Navbar";
-
 import Features from "../../components/landing/Features";
 
 import Testimonials from "../../components/landing/Testimonials";
@@ -17,18 +15,11 @@ import Footer from "../../components/landing/Footer";
 
 import {
 
-  FaPhoneAlt,
-
-  FaEnvelope,
-
   FaClock,
 
   FaSignal,
 
 } from "react-icons/fa";
-
-import heroImage
-from "../../assets/hero.jpg";
 
 function LandingPage() {
 
@@ -74,7 +65,15 @@ function LandingPage() {
 
           [];
 
-        setCourses(courseData);
+        setCourses(
+
+          Array.isArray(courseData)
+
+            ? courseData
+
+            : []
+
+        );
 
       }
 
@@ -91,43 +90,71 @@ function LandingPage() {
 
   return (
 
-    <div className="bg-white min-h-screen">
+    <div className="bg-[#f1f1f1] min-h-screen">
 
       {/* ==========================
-          TOP BAR
+          TGS HEADER
       ========================== */}
 
-      <div className="bg-slate-100 border-b">
+      <div className="bg-[#9d0033] text-white">
 
-        <div className="max-w-7xl mx-auto flex justify-between items-center py-3 px-6 text-sm text-gray-600">
+        <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col items-center">
 
-          <div className="flex gap-6">
+          {/* LOGO */}
 
-            <div className="flex items-center gap-2">
+          <div className="w-[140px] h-[140px] rounded-full border-[6px] border-white flex items-center justify-center text-5xl font-bold bg-[#6d0023]">
 
-              <FaPhoneAlt />
-
-              +91 9876543210
-
-            </div>
-
-            <div className="flex items-center gap-2">
-
-              <FaEnvelope />
-
-              support@dizitaladda.com
-
-            </div>
+            TGS
 
           </div>
 
-          <div className="flex gap-6">
+          {/* TITLE */}
 
-            <Link to="/login">
+          <h1 className="text-5xl md:text-7xl font-extrabold mt-6 text-center">
 
-              Login
+            TEAM GULSHAN SING (TGS)
 
-            </Link>
+          </h1>
+
+          {/* WEBSITE */}
+
+          <h2 className="text-2xl md:text-3xl font-bold mt-4">
+
+            WWW.TGS.GMAIL.COM
+
+          </h2>
+
+          {/* OTHER BRANDS */}
+
+          <div className="mt-8 text-center">
+
+            <h3 className="text-2xl font-semibold">
+
+              OUR OTHER BRANDS
+
+            </h3>
+
+            <div className="flex flex-wrap justify-center gap-8 mt-4 text-3xl md:text-4xl font-bold">
+
+              <span>
+
+                DIZITALADDA
+
+              </span>
+
+              <span>
+
+                NIDADS
+
+              </span>
+
+              <span>
+
+                NIGAPE
+
+              </span>
+
+            </div>
 
           </div>
 
@@ -139,94 +166,119 @@ function LandingPage() {
           NAVBAR
       ========================== */}
 
-      <Navbar />
+      <div className="bg-black">
 
-      {/* ==========================
-          HERO SECTION
-      ========================== */}
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5">
 
-      <section
-        id="home"
-        className="relative h-[90vh] bg-cover bg-center"
-        style={{
-          backgroundImage:
-            `url(${heroImage})`,
-        }}
-      >
+          {/* HOME */}
 
-        {/* OVERLAY */}
+          <Link
 
-        <div className="absolute inset-0 bg-blue-950/75"></div>
+            to="/"
 
-        {/* CONTENT */}
+            className="text-white py-6 text-center border border-zinc-700 hover:bg-[#9d0033] transition text-lg md:text-xl font-semibold"
 
-        <div className="relative z-10 max-w-7xl mx-auto h-full flex items-center px-6">
+          >
 
-          <div className="max-w-4xl text-white">
+            HOME
 
-            <h1 className="text-7xl font-bold leading-tight">
+          </Link>
 
-              Learn Skills
-              That Build
-              Your Future
+          {/* STUDENT */}
 
-            </h1>
+          <Link
 
-            <p className="text-xl text-gray-200 mt-8 leading-9">
+            to="/login"
 
-              Professional institutional learning
-              management system for students,
-              teachers, and administrators.
+            className="text-white py-6 text-center border border-zinc-700 hover:bg-[#9d0033] transition text-lg md:text-xl font-semibold"
 
-            </p>
+          >
 
-            {/* BUTTONS */}
+            STUDENT PORTAL
 
-            <div className="flex gap-6 mt-10">
+          </Link>
 
-              <Link
+          {/* ADMIN */}
 
-                to="/login"
+          <Link
 
-                className="bg-red-500 hover:bg-red-600 transition px-8 py-4 rounded-2xl text-lg font-semibold"
+            to="/admin-login"
 
-              >
+            className="text-white py-6 text-center border border-zinc-700 hover:bg-[#9d0033] transition text-lg md:text-xl font-semibold"
 
-                Join With Us
+          >
 
-              </Link>
+            ADMIN
 
-              <Link
+          </Link>
 
-                to="/login"
+          {/* TEACHER */}
 
-                className="border border-white hover:bg-white hover:text-black transition px-8 py-4 rounded-2xl text-lg font-semibold"
+          <Link
 
-              >
+            to="/teacher-login"
 
-                Login
+            className="text-white py-6 text-center border border-zinc-700 hover:bg-[#9d0033] transition text-lg md:text-xl font-semibold"
 
-              </Link>
+          >
 
-            </div>
+            TEACHER
 
-          </div>
+          </Link>
+
+          {/* CONTACT */}
+
+          <Link
+
+            to="/contact"
+
+            className="text-white py-6 text-center border border-zinc-700 hover:bg-[#9d0033] transition text-lg md:text-xl font-semibold"
+
+          >
+
+            CONTACT
+
+          </Link>
 
         </div>
 
-      </section>
+      </div>
+
+      {/* ==========================
+          WELCOME TEXT
+      ========================== */}
+
+      <div className="max-w-7xl mx-auto text-center py-16 px-6">
+
+        <h1 className="text-5xl md:text-6xl font-bold text-[#9d0033]">
+
+          Welcome To No.1 Educational Platform
+
+        </h1>
+
+        <p className="text-2xl text-gray-700 mt-8 leading-10">
+
+          TEAM GULSHAN SING (TGS)
+          provides quality education,
+          digital learning solutions,
+          competition preparation,
+          and skill development programs.
+
+        </p>
+
+      </div>
 
       {/* ==========================
           POPULAR COURSES
       ========================== */}
 
-      <section className="max-w-7xl mx-auto px-6 py-24">
+      <section className="max-w-7xl mx-auto px-6 py-20">
 
         {/* HEADING */}
 
         <div className="text-center mb-16">
 
-          <h1 className="text-5xl font-bold">
+          <h1 className="text-5xl font-bold text-[#9d0033]">
 
             Popular Courses
 
@@ -261,9 +313,9 @@ function LandingPage() {
 
                     {/* IMAGE */}
 
-                    <div className="h-[220px] bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center">
+                    <div className="h-[220px] bg-gradient-to-r from-[#9d0033] to-[#6d0023] flex items-center justify-center">
 
-                      <h1 className="text-white text-3xl font-bold">
+                      <h1 className="text-white text-3xl font-bold text-center px-4">
 
                         {course.title}
 
@@ -323,7 +375,7 @@ function LandingPage() {
 
                       <div className="mt-8 flex justify-between items-center">
 
-                        <h3 className="text-3xl font-bold text-red-500">
+                        <h3 className="text-3xl font-bold text-[#9d0033]">
 
                           ₹{course.price}
 
@@ -333,7 +385,7 @@ function LandingPage() {
 
                           to={`/course/${course.id}`}
 
-                          className="bg-black text-white px-6 py-3 rounded-xl hover:bg-slate-800 transition"
+                          className="bg-black text-white px-6 py-3 rounded-xl hover:bg-[#9d0033] transition"
 
                         >
 
@@ -377,7 +429,7 @@ function LandingPage() {
 
           <div className="bg-white rounded-3xl shadow-md overflow-hidden">
 
-            <div className="bg-red-700 text-white text-center py-5 text-3xl font-bold">
+            <div className="bg-[#9d0033] text-white text-center py-5 text-3xl font-bold">
 
               Academy
 
@@ -429,7 +481,7 @@ function LandingPage() {
 
           <div className="bg-white rounded-3xl shadow-md overflow-hidden">
 
-            <div className="bg-red-700 text-white text-center py-5 text-3xl font-bold">
+            <div className="bg-[#9d0033] text-white text-center py-5 text-3xl font-bold">
 
               Competition
 
@@ -481,7 +533,7 @@ function LandingPage() {
 
           <div className="bg-white rounded-3xl shadow-md overflow-hidden">
 
-            <div className="bg-red-700 text-white text-center py-5 text-3xl font-bold">
+            <div className="bg-[#9d0033] text-white text-center py-5 text-3xl font-bold">
 
               Skills
 
@@ -529,11 +581,11 @@ function LandingPage() {
 
           </div>
 
-          {/* LATEST VIDEOS */}
+          {/* VIDEOS */}
 
           <div className="bg-white rounded-3xl shadow-md overflow-hidden">
 
-            <div className="bg-red-700 text-white text-center py-5 text-3xl font-bold">
+            <div className="bg-[#9d0033] text-white text-center py-5 text-3xl font-bold">
 
               Latest Videos
 
@@ -542,15 +594,10 @@ function LandingPage() {
             <div className="p-6 space-y-5">
 
               <a
-
                 href="https://youtube.com"
-
                 target="_blank"
-
                 rel="noreferrer"
-
                 className="block text-blue-700 hover:underline"
-
               >
 
                 React Full Course 2026
@@ -558,15 +605,10 @@ function LandingPage() {
               </a>
 
               <a
-
                 href="https://youtube.com"
-
                 target="_blank"
-
                 rel="noreferrer"
-
                 className="block text-blue-700 hover:underline"
-
               >
 
                 AI Tutorial For Beginners
@@ -574,15 +616,10 @@ function LandingPage() {
               </a>
 
               <a
-
                 href="https://youtube.com"
-
                 target="_blank"
-
                 rel="noreferrer"
-
                 className="block text-blue-700 hover:underline"
-
               >
 
                 Data Analyst Roadmap
@@ -590,15 +627,10 @@ function LandingPage() {
               </a>
 
               <a
-
                 href="https://youtube.com"
-
                 target="_blank"
-
                 rel="noreferrer"
-
                 className="block text-blue-700 hover:underline"
-
               >
 
                 Machine Learning Projects
@@ -613,21 +645,15 @@ function LandingPage() {
 
       </section>
 
-      {/* ==========================
-          FEATURES
-      ========================== */}
+      {/* FEATURES */}
 
       <Features />
 
-      {/* ==========================
-          TESTIMONIALS
-      ========================== */}
+      {/* TESTIMONIALS */}
 
       <Testimonials />
 
-      {/* ==========================
-          FOOTER
-      ========================== */}
+      {/* FOOTER */}
 
       <Footer />
 
