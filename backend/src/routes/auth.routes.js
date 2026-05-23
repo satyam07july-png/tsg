@@ -1,205 +1,107 @@
-const bcrypt = require("bcryptjs");
+const express = require("express");
 
-const jwt = require("jsonwebtoken");
+const router = express.Router();
 
+const passport = require("passport");
 
-// ==========================
-// REGISTER USER
-// ==========================
+const {
 
-exports.registerUser =
-  async (req, res) => {
+  registerUser,
 
-    try {
+  loginUser,
 
-      const {
-
-        name,
-
-        email,
-
-        password,
-
-      } = req.body;
-
-      // VALIDATION
-
-      if (
-
-        !name ||
-
-        !email ||
-
-        !password
-
-      ) {
-
-        return res.status(400).json({
-
-          success: false,
-
-          message:
-            "All fields are required",
-
-        });
-
-      }
-
-      // HASH PASSWORD
-
-      const hashedPassword =
-        await bcrypt.hash(
-
-          password,
-
-          10
-
-        );
-
-      // RESPONSE
-
-      res.status(201).json({
-
-        success: true,
-
-        message:
-          "User Registered Successfully",
-
-        user: {
-
-          name,
-
-          email,
-
-          password:
-            hashedPassword,
-
-        },
-
-      });
-
-    }
-
-    catch (error) {
-
-      console.log(error);
-
-      res.status(500).json({
-
-        success: false,
-
-        message:
-          "Registration Failed",
-
-        error:
-          error.message,
-
-      });
-
-    }
-
-  };
+} = require(
+  "../controllers/auth.controller"
+);
 
 
 // ==========================
-// LOGIN USER
+// REGISTER
 // ==========================
 
-exports.loginUser =
-  async (req, res) => {
+router.post(
+  "/register",
+  registerUser
+);
 
-    try {
 
-      const {
+// ==========================
+// LOGIN
+// ==========================
 
-        email,
+router.post(
+  "/login",
+  loginUser
+);
 
-        password,
 
-      } = req.body;
+// ==========================
+// GOOGLE AUTH
+// ==========================
 
-      // VALIDATION
+router.get(
 
-      if (
+  "/google",
 
-        !email ||
+  passport.authenticate(
 
-        !password
+    "google",
 
-      ) {
+    {
 
-        return res.status(400).json({
+      scope: [
 
-          success: false,
+        "profile",
 
-          message:
-            "Email and Password required",
+        "email",
 
-        });
-
-      }
-
-      // DUMMY TOKEN
-
-      const token =
-        jwt.sign(
-
-          {
-
-            email,
-
-          },
-
-          process.env.JWT_SECRET ||
-
-            "secretkey",
-
-          {
-
-            expiresIn:
-              "7d",
-
-          }
-
-        );
-
-      // RESPONSE
-
-      res.status(200).json({
-
-        success: true,
-
-        message:
-          "Login Successful",
-
-        token,
-
-        user: {
-
-          email,
-
-        },
-
-      });
+      ],
 
     }
 
-    catch (error) {
+  )
 
-      console.log(error);
+);
 
-      res.status(500).json({
 
-        success: false,
+// ==========================
+// GOOGLE CALLBACK
+// ==========================
 
-        message:
-          "Login Failed",
+router.get(
 
-        error:
-          error.message,
+  "/google/callback",
 
-      });
+  passport.authenticate(
+
+    "google",
+
+    {
+
+      failureRedirect:
+        "/login",
+
+      session: true,
 
     }
 
-  };
+  ),
+
+  (req, res) => {
+
+    res.redirect(
+
+      "http://localhost:5173/student"
+
+    );
+
+  }
+
+);
+
+
+// ==========================
+// EXPORT
+// ==========================
+
+module.exports = router;
