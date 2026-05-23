@@ -45,7 +45,7 @@ function Courses() {
 
     const response = await axios.delete(
 
-      `http://https://https://dizitaladda.onrender.com/api/admin/delete-course/${id}`
+      `http://https://https://tsg-qlb1.onrender.com/api/admin/delete-course/${id}`
 
     );
 

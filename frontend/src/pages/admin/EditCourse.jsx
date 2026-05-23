@@ -30,7 +30,7 @@ function EditCourse() {
 
         const response = await axios.get(
 
-          `http://https://https://dizitaladda.onrender.com/api/admin/course/${id}`
+          `http://https://https://tsg-qlb1.onrender.com/api/admin/course/${id}`
 
         );
 
@@ -70,7 +70,7 @@ function EditCourse() {
 
       const response = await axios.put(
 
-        `http://https://https://dizitaladda.onrender.com/api/admin/edit-course/${id}`,
+        `http://https://https://tsg-qlb1.onrender.com/api/admin/edit-course/${id}`,
 
         formData
 

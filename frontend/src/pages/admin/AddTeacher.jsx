@@ -39,7 +39,7 @@ function AddTeacher() {
     try {
 
       const response = await fetch(
-        "http://https://https://dizitaladda.onrender.com/api/admin/add-teacher",
+        "http://https://https://tsg-qlb1.onrender.com/api/admin/add-teacher",
         {
 
           method: "POST",

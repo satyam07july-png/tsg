@@ -34,7 +34,7 @@ function AddCourse() {
 
       const response = await axios.post(
 
-        "http://https://https://dizitaladda.onrender.com/api/admin/add-course",
+        "http://https://https://tsg-qlb1.onrender.com/api/admin/add-course",
 
         formData
 

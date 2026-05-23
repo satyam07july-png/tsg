@@ -29,7 +29,7 @@ const updatePassword = async () => {
 
     await axios.put(
 
-      "http://https://https://dizitaladda.onrender.com/api/admin/update-password",
+      "http://https://https://tsg-qlb1.onrender.com/api/admin/update-password",
 
       {
 

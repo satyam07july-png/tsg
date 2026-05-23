@@ -24,7 +24,7 @@ function PaymentPage() {
 
       const response = await axios.get(
 
-        `http://https://https://dizitaladda.onrender.com/api/courses/${id}`
+        `http://https://https://tsg-qlb1.onrender.com/api/courses/${id}`
 
       );
 
@@ -54,7 +54,7 @@ function PaymentPage() {
 
       const { data } = await axios.post(
 
-        "http://https://https://dizitaladda.onrender.com/api/payment/create-order",
+        "http://https://https://tsg-qlb1.onrender.com/api/payment/create-order",
 
         {
 
@@ -92,7 +92,7 @@ function PaymentPage() {
 
             await axios.post(
 
-              "http://https://https://dizitaladda.onrender.com/api/enrollments/enroll",
+              "http://https://https://tsg-qlb1.onrender.com/api/enrollments/enroll",
 
               {
 
