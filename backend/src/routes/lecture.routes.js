@@ -2,47 +2,20 @@ const express = require("express");
 
 const router = express.Router();
 
-const multer = require("multer");
-
 const {
-  uploadLecture,
+
+  addLecture,
+
   getLectures,
-} = require(
-  "../controllers/lecture.controller"
-);
+
+} = require("../controllers/lecture.controller");
 
 
-// MULTER
-
-const storage = multer.memoryStorage();
-
-const upload = multer({
-  storage,
-});
-
-
-// UPLOAD ROUTE
+// ADD LECTURE
 
 router.post(
-
-  "/upload",
-
-  upload.fields([
-
-    {
-      name: "video",
-      maxCount: 1,
-    },
-
-    {
-      name: "pdf",
-      maxCount: 1,
-    },
-
-  ]),
-
-  uploadLecture
-
+  "/add",
+  addLecture
 );
 
 

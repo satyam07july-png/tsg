@@ -1,60 +1,75 @@
-const express = require("express");
-
-const router = express.Router();
-
-const multer = require("multer");
-
-const {
-  uploadLecture,
-  getLectures,
-} = require(
-  "../controllers/lecture.controller"
-);
-
-
-// MEMORY STORAGE
-
-const storage = multer.memoryStorage();
-
-const upload = multer({
-  storage,
-});
-
-
 // =========================
 // UPLOAD LECTURE
 // =========================
 
-router.post(
+exports.uploadLecture =
+  async (req, res) => {
 
-  "/upload",
+    try {
 
-  upload.fields([
+      console.log(req.files);
 
-    {
-      name: "video",
-      maxCount: 1,
-    },
+      res.status(201).json({
 
-    {
-      name: "pdf",
-      maxCount: 1,
-    },
+        success: true,
 
-  ]),
+        message:
+          "Lecture Uploaded Successfully",
 
-  uploadLecture
+      });
 
-);
+    }
+
+    catch (error) {
+
+      console.log(error);
+
+      res.status(500).json({
+
+        success: false,
+
+        message:
+          error.message,
+
+      });
+
+    }
+
+  };
 
 
 // =========================
 // GET LECTURES
 // =========================
 
-router.get(
-  "/",
-  getLectures
-);
+exports.getLectures =
+  async (req, res) => {
 
-module.exports = router;
+    try {
+
+      res.status(200).json({
+
+        success: true,
+
+        lectures: [],
+
+      });
+
+    }
+
+    catch (error) {
+
+      console.log(error);
+
+      res.status(500).json({
+
+        success: false,
+
+        message:
+          error.message,
+
+      });
+
+    }
+
+  };
