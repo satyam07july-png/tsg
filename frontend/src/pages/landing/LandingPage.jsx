@@ -101,7 +101,7 @@ function LandingPage() {
 
           <div className="w-[140px] h-[140px] rounded-full border-[6px] border-white flex items-center justify-center text-5xl font-bold bg-[#6d0023]">
 
-            TGK
+            TGS
 
           </div>
 
@@ -109,7 +109,7 @@ function LandingPage() {
 
           <h1 className="text-5xl md:text-7xl font-extrabold mt-6 text-center">
 
-            TEAM GULSHAN KUMAR (TGK)
+            TEAM GULSHAN SIR (TGS)
 
           </h1>
 
@@ -117,7 +117,7 @@ function LandingPage() {
 
           <h2 className="text-2xl md:text-3xl font-bold mt-4">
 
-            WWW.TGK.GMAIL.COM
+            WWW.TGS.GMAIL.COM
 
           </h2>
 
@@ -289,7 +289,7 @@ function LandingPage() {
 
         <p className="text-2xl text-gray-700 mt-8 leading-10">
 
-          TEAM GULSHAN KUMAR (TGK)
+          TEAM GULSHAN SIR (TGS)
           provides quality education,
           digital learning solutions,
           competition preparation,
