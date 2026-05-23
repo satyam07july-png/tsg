@@ -64,7 +64,7 @@ app.use(
 
       "http://localhost:5173",
 
-      "https://dizitaladda.vercel.app",
+      "https://tsg-ecru.vercel.app",
 
     ],
 
