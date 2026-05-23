@@ -1,90 +1,205 @@
-const express = require("express");
+const bcrypt = require("bcryptjs");
 
-const router = express.Router();
-
-const passport = require("passport");
-
-const {
-
-  registerUser,
-
-  loginUser,
-
-} = require("../controllers/auth.controller");
+const jwt = require("jsonwebtoken");
 
 
-// REGISTER
+// ==========================
+// REGISTER USER
+// ==========================
 
-router.post("/register", registerUser);
+exports.registerUser =
+  async (req, res) => {
 
+    try {
 
-// LOGIN
+      const {
 
-router.post("/login", loginUser);
+        name,
 
-// google authentication
-router.get(
+        email,
 
-  "/google",
+        password,
 
-  passport.authenticate("google", {
+      } = req.body;
 
-    scope: ["profile", "email"],
+      // VALIDATION
 
-  })
+      if (
 
-);
+        !name ||
 
-router.get(
+        !email ||
 
-  "/google/callback",
+        !password
 
-  (req, res, next) => {
+      ) {
 
-    passport.authenticate(
+        return res.status(400).json({
 
-      "google",
+          success: false,
 
-      (err, user) => {
+          message:
+            "All fields are required",
 
-        console.log("ERROR:", err);
-
-        console.log("USER:", user);
-
-        if (err) {
-
-          return res.status(500).json({
-
-            message: "Google Auth Failed",
-
-            error: err.message,
-
-          });
-
-        }
-
-        if (!user) {
-
-          return res.status(401).json({
-
-            message: "No User Found",
-
-          });
-
-        }
-
-        return res.redirect(
-
-          "http://localhost:5173/student"
-
-        );
+        });
 
       }
 
-    )(req, res, next);
+      // HASH PASSWORD
 
-  }
+      const hashedPassword =
+        await bcrypt.hash(
 
-);
+          password,
 
-module.exports = router;
+          10
+
+        );
+
+      // RESPONSE
+
+      res.status(201).json({
+
+        success: true,
+
+        message:
+          "User Registered Successfully",
+
+        user: {
+
+          name,
+
+          email,
+
+          password:
+            hashedPassword,
+
+        },
+
+      });
+
+    }
+
+    catch (error) {
+
+      console.log(error);
+
+      res.status(500).json({
+
+        success: false,
+
+        message:
+          "Registration Failed",
+
+        error:
+          error.message,
+
+      });
+
+    }
+
+  };
+
+
+// ==========================
+// LOGIN USER
+// ==========================
+
+exports.loginUser =
+  async (req, res) => {
+
+    try {
+
+      const {
+
+        email,
+
+        password,
+
+      } = req.body;
+
+      // VALIDATION
+
+      if (
+
+        !email ||
+
+        !password
+
+      ) {
+
+        return res.status(400).json({
+
+          success: false,
+
+          message:
+            "Email and Password required",
+
+        });
+
+      }
+
+      // DUMMY TOKEN
+
+      const token =
+        jwt.sign(
+
+          {
+
+            email,
+
+          },
+
+          process.env.JWT_SECRET ||
+
+            "secretkey",
+
+          {
+
+            expiresIn:
+              "7d",
+
+          }
+
+        );
+
+      // RESPONSE
+
+      res.status(200).json({
+
+        success: true,
+
+        message:
+          "Login Successful",
+
+        token,
+
+        user: {
+
+          email,
+
+        },
+
+      });
+
+    }
+
+    catch (error) {
+
+      console.log(error);
+
+      res.status(500).json({
+
+        success: false,
+
+        message:
+          "Login Failed",
+
+        error:
+          error.message,
+
+      });
+
+    }
+
+  };
