@@ -145,29 +145,88 @@ app.get("/", (req, res) => {
 // ROUTES
 // ==========================
 
-app.use(
+// ==========================
+// ROUTES
+// ==========================
 
-  "/api/auth",
+try {
 
-  authRoutes
+  if (
+    typeof authRoutes ===
+    "function"
+  ) {
 
-);
+    app.use(
+      "/api/auth",
+      authRoutes
+    );
 
-app.use(
+    console.log(
+      "Auth Routes Loaded"
+    );
 
-  "/api/courses",
+  } else {
 
-  courseRoutes
+    console.log(
+      "Auth Routes Broken"
+    );
 
-);
+  }
 
-app.use(
+  if (
+    typeof courseRoutes ===
+    "function"
+  ) {
 
-  "/api/lectures",
+    app.use(
+      "/api/courses",
+      courseRoutes
+    );
 
-  lectureRoutes
+    console.log(
+      "Course Routes Loaded"
+    );
 
-);
+  } else {
+
+    console.log(
+      "Course Routes Broken"
+    );
+
+  }
+
+  if (
+    typeof lectureRoutes ===
+    "function"
+  ) {
+
+    app.use(
+      "/api/lectures",
+      lectureRoutes
+    );
+
+    console.log(
+      "Lecture Routes Loaded"
+    );
+
+  } else {
+
+    console.log(
+      "Lecture Routes Broken"
+    );
+
+  }
+
+}
+
+catch (error) {
+
+  console.log(
+    "ROUTE ERROR:",
+    error
+  );
+
+}
 
 
 // ==========================
