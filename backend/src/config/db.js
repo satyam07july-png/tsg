@@ -1,6 +1,5 @@
-
-
-const { Pool } = require("pg");
+const { Pool } =
+  require("pg");
 
 const pool = new Pool({
 
@@ -8,29 +7,29 @@ const pool = new Pool({
     process.env.DATABASE_URL,
 
   ssl: {
-    rejectUnauthorized: false,
+
+    rejectUnauthorized:
+      false,
+
   },
 
 });
 
-
-// TEST CONNECTION
-
-pool.query("SELECT NOW()")
+pool.connect()
 
   .then(() => {
 
     console.log(
-      "Neon Database Connected ✅"
+      "Neon DB Connected ✅"
     );
 
   })
 
-  .catch((err) => {
+  .catch((error) => {
 
     console.log(
       "Neon DB Error ❌",
-      err
+      error
     );
 
   });
