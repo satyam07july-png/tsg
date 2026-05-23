@@ -22,7 +22,7 @@ router.post("/login", async (req, res) => {
 
     const token = jwt.sign(
       { email },
-      process.env.JWT_SECRET || "secretkey",
+      "secretkey",
       { expiresIn: "7d" }
     );
 

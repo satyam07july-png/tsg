@@ -1,57 +1,110 @@
+require("dotenv").config();
+
 const express = require("express");
+const cors = require("cors");
 
-const router = express.Router();
+const app = express();
 
-const jwt = require("jsonwebtoken");
+// ==========================
+// DATABASE
+// ==========================
 
-// LOGIN ROUTE
-router.post("/login", async (req, res) => {
+require("./config/db");
 
-  try {
+// ==========================
+// ROUTES IMPORT
+// ==========================
 
-    const { email, password } = req.body;
+const authRoutes = require("./routes/auth.routes");
+const courseRoutes = require("./routes/course.routes");
+const lectureRoutes = require("./routes/lecture.routes");
 
-    if (!email || !password) {
+// ==========================
+// MIDDLEWARE
+// ==========================
 
-      return res.status(400).json({
-        success: false,
-        message: "Email and Password required",
-      });
+app.use(express.json());
 
-    }
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 
-    const token = jwt.sign(
-      { email },
-      "secretkey",
-      { expiresIn: "7d" }
-    );
+// ==========================
+// CORS
+// ==========================
 
-    res.status(200).json({
+app.use(
+  cors({
+    origin: "https://tsg-ecru.vercel.app",
+    methods: [
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE",
+      "OPTIONS",
+    ],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+    ],
+  })
+);
 
-      success: true,
+// ==========================
+// TEST ROUTE
+// ==========================
 
-      message: "Login Success",
-
-      token,
-
-      user: {
-        email,
-        role: "student",
-      },
-
-    });
-
-  } catch (error) {
-
-    console.log(error);
-
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-
-  }
-
+app.get("/", (req, res) => {
+  res.send("LMS Backend Running 🚀");
 });
 
-module.exports = router;
+// ==========================
+// API ROUTES
+// ==========================
+
+app.use("/api/auth", authRoutes);
+
+app.use("/api/courses", courseRoutes);
+
+app.use("/api/lectures", lectureRoutes);
+
+// ==========================
+// 404 ROUTE
+// ==========================
+
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: "Route Not Found",
+  });
+});
+
+// ==========================
+// ERROR HANDLER
+// ==========================
+
+app.use((err, req, res, next) => {
+  console.log("SERVER ERROR:", err);
+
+  res.status(500).json({
+    success: false,
+    message:
+      err.message ||
+      "Internal Server Error",
+  });
+});
+
+// ==========================
+// PORT
+// ==========================
+
+const PORT =
+  process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(
+    `🚀 Server running on port ${PORT}`
+  );
+});
