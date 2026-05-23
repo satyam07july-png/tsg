@@ -14,11 +14,8 @@ import Testimonials from "../../components/landing/Testimonials";
 import Footer from "../../components/landing/Footer";
 
 import {
-
   FaClock,
-
   FaSignal,
-
 } from "react-icons/fa";
 
 function LandingPage() {
@@ -93,7 +90,7 @@ function LandingPage() {
     <div className="bg-[#f1f1f1] min-h-screen">
 
       {/* ==========================
-          TGS HEADER
+          TGK HEADER
       ========================== */}
 
       <div className="bg-[#9d0033] text-white">
@@ -104,7 +101,7 @@ function LandingPage() {
 
           <div className="w-[140px] h-[140px] rounded-full border-[6px] border-white flex items-center justify-center text-5xl font-bold bg-[#6d0023]">
 
-            TGS
+            TGK
 
           </div>
 
@@ -112,14 +109,15 @@ function LandingPage() {
 
           <h1 className="text-5xl md:text-7xl font-extrabold mt-6 text-center">
 
-           TEAM GULSHAN KUMAR (TGK)
+            TEAM GULSHAN KUMAR (TGK)
+
           </h1>
 
           {/* WEBSITE */}
 
           <h2 className="text-2xl md:text-3xl font-bold mt-4">
 
-            WWW.TGk.GMAIL.COM
+            WWW.TGK.GMAIL.COM
 
           </h2>
 
@@ -165,7 +163,7 @@ function LandingPage() {
           NAVBAR
       ========================== */}
 
-      <div className="bg-black">
+      <div className="bg-black sticky top-0 z-50">
 
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5">
 
@@ -242,6 +240,42 @@ function LandingPage() {
       </div>
 
       {/* ==========================
+          TOP NEWS TICKER
+      ========================== */}
+
+      <div className="bg-yellow-400 border-y-4 border-[#9d0033] py-3 overflow-hidden">
+
+        <marquee
+
+          behavior="scroll"
+
+          direction="left"
+
+          scrollamount="8"
+
+          className="text-black text-xl font-bold"
+
+        >
+
+          🔥 Admissions Open For 2026 Batch
+          &nbsp;&nbsp;&nbsp;&nbsp;
+
+          🔥 New AI & Data Science Course Live
+          &nbsp;&nbsp;&nbsp;&nbsp;
+
+          🔥 SSC & Railway Preparation Batch Started
+          &nbsp;&nbsp;&nbsp;&nbsp;
+
+          🔥 TGK Scholarship Test Registration Open
+          &nbsp;&nbsp;&nbsp;&nbsp;
+
+          🔥 Join TEAM GULSHAN KUMAR (TGK)
+
+        </marquee>
+
+      </div>
+
+      {/* ==========================
           WELCOME TEXT
       ========================== */}
 
@@ -255,7 +289,7 @@ function LandingPage() {
 
         <p className="text-2xl text-gray-700 mt-8 leading-10">
 
-          TEAM GULSHAN KUMAR(TGK)
+          TEAM GULSHAN KUMAR (TGK)
           provides quality education,
           digital learning solutions,
           competition preparation,
@@ -266,12 +300,160 @@ function LandingPage() {
       </div>
 
       {/* ==========================
+          NOTICE BOARD
+      ========================== */}
+
+      <section className="max-w-7xl mx-auto px-6 py-16">
+
+        <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+
+          {/* HEADER */}
+
+          <div className="bg-[#9d0033] text-white py-5 px-8">
+
+            <h1 className="text-4xl font-bold">
+
+              Latest Notifications
+
+            </h1>
+
+          </div>
+
+          {/* BODY */}
+
+          <div className="p-8 space-y-6">
+
+            {/* NOTICE */}
+
+            <div className="flex flex-col md:flex-row md:items-center justify-between border-b pb-5">
+
+              <div>
+
+                <span className="bg-red-500 text-white text-sm px-3 py-1 rounded-full mr-3 animate-pulse">
+
+                  NEW
+
+                </span>
+
+                Admissions Open For Full Stack Development
+
+              </div>
+
+              <a
+
+                href="#"
+
+                className="text-blue-700 font-semibold hover:underline mt-3 md:mt-0"
+
+              >
+
+                View Details
+
+              </a>
+
+            </div>
+
+            {/* NOTICE */}
+
+            <div className="flex flex-col md:flex-row md:items-center justify-between border-b pb-5">
+
+              <div>
+
+                <span className="bg-green-600 text-white text-sm px-3 py-1 rounded-full mr-3">
+
+                  LIVE
+
+                </span>
+
+                AI & Machine Learning New Batch Started
+
+              </div>
+
+              <a
+
+                href="#"
+
+                className="text-blue-700 font-semibold hover:underline mt-3 md:mt-0"
+
+              >
+
+                View Details
+
+              </a>
+
+            </div>
+
+            {/* NOTICE */}
+
+            <div className="flex flex-col md:flex-row md:items-center justify-between border-b pb-5">
+
+              <div>
+
+                <span className="bg-blue-600 text-white text-sm px-3 py-1 rounded-full mr-3">
+
+                  UPDATE
+
+                </span>
+
+                SSC & Railway Exam Preparation Registration Open
+
+              </div>
+
+              <a
+
+                href="#"
+
+                className="text-blue-700 font-semibold hover:underline mt-3 md:mt-0"
+
+              >
+
+                Download PDF
+
+              </a>
+
+            </div>
+
+            {/* NOTICE */}
+
+            <div className="flex flex-col md:flex-row md:items-center justify-between">
+
+              <div>
+
+                <span className="bg-yellow-500 text-black text-sm px-3 py-1 rounded-full mr-3">
+
+                  HOT
+
+                </span>
+
+                TGK Scholarship Test 2026 Announced
+
+              </div>
+
+              <a
+
+                href="#"
+
+                className="text-blue-700 font-semibold hover:underline mt-3 md:mt-0"
+
+              >
+
+                Apply Now
+
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* ==========================
           POPULAR COURSES
       ========================== */}
 
       <section className="max-w-7xl mx-auto px-6 py-20">
-
-        {/* HEADING */}
 
         <div className="text-center mb-16">
 
@@ -342,8 +524,6 @@ function LandingPage() {
 
                       <div className="flex flex-wrap gap-4 mt-6">
 
-                        {/* DURATION */}
-
                         <div className="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-xl text-sm">
 
                           <FaClock />
@@ -353,8 +533,6 @@ function LandingPage() {
                           }
 
                         </div>
-
-                        {/* LEVEL */}
 
                         <div className="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-xl text-sm">
 
@@ -434,37 +612,25 @@ function LandingPage() {
 
             <div className="p-6 space-y-5">
 
-              <a
-                href="#"
-                className="block text-blue-700 hover:underline"
-              >
+              <a href="#" className="block text-blue-700 hover:underline">
 
                 Full Stack Development Program
 
               </a>
 
-              <a
-                href="#"
-                className="block text-blue-700 hover:underline"
-              >
+              <a href="#" className="block text-blue-700 hover:underline">
 
                 Data Science Masterclass
 
               </a>
 
-              <a
-                href="#"
-                className="block text-blue-700 hover:underline"
-              >
+              <a href="#" className="block text-blue-700 hover:underline">
 
                 AI Engineering Bootcamp
 
               </a>
 
-              <a
-                href="#"
-                className="block text-blue-700 hover:underline"
-              >
+              <a href="#" className="block text-blue-700 hover:underline">
 
                 Python For Beginners
 
@@ -486,37 +652,25 @@ function LandingPage() {
 
             <div className="p-6 space-y-5">
 
-              <a
-                href="#"
-                className="block text-blue-700 hover:underline"
-              >
+              <a href="#" className="block text-blue-700 hover:underline">
 
                 SSC CGL Preparation
 
               </a>
 
-              <a
-                href="#"
-                className="block text-blue-700 hover:underline"
-              >
+              <a href="#" className="block text-blue-700 hover:underline">
 
                 Railway Exams Preparation
 
               </a>
 
-              <a
-                href="#"
-                className="block text-blue-700 hover:underline"
-              >
+              <a href="#" className="block text-blue-700 hover:underline">
 
                 Banking Exams Course
 
               </a>
 
-              <a
-                href="#"
-                className="block text-blue-700 hover:underline"
-              >
+              <a href="#" className="block text-blue-700 hover:underline">
 
                 UPSC Interview Training
 
@@ -538,37 +692,25 @@ function LandingPage() {
 
             <div className="p-6 space-y-5">
 
-              <a
-                href="#"
-                className="block text-blue-700 hover:underline"
-              >
+              <a href="#" className="block text-blue-700 hover:underline">
 
                 Communication Skills
 
               </a>
 
-              <a
-                href="#"
-                className="block text-blue-700 hover:underline"
-              >
+              <a href="#" className="block text-blue-700 hover:underline">
 
                 Interview Preparation
 
               </a>
 
-              <a
-                href="#"
-                className="block text-blue-700 hover:underline"
-              >
+              <a href="#" className="block text-blue-700 hover:underline">
 
                 Resume Building
 
               </a>
 
-              <a
-                href="#"
-                className="block text-blue-700 hover:underline"
-              >
+              <a href="#" className="block text-blue-700 hover:underline">
 
                 Public Speaking
 
@@ -670,13 +812,13 @@ function LandingPage() {
 
           <p className="text-2xl mt-4">
 
-            📧 support@tgs.com
+            📧 support@tgk.com
 
           </p>
 
           <p className="text-xl mt-6 text-gray-200">
 
-            TEAM GULSHAN SING (TGS)
+            TEAM GULSHAN KUMAR (TGK)
 
           </p>
 
