@@ -10,41 +10,29 @@ const helmet = require("helmet");
 
 const passport = require("passport");
 
+
+// ==========================
 // ROUTES
+// ==========================
 
 const authRoutes =
-require("./routes/auth.routes");
+  require("./routes/auth.routes");
 
 const courseRoutes =
-require("./routes/course.routes");
-
-const activityRoutes =
-require("./routes/activity.routes");
-
-const progressRoutes =
-require("./routes/progress.routes");
-
-const doubtRoutes =
-require("./routes/doubt.routes");
-
-const paymentRoutes =
-require("./routes/payment.routes");
-
-const aiRoutes =
-require("./routes/ai.routes");
-
-const adminRoutes =
-require("./routes/admin.routes");
+  require("./routes/course.routes");
 
 const lectureRoutes =
-require("./routes/lecture.routes");
+  require("./routes/lecture.routes");
 
 
+// ==========================
 // CONFIG
+// ==========================
 
 require("./config/db");
 
 require("./config/passport");
+
 
 const app = express();
 
@@ -75,11 +63,14 @@ app.use(
   cors({
 
     origin: function (
+
       origin,
+
       callback
+
     ) {
 
-      // POSTMAN / MOBILE REQUESTS
+      // POSTMAN / MOBILE
 
       if (!origin) {
 
@@ -93,9 +84,11 @@ app.use(
       // ALLOW ORIGINS
 
       if (
+
         allowedOrigins.includes(
           origin
         )
+
       ) {
 
         return callback(
@@ -108,9 +101,11 @@ app.use(
       // BLOCK OTHER ORIGINS
 
       return callback(
+
         new Error(
           "CORS Not Allowed"
         )
+
       );
 
     },
@@ -118,16 +113,25 @@ app.use(
     credentials: true,
 
     methods: [
+
       "GET",
+
       "POST",
+
       "PUT",
+
       "DELETE",
+
       "OPTIONS",
+
     ],
 
     allowedHeaders: [
+
       "Content-Type",
+
       "Authorization",
+
     ],
 
   })
@@ -144,7 +148,9 @@ app.use(
   session({
 
     secret:
+
       process.env.SESSION_SECRET ||
+
       "lmssecret",
 
     resave: false,
@@ -197,48 +203,27 @@ app.use(
 // ==========================
 
 app.use(
+
   "/api/auth",
+
   authRoutes
+
 );
 
 app.use(
+
   "/api/courses",
+
   courseRoutes
+
 );
 
 app.use(
-  "/api/activities",
-  activityRoutes
-);
 
-app.use(
-  "/api/progress",
-  progressRoutes
-);
-
-app.use(
-  "/api/doubts",
-  doubtRoutes
-);
-
-app.use(
-  "/api/payment",
-  paymentRoutes
-);
-
-app.use(
-  "/api/ai",
-  aiRoutes
-);
-
-app.use(
-  "/api/admin",
-  adminRoutes
-);
-
-app.use(
   "/api/lectures",
+
   lectureRoutes
+
 );
 
 
@@ -249,7 +234,9 @@ app.use(
 app.get("/", (req, res) => {
 
   res.send(
+
     "LMS Backend Running 🚀"
+
   );
 
 });
@@ -277,11 +264,17 @@ app.get(
 // ==========================
 
 app.use(
+
   (
+
     err,
+
     req,
+
     res,
+
     next
+
   ) => {
 
     console.log(
@@ -294,12 +287,15 @@ app.use(
       success: false,
 
       message:
+
         err.message ||
+
         "Internal Server Error",
 
     });
 
   }
+
 );
 
 
@@ -308,12 +304,15 @@ app.use(
 // ==========================
 
 const PORT =
+
   process.env.PORT || 5000;
 
 app.listen(PORT, () => {
 
   console.log(
+
     `Server running on port ${PORT}`
+
   );
 
 });
