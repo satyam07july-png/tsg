@@ -1,10 +1,3 @@
-const express = require("express");
-
-const router = express.Router();
-
-const jwt = require("jsonwebtoken");
-
-// LOGIN ROUTE
 router.post("/login", async (req, res) => {
 
   try {
@@ -20,10 +13,39 @@ router.post("/login", async (req, res) => {
 
     }
 
+    // ROLE CHECK
+
+    let role = "student";
+
+    if (
+      email === "admin@gmail.com"
+    ) {
+
+      role = "admin";
+
+    }
+
+    else if (
+      email === "teacher@gmail.com"
+    ) {
+
+      role = "teacher";
+
+    }
+
     const token = jwt.sign(
-      { email },
+
+      {
+        email,
+        role,
+      },
+
       "secretkey",
-      { expiresIn: "7d" }
+
+      {
+        expiresIn: "7d",
+      }
+
     );
 
     res.status(200).json({
@@ -36,12 +58,14 @@ router.post("/login", async (req, res) => {
 
       user: {
         email,
-        role: "student",
+        role,
       },
 
     });
 
-  } catch (error) {
+  }
+
+  catch (error) {
 
     console.log(error);
 
@@ -53,5 +77,3 @@ router.post("/login", async (req, res) => {
   }
 
 });
-
-module.exports = router;
