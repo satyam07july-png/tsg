@@ -5,49 +5,106 @@ const cors = require("cors");
 
 const app = express();
 
-// CONFIG
+// ==========================
+// DATABASE
+// ==========================
+
 require("./config/db");
 
-// ROUTES
+// ==========================
+// ROUTES IMPORT
+// ==========================
+
 const authRoutes = require("./routes/auth.routes");
 const courseRoutes = require("./routes/course.routes");
 const lectureRoutes = require("./routes/lecture.routes");
 
+// ==========================
 // MIDDLEWARE
+// ==========================
+
 app.use(express.json());
 
-app.use(express.urlencoded({
-  extended: true,
-}));
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 
+// ==========================
 // CORS
-app.use(cors());
+// ==========================
 
+app.use(
+  cors({
+    origin: "https://tsg-ecru.vercel.app",
+    methods: [
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE",
+      "OPTIONS",
+    ],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+    ],
+  })
+);
+
+// ==========================
 // TEST ROUTE
+// ==========================
+
 app.get("/", (req, res) => {
-  res.send("Backend Running");
+  res.send("LMS Backend Running 🚀");
 });
 
-// ROUTES
+// ==========================
+// API ROUTES
+// ==========================
+
 app.use("/api/auth", authRoutes);
+
 app.use("/api/courses", courseRoutes);
+
 app.use("/api/lectures", lectureRoutes);
 
-// ERROR
-app.use((err, req, res, next) => {
-  console.log(err);
+// ==========================
+// 404 ROUTE
+// ==========================
 
-  res.status(500).json({
-    message: "Server Error",
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: "Route Not Found",
   });
 });
 
+// ==========================
+// ERROR HANDLER
+// ==========================
+
+app.use((err, req, res, next) => {
+  console.log("SERVER ERROR:", err);
+
+  res.status(500).json({
+    success: false,
+    message:
+      err.message ||
+      "Internal Server Error",
+  });
+});
+
+// ==========================
 // PORT
+// ==========================
+
 const PORT =
   process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(
-    `Server running on ${PORT}`
+    `🚀 Server running on port ${PORT}`
   );
 });
