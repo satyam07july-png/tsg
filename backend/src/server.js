@@ -12,6 +12,22 @@ const passport = require("passport");
 
 
 // ==========================
+// APP
+// ==========================
+
+const app = express();
+
+
+// ==========================
+// CONFIG
+// ==========================
+
+require("./config/db");
+
+require("./config/passport");
+
+
+// ==========================
 // ROUTES
 // ==========================
 
@@ -26,113 +42,33 @@ const lectureRoutes =
 
 
 // ==========================
-// CONFIG
-// ==========================
-
-require("./config/db");
-
-require("./config/passport");
-
-
-const app = express();
-
-
-// ==========================
 // MIDDLEWARES
 // ==========================
 
-// JSON
-
 app.use(express.json());
+
+app.use(express.urlencoded({
+  extended: true,
+}));
 
 
 // ==========================
 // CORS
 // ==========================
 
-const allowedOrigins = [
-
-  "https://dizitaladda.vercel.app",
-
-  "http://localhost:5173",
-
-];
-
 app.use(
 
   cors({
 
-    origin: function (
+    origin: [
 
-      origin,
+      "http://localhost:5173",
 
-      callback
+      "https://dizitaladda.vercel.app",
 
-    ) {
-
-      // POSTMAN / MOBILE
-
-      if (!origin) {
-
-        return callback(
-          null,
-          true
-        );
-
-      }
-
-      // ALLOW ORIGINS
-
-      if (
-
-        allowedOrigins.includes(
-          origin
-        )
-
-      ) {
-
-        return callback(
-          null,
-          true
-        );
-
-      }
-
-      // BLOCK OTHER ORIGINS
-
-      return callback(
-
-        new Error(
-          "CORS Not Allowed"
-        )
-
-      );
-
-    },
+    ],
 
     credentials: true,
-
-    methods: [
-
-      "GET",
-
-      "POST",
-
-      "PUT",
-
-      "DELETE",
-
-      "OPTIONS",
-
-    ],
-
-    allowedHeaders: [
-
-      "Content-Type",
-
-      "Authorization",
-
-    ],
 
   })
 
@@ -156,14 +92,6 @@ app.use(
     resave: false,
 
     saveUninitialized: false,
-
-    cookie: {
-
-      secure: true,
-
-      sameSite: "none",
-
-    },
 
   })
 
@@ -199,6 +127,21 @@ app.use(
 
 
 // ==========================
+// HEALTH CHECK
+// ==========================
+
+app.get("/", (req, res) => {
+
+  res.send(
+
+    "LMS Backend Running 🚀"
+
+  );
+
+});
+
+
+// ==========================
 // ROUTES
 // ==========================
 
@@ -228,42 +171,40 @@ app.use(
 
 
 // ==========================
-// HEALTH CHECK
+// ERROR HANDLER
 // ==========================
 
-app.get("/", (req, res) => {
+app.use(
 
-  res.send(
+  (err, req, res, next) => {
 
-    "LMS Backend Running 🚀"
+    console.log(
 
-  );
+      "SERVER ERROR:",
 
-});
+      err
 
+    );
 
-// ==========================
-// DEVTOOLS FIX
-// ==========================
+    res.status(500).json({
 
-app.get(
+      success: false,
 
-  "/.well-known/appspecific/com.chrome.devtools.json",
+      message:
 
-  (req, res) => {
+        err.message ||
 
-    res.status(204).send();
+        "Internal Server Error",
+
+    });
 
   }
 
 );
 
 
-
-
-
 // ==========================
-// SERVER
+// PORT
 // ==========================
 
 const PORT =
