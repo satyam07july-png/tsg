@@ -29,14 +29,11 @@ function Login() {
 
 const response = await axios.post(
 
-  "https://tsg-qlb1.onrender.com",
+  "https://tsg-qlb1.onrender.com/api/auth/login",
 
   {
-
     email,
-
     password,
-
   }
 
 );
