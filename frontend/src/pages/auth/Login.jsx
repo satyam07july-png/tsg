@@ -27,11 +27,9 @@ function Login() {
 
       setLoading(true);
 
-console.log(import.meta.env.VITE_API_URL);
-
 const response = await axios.post(
 
-  `${import.meta.env.VITE_API_URL}/api/auth/login`,
+  "https://tsg-qlb1.onrender.com",
 
   {
 

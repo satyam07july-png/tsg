@@ -20,10 +20,9 @@ function Courses() {
 
     try {
 
-      const response = await axios.get(
-        "http://https://https://dizitaladda.onrender.com/api/courses"
-      );
-
+      axios.get(
+  `   ${import.meta.env.VITE_API_URL}/api/courses`
+)
       setCourses(response.data);
 
     }
