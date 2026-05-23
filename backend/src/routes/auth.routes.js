@@ -8,17 +8,17 @@ const jwt = require("jsonwebtoken");
 
 const pool = require("../config/db");
 
+// ==========================
 // LOGIN
+// ==========================
+
 router.post("/login", async (req, res) => {
 
   try {
 
-    const {
-      email,
-      password,
-    } = req.body;
+    const { email, password } = req.body;
 
-    // FIND USER
+    // CHECK EMAIL
 
     const userQuery =
       await pool.query(
@@ -88,7 +88,7 @@ router.post("/login", async (req, res) => {
 
       );
 
-    // RESPONSE
+    // SUCCESS RESPONSE
 
     res.status(200).json({
 
@@ -131,5 +131,9 @@ router.post("/login", async (req, res) => {
   }
 
 });
+
+// ==========================
+// EXPORT
+// ==========================
 
 module.exports = router;
