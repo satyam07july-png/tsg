@@ -4,52 +4,27 @@ const router = express.Router();
 
 const jwt = require("jsonwebtoken");
 
-// ==========================
-// LOGIN USER
-// ==========================
-
+// LOGIN ROUTE
 router.post("/login", async (req, res) => {
 
   try {
 
-    const {
-      email,
-      password,
-    } = req.body;
+    const { email, password } = req.body;
 
-    if (
-      !email ||
-      !password
-    ) {
+    if (!email || !password) {
 
       return res.status(400).json({
-
         success: false,
-
-        message:
-          "Email and Password required",
-
+        message: "Email and Password required",
       });
 
     }
 
-    // DEMO LOGIN
-
-    const token =
-      jwt.sign(
-
-        {
-          email,
-        },
-
-        process.env.JWT_SECRET ||
-        "secretkey",
-
-        {
-          expiresIn: "7d",
-        }
-
-      );
+    const token = jwt.sign(
+      { email },
+      process.env.JWT_SECRET || "secretkey",
+      { expiresIn: "7d" }
+    );
 
     res.status(200).json({
 
@@ -66,26 +41,17 @@ router.post("/login", async (req, res) => {
 
     });
 
-  }
-
-  catch (error) {
+  } catch (error) {
 
     console.log(error);
 
     res.status(500).json({
-
       success: false,
-
       message: error.message,
-
     });
 
   }
 
 });
-
-// ==========================
-// EXPORT
-// ==========================
 
 module.exports = router;
