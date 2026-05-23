@@ -1,15 +1,9 @@
 require("dotenv").config();
 
 const express = require("express");
-
 const cors = require("cors");
-
 const session = require("express-session");
-
-const helmet = require("helmet");
-
 const passport = require("passport");
-
 
 // ==========================
 // APP
@@ -17,29 +11,20 @@ const passport = require("passport");
 
 const app = express();
 
-
 // ==========================
 // CONFIG
 // ==========================
 
 require("./config/db");
-
 require("./config/passport");
 
-
 // ==========================
-// ROUTES
+// ROUTES IMPORT
 // ==========================
 
-const authRoutes =
-  require("./routes/auth.routes");
-
-const courseRoutes =
-  require("./routes/course.routes");
-
-const lectureRoutes =
-  require("./routes/lecture.routes");
-
+const authRoutes = require("./routes/auth.routes");
+const courseRoutes = require("./routes/course.routes");
+const lectureRoutes = require("./routes/lecture.routes");
 
 // ==========================
 // MIDDLEWARES
@@ -47,235 +32,129 @@ const lectureRoutes =
 
 app.use(express.json());
 
-app.use(express.urlencoded({
-  extended: true,
-}));
-
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
 
 // ==========================
 // CORS
 // ==========================
 
 app.use(
-
   cors({
-
     origin: [
-
       "http://localhost:5173",
-
       "https://tsg-ecru.vercel.app",
-
     ],
-
     credentials: true,
-
+    methods: [
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE",
+      "OPTIONS",
+    ],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+    ],
   })
-
 );
 
+// Handle Preflight Requests
+app.options("*", cors());
 
 // ==========================
 // SESSION
 // ==========================
 
 app.use(
-
   session({
-
     secret:
-
       process.env.SESSION_SECRET ||
-
       "lmssecret",
 
     resave: false,
 
     saveUninitialized: false,
 
+    cookie: {
+      secure: false,
+      httpOnly: true,
+    },
   })
-
 );
-
 
 // ==========================
 // PASSPORT
 // ==========================
 
-app.use(
-  passport.initialize()
-);
+app.use(passport.initialize());
 
-app.use(
-  passport.session()
-);
-
-
-// ==========================
-// HELMET
-// ==========================
-
-app.use(
-
-  helmet({
-
-    contentSecurityPolicy: false,
-
-  })
-
-);
-
+app.use(passport.session());
 
 // ==========================
 // HEALTH CHECK
 // ==========================
 
 app.get("/", (req, res) => {
-
-  res.send(
-
-    "LMS Backend Running 🚀"
-
-  );
-
+  res.send("LMS Backend Running 🚀");
 });
 
-
 // ==========================
-// ROUTES
-// ==========================
-
-// ==========================
-// ROUTES
+// API ROUTES
 // ==========================
 
 try {
+  app.use("/api/auth", authRoutes);
+  console.log("✅ Auth Routes Loaded");
 
-  if (
-    typeof authRoutes ===
-    "function"
-  ) {
+  app.use("/api/courses", courseRoutes);
+  console.log("✅ Course Routes Loaded");
 
-    app.use(
-      "/api/auth",
-      authRoutes
-    );
-
-    console.log(
-      "Auth Routes Loaded"
-    );
-
-  } else {
-
-    console.log(
-      "Auth Routes Broken"
-    );
-
-  }
-
-  if (
-    typeof courseRoutes ===
-    "function"
-  ) {
-
-    app.use(
-      "/api/courses",
-      courseRoutes
-    );
-
-    console.log(
-      "Course Routes Loaded"
-    );
-
-  } else {
-
-    console.log(
-      "Course Routes Broken"
-    );
-
-  }
-
-  if (
-    typeof lectureRoutes ===
-    "function"
-  ) {
-
-    app.use(
-      "/api/lectures",
-      lectureRoutes
-    );
-
-    console.log(
-      "Lecture Routes Loaded"
-    );
-
-  } else {
-
-    console.log(
-      "Lecture Routes Broken"
-    );
-
-  }
-
+  app.use("/api/lectures", lectureRoutes);
+  console.log("✅ Lecture Routes Loaded");
+} catch (error) {
+  console.log("❌ ROUTE ERROR:", error);
 }
 
-catch (error) {
+// ==========================
+// 404 ROUTE
+// ==========================
 
-  console.log(
-    "ROUTE ERROR:",
-    error
-  );
-
-}
-
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: "Route Not Found",
+  });
+});
 
 // ==========================
 // ERROR HANDLER
 // ==========================
 
-app.use(
+app.use((err, req, res, next) => {
+  console.log("SERVER ERROR:", err);
 
-  (err, req, res, next) => {
-
-    console.log(
-
-      "SERVER ERROR:",
-
-      err
-
-    );
-
-    res.status(500).json({
-
-      success: false,
-
-      message:
-
-        err.message ||
-
-        "Internal Server Error",
-
-    });
-
-  }
-
-);
-
+  res.status(500).json({
+    success: false,
+    message:
+      err.message ||
+      "Internal Server Error",
+  });
+});
 
 // ==========================
 // PORT
 // ==========================
 
 const PORT =
-
   process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-
   console.log(
-
-    `Server running on port ${PORT}`
-
+    `🚀 Server running on port ${PORT}`
   );
-
 });
