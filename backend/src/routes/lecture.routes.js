@@ -1,22 +1,79 @@
 const express = require("express");
 
-const router = express.Router();
-
 const multer = require("multer");
 
-const {
-
-  uploadLecture,
-
-  getLectures,
-
-} = require(
-  "../controllers/lecture.controller"
-);
+const router = express.Router();
 
 
 // =========================
-// MULTER STORAGE
+// DUMMY CONTROLLERS
+// =========================
+
+const uploadLecture =
+  async (req, res) => {
+
+    try {
+
+      res.status(201).json({
+
+        success: true,
+
+        message:
+          "Lecture Uploaded Successfully",
+
+      });
+
+    }
+
+    catch (error) {
+
+      res.status(500).json({
+
+        success: false,
+
+        message:
+          error.message,
+
+      });
+
+    }
+
+  };
+
+
+const getLectures =
+  async (req, res) => {
+
+    try {
+
+      res.status(200).json({
+
+        success: true,
+
+        lectures: [],
+
+      });
+
+    }
+
+    catch (error) {
+
+      res.status(500).json({
+
+        success: false,
+
+        message:
+          error.message,
+
+      });
+
+    }
+
+  };
+
+
+// =========================
+// MULTER
 // =========================
 
 const storage =
@@ -28,7 +85,7 @@ const upload = multer({
 
 
 // =========================
-// UPLOAD LECTURE
+// ROUTES
 // =========================
 
 router.post(
@@ -60,10 +117,6 @@ router.post(
 );
 
 
-// =========================
-// GET LECTURES
-// =========================
-
 router.get(
 
   "/",
@@ -72,3 +125,5 @@ router.get(
 
 );
 
+
+module.exports = router;
