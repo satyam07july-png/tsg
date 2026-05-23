@@ -42,29 +42,10 @@ app.use(
 // CORS
 // ==========================
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://tsg-ecru.vercel.app",
-    ],
-    credentials: true,
-    methods: [
-      "GET",
-      "POST",
-      "PUT",
-      "DELETE",
-      "OPTIONS",
-    ],
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-    ],
-  })
-);
+// TEMPORARY OPEN CORS
+// FOR VERCEL + RENDER
 
-// Handle Preflight Requests
-app.options("*", cors());
+app.use(cors());
 
 // ==========================
 // SESSION
@@ -107,18 +88,14 @@ app.get("/", (req, res) => {
 // API ROUTES
 // ==========================
 
-try {
-  app.use("/api/auth", authRoutes);
-  console.log("✅ Auth Routes Loaded");
+app.use("/api/auth", authRoutes);
+console.log("✅ Auth Routes Loaded");
 
-  app.use("/api/courses", courseRoutes);
-  console.log("✅ Course Routes Loaded");
+app.use("/api/courses", courseRoutes);
+console.log("✅ Course Routes Loaded");
 
-  app.use("/api/lectures", lectureRoutes);
-  console.log("✅ Lecture Routes Loaded");
-} catch (error) {
-  console.log("❌ ROUTE ERROR:", error);
-}
+app.use("/api/lectures", lectureRoutes);
+console.log("✅ Lecture Routes Loaded");
 
 // ==========================
 // 404 ROUTE
