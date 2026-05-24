@@ -97,7 +97,7 @@ function AdminDashboard() {
           className="flex items-center gap-4 bg-white/10 hover:bg-cyan-500/20 transition px-6 py-4 rounded-2xl font-bold text-white"
         >
 
-          🔔 Notification Board
+           Notification Board
 
         </Link>
 
@@ -105,9 +105,16 @@ function AdminDashboard() {
           to="/admin/settings"
         >
 
-          ⚙️ Settings
+           Settings
 
         </Link>
+
+        <button
+           onClick={handleLogout}
+           className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl"
+        >
+            Logout
+          </button>
 
         </div>
 

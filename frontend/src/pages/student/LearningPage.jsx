@@ -351,7 +351,7 @@ const LearningPage = () => {
             `}
           >
 
-            📝 Assignments
+             Assignments
 
           </div>
 
@@ -378,7 +378,7 @@ const LearningPage = () => {
             `}
           >
 
-            🧠 Tests
+             Tests
 
           </div>
 
@@ -405,7 +405,7 @@ const LearningPage = () => {
             `}
           >
 
-            📄 Notes
+             Notes
 
           </div>
 
@@ -432,9 +432,11 @@ const LearningPage = () => {
             `}
           >
 
-            📈 Progress
+             Progress
 
           </div>
+
+
 
           {/* CERTIFICATE */}
 
@@ -459,7 +461,7 @@ const LearningPage = () => {
             `}
           >
 
-            🏆 Certificate
+             Certificate
 
           </div>
 
@@ -469,12 +471,12 @@ const LearningPage = () => {
 
         <div className="p-4 border-t">
 
-          <button className="w-full bg-red-500 hover:bg-red-600 transition-all text-white py-3 rounded-xl">
-
-            Logout
-
-          </button>
-
+          <button
+  onClick={handleLogout}   
+  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl"
+>
+  Logout
+</button>
         </div>
 
       </div>
