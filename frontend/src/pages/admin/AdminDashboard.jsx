@@ -1,32 +1,35 @@
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+
 import {
   FaUserGraduate,
   FaChalkboardTeacher,
   FaBookOpen,
   FaMoneyBillWave,
   FaChartLine,
-  FaCog,
-  FaBell,
-  FaClipboardList,
 } from "react-icons/fa";
 
 function AdminDashboard() {
+
   const navigate = useNavigate();
+
   const admin = JSON.parse(
-  localStorage.getItem("adminSettings")
-);
+    localStorage.getItem("user")
+  );
 
+  // LOGOUT
 
-const handleLogout = () => {
+  const handleLogout = () => {
 
-  localStorage.clear();
+    localStorage.clear();
 
-  navigate("/login");
+    navigate("/login");
 
-};
+  };
+
+  // DASHBOARD CARDS
 
   const cards = [
+
     {
       title: "Total Students",
       value: "2,540",
@@ -50,6 +53,7 @@ const handleLogout = () => {
       value: "₹8.4L",
       icon: <FaMoneyBillWave />,
     },
+
   ];
 
   return (
@@ -57,93 +61,152 @@ const handleLogout = () => {
     <div className="min-h-screen flex bg-slate-950 text-white">
 
       {/* SIDEBAR */}
-      <div className="w-[280px] bg-slate-900 border-r border-white/10 p-8">
+
+      <div className="w-[280px] bg-slate-900 border-r border-white/10 p-8 flex flex-col">
+
+        {/* LOGO */}
 
         <h1 className="text-3xl font-black text-cyan-400">
+
           DIZITALADDA
+
         </h1>
 
-        <div className="space-y-4 mt-12">
+        {/* MENU */}
+
+        <div className="space-y-4 mt-12 flex flex-col h-full">
 
           <button className="w-full flex items-center gap-4 bg-cyan-500 text-white px-5 py-4 rounded-2xl font-bold">
+
             <FaChartLine />
+
             Dashboard
+
           </button>
 
+          {/* STUDENTS */}
+
           <button
-            onClick={() => navigate("/admin/students")}
+            onClick={() =>
+              navigate("/admin/students")
+            }
             className="w-full flex items-center gap-4 hover:bg-white/10 px-5 py-4 rounded-2xl transition"
           >
+
             <FaUserGraduate />
-             Students
+
+            Students
+
+          </button>
+
+          {/* TEACHERS */}
+
+          <button
+            onClick={() =>
+              navigate("/admin/teachers")
+            }
+            className="w-full flex items-center gap-4 hover:bg-white/10 px-5 py-4 rounded-2xl transition"
+          >
+
+            <FaChalkboardTeacher />
+
+            Teachers
+
+          </button>
+
+          {/* COURSES */}
+
+          <button
+            onClick={() =>
+              navigate("/admin/courses")
+            }
+            className="w-full flex items-center gap-4 hover:bg-white/10 px-5 py-4 rounded-2xl transition"
+          >
+
+            <FaBookOpen />
+
+            Courses
+
+          </button>
+
+          {/* PAYMENTS */}
+
+          <button
+            onClick={() =>
+              navigate("/admin/payments")
+            }
+            className="w-full flex items-center gap-4 hover:bg-white/10 px-5 py-4 rounded-2xl transition"
+          >
+
+            <FaMoneyBillWave />
+
+            Payments
+
+          </button>
+
+          {/* NOTIFICATION */}
+
+          <Link
+            to="/admin/notifications"
+            className="flex items-center gap-4 bg-white/10 hover:bg-cyan-500/20 transition px-6 py-4 rounded-2xl font-bold text-white"
+          >
+
+            Notification Board
+
+          </Link>
+
+          {/* BOTTOM SECTION */}
+
+          <div className="mt-auto flex items-center justify-between gap-4">
+
+            {/* SETTINGS */}
+
+            <Link
+              to="/admin/settings"
+              className="text-lg hover:text-cyan-400 transition"
+            >
+
+              Settings
+
+            </Link>
+
+            {/* LOGOUT */}
+
+            <button
+              onClick={handleLogout}
+              className="bg-red-500 hover:bg-red-600 transition text-white px-5 py-2 rounded-xl font-bold"
+            >
+
+              Logout
+
             </button>
 
-          <button
-           onClick={() => navigate("/admin/teachers")}
-           className="w-full flex items-center gap-4 hover:bg-white/10 px-5 py-4 rounded-2xl transition"
-          >
-            <FaChalkboardTeacher />
-           Teachers
-          </button>
-
-             <button
-           onClick={() => navigate("/admin/courses")}
-           className="w-full flex items-center gap-4 hover:bg-white/10 px-5 py-4 rounded-2xl transition"
-          >
-            <FaChalkboardTeacher />
-           courses
-          </button>
-
-          <button
-            onClick={() => navigate("/admin/payments")}
-           className="w-full flex items-center gap-4 hover:bg-white/10 px-5 py-4 rounded-2xl transition">
-            <FaMoneyBillWave />
-            Payments
-          </button>
-          
-         <Link
-          to="/admin/notifications"
-          className="flex items-center gap-4 bg-white/10 hover:bg-cyan-500/20 transition px-6 py-4 rounded-2xl font-bold text-white"
-        >
-
-           Notification Board
-
-        </Link>
-
-         <Link
-          to="/admin/settings"
-        >
-
-           Settings
-
-        </Link>
-
-        <button
-           onClick={handleLogout}
-           className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl"
-        >
-            Logout
-          </button>
+          </div>
 
         </div>
 
       </div>
 
       {/* MAIN CONTENT */}
+
       <div className="flex-1 p-10">
 
         {/* TOPBAR */}
+
         <div className="flex justify-between items-center">
 
           <div>
 
             <h1 className="text-2xl font-black">
 
-           {admin?.name || "Admin"}
+              {admin?.name || "Admin"}
 
-          </h1>
+            </h1>
+
             <p className="text-slate-400 text-lg mt-3">
+
               Complete LMS supervision and analytics panel.
+
             </p>
 
           </div>
@@ -160,7 +223,8 @@ const handleLogout = () => {
 
         </div>
 
-        {/* CARDS */}
+        {/* DASHBOARD CARDS */}
+
         <div className="grid grid-cols-4 gap-8 mt-12">
 
           {cards.map((card, index) => (
@@ -171,15 +235,21 @@ const handleLogout = () => {
             >
 
               <div className="text-5xl text-cyan-400">
+
                 {card.icon}
+
               </div>
 
               <h2 className="text-slate-300 mt-6">
+
                 {card.title}
+
               </h2>
 
               <p className="text-5xl font-black mt-4">
+
                 {card.value}
+
               </p>
 
             </div>
@@ -188,14 +258,18 @@ const handleLogout = () => {
 
         </div>
 
-        {/* TABLES SECTION */}
+        {/* TABLE SECTION */}
+
         <div className="grid grid-cols-2 gap-10 mt-12">
 
-          {/* STUDENTS */}
+          {/* RECENT STUDENTS */}
+
           <div className="bg-white/10 border border-white/10 rounded-[35px] p-8">
 
             <h1 className="text-3xl font-black">
+
               Recent Students 👨‍🎓
+
             </h1>
 
             <div className="space-y-5 mt-8">
@@ -203,17 +277,25 @@ const handleLogout = () => {
               <div className="bg-black/20 rounded-2xl p-5 flex justify-between">
 
                 <div>
+
                   <h2 className="font-bold text-xl">
+
                     Aman Sharma
+
                   </h2>
 
                   <p className="text-slate-400">
+
                     Full Stack Development
+
                   </p>
+
                 </div>
 
                 <span className="text-cyan-400 font-bold">
+
                   Active
+
                 </span>
 
               </div>
@@ -221,17 +303,25 @@ const handleLogout = () => {
               <div className="bg-black/20 rounded-2xl p-5 flex justify-between">
 
                 <div>
+
                   <h2 className="font-bold text-xl">
+
                     Priya Verma
+
                   </h2>
 
                   <p className="text-slate-400">
+
                     Data Science
+
                   </p>
+
                 </div>
 
                 <span className="text-emerald-400 font-bold">
+
                   Completed
+
                 </span>
 
               </div>
@@ -240,11 +330,14 @@ const handleLogout = () => {
 
           </div>
 
-          {/* PAYMENTS */}
+          {/* RECENT PAYMENTS */}
+
           <div className="bg-white/10 border border-white/10 rounded-[35px] p-8">
 
             <h1 className="text-3xl font-black">
+
               Recent Payments 💳
+
             </h1>
 
             <div className="space-y-5 mt-8">
@@ -252,17 +345,25 @@ const handleLogout = () => {
               <div className="bg-black/20 rounded-2xl p-5 flex justify-between">
 
                 <div>
+
                   <h2 className="font-bold text-xl">
+
                     React Mastery Course
+
                   </h2>
 
                   <p className="text-slate-400">
+
                     Paid by Aman Sharma
+
                   </p>
+
                 </div>
 
                 <span className="text-emerald-400 font-bold">
+
                   ₹4,999
+
                 </span>
 
               </div>
@@ -270,17 +371,25 @@ const handleLogout = () => {
               <div className="bg-black/20 rounded-2xl p-5 flex justify-between">
 
                 <div>
+
                   <h2 className="font-bold text-xl">
+
                     Data Science Bootcamp
+
                   </h2>
 
                   <p className="text-slate-400">
+
                     Paid by Priya Verma
+
                   </p>
+
                 </div>
 
                 <span className="text-cyan-400 font-bold">
+
                   ₹7,999
+
                 </span>
 
               </div>
