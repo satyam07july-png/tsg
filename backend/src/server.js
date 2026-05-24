@@ -16,16 +16,16 @@ require("./config/db");
 // ==========================
 
 const authRoutes =
-  require("./routes/auth.routes");
+require("./src/routes/auth.routes");
 
 const courseRoutes =
-  require("./routes/course.routes");
+require("./src/routes/course.routes");
 
 const lectureRoutes =
-  require("./routes/lecture.routes");
+require("./src/routes/lecture.routes");
 
 const adminRoutes =
-  require("./routes/admin.routes");
+require("./src/routes/admin.routes");
 
 // ==========================
 // MIDDLEWARE
