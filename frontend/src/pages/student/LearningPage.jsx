@@ -7,6 +7,7 @@ import React, {
 import axios from "axios";
 
 const LearningPage = () => {
+  const navigate = useNavigate();
 
   const [lectures, setLectures] =
     useState([]);
