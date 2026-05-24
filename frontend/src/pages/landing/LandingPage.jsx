@@ -205,7 +205,7 @@ function LandingPage() {
 
           >
 
-            ADMIN
+            ADMIN PORTAL
 
           </Link>
 
@@ -219,7 +219,7 @@ function LandingPage() {
 
           >
 
-            TEACHER
+            TEACHER PORTAL
 
           </Link>
 
