@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import React, {
   useEffect,
   useState,
@@ -18,6 +19,13 @@ const LearningPage = () => {
     setActiveSection] =
     useState("lectures");
 
+const handleLogout = () => {
+
+  localStorage.clear();
+
+  navigate("/login");
+
+};
   // ======================
   // FETCH LECTURES
   // ======================
@@ -472,7 +480,7 @@ const LearningPage = () => {
         <div className="p-4 border-t">
 
           <button
-  onClick={handleLogout}   
+  onClick={handleLogout}
   className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl"
 >
   Logout

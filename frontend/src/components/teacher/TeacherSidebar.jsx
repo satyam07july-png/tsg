@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import { NavLink } from "react-router-dom";
 
@@ -23,6 +24,15 @@ import {
 } from "lucide-react";
 
 const TeacherSidebar = () => {
+  const navigate = useNavigate();
+
+const handleLogout = () => {
+
+  localStorage.clear();
+
+  navigate("/login");
+
+};
 
   const menuItems = [
 
@@ -97,6 +107,13 @@ const TeacherSidebar = () => {
     },
 
   ];
+
+  <button
+  onClick={handleLogout}
+  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl"
+>
+  Logout
+</button>
 
   return (
 

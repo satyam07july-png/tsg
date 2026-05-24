@@ -17,6 +17,15 @@ function AdminDashboard() {
   localStorage.getItem("adminSettings")
 );
 
+
+const handleLogout = () => {
+
+  localStorage.clear();
+
+  navigate("/login");
+
+};
+
   const cards = [
     {
       title: "Total Students",
