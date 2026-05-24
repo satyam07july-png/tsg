@@ -19,88 +19,121 @@ function Login() {
 
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async (e) => {
+const handleLogin = async (e) => {
 
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
+  try {
 
-      setLoading(true);
+    setLoading(true);
 
-const response = await axios.post(
+    // CLEAR OLD USER DATA
+    localStorage.clear();
 
-  "https://tsg-qlb1.onrender.com/api/auth/login",
+    const response = await axios.post(
 
-  {
-    email,
-    password,
-  }
+      "https://tsg-qlb1.onrender.com/api/auth/login",
 
-);
+      {
+        email,
+        password,
+      }
 
-      console.log(response.data);
-      localStorage.clear();
-      // SAVE TOKEN
-      if (response?.data?.token) {
+    );
 
-  localStorage.setItem(
+    console.log(response.data);
 
-    "token",
+    console.log(
+      response.data.user.role
+    );
 
-    response.data.token
+    // SAVE TOKEN
+    if (response?.data?.token) {
 
-  );
-
-}
-
-      // SAVE USER
       localStorage.setItem(
-        "user",
-        JSON.stringify(response.data.user)
+
+        "token",
+
+        response.data.token
+
       );
-
-      alert("Login Successful 🚀");
-
-      // ROLE BASED REDIRECT
-      if (response.data.user.role === "admin") {
-
-        navigate("/admin");
-
-      } else if (
-        response.data.user.role === "teacher"
-      ) {
-
-        navigate("/teacher-dashboard");
-
-      } else {
-
-        navigate("/student");
-
-      }
-
-    } catch (error) {
-
-      console.log(error);
-
-      // SAFE ERROR MESSAGE
-      if (error.response?.data?.message) {
-
-        alert(error.response.data.message);
-
-      } else {
-
-        alert("Something Went Wrong");
-
-      }
-
-    } finally {
-
-      setLoading(false);
 
     }
 
-  };
+    // SAVE USER
+    localStorage.setItem(
 
+      "user",
+
+      JSON.stringify(
+        response.data.user
+      )
+
+    );
+
+    alert("Login Successful 🚀");
+
+    // ROLE BASED REDIRECT
+
+    if (
+      response.data.user.role ===
+      "admin"
+    ) {
+
+      navigate("/admin");
+
+    }
+
+    else if (
+      response.data.user.role ===
+      "teacher"
+    ) {
+
+      navigate(
+        "/teacher-dashboard"
+      );
+
+    }
+
+    else {
+
+      navigate("/student");
+
+    }
+
+  }
+
+  catch (error) {
+
+    console.log(error);
+
+    if (
+      error.response?.data?.message
+    ) {
+
+      alert(
+        error.response.data.message
+      );
+
+    }
+
+    else {
+
+      alert(
+        "Something Went Wrong"
+      );
+
+    }
+
+  }
+
+  finally {
+
+    setLoading(false);
+
+  }
+
+};
   return (
 
     <div className="min-h-screen bg-gradient-to-br from-blue-950 via-slate-900 to-black flex items-center justify-center px-6 py-10 overflow-hidden relative">
