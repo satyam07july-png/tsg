@@ -28,6 +28,7 @@ import Settings from "./pages/admin/Settings";
 import MyCourses from "./pages/teacher/MyCourses";
 import UploadLecture from "./pages/teacher/UploadLecture";
 import CourseDetails from "./pages/course/CourseDetails";
+import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
 
   return (
@@ -39,9 +40,27 @@ function App() {
       <Route path="/login" element={<Login />} />
      <Route path="/popular" element={<PopularCourses />} />
 
-      <Route path="/admin" element={<AdminDashboard />} />
+      <Route
+       path="/admin"
+       element={
+      <ProtectedRoute
+       allowedRole="admin"
+      >
+        <AdminDashboard />
+        </ProtectedRoute>
+      }
+      />
 
-      <Route path="/student" element={<StudentDashboard />} />
+      <Route
+       path="/student"
+        element={
+      <ProtectedRoute
+       allowedRole="student"
+      >
+       <StudentDashboard />
+       </ProtectedRoute>
+      }
+      />
 
       <Route path="/admin/courses" element={<CoursesPage />} />
 
@@ -49,7 +68,13 @@ function App() {
 
       <Route
         path="/teacher-dashboard"
-        element={<TeacherDashboard />}
+       element={
+      <ProtectedRoute
+       allowedRole="teacher"
+      >
+        <TeacherDashboard />
+        </ProtectedRoute>
+      }
       />
 
       <Route
