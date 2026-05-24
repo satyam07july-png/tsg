@@ -48,6 +48,8 @@ router.post("/login", async (req, res) => {
     const user =
       userQuery.rows[0];
 
+    console.log(user);
+
     // PASSWORD CHECK
 
     const isMatch =
