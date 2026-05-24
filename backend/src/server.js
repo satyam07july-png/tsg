@@ -16,16 +16,16 @@ require("./config/db");
 // ==========================
 
 const authRoutes =
-require("./src/routes/auth.routes");
+  require("./routes/auth.routes");
 
 const courseRoutes =
-require("./src/routes/course.routes");
+  require("./routes/course.routes");
 
 const lectureRoutes =
-require("./src/routes/lecture.routes");
+  require("./routes/lecture.routes");
 
 const adminRoutes =
-require("./src/routes/admin.routes");
+  require("./routes/admin.routes");
 
 // ==========================
 // MIDDLEWARE
@@ -64,7 +64,7 @@ app.use(
 );
 
 // ==========================
-// TEST ROUTE
+// TEST ROUTES
 // ==========================
 
 app.get("/", (req, res) => {
@@ -74,6 +74,22 @@ app.get("/", (req, res) => {
   );
 
 });
+
+// ADMIN TEST ROUTE
+
+app.get(
+  "/api/admin/test",
+  (req, res) => {
+
+    res.json({
+
+      message:
+        "Admin route working 🚀",
+
+    });
+
+  }
+);
 
 // ==========================
 // API ROUTES
