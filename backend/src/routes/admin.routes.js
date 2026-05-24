@@ -45,7 +45,7 @@ router.post(
         `
         INSERT INTO users
         (
-          full_name,
+          name,
           email,
           password,
           role,
