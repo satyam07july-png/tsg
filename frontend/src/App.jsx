@@ -33,6 +33,7 @@ import GovernmentPartners from "./pages/GovernmentPartners";
 import Academic from "./pages/Academic";
 import Entrance from "./pages/Entrance";
 import Competition from "./pages/Competition";
+import Skilling from "./pages/Skilling";
 function App() {
 
   return (
@@ -201,6 +202,12 @@ function App() {
   path="/competition"
   element={<Competition />}
 />
+
+<Route
+  path="/skilling"
+  element={<Skilling />}
+/>
+
     </Routes>
 
   );
