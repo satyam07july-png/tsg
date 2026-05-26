@@ -32,6 +32,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import GovernmentPartners from "./pages/GovernmentPartners";
 import Academic from "./pages/Academic";
 import Entrance from "./pages/Entrance";
+import Competition from "./pages/Competition";
 function App() {
 
   return (
@@ -196,6 +197,10 @@ function App() {
   element={<Entrance />}
 />
 
+<Route
+  path="/competition"
+  element={<Competition />}
+/>
     </Routes>
 
   );
