@@ -16,6 +16,8 @@ import {
 
 
 function Teachers() {
+  const [teachers, setTeachers] =
+  useState([]);
 
   useEffect(() => {
 
