@@ -93,7 +93,7 @@ function LandingPage() {
           VIKSHIT BHARAT HEADER
       ========================== */}
 
-      <div className="bg-gradient-to-br from-slate-950 via-black to-orange-700 text-white">
+      <div className="bg-gradient-to-br from-[#0B1220] via-[#111827] to-[#7C2D12] text-white">
 
         <div className="max-w-7xl mx-auto px-6 py-16 flex flex-col items-center">
 
@@ -105,14 +105,14 @@ function LandingPage() {
             h-[170px]
             rounded-full
             border-[6px]
-            border-yellow-400
+            border-orange-300
             flex
             items-center
             justify-center
             text-5xl
             font-black
             bg-black
-            shadow-[0_0_50px_rgba(255,180,0,0.5)]
+            shadow-[0_0_50px_rgba(255,180,0,0.4)]
             "
           >
 
@@ -129,10 +129,10 @@ function LandingPage() {
             font-black
             mt-10
             text-center
-            text-yellow-300
+            text-orange-200
             tracking-[4px]
             leading-tight
-            drop-shadow-[0_0_35px_rgba(255,180,0,0.7)]
+            drop-shadow-[0_0_35px_rgba(255,180,0,0.5)]
             "
           >
 
@@ -151,7 +151,7 @@ function LandingPage() {
             font-bold
             mt-8
             tracking-[6px]
-            text-orange-200
+            text-amber-300
             "
           >
 
@@ -168,7 +168,7 @@ function LandingPage() {
               text-2xl
               md:text-4xl
               font-bold
-              text-yellow-400
+              text-orange-300
               tracking-[3px]
               "
             >
@@ -202,13 +202,26 @@ function LandingPage() {
           NAVBAR
       ========================== */}
 
-      <div className="bg-black sticky top-0 z-50 shadow-2xl">
+      <div className="bg-[#0B1220] sticky top-0 z-50 shadow-2xl">
+
+        {/* FIRST ROW */}
 
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5">
 
           <Link
             to="/"
-            className="text-white py-6 text-center border border-zinc-700 hover:bg-orange-600 transition text-lg md:text-xl font-semibold"
+            className="
+            text-white
+            py-6
+            text-center
+            border
+            border-orange-400/20
+            hover:bg-[#7C2D12]
+            transition
+            text-lg
+            md:text-xl
+            font-semibold
+            "
           >
 
             HOME
@@ -217,7 +230,18 @@ function LandingPage() {
 
           <Link
             to="/login"
-            className="text-white py-6 text-center border border-zinc-700 hover:bg-orange-600 transition text-lg md:text-xl font-semibold"
+            className="
+            text-white
+            py-6
+            text-center
+            border
+            border-orange-400/20
+            hover:bg-[#7C2D12]
+            transition
+            text-lg
+            md:text-xl
+            font-semibold
+            "
           >
 
             STUDENT PORTAL
@@ -226,7 +250,18 @@ function LandingPage() {
 
           <Link
             to="/login"
-            className="text-white py-6 text-center border border-zinc-700 hover:bg-orange-600 transition text-lg md:text-xl font-semibold"
+            className="
+            text-white
+            py-6
+            text-center
+            border
+            border-orange-400/20
+            hover:bg-[#7C2D12]
+            transition
+            text-lg
+            md:text-xl
+            font-semibold
+            "
           >
 
             ADMIN PORTAL
@@ -235,7 +270,18 @@ function LandingPage() {
 
           <Link
             to="/login"
-            className="text-white py-6 text-center border border-zinc-700 hover:bg-orange-600 transition text-lg md:text-xl font-semibold"
+            className="
+            text-white
+            py-6
+            text-center
+            border
+            border-orange-400/20
+            hover:bg-[#7C2D12]
+            transition
+            text-lg
+            md:text-xl
+            font-semibold
+            "
           >
 
             TEACHER PORTAL
@@ -243,10 +289,129 @@ function LandingPage() {
           </Link>
 
           <div
-            className="text-white py-6 text-center border border-zinc-700 text-lg md:text-xl font-semibold"
+            className="
+            text-white
+            py-6
+            text-center
+            border
+            border-orange-400/20
+            text-lg
+            md:text-xl
+            font-semibold
+            "
           >
 
             CONTACT
+
+          </div>
+
+        </div>
+
+        {/* SECOND ROW */}
+
+        <div className="bg-[#1E293B]">
+
+          <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5">
+
+            <div
+              className="
+              text-orange-200
+              py-5
+              text-center
+              border
+              border-orange-400/20
+              hover:bg-[#7C2D12]
+              transition
+              text-lg
+              md:text-xl
+              font-bold
+              cursor-pointer
+              "
+            >
+
+              Academic
+
+            </div>
+
+            <div
+              className="
+              text-orange-200
+              py-5
+              text-center
+              border
+              border-orange-400/20
+              hover:bg-[#7C2D12]
+              transition
+              text-lg
+              md:text-xl
+              font-bold
+              cursor-pointer
+              "
+            >
+
+              Entrance
+
+            </div>
+
+            <div
+              className="
+              text-orange-200
+              py-5
+              text-center
+              border
+              border-orange-400/20
+              hover:bg-[#7C2D12]
+              transition
+              text-lg
+              md:text-xl
+              font-bold
+              cursor-pointer
+              "
+            >
+
+              Competition
+
+            </div>
+
+            <div
+              className="
+              text-orange-200
+              py-5
+              text-center
+              border
+              border-orange-400/20
+              hover:bg-[#7C2D12]
+              transition
+              text-lg
+              md:text-xl
+              font-bold
+              cursor-pointer
+              "
+            >
+
+              Skilling
+
+            </div>
+
+            <div
+              className="
+              text-orange-200
+              py-5
+              text-center
+              border
+              border-orange-400/20
+              hover:bg-[#7C2D12]
+              transition
+              text-lg
+              md:text-xl
+              font-bold
+              cursor-pointer
+              "
+            >
+
+              Placement
+
+            </div>
 
           </div>
 
@@ -258,7 +423,7 @@ function LandingPage() {
           TOP NEWS TICKER
       ========================== */}
 
-      <div className="bg-yellow-400 border-y-4 border-orange-700 py-3 overflow-hidden">
+      <div className="bg-yellow-400 border-y-4 border-[#7C2D12] py-3 overflow-hidden">
 
         <marquee
           behavior="scroll"
@@ -291,7 +456,7 @@ function LandingPage() {
 
       <div className="max-w-7xl mx-auto text-center py-20 px-6">
 
-        <h1 className="text-5xl md:text-7xl font-black text-orange-700">
+        <h1 className="text-5xl md:text-7xl font-black text-[#7C2D12]">
 
           Empowering India Through Education
 
@@ -319,7 +484,7 @@ function LandingPage() {
 
         <div className="text-center mb-16">
 
-          <h1 className="text-5xl font-black text-orange-700">
+          <h1 className="text-5xl font-black text-[#7C2D12]">
 
             Popular Courses
 
@@ -351,7 +516,7 @@ function LandingPage() {
 
                     {/* IMAGE */}
 
-                    <div className="h-[220px] bg-gradient-to-r from-black to-orange-700 flex items-center justify-center">
+                    <div className="h-[220px] bg-gradient-to-r from-black to-[#7C2D12] flex items-center justify-center">
 
                       <h1 className="text-white text-3xl font-bold text-center px-4">
 
@@ -377,8 +542,6 @@ function LandingPage() {
 
                       </p>
 
-                      {/* DETAILS */}
-
                       <div className="flex flex-wrap gap-4 mt-6">
 
                         <div className="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-xl text-sm">
@@ -399,11 +562,9 @@ function LandingPage() {
 
                       </div>
 
-                      {/* PRICE */}
-
                       <div className="mt-8 flex justify-between items-center">
 
-                        <h3 className="text-3xl font-bold text-orange-700">
+                        <h3 className="text-3xl font-bold text-[#7C2D12]">
 
                           ₹{course.price}
 
@@ -411,7 +572,7 @@ function LandingPage() {
 
                         <Link
                           to={`/course/${course.id}`}
-                          className="bg-black text-white px-6 py-3 rounded-xl hover:bg-orange-700 transition"
+                          className="bg-black text-white px-6 py-3 rounded-xl hover:bg-[#7C2D12] transition"
                         >
 
                           Explore
@@ -442,11 +603,7 @@ function LandingPage() {
 
       </section>
 
-      {/* FEATURES */}
-
       <Features />
-
-      {/* TESTIMONIALS */}
 
       <Testimonials />
 
@@ -456,7 +613,7 @@ function LandingPage() {
 
         <div className="max-w-7xl mx-auto px-6 text-center">
 
-          <h1 className="text-5xl font-black text-yellow-400">
+          <h1 className="text-5xl font-black text-orange-300">
 
             Contact Us
 
@@ -474,7 +631,7 @@ function LandingPage() {
 
           </p>
 
-          <p className="text-xl mt-6 text-orange-300">
+          <p className="text-xl mt-6 text-orange-200">
 
             A Mission For Vikshit Bharat 2047
 
@@ -483,8 +640,6 @@ function LandingPage() {
         </div>
 
       </section>
-
-      {/* FOOTER */}
 
       <Footer />
 
