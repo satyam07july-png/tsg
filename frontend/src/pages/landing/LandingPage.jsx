@@ -541,7 +541,7 @@ function LandingPage() {
 
       </div>
 
-      {/* ==========================
+{/* ==========================
     INDIA EDUCATION SECTIONS
 ========================== */}
 
@@ -551,7 +551,19 @@ function LandingPage() {
 
     {/* ACADEMIC */}
 
-    <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+    <Link
+      to="/academic"
+      className="
+      bg-white
+      rounded-3xl
+      shadow-xl
+      overflow-hidden
+      hover:-translate-y-2
+      hover:shadow-2xl
+      transition-all
+      block
+      "
+    >
 
       <div className="bg-[#7C2D12] text-white py-5 text-center text-4xl font-black">
 
@@ -587,11 +599,23 @@ function LandingPage() {
 
       </div>
 
-    </div>
+    </Link>
 
     {/* ENTRANCE */}
 
-    <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+    <Link
+      to="/entrance"
+      className="
+      bg-white
+      rounded-3xl
+      shadow-xl
+      overflow-hidden
+      hover:-translate-y-2
+      hover:shadow-2xl
+      transition-all
+      block
+      "
+    >
 
       <div className="bg-[#7C2D12] text-white py-5 text-center text-4xl font-black">
 
@@ -627,11 +651,23 @@ function LandingPage() {
 
       </div>
 
-    </div>
+    </Link>
 
     {/* COMPETITION */}
 
-    <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+    <Link
+      to="/competition"
+      className="
+      bg-white
+      rounded-3xl
+      shadow-xl
+      overflow-hidden
+      hover:-translate-y-2
+      hover:shadow-2xl
+      transition-all
+      block
+      "
+    >
 
       <div className="bg-[#7C2D12] text-white py-5 text-center text-4xl font-black">
 
@@ -667,11 +703,23 @@ function LandingPage() {
 
       </div>
 
-    </div>
+    </Link>
 
     {/* SKILLING */}
 
-    <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+    <Link
+      to="/skilling"
+      className="
+      bg-white
+      rounded-3xl
+      shadow-xl
+      overflow-hidden
+      hover:-translate-y-2
+      hover:shadow-2xl
+      transition-all
+      block
+      "
+    >
 
       <div className="bg-[#7C2D12] text-white py-5 text-center text-4xl font-black">
 
@@ -707,12 +755,11 @@ function LandingPage() {
 
       </div>
 
-    </div>
+    </Link>
 
   </div>
 
 </section>
-
       {/* ==========================
           POPULAR COURSES
       ========================== */}
