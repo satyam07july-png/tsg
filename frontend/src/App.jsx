@@ -30,6 +30,7 @@ import UploadLecture from "./pages/teacher/UploadLecture";
 import CourseDetails from "./pages/course/CourseDetails";
 import ProtectedRoute from "./components/ProtectedRoute";
 import GovernmentPartners from "./pages/GovernmentPartners";
+import Academic from "./pages/Academic";
 function App() {
 
   return (
@@ -183,6 +184,10 @@ function App() {
 <Route
   path="/government-partners"
   element={<GovernmentPartners />}
+/>
+<Route
+  path="/academic"
+  element={<Academic />}
 />
 
     </Routes>
