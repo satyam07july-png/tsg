@@ -843,40 +843,267 @@ function LandingPage() {
       <Features />
 
       <Testimonials />
+{/* ==========================
+    PREMIUM CONTACT SECTION
+========================== */}
 
-      {/* CONTACT */}
+<section className="bg-[#070014] text-white py-20 mt-20">
 
-      <section className="bg-black text-white py-16 mt-20">
+  <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14">
 
-        <div className="max-w-7xl mx-auto px-6 text-center">
+    {/* ABOUT */}
 
-          <h1 className="text-5xl font-black text-orange-300">
+    <div>
 
-            Contact Us
+      <h1
+        className="
+        text-5xl
+        font-black
+        text-orange-300
+        "
+      >
 
-          </h1>
+        Vikshit Bharat
 
-          <p className="text-2xl mt-8">
+      </h1>
 
-            📞 +91 9876543210
+      <p
+        className="
+        mt-8
+        text-gray-300
+        leading-10
+        text-lg
+        "
+      >
 
-          </p>
+        A Mission For Vikshit Bharat 2047
+        is dedicated towards building
+        a stronger India through
+        education, innovation,
+        AI development,
+        digital transformation,
+        and skill empowerment.
 
-          <p className="text-2xl mt-4">
+      </p>
 
-            📧 support@vikshitbharat2047.in
+      {/* SOCIALS */}
 
-          </p>
+      <div className="flex gap-5 mt-10 text-4xl">
 
-          <p className="text-xl mt-6 text-orange-200">
+        <a href="#">
 
-            A Mission For Vikshit Bharat 2047
+          🌐
 
-          </p>
+        </a>
+
+        <a href="#">
+
+          📘
+
+        </a>
+
+        <a href="#">
+
+          📸
+
+        </a>
+
+        <a href="#">
+
+          ▶️
+
+        </a>
+
+      </div>
+
+    </div>
+
+    {/* QUICK LINKS */}
+
+    <div>
+
+      <h2
+        className="
+        text-4xl
+        font-black
+        text-cyan-400
+        "
+      >
+
+        Quick Links
+
+      </h2>
+
+      <div className="mt-8 space-y-5 text-xl">
+
+        <a
+          href="#"
+          className="block hover:text-orange-300"
+        >
+
+          🏠 Home
+
+        </a>
+
+        <a
+          href="#"
+          className="block hover:text-orange-300"
+        >
+
+          📚 Academic
+
+        </a>
+
+        <a
+          href="#"
+          className="block hover:text-orange-300"
+        >
+
+          🧠 AI Programs
+
+        </a>
+
+        <a
+          href="#"
+          className="block hover:text-orange-300"
+        >
+
+          🎯 Competition
+
+        </a>
+
+        <a
+          href="#"
+          className="block hover:text-orange-300"
+        >
+
+          💼 Placement
+
+        </a>
+
+      </div>
+
+    </div>
+
+    {/* CONTACT */}
+
+    <div>
+
+      <h2
+        className="
+        text-4xl
+        font-black
+        text-cyan-400
+        "
+      >
+
+        Contact Us
+
+      </h2>
+
+      <div className="mt-8 space-y-6 text-xl text-gray-300">
+
+        <p>
+
+          📍 Timeless Foundation,
+          New Delhi, India
+
+        </p>
+
+        <p>
+
+          📞 +91 9876543210
+
+        </p>
+
+        <p>
+
+          📧 support@vikshitbharat2047.in
+
+        </p>
+
+        <p>
+
+          🌐 www.vikshitbharat2047.in
+
+        </p>
+
+      </div>
+
+    </div>
+
+    {/* LOCATION */}
+
+    <div>
+
+      <h2
+        className="
+        text-4xl
+        font-black
+        text-cyan-400
+        "
+      >
+
+        Our Location
+
+      </h2>
+
+      <div
+        className="
+        mt-8
+        bg-[#0B1220]
+        rounded-3xl
+        p-8
+        border
+        border-cyan-500/20
+        h-[260px]
+        flex
+        flex-col
+        justify-center
+        items-center
+        shadow-xl
+        "
+      >
+
+        <div className="text-7xl">
+
+          📍
 
         </div>
 
-      </section>
+        <p className="mt-6 text-lg text-gray-300 text-center">
+
+          New Delhi, India
+
+        </p>
+
+        <a
+          href="https://maps.google.com"
+          target="_blank"
+          rel="noreferrer"
+          className="
+          mt-6
+          bg-cyan-500
+          hover:bg-cyan-600
+          px-6
+          py-3
+          rounded-xl
+          font-bold
+          transition
+          "
+        >
+
+          View On Google Maps
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
       <Footer />
 
