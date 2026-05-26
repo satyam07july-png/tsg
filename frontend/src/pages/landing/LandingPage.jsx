@@ -506,114 +506,133 @@ const prevSlide = () => {
 
         {/* SECOND ROW */}
 
-        <div className="bg-[#1E293B]">
+<div className="bg-[#1E293B]">
 
-          <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5">
+  <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5">
 
-            <div
-              className="
-              text-orange-200
-              py-5
-              text-center
-              border
-              border-orange-400/20
-              hover:bg-[#7C2D12]
-              transition
-              text-lg
-              md:text-xl
-              font-bold
-              cursor-pointer
-              "
-            >
+    {/* ACADEMIC */}
 
-              Academic
+    <Link
+      to="/academic"
+      className="
+      text-orange-200
+      py-5
+      text-center
+      border
+      border-orange-400/20
+      hover:bg-[#7C2D12]
+      transition
+      text-lg
+      md:text-xl
+      font-bold
+      cursor-pointer
+      block
+      "
+    >
 
-            </div>
+      Academic
 
-            <div
-              className="
-              text-orange-200
-              py-5
-              text-center
-              border
-              border-orange-400/20
-              hover:bg-[#7C2D12]
-              transition
-              text-lg
-              md:text-xl
-              font-bold
-              cursor-pointer
-              "
-            >
+    </Link>
 
-              Entrance
+    {/* ENTRANCE */}
 
-            </div>
+    <Link
+      to="/entrance"
+      className="
+      text-orange-200
+      py-5
+      text-center
+      border
+      border-orange-400/20
+      hover:bg-[#7C2D12]
+      transition
+      text-lg
+      md:text-xl
+      font-bold
+      cursor-pointer
+      block
+      "
+    >
 
-            <div
-              className="
-              text-orange-200
-              py-5
-              text-center
-              border
-              border-orange-400/20
-              hover:bg-[#7C2D12]
-              transition
-              text-lg
-              md:text-xl
-              font-bold
-              cursor-pointer
-              "
-            >
+      Entrance
 
-              Competition
+    </Link>
 
-            </div>
+    {/* COMPETITION */}
 
-            <div
-              className="
-              text-orange-200
-              py-5
-              text-center
-              border
-              border-orange-400/20
-              hover:bg-[#7C2D12]
-              transition
-              text-lg
-              md:text-xl
-              font-bold
-              cursor-pointer
-              "
-            >
+    <Link
+      to="/competition"
+      className="
+      text-orange-200
+      py-5
+      text-center
+      border
+      border-orange-400/20
+      hover:bg-[#7C2D12]
+      transition
+      text-lg
+      md:text-xl
+      font-bold
+      cursor-pointer
+      block
+      "
+    >
 
-              Skilling
+      Competition
 
-            </div>
+    </Link>
 
-            <div
-              className="
-              text-orange-200
-              py-5
-              text-center
-              border
-              border-orange-400/20
-              hover:bg-[#7C2D12]
-              transition
-              text-lg
-              md:text-xl
-              font-bold
-              cursor-pointer
-              "
-            >
+    {/* SKILLING */}
 
-              Placement
+    <Link
+      to="/skilling"
+      className="
+      text-orange-200
+      py-5
+      text-center
+      border
+      border-orange-400/20
+      hover:bg-[#7C2D12]
+      transition
+      text-lg
+      md:text-xl
+      font-bold
+      cursor-pointer
+      block
+      "
+    >
 
-            </div>
+      Skilling
 
-          </div>
+    </Link>
 
-        </div>
+    {/* PLACEMENT */}
 
+    <Link
+      to="/placement"
+      className="
+      text-orange-200
+      py-5
+      text-center
+      border
+      border-orange-400/20
+      hover:bg-[#7C2D12]
+      transition
+      text-lg
+      md:text-xl
+      font-bold
+      cursor-pointer
+      block
+      "
+    >
+
+      Placement
+
+    </Link>
+
+  </div>
+
+</div>
       </div>
 
       {/* ==========================
@@ -1066,220 +1085,7 @@ const prevSlide = () => {
 
       <Features />
 
-    {/* ==========================
-    EDUCATION LEADERSHIP OF INDIA
-========================== */}
-
-<section className="max-w-7xl mx-auto px-6 py-24">
-
-  <div className="text-center mb-16">
-
-    <h1
-      className="
-      text-5xl
-      md:text-7xl
-      font-black
-      text-[#7C2D12]
-      "
-    >
-
-      Education Leadership Of India
-
-    </h1>
-
-    <p
-      className="
-      text-gray-600
-      text-2xl
-      mt-6
-      "
-    >
-
-      Visionary education ministers
-      transforming India's future 🇮🇳
-
-    </p>
-
-  </div>
-
-  <div className="relative">
-
-    {/* LEFT BUTTON */}
-
-    <button
-      onClick={prevSlide}
-      className="
-      absolute
-      left-[-20px]
-      top-1/2
-      -translate-y-1/2
-      z-10
-      bg-[#7C2D12]
-      text-white
-      w-14
-      h-14
-      rounded-full
-      flex
-      items-center
-      justify-center
-      shadow-xl
-      hover:scale-110
-      transition
-      "
-    >
-
-      ◀
-
-    </button>
-
-    {/* CARDS */}
-
-    <div
-      className="
-      grid
-      grid-cols-1
-      md:grid-cols-3
-      gap-8
-      "
-    >
-
-      {[
-        ministers[currentSlide],
-
-        ministers[
-          (currentSlide + 1) %
-          ministers.length
-        ],
-
-        ministers[
-          (currentSlide + 2) %
-          ministers.length
-        ],
-
-      ].map((minister, index) => (
-
-        <div
-          key={index}
-          className="
-          bg-white
-          rounded-3xl
-          shadow-2xl
-          p-8
-          border
-          border-orange-200
-          hover:-translate-y-2
-          transition-all
-          "
-        >
-
-          {/* FLAG */}
-
-          <div
-            className="
-            w-24
-            h-24
-            rounded-full
-            bg-gradient-to-br
-            from-[#7C2D12]
-            to-orange-400
-            flex
-            items-center
-            justify-center
-            text-4xl
-            text-white
-            font-black
-            mx-auto
-            "
-          >
-
-            🇮🇳
-
-          </div>
-
-          {/* NAME */}
-
-          <h2
-            className="
-            text-3xl
-            font-black
-            text-center
-            mt-6
-            "
-          >
-
-            {minister.name}
-
-          </h2>
-
-          {/* STATE */}
-
-          <p
-            className="
-            text-center
-            text-orange-600
-            font-bold
-            mt-2
-            text-xl
-            "
-          >
-
-            {minister.state}
-
-          </p>
-
-          {/* MESSAGE */}
-
-          <p
-            className="
-            text-gray-600
-            mt-8
-            leading-9
-            text-lg
-            text-center
-            "
-          >
-
-            "{minister.message}"
-
-          </p>
-
-        </div>
-
-      ))}
-
-    </div>
-
-    {/* RIGHT BUTTON */}
-
-    <button
-      onClick={nextSlide}
-      className="
-      absolute
-      right-[-20px]
-      top-1/2
-      -translate-y-1/2
-      z-10
-      bg-[#7C2D12]
-      text-white
-      w-14
-      h-14
-      rounded-full
-      flex
-      items-center
-      justify-center
-      shadow-xl
-      hover:scale-110
-      transition
-      "
-    >
-
-      ▶
-
-    </button>
-
-  </div>
-
-</section>
+    
 {/* ==========================
     PREMIUM CONTACT SECTION
 ========================== */}
