@@ -6,7 +6,7 @@ const { verifyToken } = require("../middleware/auth.middleware");
 
 const { checkRole } = require("../middleware/role.middleware");
 const pool = require("../config/db");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 
 const {

@@ -1,5 +1,11 @@
+import {
+  useEffect,
+  useState,
+} from "react";
+
 import { useNavigate } from "react-router-dom";
 
+import axios from "axios";
 import {
   FaSearch,
   FaChalkboardTeacher,
@@ -7,7 +13,8 @@ import {
   FaMoneyBillWave,
   FaStar,
 } from "react-icons/fa";
-import axios from "axios";
+
+
 function Teachers() {
 
   useEffect(() => {
