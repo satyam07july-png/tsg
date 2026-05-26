@@ -3,18 +3,98 @@ import React from "react";
 const states = [
 
   {
-    name: "Uttar Pradesh",
-    website: "https://up.gov.in",
+    name: "Andhra Pradesh",
+    website: "https://www.ap.gov.in",
   },
 
   {
-    name: "Delhi",
-    website: "https://delhi.gov.in",
+    name: "Arunachal Pradesh",
+    website: "https://arunachalpradesh.gov.in",
+  },
+
+  {
+    name: "Assam",
+    website: "https://assam.gov.in",
+  },
+
+  {
+    name: "Bihar",
+    website: "https://state.bihar.gov.in",
+  },
+
+  {
+    name: "Chhattisgarh",
+    website: "https://cgstate.gov.in",
+  },
+
+  {
+    name: "Goa",
+    website: "https://goa.gov.in",
+  },
+
+  {
+    name: "Gujarat",
+    website: "https://gujaratindia.gov.in",
   },
 
   {
     name: "Haryana",
     website: "https://haryana.gov.in",
+  },
+
+  {
+    name: "Himachal Pradesh",
+    website: "https://himachal.nic.in",
+  },
+
+  {
+    name: "Jharkhand",
+    website: "https://jharkhand.gov.in",
+  },
+
+  {
+    name: "Karnataka",
+    website: "https://karnataka.gov.in",
+  },
+
+  {
+    name: "Kerala",
+    website: "https://kerala.gov.in",
+  },
+
+  {
+    name: "Madhya Pradesh",
+    website: "https://mp.gov.in",
+  },
+
+  {
+    name: "Maharashtra",
+    website: "https://maharashtra.gov.in",
+  },
+
+  {
+    name: "Manipur",
+    website: "https://manipur.gov.in",
+  },
+
+  {
+    name: "Meghalaya",
+    website: "https://meghalaya.gov.in",
+  },
+
+  {
+    name: "Mizoram",
+    website: "https://mizoram.gov.in",
+  },
+
+  {
+    name: "Nagaland",
+    website: "https://nagaland.gov.in",
+  },
+
+  {
+    name: "Odisha",
+    website: "https://odisha.gov.in",
   },
 
   {
@@ -28,23 +108,33 @@ const states = [
   },
 
   {
-    name: "Maharashtra",
-    website: "https://maharashtra.gov.in",
+    name: "Sikkim",
+    website: "https://sikkim.gov.in",
   },
 
   {
-    name: "Gujarat",
-    website: "https://gujaratindia.gov.in",
+    name: "Tamil Nadu",
+    website: "https://www.tn.gov.in",
   },
 
   {
-    name: "Bihar",
-    website: "https://state.bihar.gov.in",
+    name: "Telangana",
+    website: "https://telangana.gov.in",
   },
 
   {
-    name: "Madhya Pradesh",
-    website: "https://mp.gov.in",
+    name: "Tripura",
+    website: "https://tripura.gov.in",
+  },
+
+  {
+    name: "Uttar Pradesh",
+    website: "https://up.gov.in",
+  },
+
+  {
+    name: "Uttarakhand",
+    website: "https://uk.gov.in",
   },
 
   {
@@ -52,8 +142,49 @@ const states = [
     website: "https://wb.gov.in",
   },
 
-];
+  // UNION TERRITORIES
 
+  {
+    name: "Andaman and Nicobar Islands",
+    website: "https://andaman.gov.in",
+  },
+
+  {
+    name: "Chandigarh",
+    website: "https://chandigarh.gov.in",
+  },
+
+  {
+    name: "Dadra and Nagar Haveli and Daman and Diu",
+    website: "https://ddd.gov.in",
+  },
+
+  {
+    name: "Delhi",
+    website: "https://delhi.gov.in",
+  },
+
+  {
+    name: "Jammu and Kashmir",
+    website: "https://jk.gov.in",
+  },
+
+  {
+    name: "Ladakh",
+    website: "https://ladakh.nic.in",
+  },
+
+  {
+    name: "Lakshadweep",
+    website: "https://lakshadweep.gov.in",
+  },
+
+  {
+    name: "Puducherry",
+    website: "https://py.gov.in",
+  },
+
+];
 function GovernmentPartners() {
 
   return (
