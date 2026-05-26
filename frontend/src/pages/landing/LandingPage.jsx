@@ -863,7 +863,8 @@ function LandingPage() {
         "
       >
 
-        Vikshit Bharat
+       
+       TGS(TEAM GULSHAN SIR)
 
       </h1>
 
@@ -1005,8 +1006,9 @@ function LandingPage() {
 
         <p>
 
-          📍 Timeless Foundation,
-          New Delhi, India
+          📍 2nd Floor, Spacetime Management Pvt Ltd Design House, 
+          behind Savitri Cinema Complex, Greater Kailash II, 
+          Chittaranjan Park, New Delhi, Delhi 110048
 
         </p>
 
@@ -1079,7 +1081,7 @@ function LandingPage() {
 
         <a
           href="https://maps.google.com"
-          target="_blank"
+          target="_DizitalAdda Digital Marketing Institute, 2nd Floor, Spacetime Management Pvt Ltd Design House, behind Savitri Cinema Complex, Greater Kailash II, Chittaranjan Park, New Delhi, Delhi 110048"
           rel="noreferrer"
           className="
           mt-6
@@ -1105,7 +1107,6 @@ function LandingPage() {
 
 </section>
 
-      <Footer />
 
     </div>
 
