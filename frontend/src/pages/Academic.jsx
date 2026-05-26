@@ -2,6 +2,16 @@ import React, {
   useState,
 } from "react";
 
+import {
+  FaBookOpen,
+  FaGraduationCap,
+  FaBrain,
+  FaAtom,
+  FaCalculator,
+  FaFlask,
+  FaGlobe,
+} from "react-icons/fa";
+
 function Academic() {
 
   const [board, setBoard] =
@@ -17,16 +27,33 @@ function Academic() {
 
     <div className="min-h-screen bg-[#f8fafc] px-6 py-16">
 
-      {/* TITLE */}
+      {/* HERO SECTION */}
 
-      <div className="text-center">
+      <div
+        className="
+        bg-gradient-to-br
+        from-[#0B1220]
+        via-[#111827]
+        to-[#7C2D12]
+        rounded-[40px]
+        text-white
+        p-16
+        text-center
+        shadow-2xl
+        "
+      >
+
+        <div className="text-8xl mb-8">
+
+          🎓
+
+        </div>
 
         <h1
           className="
           text-5xl
           md:text-7xl
           font-black
-          text-[#7C2D12]
           "
         >
 
@@ -36,13 +63,17 @@ function Academic() {
 
         <p
           className="
-          text-gray-600
           text-2xl
-          mt-6
+          text-orange-200
+          mt-8
+          max-w-4xl
+          mx-auto
+          leading-10
           "
         >
 
-          Choose your board and class
+          India's AI Powered Smart Education
+          Ecosystem For Future Ready Students
 
         </p>
 
@@ -50,14 +81,15 @@ function Academic() {
 
       {/* BOARD SELECTION */}
 
-      <div className="max-w-5xl mx-auto mt-20">
+      <div className="max-w-6xl mx-auto mt-24">
 
         <h2
           className="
-          text-4xl
+          text-5xl
           font-black
-          mb-10
+          mb-14
           text-center
+          text-[#7C2D12]
           "
         >
 
@@ -65,47 +97,90 @@ function Academic() {
 
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+          {/* CBSE */}
 
           <button
             onClick={() =>
               setBoard("CBSE")
             }
             className="
-            bg-white
-            shadow-xl
-            rounded-3xl
-            py-16
-            text-4xl
-            font-black
+            bg-gradient-to-br
+            from-white
+            to-orange-50
+            border
+            border-orange-200
+            shadow-2xl
+            rounded-[40px]
+            py-20
+            hover:scale-105
             hover:bg-[#7C2D12]
-            hover:text-white
-            transition
+            transition-all
             "
           >
 
-            CBSE
+            <FaGraduationCap
+              className="
+              text-7xl
+              mx-auto
+              text-[#7C2D12]
+              mb-8
+              "
+            />
+
+            <h1
+              className="
+              text-5xl
+              font-black
+              "
+            >
+
+              CBSE
+
+            </h1>
 
           </button>
+
+          {/* STATE */}
 
           <button
             onClick={() =>
               setBoard("STATE")
             }
             className="
-            bg-white
-            shadow-xl
-            rounded-3xl
-            py-16
-            text-4xl
-            font-black
-            hover:bg-[#7C2D12]
-            hover:text-white
-            transition
+            bg-gradient-to-br
+            from-white
+            to-orange-50
+            border
+            border-orange-200
+            shadow-2xl
+            rounded-[40px]
+            py-20
+            hover:scale-105
+            transition-all
             "
           >
 
-            STATE BOARD
+            <FaBookOpen
+              className="
+              text-7xl
+              mx-auto
+              text-[#7C2D12]
+              mb-8
+              "
+            />
+
+            <h1
+              className="
+              text-5xl
+              font-black
+              "
+            >
+
+              STATE BOARD
+
+            </h1>
 
           </button>
 
@@ -117,14 +192,15 @@ function Academic() {
 
       {board && (
 
-        <div className="max-w-7xl mx-auto mt-24">
+        <div className="max-w-7xl mx-auto mt-28">
 
           <h2
             className="
-            text-4xl
+            text-5xl
             font-black
             text-center
-            mb-12
+            mb-14
+            text-[#7C2D12]
             "
           >
 
@@ -138,7 +214,7 @@ function Academic() {
             grid-cols-2
             md:grid-cols-4
             lg:grid-cols-7
-            gap-6
+            gap-8
             "
           >
 
@@ -159,14 +235,17 @@ function Academic() {
                 }
                 className="
                 bg-white
-                rounded-2xl
-                shadow-lg
-                py-8
+                rounded-3xl
+                shadow-xl
+                py-10
                 text-3xl
                 font-black
                 hover:bg-[#7C2D12]
                 hover:text-white
-                transition
+                hover:scale-105
+                transition-all
+                border
+                border-orange-100
                 "
               >
 
@@ -187,14 +266,15 @@ function Academic() {
       {selectedClass &&
         selectedClass <= 10 && (
 
-        <div className="max-w-7xl mx-auto mt-24">
+        <div className="max-w-7xl mx-auto mt-28">
 
           <h2
             className="
-            text-4xl
+            text-5xl
             font-black
             text-center
-            mb-12
+            mb-14
+            text-[#7C2D12]
             "
           >
 
@@ -207,36 +287,84 @@ function Academic() {
             grid
             grid-cols-1
             md:grid-cols-2
-            lg:grid-cols-4
-            gap-8
+            lg:grid-cols-3
+            gap-10
             "
           >
 
             {[
-              "Mathematics",
-              "Science",
-              "English",
-              "Hindi",
-              "Social Science",
-              "Computer Science",
+              {
+                name: "Mathematics",
+                icon: <FaCalculator />,
+              },
+
+              {
+                name: "Science",
+                icon: <FaFlask />,
+              },
+
+              {
+                name: "English",
+                icon: <FaBookOpen />,
+              },
+
+              {
+                name: "Hindi",
+                icon: <FaBookOpen />,
+              },
+
+              {
+                name: "Social Science",
+                icon: <FaGlobe />,
+              },
+
+              {
+                name: "Computer Science",
+                icon: <FaBrain />,
+              },
+
             ].map((subject) => (
 
               <div
-                key={subject}
+                key={subject.name}
                 className="
                 bg-white
-                rounded-3xl
+                rounded-[35px]
                 shadow-xl
-                p-10
+                p-12
                 text-center
-                text-2xl
-                font-bold
-                hover:-translate-y-2
-                transition
+                hover:shadow-2xl
+                hover:-translate-y-3
+                transition-all
+                border
+                border-orange-100
                 "
               >
 
-                {subject}
+                <div
+                  className="
+                  text-6xl
+                  text-[#7C2D12]
+                  mb-8
+                  flex
+                  justify-center
+                  "
+                >
+
+                  {subject.icon}
+
+                </div>
+
+                <h1
+                  className="
+                  text-3xl
+                  font-black
+                  "
+                >
+
+                  {subject.name}
+
+                </h1>
 
               </div>
 
@@ -253,14 +381,15 @@ function Academic() {
       {(selectedClass === "11" ||
         selectedClass === "12") && (
 
-        <div className="max-w-7xl mx-auto mt-24">
+        <div className="max-w-7xl mx-auto mt-28">
 
           <h2
             className="
-            text-4xl
+            text-5xl
             font-black
             text-center
-            mb-12
+            mb-14
+            text-[#7C2D12]
             "
           >
 
@@ -273,7 +402,7 @@ function Academic() {
             grid
             grid-cols-1
             md:grid-cols-3
-            gap-10
+            gap-12
             "
           >
 
@@ -290,14 +419,17 @@ function Academic() {
                 }
                 className="
                 bg-white
-                rounded-3xl
-                shadow-xl
-                py-16
-                text-4xl
+                rounded-[40px]
+                shadow-2xl
+                py-20
+                text-5xl
                 font-black
                 hover:bg-[#7C2D12]
                 hover:text-white
-                transition
+                hover:scale-105
+                transition-all
+                border
+                border-orange-100
                 "
               >
 
@@ -317,14 +449,15 @@ function Academic() {
 
       {stream && (
 
-        <div className="max-w-7xl mx-auto mt-24">
+        <div className="max-w-7xl mx-auto mt-28 mb-20">
 
           <h2
             className="
-            text-4xl
+            text-5xl
             font-black
             text-center
-            mb-12
+            mb-14
+            text-[#7C2D12]
             "
           >
 
@@ -337,8 +470,8 @@ function Academic() {
             grid
             grid-cols-1
             md:grid-cols-2
-            lg:grid-cols-4
-            gap-8
+            lg:grid-cols-3
+            gap-10
             "
           >
 
@@ -376,18 +509,37 @@ function Academic() {
                 key={subject}
                 className="
                 bg-white
-                rounded-3xl
+                rounded-[35px]
                 shadow-xl
-                p-10
+                p-12
                 text-center
-                text-2xl
-                font-bold
-                hover:-translate-y-2
-                transition
+                hover:-translate-y-3
+                hover:shadow-2xl
+                transition-all
+                border
+                border-orange-100
                 "
               >
 
-                {subject}
+                <FaAtom
+                  className="
+                  text-6xl
+                  mx-auto
+                  text-[#7C2D12]
+                  mb-8
+                  "
+                />
+
+                <h1
+                  className="
+                  text-3xl
+                  font-black
+                  "
+                >
+
+                  {subject}
+
+                </h1>
 
               </div>
 
