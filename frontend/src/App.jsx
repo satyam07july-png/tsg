@@ -29,6 +29,7 @@ import MyCourses from "./pages/teacher/MyCourses";
 import UploadLecture from "./pages/teacher/UploadLecture";
 import CourseDetails from "./pages/course/CourseDetails";
 import ProtectedRoute from "./components/ProtectedRoute";
+import GovernmentPartners from "./pages/GovernmentPartners";
 function App() {
 
   return (
@@ -178,6 +179,10 @@ function App() {
 
   element={<CourseDetails />}
 
+/>
+<Route
+  path="/government-partners"
+  element={<GovernmentPartners />}
 />
 
     </Routes>

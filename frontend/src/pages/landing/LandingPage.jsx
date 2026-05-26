@@ -206,7 +206,7 @@ function LandingPage() {
 
         {/* FIRST ROW */}
 
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-6">
 
           <Link
             to="/"
@@ -287,6 +287,26 @@ function LandingPage() {
             TEACHER PORTAL
 
           </Link>
+
+          <Link
+  to="/government-partners"
+  className="
+  text-white
+  py-6
+  text-center
+  border
+  border-orange-400/20
+  hover:bg-[#7C2D12]
+  transition
+  text-lg
+  md:text-xl
+  font-semibold
+  "
+>
+
+  GOVERNMENT PARTNERS
+
+</Link>
 
           <div
             className="
