@@ -1080,7 +1080,7 @@ function LandingPage() {
         </p>
 
         <a
-          href="https://maps.google.com"
+          href="https://www.google.com/maps/dir/28.5266773,77.2635499/DizitalAdda+Digital+Marketing+Institute,+2nd+Floor,+Spacetime+Management+Pvt+Ltd+Design+House,+behind+Savitri+Cinema+Complex,+Greater+Kailash+II,+Chittaranjan+Park,+New+Delhi,+Delhi+110048/@28.534149,77.2315623,14z/data=!3m1!4b1!4m10!4m9!1m1!4e1!1m5!1m1!1s0x390ce1b8032e0e7f:0x8d8484c29620d0c0!2m2!1d77.240722!2d28.541963!3e0?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
           target="_DizitalAdda Digital Marketing Institute, 2nd Floor, Spacetime Management Pvt Ltd Design House, behind Savitri Cinema Complex, Greater Kailash II, Chittaranjan Park, New Delhi, Delhi 110048"
           rel="noreferrer"
           className="
