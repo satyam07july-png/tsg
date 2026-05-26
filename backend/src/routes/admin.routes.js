@@ -2,16 +2,27 @@ const express = require("express");
 
 const router = express.Router();
 
-const { verifyToken } = require("../middleware/auth.middleware");
+const {
+  verifyToken,
+} = require("../middleware/auth.middleware");
 
-const { checkRole } = require("../middleware/role.middleware");
-const pool = require("../config/db");
-const bcrypt = require("bcryptjs");
+const {
+  checkRole,
+} = require("../middleware/role.middleware");
 
+const pool =
+  require("../config/db");
+
+const bcrypt =
+  require("bcryptjs");
 
 const {
   getDashboardAnalytics,
 } = require("../controllers/admin.controller");
+
+// ==========================
+// ADMIN DASHBOARD
+// ==========================
 
 router.get(
   "/dashboard",
@@ -20,11 +31,18 @@ router.get(
   (req, res) => {
 
     res.json({
-      message: "Welcome Admin",
+
+      message:
+        "Welcome Admin 🚀",
+
     });
 
   }
 );
+
+// ==========================
+// GET ALL TEACHERS
+// ==========================
 
 router.get(
   "/teachers",
@@ -73,20 +91,68 @@ router.get(
   }
 );
 
+// ==========================
+// ADD TEACHER
+// ==========================
+
 router.post(
   "/add-teacher",
   async (req, res) => {
-    console.log(req.body);
 
     try {
 
+      console.log(req.body);
+
       const {
+
         name,
         email,
         password,
         phone,
+        specialization,
+
       } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
+
+      // CHECK EXISTING USER
+
+      const existingUser =
+        await pool.query(
+
+          `
+          SELECT *
+          FROM users
+          WHERE email = $1
+          `,
+
+          [email]
+
+        );
+
+      if (
+        existingUser.rows.length > 0
+      ) {
+
+        return res.status(400).json({
+
+          success: false,
+
+          message:
+            "Teacher already exists",
+
+        });
+
+      }
+
+      // HASH PASSWORD
+
+      const hashedPassword =
+        await bcrypt.hash(
+          password,
+          10
+        );
+
+      // INSERT TEACHER
+
       await pool.query(
 
         `
@@ -96,10 +162,11 @@ router.post(
           email,
           password,
           role,
-          phone
+          phone,
+          specialization
         )
 
-        VALUES ($1,$2,$3,$4,$5)
+        VALUES ($1,$2,$3,$4,$5,$6)
         `,
 
         [
@@ -108,6 +175,7 @@ router.post(
           hashedPassword,
           "teacher",
           phone,
+          specialization,
         ]
 
       );
@@ -116,22 +184,34 @@ router.post(
 
         success: true,
 
-        message: "Teacher Added Successfully 🚀",
+        message:
+          "Teacher Added Successfully 🚀",
 
       });
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
       console.log(error);
 
       res.status(500).json({
-        error: error.message,
+
+        success: false,
+
+        message:
+          error.message,
+
       });
 
     }
 
   }
 );
+
+// ==========================
+// ADD COURSE
+// ==========================
 
 router.post(
   "/add-course",
@@ -181,17 +261,23 @@ router.post(
 
         success: true,
 
-        message: "Course Added Successfully 🚀",
+        message:
+          "Course Added Successfully 🚀",
 
       });
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
       console.log(error);
 
       res.status(500).json({
 
-        message: error.message,
+        success: false,
+
+        message:
+          error.message,
 
       });
 
@@ -200,100 +286,147 @@ router.post(
   }
 );
 
-router.put("/update-password", async (req, res) => {
+// ==========================
+// UPDATE PASSWORD
+// ==========================
 
-  try {
+router.put(
+  "/update-password",
+  async (req, res) => {
 
-    const {
+    try {
 
-      email,
+      const {
 
-      currentPassword,
+        email,
+        currentPassword,
+        newPassword,
 
-      newPassword,
+      } = req.body;
 
-    } = req.body;
+      // FIND USER
 
-    console.log(req.body);
+      const user =
+        await pool.query(
 
-    // FIND USER
-    const user = await pool.query(
+          `
+          SELECT *
+          FROM users
+          WHERE email = $1
+          `,
 
-      "SELECT * FROM users WHERE email = $1",
+          [email]
 
-      [email]
+        );
 
-    );
+      if (
+        user.rows.length === 0
+      ) {
 
-    if (user.rows.length === 0) {
+        return res.status(404).json({
 
-      return res.status(404).json({
+          success: false,
 
-        message: "User not found",
+          message:
+            "User not found",
+
+        });
+
+      }
+
+      const existingUser =
+        user.rows[0];
+
+      // CHECK PASSWORD
+
+      const isMatch =
+        await bcrypt.compare(
+
+          currentPassword,
+
+          existingUser.password
+
+        );
+
+      if (!isMatch) {
+
+        return res.status(400).json({
+
+          success: false,
+
+          message:
+            "Current password incorrect",
+
+        });
+
+      }
+
+      // HASH NEW PASSWORD
+
+      const hashedPassword =
+        await bcrypt.hash(
+          newPassword,
+          10
+        );
+
+      // UPDATE PASSWORD
+
+      await pool.query(
+
+        `
+        UPDATE users
+        SET password = $1
+        WHERE email = $2
+        `,
+
+        [
+          hashedPassword,
+          email,
+        ]
+
+      );
+
+      res.status(200).json({
+
+        success: true,
+
+        message:
+          "Password updated successfully 🚀",
 
       });
 
     }
 
-    // USER DATA
-    const existingUser = user.rows[0];
+    catch (error) {
 
-    console.log(existingUser);
+      console.log(error);
 
-    // CHECK PASSWORD
-    if (existingUser.password !== currentPassword) {
+      res.status(500).json({
 
-      return res.status(400).json({
+        success: false,
 
-        message: "Current password incorrect",
+        message:
+          "Server Error",
 
       });
 
     }
 
-    // UPDATE PASSWORD
-    await pool.query(
-
-      `
-      UPDATE users
-      SET password = $1
-      WHERE email = $2
-      `,
-
-      [newPassword, email]
-
-    );
-
-    res.status(200).json({
-
-      success: true,
-
-      message: "Password updated successfully 🚀",
-
-    });
-
   }
+);
 
-  catch (error) {
+// ==========================
+// DELETE COURSE
+// ==========================
 
-    console.log(error);
-
-    res.status(500).json({
-
-      message: "Server Error",
-
-    });
-
-  }
-
-});
 router.delete(
   "/delete-course/:id",
   async (req, res) => {
 
     try {
 
-      const { id } = req.params;
+      const { id } =
+        req.params;
 
       await pool.query(
 
@@ -310,17 +443,23 @@ router.delete(
 
         success: true,
 
-        message: "Course Deleted Successfully 🚀",
+        message:
+          "Course Deleted Successfully 🚀",
 
       });
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
       console.log(error);
 
       res.status(500).json({
 
-        message: error.message,
+        success: false,
+
+        message:
+          error.message,
 
       });
 
@@ -328,13 +467,19 @@ router.delete(
 
   }
 );
+
+// ==========================
+// EDIT COURSE
+// ==========================
+
 router.put(
   "/edit-course/:id",
   async (req, res) => {
 
     try {
 
-      const { id } = req.params;
+      const { id } =
+        req.params;
 
       const {
 
@@ -380,17 +525,22 @@ router.put(
 
         success: true,
 
-        message: "Course Updated Successfully 🚀",
+        message:
+          "Course Updated Successfully 🚀",
 
       });
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
       console.log(error);
 
       res.status(500).json({
 
-        message: error.message,
+        success: false,
+        message:
+          error.message,
 
       });
 
@@ -398,7 +548,5 @@ router.put(
 
   }
 );
-
-
 
 module.exports = router;
