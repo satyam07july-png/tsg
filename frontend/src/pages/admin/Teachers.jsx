@@ -7,66 +7,42 @@ import {
   FaMoneyBillWave,
   FaStar,
 } from "react-icons/fa";
-
+import axios from "axios";
 function Teachers() {
 
-  const navigate = useNavigate();
+  useEffect(() => {
 
-  const teachers = [
+  fetchTeachers();
 
-    {
-      id: 1,
-      name: "Rahul Verma",
-      email: "rahul@gmail.com",
-      specialization: "Full Stack Development",
-      courses: 8,
-      students: 420,
-      revenue: "₹4.2L",
-      rating: "4.9",
-      status: "Active",
-      image: "https://i.pravatar.cc/300?img=12",
-    },
+}, []);
 
-    {
-      id: 2,
-      name: "Amit Sharma",
-      email: "amit@gmail.com",
-      specialization: "Data Science",
-      courses: 5,
-      students: 310,
-      revenue: "₹3.1L",
-      rating: "4.8",
-      status: "Active",
-      image: "https://i.pravatar.cc/300?img=15",
-    },
+const fetchTeachers =
+  async () => {
 
-    {
-      id: 3,
-      name: "Anjali Verma",
-      email: "anjali@gmail.com",
-      specialization: "UI/UX Design",
-      courses: 4,
-      students: 180,
-      revenue: "₹1.8L",
-      rating: "4.7",
-      status: "Pending",
-      image: "https://i.pravatar.cc/300?img=32",
-    },
+    try {
 
-    {
-      id: 4,
-      name: "Satyam Mishra",
-      email: "satyam@gmail.com",
-      specialization: "Machine Learning",
-      courses: 6,
-      students: 290,
-      revenue: "₹2.7L",
-      rating: "4.8",
-      status: "Active",
-      image: "https://i.pravatar.cc/300?img=20",
-    },
+      const response =
+        await axios.get(
 
-  ];
+          "https://tsg-qlb1.onrender.com/api/admin/teachers"
+
+        );
+
+      console.log(response.data);
+
+      setTeachers(
+        response.data.teachers
+      );
+
+    }
+
+    catch (error) {
+
+      console.log(error);
+
+    }
+
+  };
 
   return (
 
@@ -238,14 +214,14 @@ function Teachers() {
 
                     <img
                       src={teacher.image}
-                      alt={teacher.name}
+                      alt={teacher.full_name}
                       className="w-20 h-20 rounded-full border-[3px] border-cyan-400"
                     />
 
                     <div>
 
                       <h2 className="text-2xl font-black">
-                        {teacher.name}
+                        {teacher.full_name}
                       </h2>
 
                       <p className="text-slate-400 mt-2">
@@ -289,7 +265,7 @@ function Teachers() {
 
                   <div className="bg-yellow-500/20 text-yellow-300 px-5 py-3 rounded-2xl inline-block font-bold">
 
-                    ⭐ {teacher.rating}
+                    {teacher.rating}
 
                   </div>
 

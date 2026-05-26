@@ -1,4 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+import axios from "axios";
 
 import {
   FaUserGraduate,
@@ -9,6 +12,8 @@ import {
 } from "react-icons/fa";
 
 function AdminDashboard() {
+  const [teachers, setTeachers] =
+  useState([]);
 
   const navigate = useNavigate();
 
@@ -55,6 +60,39 @@ function AdminDashboard() {
     },
 
   ];
+// teacher fetch
+
+  useEffect(() => {
+
+  fetchTeachers();
+
+}, []);
+
+const fetchTeachers =
+  async () => {
+
+    try {
+
+      const response =
+        await axios.get(
+
+          "https://tsg-qlb1.onrender.com/api/admin/teachers"
+
+        );
+
+      setTeachers(
+        response.data.teachers
+      );
+
+    }
+
+    catch (error) {
+
+      console.log(error);
+
+    }
+
+  };
 
   return (
 

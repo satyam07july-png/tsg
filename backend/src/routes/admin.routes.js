@@ -26,6 +26,53 @@ router.get(
   }
 );
 
+router.get(
+  "/teachers",
+  async (req, res) => {
+
+    try {
+
+      const teachers =
+        await pool.query(
+
+          `
+          SELECT *
+          FROM users
+          WHERE role = 'teacher'
+          ORDER BY id DESC
+          `
+
+        );
+
+      res.status(200).json({
+
+        success: true,
+
+        teachers:
+          teachers.rows,
+
+      });
+
+    }
+
+    catch (error) {
+
+      console.log(error);
+
+      res.status(500).json({
+
+        success: false,
+
+        message:
+          error.message,
+
+      });
+
+    }
+
+  }
+);
+
 router.post(
   "/add-teacher",
   async (req, res) => {
