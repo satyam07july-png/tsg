@@ -442,74 +442,78 @@ function LandingPage() {
       {/* ==========================
           TOP NEWS TICKER
       ========================== */}
+    <div className="bg-yellow-400 border-y-4 border-[#7C2D12] py-3 overflow-hidden">
 
-      <marquee
-  behavior="scroll"
-  direction="left"
-  scrollamount="8"
-  className="text-black text-xl font-bold"
->
+  <marquee
+    behavior="scroll"
+    direction="left"
+    scrollamount="8"
+    className="text-black text-xl font-bold"
+  >
 
-  🤖 Artificial Intelligence Revolution
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    🤖 Artificial Intelligence Revolution
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  🚀 Machine Learning Development Program
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    🚀 Machine Learning Development Program
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  🧠 Deep Learning Research Mission
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    🧠 Deep Learning Research Mission
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  📊 Data Science & Analytics Training
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    📊 Data Science & Analytics Training
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  💻 Full Stack AI Engineering Bootcamp
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    💻 Full Stack AI Engineering Bootcamp
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  🔥 Generative AI Innovation Lab
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    🔥 Generative AI Innovation Lab
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  🛰️ AI Powered Digital India Mission
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    🛰️ AI Powered Digital India Mission
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  📈 AI For Business Transformation
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    📈 AI For Business Transformation
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  🤝 Human + AI Future Workforce Program
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    🤝 Human + AI Future Workforce Program
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  ⚡ AI Automation & Robotics Training
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    ⚡ AI Automation & Robotics Training
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  🌐 Future Tech & Innovation Ecosystem
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    🌐 Future Tech & Innovation Ecosystem
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  🧬 AI Research & Development Initiative
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    🧬 AI Research & Development Initiative
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  🏆 India's Largest AI Learning Platform
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    🏆 India's Largest AI Learning Platform
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  📚 Learn Python, AI & Data Science
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    📚 Learn Python, AI & Data Science
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  🎯 AI Career & Placement Mission
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    🎯 AI Career & Placement Mission
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  🖥️ Cloud Computing & AI Infrastructure
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    🖥️ Cloud Computing & AI Infrastructure
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  🤖 AI Chatbot & Automation Systems
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    🤖 AI Chatbot & Automation Systems
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  🔬 Computer Vision & NLP Programs
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    🔬 Computer Vision & NLP Programs
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  📱 AI App Development Training
-  &nbsp;&nbsp;&nbsp;&nbsp;
+    📱 AI App Development Training
+    &nbsp;&nbsp;&nbsp;&nbsp;
 
-  🌍 Building AI Powered Vikshit Bharat 2047 🇮🇳
+    🌍 Building AI Powered Vikshit Bharat 2047 🇮🇳
 
-</marquee>
+  </marquee>
+
+</div>
+      
 
       {/* ==========================
           WELCOME TEXT
