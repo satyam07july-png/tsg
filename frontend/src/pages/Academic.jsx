@@ -169,11 +169,18 @@ function Academic() {
           </button>
 
           {/* STATE BOARD */}
+<button
+  onClick={() => {
 
-          <button
-            onClick={() =>
-              setBoard("STATE")
-            }
+    setBoard("STATE");
+
+    setSelectedState("");
+
+    setSelectedClass("");
+
+    setStream("");
+
+  }}
             className="
             bg-gradient-to-br
             from-white
