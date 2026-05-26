@@ -31,6 +31,7 @@ import CourseDetails from "./pages/course/CourseDetails";
 import ProtectedRoute from "./components/ProtectedRoute";
 import GovernmentPartners from "./pages/GovernmentPartners";
 import Academic from "./pages/Academic";
+import Entrance from "./pages/Entrance";
 function App() {
 
   return (
@@ -188,6 +189,11 @@ function App() {
 <Route
   path="/academic"
   element={<Academic />}
+/>
+
+<Route
+  path="/entrance"
+  element={<Entrance />}
 />
 
     </Routes>
