@@ -17,11 +17,34 @@ function Academic() {
   const [board, setBoard] =
     useState("");
 
+  const [selectedState, setSelectedState] =
+    useState("");
+
   const [selectedClass, setSelectedClass] =
     useState("");
 
   const [stream, setStream] =
     useState("");
+
+  const indianStates = [
+
+    "Uttar Pradesh",
+    "Delhi",
+    "Haryana",
+    "Punjab",
+    "Rajasthan",
+    "Maharashtra",
+    "Bihar",
+    "Gujarat",
+    "West Bengal",
+    "Tamil Nadu",
+    "Karnataka",
+    "Kerala",
+    "Assam",
+    "Odisha",
+    "Madhya Pradesh",
+
+  ];
 
   return (
 
@@ -102,9 +125,13 @@ function Academic() {
           {/* CBSE */}
 
           <button
-            onClick={() =>
-              setBoard("CBSE")
-            }
+            onClick={() => {
+
+              setBoard("CBSE");
+
+              setSelectedState("");
+
+            }}
             className="
             bg-gradient-to-br
             from-white
@@ -115,7 +142,6 @@ function Academic() {
             rounded-[40px]
             py-20
             hover:scale-105
-            hover:bg-[#7C2D12]
             transition-all
             "
           >
@@ -142,7 +168,7 @@ function Academic() {
 
           </button>
 
-          {/* STATE */}
+          {/* STATE BOARD */}
 
           <button
             onClick={() =>
@@ -188,9 +214,77 @@ function Academic() {
 
       </div>
 
+      {/* STATE SELECTION */}
+
+      {board === "STATE" && (
+
+        <div className="max-w-7xl mx-auto mt-24">
+
+          <h2
+            className="
+            text-5xl
+            font-black
+            text-center
+            mb-14
+            text-[#7C2D12]
+            "
+          >
+
+            Choose Your State
+
+          </h2>
+
+          <div
+            className="
+            grid
+            grid-cols-2
+            md:grid-cols-3
+            lg:grid-cols-5
+            gap-8
+            "
+          >
+
+            {indianStates.map((state) => (
+
+              <button
+                key={state}
+                onClick={() =>
+                  setSelectedState(state)
+                }
+                className="
+                bg-white
+                rounded-3xl
+                shadow-xl
+                py-8
+                px-4
+                text-xl
+                font-bold
+                hover:bg-[#7C2D12]
+                hover:text-white
+                hover:scale-105
+                transition-all
+                border
+                border-orange-100
+                "
+              >
+
+                {state}
+
+              </button>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      )}
+
       {/* CLASS SECTION */}
 
-      {board && (
+      {(board === "CBSE" ||
+        (board === "STATE" &&
+          selectedState)) && (
 
         <div className="max-w-7xl mx-auto mt-28">
 
