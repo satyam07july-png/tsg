@@ -542,6 +542,178 @@ function LandingPage() {
       </div>
 
       {/* ==========================
+    INDIA EDUCATION SECTIONS
+========================== */}
+
+<section className="max-w-7xl mx-auto px-6 py-20">
+
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+    {/* ACADEMIC */}
+
+    <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+
+      <div className="bg-[#7C2D12] text-white py-5 text-center text-4xl font-black">
+
+        Academic
+
+      </div>
+
+      <div className="p-8 space-y-5">
+
+        <div className="bg-slate-100 p-5 rounded-2xl font-semibold">
+
+          CBSE Digital Learning Program
+
+        </div>
+
+        <div className="bg-slate-100 p-5 rounded-2xl font-semibold">
+
+          Smart Classroom Education System
+
+        </div>
+
+        <div className="bg-slate-100 p-5 rounded-2xl font-semibold">
+
+          NEP 2020 Based Learning
+
+        </div>
+
+        <div className="bg-slate-100 p-5 rounded-2xl font-semibold">
+
+          AI Integrated School Curriculum
+
+        </div>
+
+      </div>
+
+    </div>
+
+    {/* ENTRANCE */}
+
+    <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+
+      <div className="bg-[#7C2D12] text-white py-5 text-center text-4xl font-black">
+
+        Entrance
+
+      </div>
+
+      <div className="p-8 space-y-5">
+
+        <div className="bg-slate-100 p-5 rounded-2xl font-semibold">
+
+          JEE Advanced Preparation
+
+        </div>
+
+        <div className="bg-slate-100 p-5 rounded-2xl font-semibold">
+
+          NEET Medical Entrance Coaching
+
+        </div>
+
+        <div className="bg-slate-100 p-5 rounded-2xl font-semibold">
+
+          CUET Preparation Program
+
+        </div>
+
+        <div className="bg-slate-100 p-5 rounded-2xl font-semibold">
+
+          NDA & Defence Entrance Mission
+
+        </div>
+
+      </div>
+
+    </div>
+
+    {/* COMPETITION */}
+
+    <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+
+      <div className="bg-[#7C2D12] text-white py-5 text-center text-4xl font-black">
+
+        Competition
+
+      </div>
+
+      <div className="p-8 space-y-5">
+
+        <div className="bg-slate-100 p-5 rounded-2xl font-semibold">
+
+          SSC CGL Complete Program
+
+        </div>
+
+        <div className="bg-slate-100 p-5 rounded-2xl font-semibold">
+
+          Railway Recruitment Training
+
+        </div>
+
+        <div className="bg-slate-100 p-5 rounded-2xl font-semibold">
+
+          Banking Exam Masterclass
+
+        </div>
+
+        <div className="bg-slate-100 p-5 rounded-2xl font-semibold">
+
+          UPSC Civil Services Preparation
+
+        </div>
+
+      </div>
+
+    </div>
+
+    {/* SKILLING */}
+
+    <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
+
+      <div className="bg-[#7C2D12] text-white py-5 text-center text-4xl font-black">
+
+        Skilling
+
+      </div>
+
+      <div className="p-8 space-y-5">
+
+        <div className="bg-slate-100 p-5 rounded-2xl font-semibold">
+
+          Artificial Intelligence & ML
+
+        </div>
+
+        <div className="bg-slate-100 p-5 rounded-2xl font-semibold">
+
+          Full Stack Development Program
+
+        </div>
+
+        <div className="bg-slate-100 p-5 rounded-2xl font-semibold">
+
+          Data Science & Analytics
+
+        </div>
+
+        <div className="bg-slate-100 p-5 rounded-2xl font-semibold">
+
+          Digital Marketing & Branding
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+      {/* ==========================
           POPULAR COURSES
       ========================== */}
 
