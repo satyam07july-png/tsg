@@ -60,16 +60,15 @@ function Entrance() {
         "SSB Interview Training",
       ],
     },
-
-    {
-      title: "UPSC",
-      courses: [
-        "UPSC Foundation",
-        "IAS Preparation",
-        "Current Affairs",
-        "Essay Writing",
-      ],
-    },
+{
+  title: "CS",
+  courses: [
+    "Class 6 to CS",
+    "Class 8 to CS",
+    "CS Foundation",
+    "Company Secretary Executive",
+  ],
+},
 
   ];
 
