@@ -19,6 +19,7 @@ import {
 } from "react-icons/fa";
 
 function LandingPage() {
+  
 
   // ==========================
   // STATES
@@ -27,6 +28,182 @@ function LandingPage() {
   const [courses, setCourses] =
     useState([]);
 
+
+ const ministers = [
+
+  {
+    name: "Dharmendra Pradhan",
+    state: "India",
+    message:
+      "Education is the foundation of a developed India and AI powered learning will shape the future generation.",
+  },
+
+  {
+    name: "Atishi Marlena",
+    state: "Delhi",
+    message:
+      "Modern digital classrooms and innovation based learning are transforming India’s education ecosystem.",
+  },
+
+  {
+    name: "Sunil Kumar",
+    state: "Bihar",
+    message:
+      "Skill development and quality education are empowering youth towards a stronger nation.",
+  },
+
+  {
+    name: "Madhu Bangarappa",
+    state: "Karnataka",
+    message:
+      "Technology integrated education will create future-ready students for global leadership.",
+  },
+
+  {
+    name: "Ranoj Pegu",
+    state: "Assam",
+    message:
+      "AI, innovation and smart education systems are essential for Vikshit Bharat 2047.",
+  },
+
+  {
+    name: "Harjot Singh Bains",
+    state: "Punjab",
+    message:
+      "Digital transformation in education will create new opportunities for every student in India.",
+  },
+
+  {
+    name: "Deepak Kesarkar",
+    state: "Maharashtra",
+    message:
+      "Future ready education and AI learning ecosystems are shaping India’s innovation economy.",
+  },
+
+  {
+    name: "Brij Kishore Sharma",
+    state: "Rajasthan",
+    message:
+      "Modern classrooms and technology driven education are essential for youth empowerment.",
+  },
+
+  {
+    name: "Kanwar Pal",
+    state: "Haryana",
+    message:
+      "Education reforms and skill development are accelerating India’s journey towards Vikshit Bharat.",
+  },
+
+  {
+    name: "Dhan Singh Rawat",
+    state: "Uttarakhand",
+    message:
+      "AI based learning systems will create smarter and globally competitive students.",
+  },
+
+  {
+    name: "Sabita Indra Reddy",
+    state: "Telangana",
+    message:
+      "Innovation and digital education will transform India into a knowledge superpower.",
+  },
+
+  {
+    name: "K. Ponmudy",
+    state: "Tamil Nadu",
+    message:
+      "Higher education and AI innovation are the pillars of India’s future economy.",
+  },
+
+  {
+    name: "Jagdish Devda",
+    state: "Madhya Pradesh",
+    message:
+      "Skill based education and technology training are empowering the next generation.",
+  },
+
+  {
+    name: "Govind Singh Dotasra",
+    state: "Rajasthan",
+    message:
+      "Educational excellence and digital literacy are building a stronger India.",
+  },
+
+  {
+    name: "Brajesh Pathak",
+    state: "Uttar Pradesh",
+    message:
+      "Modern education infrastructure and AI integration will empower millions of students.",
+  },
+
+  {
+    name: "Partha Chatterjee",
+    state: "West Bengal",
+    message:
+      "Innovation driven education ecosystems are shaping the leaders of tomorrow.",
+  },
+
+  {
+    name: "P. Rajeeve",
+    state: "Kerala",
+    message:
+      "Smart education and digital transformation are creating a future ready India.",
+  },
+
+  {
+    name: "Ramesh Pokhriyal",
+    state: "India",
+    message:
+      "Technology enabled learning will revolutionize education across the nation.",
+  },
+
+  {
+    name: "Ashish Sood",
+    state: "Goa",
+    message:
+      "Education, innovation and AI development are the future pillars of national growth.",
+  },
+
+  {
+    name: "Anbil Mahesh Poyyamozhi",
+    state: "Tamil Nadu",
+    message:
+      "AI, robotics and future technologies are redefining India’s educational vision.",
+  },
+
+];
+const [currentSlide, setCurrentSlide] =
+  useState(0);
+
+const nextSlide = () => {
+
+  setCurrentSlide(
+
+    (prev) =>
+
+      (prev + 1) %
+
+      ministers.length
+
+  );
+
+};
+
+const prevSlide = () => {
+
+  setCurrentSlide(
+
+    (prev) =>
+
+      prev === 0
+
+        ? ministers.length - 1
+
+        : prev - 1
+
+  );
+
+};
   // ==========================
   // FETCH COURSES
   // ==========================
@@ -889,7 +1066,220 @@ function LandingPage() {
 
       <Features />
 
-      <Testimonials />
+    {/* ==========================
+    EDUCATION LEADERSHIP OF INDIA
+========================== */}
+
+<section className="max-w-7xl mx-auto px-6 py-24">
+
+  <div className="text-center mb-16">
+
+    <h1
+      className="
+      text-5xl
+      md:text-7xl
+      font-black
+      text-[#7C2D12]
+      "
+    >
+
+      Education Leadership Of India
+
+    </h1>
+
+    <p
+      className="
+      text-gray-600
+      text-2xl
+      mt-6
+      "
+    >
+
+      Visionary education ministers
+      transforming India's future 🇮🇳
+
+    </p>
+
+  </div>
+
+  <div className="relative">
+
+    {/* LEFT BUTTON */}
+
+    <button
+      onClick={prevSlide}
+      className="
+      absolute
+      left-[-20px]
+      top-1/2
+      -translate-y-1/2
+      z-10
+      bg-[#7C2D12]
+      text-white
+      w-14
+      h-14
+      rounded-full
+      flex
+      items-center
+      justify-center
+      shadow-xl
+      hover:scale-110
+      transition
+      "
+    >
+
+      ◀
+
+    </button>
+
+    {/* CARDS */}
+
+    <div
+      className="
+      grid
+      grid-cols-1
+      md:grid-cols-3
+      gap-8
+      "
+    >
+
+      {[
+        ministers[currentSlide],
+
+        ministers[
+          (currentSlide + 1) %
+          ministers.length
+        ],
+
+        ministers[
+          (currentSlide + 2) %
+          ministers.length
+        ],
+
+      ].map((minister, index) => (
+
+        <div
+          key={index}
+          className="
+          bg-white
+          rounded-3xl
+          shadow-2xl
+          p-8
+          border
+          border-orange-200
+          hover:-translate-y-2
+          transition-all
+          "
+        >
+
+          {/* FLAG */}
+
+          <div
+            className="
+            w-24
+            h-24
+            rounded-full
+            bg-gradient-to-br
+            from-[#7C2D12]
+            to-orange-400
+            flex
+            items-center
+            justify-center
+            text-4xl
+            text-white
+            font-black
+            mx-auto
+            "
+          >
+
+            🇮🇳
+
+          </div>
+
+          {/* NAME */}
+
+          <h2
+            className="
+            text-3xl
+            font-black
+            text-center
+            mt-6
+            "
+          >
+
+            {minister.name}
+
+          </h2>
+
+          {/* STATE */}
+
+          <p
+            className="
+            text-center
+            text-orange-600
+            font-bold
+            mt-2
+            text-xl
+            "
+          >
+
+            {minister.state}
+
+          </p>
+
+          {/* MESSAGE */}
+
+          <p
+            className="
+            text-gray-600
+            mt-8
+            leading-9
+            text-lg
+            text-center
+            "
+          >
+
+            "{minister.message}"
+
+          </p>
+
+        </div>
+
+      ))}
+
+    </div>
+
+    {/* RIGHT BUTTON */}
+
+    <button
+      onClick={nextSlide}
+      className="
+      absolute
+      right-[-20px]
+      top-1/2
+      -translate-y-1/2
+      z-10
+      bg-[#7C2D12]
+      text-white
+      w-14
+      h-14
+      rounded-full
+      flex
+      items-center
+      justify-center
+      shadow-xl
+      hover:scale-110
+      transition
+      "
+    >
+
+      ▶
+
+    </button>
+
+  </div>
+
+</section>
 {/* ==========================
     PREMIUM CONTACT SECTION
 ========================== */}
