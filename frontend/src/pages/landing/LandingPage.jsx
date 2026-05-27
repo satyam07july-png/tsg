@@ -1085,6 +1085,173 @@ const prevSlide = () => {
 
       <Features />
 
+      {/* ==========================
+    EDUCATION LEADERSHIP OF INDIA
+========================== */}
+
+<section className="max-w-7xl mx-auto px-6 py-20">
+
+  <div className="text-center mb-16">
+
+    <h1
+      className="
+      text-5xl
+      md:text-6xl
+      font-black
+      text-[#7C2D12]
+      "
+    >
+
+      Education Leadership Of India
+
+    </h1>
+
+    <p
+      className="
+      text-gray-600
+      text-xl
+      mt-6
+      "
+    >
+
+      Visionary leaders shaping
+      India's future education ecosystem
+
+    </p>
+
+  </div>
+
+  {/* SLIDER */}
+
+  <div
+    className="
+    relative
+    bg-white
+    rounded-[40px]
+    shadow-2xl
+    p-14
+    border
+    border-orange-100
+    "
+  >
+
+    {/* LEFT BUTTON */}
+
+    <button
+      onClick={prevSlide}
+      className="
+      absolute
+      left-5
+      top-1/2
+      -translate-y-1/2
+      bg-[#7C2D12]
+      text-white
+      w-14
+      h-14
+      rounded-full
+      text-2xl
+      font-black
+      hover:scale-110
+      transition-all
+      "
+    >
+
+      ←
+
+    </button>
+
+    {/* CONTENT */}
+
+    <div className="text-center px-10">
+
+      <div className="text-7xl mb-8">
+
+        🇮🇳
+
+      </div>
+
+      <h1
+        className="
+        text-5xl
+        font-black
+        text-[#7C2D12]
+        "
+      >
+
+        {
+          ministers[currentSlide]
+            .name
+        }
+
+      </h1>
+
+      <h2
+        className="
+        text-2xl
+        text-orange-500
+        font-bold
+        mt-4
+        "
+      >
+
+        {
+          ministers[currentSlide]
+            .state
+        }
+
+      </h2>
+
+      <p
+        className="
+        text-2xl
+        text-gray-700
+        leading-10
+        mt-10
+        max-w-4xl
+        mx-auto
+        "
+      >
+
+        "
+        {
+          ministers[currentSlide]
+            .message
+        }
+        "
+
+      </p>
+
+    </div>
+
+    {/* RIGHT BUTTON */}
+
+    <button
+      onClick={nextSlide}
+      className="
+      absolute
+      right-5
+      top-1/2
+      -translate-y-1/2
+      bg-[#7C2D12]
+      text-white
+      w-14
+      h-14
+      rounded-full
+      text-2xl
+      font-black
+      hover:scale-110
+      transition-all
+      "
+    >
+
+      →
+
+    </button>
+
+  </div>
+
+</section>
+
     
 {/* ==========================
     PREMIUM CONTACT SECTION
