@@ -9,70 +9,43 @@ import {
   FaMoneyBillWave,
   FaChartLine,
 } from "react-icons/fa";
+import axios from "axios";
+import {
+ useEffect,
+ useState
+} from "react";
 
 function Students() {
 
   const navigate = useNavigate();
 
-  const students = [
+ const [students,setStudents] =
+useState([]);
 
-    {
-      id: 1,
-      name: "Aman Sharma",
-      email: "aman@gmail.com",
-      course: "Full Stack Development",
-      teacher: "Rahul Verma",
-      progress: "82%",
-      assignments: 18,
-      performance: "89%",
-      payment: "₹24,000",
-      status: "Active",
-      image: "https://i.pravatar.cc/150?img=11",
-    },
+useEffect(() => {
+  getStudents();
+}, []);
 
-    {
-      id: 2,
-      name: "Priya Verma",
-      email: "priya@gmail.com",
-      course: "Data Science",
-      teacher: "Amit Sharma",
-      progress: "94%",
-      assignments: 26,
-      performance: "96%",
-      payment: "₹42,000",
-      status: "Completed",
-      image: "https://i.pravatar.cc/150?img=32",
-    },
+const getStudents = async () => {
+  try {
 
-    {
-      id: 3,
-      name: "Rohit Kumar",
-      email: "rohit@gmail.com",
-      course: "Machine Learning",
-      teacher: "Satyam Mishra",
-      progress: "61%",
-      assignments: 14,
-      performance: "74%",
-      payment: "₹18,000",
-      status: "Pending",
-      image: "https://i.pravatar.cc/150?img=15",
-    },
+    const res = await axios.get(
+      "https://tsg-qlb1.onrender.com/api/students"
+    );
 
-    {
-      id: 4,
-      name: "Neha Singh",
-      email: "neha@gmail.com",
-      course: "UI/UX Design",
-      teacher: "Anjali Verma",
-      progress: "78%",
-      assignments: 22,
-      performance: "88%",
-      payment: "₹28,000",
-      status: "Active",
-      image: "https://i.pravatar.cc/150?img=45",
-    },
+    console.log(res.data);
 
-  ];
+    setStudents(res.data);
+
+  } catch (error) {
+
+    console.log(
+      "Student Fetch Error:",
+      error
+    );
+
+  }
+};
 
   return (
 
@@ -93,10 +66,13 @@ function Students() {
 
         </div>
 
-        <button className="bg-cyan-500 hover:bg-cyan-400 transition px-8 py-5 rounded-2xl font-bold text-lg shadow-2xl">
-
-          + Add New Student
-
+        <button
+         onClick={() =>
+         navigate("/admin/add-student")
+        }
+         className="bg-cyan-500 hover:bg-cyan-400 transition px-8 py-5 rounded-2xl font-bold text-lg shadow-2xl"
+        >
+         + Add New Student
         </button>
 
       </div>

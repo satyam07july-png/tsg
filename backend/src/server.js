@@ -27,6 +27,9 @@ const lectureRoutes =
 const adminRoutes =
   require("./routes/admin.routes");
 
+const studentRoutes =
+require("./routes/studentRoutes");
+
 // ==========================
 // MIDDLEWARE
 // ==========================
@@ -113,6 +116,11 @@ app.use(
 app.use(
   "/api/admin",
   adminRoutes
+);
+
+app.use(
+ "/api/students",
+ studentRoutes
 );
 
 // ==========================
