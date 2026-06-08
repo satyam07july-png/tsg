@@ -35,6 +35,7 @@ import Entrance from "./pages/Entrance";
 import Competition from "./pages/Competition";
 import Skilling from "./pages/Skilling";
 import Placement from "./pages/Placement";
+import AddStudent from "./pages/admin/AddStudent";
 function App() {
 
   return (
@@ -212,6 +213,11 @@ function App() {
 <Route
   path="/placement"
   element={<Placement />}
+/>
+
+<Route
+ path="/admin/add-student"
+ element={<AddStudent />}
 />
 
     </Routes>
