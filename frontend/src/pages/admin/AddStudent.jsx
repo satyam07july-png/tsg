@@ -1,9 +1,16 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {
+  useState,
+  useEffect
+} from "react";
 
 function AddStudent() {
 
+ const [teachers,setTeachers] =
+ useState([]);
+    
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -14,11 +21,33 @@ function AddStudent() {
     email: "",
     phone: "",
     course: "",
-    teacher: "",
+    teacher_id: "",
     image: "",
     status: "Active",
 
   });
+
+  useEffect(() => {
+  fetchTeachers();
+}, []);
+
+const fetchTeachers = async () => {
+
+  try {
+
+    const res = await axios.get(
+      "https://tsg-qlb1.onrender.com/api/teachers"
+    );
+
+    setTeachers(res.data);
+
+  } catch(error){
+
+    console.log(error);
+
+  }
+
+};
 
   const handleChange = (e) => {
 
@@ -130,14 +159,30 @@ function AddStudent() {
             className="p-5 rounded-xl bg-slate-800"
           />
 
-          <input
-            type="text"
-            name="teacher"
-            placeholder="Teacher"
-            value={formData.teacher}
-            onChange={handleChange}
-            className="p-5 rounded-xl bg-slate-800"
-          />
+         <select
+  name="teacher_id"
+  value={formData.teacher_id}
+  onChange={handleChange}
+  className="p-5 rounded-xl bg-slate-800"
+  required
+>
+
+  <option value="">
+    Select Teacher
+  </option>
+
+  {teachers.map((teacher) => (
+
+    <option
+      key={teacher.id}
+      value={teacher.id}
+    >
+      {teacher.name}
+    </option>
+
+  ))}
+
+</select>
 
           <input
             type="text"
