@@ -420,25 +420,33 @@ const prevSlide = () => {
 
     <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-6">
 
-      <Link
-        to="/"
-        className="
-        text-white
-        py-3
-        flex
-        items-center
-        justify-center
-        border
-        border-orange-400/20
-        hover:bg-[#7C2D12]
-        transition
-        text-base
-        md:text-lg
-        font-bold
-        "
-      >
-        HOME
-      </Link>
+     <div
+  onClick={() => {
+    document
+      .getElementById("hero")
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  }}
+  className="
+  text-white
+  py-3
+  flex
+  items-center
+  justify-center
+  border
+  border-orange-400/20
+  hover:bg-[#7C2D12]
+  transition
+  text-base
+  md:text-lg
+  font-bold
+  cursor-pointer
+  "
+>
+  HOME
+</div>
 
       <Link
         to="/login"
