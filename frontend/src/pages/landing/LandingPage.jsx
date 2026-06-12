@@ -1039,7 +1039,287 @@ INDIA EDUCATION SECTIONS
 
 </Link>
 
+{/* ==========================
+    INDIA EDUCATION SECTIONS
+========================== */}
+
+<section className="max-w-[1800px] mx-auto px-4 py-10">
+
+  <div className="text-center mb-10">
+
+    <h2 className="text-3xl md:text-4xl font-bold text-[#0B1220]">
+      National Education & Skill Development Programs
+    </h2>
+
+    <p className="mt-3 text-slate-600">
+      Academic Excellence • Competitive Examinations • Future Skills • Career Development
+    </p>
+
   </div>
+
+  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+
+    {/* ACADEMIC */}
+    <Link
+      to="/academic"
+      className="
+      bg-white
+      border
+      border-slate-300
+      rounded-md
+      overflow-hidden
+      shadow-sm
+      hover:border-[#7C2D12]
+      transition
+      block
+      "
+    >
+      <div className="bg-[#0B1220] text-white text-center py-4 border-b-4 border-[#D4A017]">
+
+        <p className="text-xs tracking-widest text-orange-300">
+          NATIONAL PROGRAM
+        </p>
+
+        <h3 className="text-xl font-bold mt-1">
+          Academic
+        </h3>
+
+      </div>
+
+      <div>
+        {[
+          "CBSE Digital Learning Program",
+          "Smart Classroom Education System",
+          "NEP 2020 Based Learning",
+          "AI Integrated School Curriculum",
+          "National Curriculum Framework",
+          "Higher Education Support",
+          "Teacher Training Mission",
+          "Digital Education Platform",
+          "Student Scholarship Program",
+          "Research & Innovation",
+          "Academic Excellence Initiative",
+          "Virtual Learning Resources",
+          "School Transformation Program",
+          "Educational Technology",
+          "Career Guidance Program",
+        ].map((item, index) => (
+          <div
+            key={index}
+            className="
+            px-3
+            py-2
+            border-b
+            border-slate-200
+            hover:bg-slate-50
+            text-[#1E3A8A]
+            text-sm
+            font-medium
+            "
+          >
+            {item}
+          </div>
+        ))}
+      </div>
+    </Link>
+
+    {/* ENTRANCE */}
+    <Link
+      to="/entrance"
+      className="
+      bg-white
+      border
+      border-slate-300
+      rounded-md
+      overflow-hidden
+      shadow-sm
+      hover:border-[#7C2D12]
+      transition
+      block
+      "
+    >
+      <div className="bg-[#0B1220] text-white text-center py-4 border-b-4 border-[#D4A017]">
+
+        <p className="text-xs tracking-widest text-orange-300">
+          NATIONAL PROGRAM
+        </p>
+
+        <h3 className="text-xl font-bold mt-1">
+          Entrance
+        </h3>
+
+      </div>
+
+      <div>
+        {[
+          "JEE Advanced Preparation",
+          "NEET Medical Entrance Coaching",
+          "CUET Preparation Program",
+          "NDA & Defence Entrance Mission",
+          "Engineering Entrance Tests",
+          "Medical Entrance Support",
+          "University Admission Program",
+          "Law Entrance Preparation",
+          "Management Entrance Training",
+          "Mock Test Series",
+          "Previous Year Papers",
+          "National Entrance Guidance",
+          "Competitive Practice Tests",
+          "Exam Readiness Program",
+          "Admission Counselling",
+        ].map((item, index) => (
+          <div
+            key={index}
+            className="
+            px-3
+            py-2
+            border-b
+            border-slate-200
+            hover:bg-slate-50
+            text-[#1E3A8A]
+            text-sm
+            font-medium
+            "
+          >
+            {item}
+          </div>
+        ))}
+      </div>
+    </Link>
+
+    {/* COMPETITION */}
+    <Link
+      to="/competition"
+      className="
+      bg-white
+      border
+      border-slate-300
+      rounded-md
+      overflow-hidden
+      shadow-sm
+      hover:border-[#7C2D12]
+      transition
+      block
+      "
+    >
+      <div className="bg-[#0B1220] text-white text-center py-4 border-b-4 border-[#D4A017]">
+
+        <p className="text-xs tracking-widest text-orange-300">
+          NATIONAL PROGRAM
+        </p>
+
+        <h3 className="text-xl font-bold mt-1">
+          Competition
+        </h3>
+
+      </div>
+
+      <div>
+        {[
+          "SSC CGL Complete Program",
+          "Railway Recruitment Training",
+          "Banking Exam Masterclass",
+          "UPSC Civil Services Preparation",
+          "State PSC Preparation",
+          "Teaching Eligibility Tests",
+          "Police Recruitment Program",
+          "Insurance Examination Training",
+          "Current Affairs Program",
+          "General Studies Mastery",
+          "Reasoning Development",
+          "Quantitative Aptitude",
+          "Interview Preparation",
+          "Government Job Mission",
+          "National Competitive Exams",
+        ].map((item, index) => (
+          <div
+            key={index}
+            className="
+            px-3
+            py-2
+            border-b
+            border-slate-200
+            hover:bg-slate-50
+            text-[#1E3A8A]
+            text-sm
+            font-medium
+            "
+          >
+            {item}
+          </div>
+        ))}
+      </div>
+    </Link>
+
+    {/* SKILLING */}
+    <Link
+      to="/skilling"
+      className="
+      bg-white
+      border
+      border-slate-300
+      rounded-md
+      overflow-hidden
+      shadow-sm
+      hover:border-[#7C2D12]
+      transition
+      block
+      "
+    >
+      <div className="bg-[#0B1220] text-white text-center py-4 border-b-4 border-[#D4A017]">
+
+        <p className="text-xs tracking-widest text-orange-300">
+          NATIONAL PROGRAM
+        </p>
+
+        <h3 className="text-xl font-bold mt-1">
+          Skilling
+        </h3>
+
+      </div>
+
+      <div>
+        {[
+          "Artificial Intelligence & ML",
+          "Full Stack Development Program",
+          "Data Science & Analytics",
+          "Digital Marketing & Branding",
+          "Cyber Security Training",
+          "Cloud Computing",
+          "Business Analytics",
+          "UI UX Design",
+          "Graphic Designing",
+          "Video Editing",
+          "Leadership Development",
+          "Communication Skills",
+          "Startup Development",
+          "Placement Readiness",
+          "Future Technology Skills",
+        ].map((item, index) => (
+          <div
+            key={index}
+            className="
+            px-3
+            py-2
+            border-b
+            border-slate-200
+            hover:bg-slate-50
+            text-[#1E3A8A]
+            text-sm
+            font-medium
+            "
+          >
+            {item}
+          </div>
+        ))}
+      </div>
+    </Link>
+
+  </div>
+
+</section>
+
+ </div>
 
 </section>
       {/* ==========================
