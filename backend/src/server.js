@@ -33,6 +33,11 @@ require("./routes/studentRoutes");
 const teacherRoutes =
 require("./routes/teacherRoutes");
 
+const adminDashboardRoutes =
+require(
+ "./routes/adminDashboardRoutes"
+);
+
 // ==========================
 // MIDDLEWARE
 // ==========================
@@ -129,6 +134,11 @@ app.use(
 app.use(
   "/api/teachers",
   teacherRoutes
+);
+
+app.use(
+ "/api/admin",
+ adminDashboardRoutes
 );
 
 // ==========================

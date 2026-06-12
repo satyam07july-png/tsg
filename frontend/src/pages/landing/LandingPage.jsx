@@ -270,110 +270,65 @@ const prevSlide = () => {
           VIKSHIT BHARAT HEADER
       ========================== */}
 
-      <div className="bg-gradient-to-br from-[#0B1220] via-[#111827] to-[#7C2D12] text-white">
+      <div className="bg-gradient-to-r from-[#0B1220] via-[#111827] to-[#7C2D12] text-white">
 
-        <div className="max-w-7xl mx-auto px-6 py-16 flex flex-col items-center">
+  <div className="max-w-7xl mx-auto px-4 py4">
 
-          {/* LOGO */}
+    <div className="flex flex-col items-center">
 
-          <div
-            className="
-            w-[170px]
-            h-[170px]
-            rounded-full
-            border-[6px]
-            border-orange-300
-            flex
-            items-center
-            justify-center
-            text-5xl
-            font-black
-            bg-black
-            shadow-[0_0_50px_rgba(255,180,0,0.4)]
-            "
-          >
-
-            TGS
-
-          </div>
-
-          {/* TITLE */}
-
-          <h1
-            className="
-            text-5xl
-            md:text-8xl
-            font-black
-            mt-10
-            text-center
-            text-orange-200
-            tracking-[4px]
-            leading-tight
-            drop-shadow-[0_0_35px_rgba(255,180,0,0.5)]
-            "
-          >
-
-            A MISSION FOR
-            <br />
-            VIKSHIT BHARAT 2047
-
-          </h1>
-
-          {/* INDIA FIRST */}
-
-          <h2
-            className="
-            text-2xl
-            md:text-4xl
-            font-bold
-            mt-8
-            tracking-[6px]
-            text-amber-300
-            "
-          >
-
-             🇮🇳
-
-          </h2>
-
-          {/* FOUNDATION */}
-
-          <div className="mt-16 text-center">
-
-            <h3
-              className="
-              text-2xl
-              md:text-4xl
-              font-bold
-              text-orange-300
-              tracking-[3px]
-              "
-            >
-
-              ASSOCIATED BY
-
-            </h3>
-
-            <p
-              className="
-              text-3xl
-              md:text-5xl
-              font-black
-              mt-6
-              text-white
-              tracking-[4px]
-              "
-            >
-
-              TIMELESS FOUNDATION
-
-            </p>
-
-          </div>
-
-        </div>
-
+      <div
+        className="
+        w-[90px]
+        h-[90px]
+        rounded-full
+        border-4
+        border-orange-300
+        flex
+        items-center
+        justify-center
+        text-3xl
+        font-black
+        bg-black
+        shadow-lg
+        "
+      >
+        TGS
       </div>
+
+      <h1
+        className="
+        text-3xl
+        md:text-5xl
+        font-black
+        text-center
+        text-orange-100
+        mt-4
+        leading-tight
+        "
+      >
+        A MISSION FOR
+        <br />
+        VIKSHIT BHARAT 2047
+      </h1>
+
+      <p
+        className="
+        text-base
+        md:text-xl
+        mt-3
+        text-orange-300
+        font-bold
+        text-center
+        "
+      >
+        ASSOCIATED BY TIMELESS FOUNDATION
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
 
       {/* ==========================
           NAVBAR
@@ -389,7 +344,7 @@ const prevSlide = () => {
             to="/"
             className="
             text-white
-            py-6
+            py4
             text-center
             border
             border-orange-400/20
@@ -409,7 +364,7 @@ const prevSlide = () => {
             to="/login"
             className="
             text-white
-            py-6
+            py4
             text-center
             border
             border-orange-400/20
@@ -429,7 +384,7 @@ const prevSlide = () => {
             to="/login"
             className="
             text-white
-            py-6
+            py4
             text-center
             border
             border-orange-400/20
@@ -449,7 +404,7 @@ const prevSlide = () => {
             to="/login"
             className="
             text-white
-            py-6
+            py4
             text-center
             border
             border-orange-400/20
@@ -469,7 +424,7 @@ const prevSlide = () => {
   to="/government-partners"
   className="
   text-white
-  py-6
+  py4
   text-center
   border
   border-orange-400/20
@@ -496,7 +451,7 @@ const prevSlide = () => {
   }}
   className="
   text-white
-  py-6
+  py4
   text-center
   border
   border-orange-400/20
@@ -525,7 +480,7 @@ const prevSlide = () => {
       to="/academic"
       className="
       text-orange-200
-      py-5
+      py3
       text-center
       border
       border-orange-400/20
@@ -549,7 +504,7 @@ const prevSlide = () => {
       to="/entrance"
       className="
       text-orange-200
-      py-5
+      py3
       text-center
       border
       border-orange-400/20
@@ -573,7 +528,7 @@ const prevSlide = () => {
       to="/competition"
       className="
       text-orange-200
-      py-5
+      py3
       text-center
       border
       border-orange-400/20
@@ -597,7 +552,7 @@ const prevSlide = () => {
       to="/skilling"
       className="
       text-orange-200
-      py-5
+      py3
       text-center
       border
       border-orange-400/20
@@ -621,7 +576,7 @@ const prevSlide = () => {
       to="/placement"
       className="
       text-orange-200
-      py-5
+      py3
       text-center
       border
       border-orange-400/20
@@ -653,7 +608,7 @@ const prevSlide = () => {
     behavior="scroll"
     direction="left"
     scrollamount="8"
-    className="text-black text-xl font-bold"
+    className="text-black text-sm md:text-base font-bold"
   >
 
     🤖 Artificial Intelligence Revolution
@@ -724,7 +679,7 @@ const prevSlide = () => {
           WELCOME TEXT
       ========================== */}
 
-      <div className="max-w-7xl mx-auto text-center py-20 px-6">
+      <div className="max-w-7xl mx-auto text-center py-10 px-6">
 
         <h1 className="text-5xl md:text-7xl font-black text-[#7C2D12]">
 
@@ -732,7 +687,7 @@ const prevSlide = () => {
 
         </h1>
 
-        <p className="text-2xl text-gray-700 mt-10 leading-10 max-w-5xl mx-auto">
+        <p className="text-lg text-gray-700 mt-10 leading-8 max-w-5xl mx-auto">
 
           A Mission For Vikshit Bharat 2047
           is dedicated towards empowering
@@ -750,7 +705,7 @@ const prevSlide = () => {
     INDIA EDUCATION SECTIONS
 ========================== */}
 
-<section className="max-w-7xl mx-auto px-6 py-20">
+<section className="max-w-7xl mx-auto px-6 py-10">
 
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
@@ -770,7 +725,7 @@ const prevSlide = () => {
       "
     >
 
-      <div className="bg-[#7C2D12] text-white py-5 text-center text-4xl font-black">
+      <div className="bg-[#7C2D12] text-white py3 text-center text-4xl font-black">
 
         Academic
 
@@ -822,7 +777,7 @@ const prevSlide = () => {
       "
     >
 
-      <div className="bg-[#7C2D12] text-white py-5 text-center text-4xl font-black">
+      <div className="bg-[#7C2D12] text-white py3 text-center text-4xl font-black">
 
         Entrance
 
@@ -874,7 +829,7 @@ const prevSlide = () => {
       "
     >
 
-      <div className="bg-[#7C2D12] text-white py-5 text-center text-4xl font-black">
+      <div className="bg-[#7C2D12] text-white py3 text-center text-4xl font-black">
 
         Competition
 
@@ -926,7 +881,7 @@ const prevSlide = () => {
       "
     >
 
-      <div className="bg-[#7C2D12] text-white py-5 text-center text-4xl font-black">
+      <div className="bg-[#7C2D12] text-white py3 text-center text-4xl font-black">
 
         Skilling
 
@@ -969,7 +924,7 @@ const prevSlide = () => {
           POPULAR COURSES
       ========================== */}
 
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-6 py-10">
 
         <div className="text-center mb-16">
 
@@ -1079,7 +1034,7 @@ const prevSlide = () => {
 
             ) : (
 
-              <div className="col-span-3 text-center text-2xl text-gray-400">
+              <div className="col-span-3 text-center text-lg text-gray-400">
 
                 No Courses Found
 
@@ -1098,7 +1053,7 @@ const prevSlide = () => {
     EDUCATION LEADERSHIP OF INDIA
 ========================== */}
 
-<section className="max-w-7xl mx-auto px-6 py-20">
+<section className="max-w-7xl mx-auto px-6 py-10">
 
   <div className="text-center mb-16">
 
@@ -1158,7 +1113,7 @@ const prevSlide = () => {
       w-14
       h-14
       rounded-full
-      text-2xl
+      text-lg
       font-black
       hover:scale-110
       transition-all
@@ -1196,7 +1151,7 @@ const prevSlide = () => {
 
       <h2
         className="
-        text-2xl
+        text-lg
         text-orange-500
         font-bold
         mt-4
@@ -1212,9 +1167,9 @@ const prevSlide = () => {
 
       <p
         className="
-        text-2xl
+        text-lg
         text-gray-700
-        leading-10
+        leading-8
         mt-10
         max-w-4xl
         mx-auto
@@ -1246,7 +1201,7 @@ const prevSlide = () => {
       w-14
       h-14
       rounded-full
-      text-2xl
+      text-lg
       font-black
       hover:scale-110
       transition-all
@@ -1268,7 +1223,7 @@ const prevSlide = () => {
 
 <section
   id="contact"
-  className="scroll-mt-32 bg-[#070014] text-white py-20 mt-20"
+  className="scroll-mt-32 bg-[#070014] text-white py-10 mt-20"
 >
 
   <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14">
@@ -1294,7 +1249,7 @@ const prevSlide = () => {
         className="
         mt-8
         text-gray-300
-        leading-10
+        leading-8
         text-lg
         "
       >
