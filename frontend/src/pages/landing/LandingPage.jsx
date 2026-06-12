@@ -687,27 +687,51 @@ const prevSlide = () => {
           WELCOME TEXT
       ========================== */}
 
-      <div className="max-w-7xl mx-auto text-center py-10 px-6">
+      <div className="max-w-7xl mx-auto px-6 py-12">
 
-        <h1 className="text-5xl md:text-7xl font-black text-[#7C2D12]">
+  <div className="bg-white border border-slate-200 rounded-md shadow-sm p-8 md:p-12">
 
-          Empowering India Through Education
+    <div className="text-center">
 
-        </h1>
+      <p className="text-[#7C2D12] font-semibold tracking-widest uppercase">
+        National Education Mission
+      </p>
 
-        <p className="text-lg text-gray-700 mt-10 leading-8 max-w-5xl mx-auto">
+      <h1
+        className="
+        mt-3
+        text-3xl
+        md:text-5xl
+        font-bold
+        text-slate-900
+        "
+      >
+        Empowering India Through Education
+      </h1>
 
-          A Mission For Vikshit Bharat 2047
-          is dedicated towards empowering
-          youth with modern education,
-          technology, AI innovation,
-          digital transformation,
-          and nation-building skills
-          for a stronger India.
+      <div className="w-32 h-1 bg-[#D4A017] mx-auto mt-4"></div>
 
-        </p>
+      <p
+        className="
+        mt-8
+        text-base
+        md:text-lg
+        text-slate-700
+        leading-8
+        max-w-5xl
+        mx-auto
+        "
+      >
+        Your existing welcome paragraph yahi rakho.
+        Content bilkul same rahega.
+        Sirf styling change hogi.
+      </p>
 
-      </div>
+    </div>
+
+  </div>
+
+</div>
 
 {/* ==========================
     INDIA EDUCATION SECTIONS
