@@ -425,26 +425,25 @@ const prevSlide = () => {
   </Link>
 
   <Link
-    to="/government-partners"
-    className="
-    text-white
-    py-3
-    flex
-    items-center
-    justify-center
-    text-center
-    border
-    border-orange-400/20
-    hover:bg-[#7C2D12]
-    transition
-    text-base
-    md:text-lg
-    font-bold
-    whitespace-nowrap
-    "
-  >
-    GOVERNMENT PARTNERS
-  </Link>
+  to="/government-partners"
+  className="
+  text-white
+  py-3
+  flex
+  items-center
+  justify-center
+  text-center
+  border
+  border-orange-400/20
+  hover:bg-[#7C2D12]
+  transition
+  text-sm
+  md:text-base
+  font-bold
+  "
+>
+  GOVERNMENT PARTNERS
+</Link>
 
   <div
     onClick={() => {
