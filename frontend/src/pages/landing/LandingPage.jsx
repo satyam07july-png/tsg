@@ -420,6 +420,11 @@ const prevSlide = () => {
 
     <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-6">
 
+    <div
+   id="hero"
+  className="bg-[#0B1220] text-white border-b-4 border-[#D4A017]"
+></div>
+
      <div
   onClick={() => {
     document
