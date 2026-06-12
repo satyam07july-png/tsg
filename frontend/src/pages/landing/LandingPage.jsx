@@ -341,129 +341,138 @@ const prevSlide = () => {
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-6">
 
           <Link
-            to="/"
-            className="
-            text-white
-            py4
-            text-center
-            border
-            border-orange-400/20
-            hover:bg-[#7C2D12]
-            transition
-            text-lg
-            md:text-xl
-            font-semibold
-            "
-          >
+    to="/"
+    className="
+    text-white
+    py-3
+    flex
+    items-center
+    justify-center
+    text-center
+    border
+    border-orange-400/20
+    hover:bg-[#7C2D12]
+    transition
+    text-base
+    md:text-lg
+    font-bold
+    "
+  >
+    HOME
+  </Link>
 
-            HOME
+  <Link
+    to="/login"
+    className="
+    text-white
+    py-3
+    flex
+    items-center
+    justify-center
+    text-center
+    border
+    border-orange-400/20
+    hover:bg-[#7C2D12]
+    transition
+    text-base
+    md:text-lg
+    font-bold
+    "
+  >
+    STUDENT PORTAL
+  </Link>
 
-          </Link>
+  <Link
+    to="/login"
+    className="
+    text-white
+    py-3
+    flex
+    items-center
+    justify-center
+    text-center
+    border
+    border-orange-400/20
+    hover:bg-[#7C2D12]
+    transition
+    text-base
+    md:text-lg
+    font-bold
+    "
+  >
+    ADMIN PORTAL
+  </Link>
 
-          <Link
-            to="/login"
-            className="
-            text-white
-            py4
-            text-center
-            border
-            border-orange-400/20
-            hover:bg-[#7C2D12]
-            transition
-            text-lg
-            md:text-xl
-            font-semibold
-            "
-          >
+  <Link
+    to="/login"
+    className="
+    text-white
+    py-3
+    flex
+    items-center
+    justify-center
+    text-center
+    border
+    border-orange-400/20
+    hover:bg-[#7C2D12]
+    transition
+    text-base
+    md:text-lg
+    font-bold
+    "
+  >
+    TEACHER PORTAL
+  </Link>
 
-            STUDENT PORTAL
+  <Link
+    to="/government-partners"
+    className="
+    text-white
+    py-3
+    flex
+    items-center
+    justify-center
+    text-center
+    border
+    border-orange-400/20
+    hover:bg-[#7C2D12]
+    transition
+    text-base
+    md:text-lg
+    font-bold
+    whitespace-nowrap
+    "
+  >
+    GOVERNMENT PARTNERS
+  </Link>
 
-          </Link>
-
-          <Link
-            to="/login"
-            className="
-            text-white
-            py4
-            text-center
-            border
-            border-orange-400/20
-            hover:bg-[#7C2D12]
-            transition
-            text-lg
-            md:text-xl
-            font-semibold
-            "
-          >
-
-            ADMIN PORTAL
-
-          </Link>
-
-          <Link
-            to="/login"
-            className="
-            text-white
-            py4
-            text-center
-            border
-            border-orange-400/20
-            hover:bg-[#7C2D12]
-            transition
-            text-lg
-            md:text-xl
-            font-semibold
-            "
-          >
-
-            TEACHER PORTAL
-
-          </Link>
-
-          <Link
-  to="/government-partners"
-  className="
-  text-white
-  py4
-  text-center
-  border
-  border-orange-400/20
-  hover:bg-[#7C2D12]
-  transition
-  text-lg
-  md:text-xl
-  font-semibold
-  "
->
-
-  GOVERNMENT PARTNERS
-
-</Link>
-
-          <div
-  onClick={() => {
-    document
-      .getElementById("contact")
-      ?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-  }}
-  className="
-  text-white
-  py4
-  text-center
-  border
-  border-orange-400/20
-  hover:bg-[#7C2D12]
-  transition
-  text-lg
-  md:text-xl
-  font-semibold
-  cursor-pointer
-  "
->
-  CONTACT
+  <div
+    onClick={() => {
+      document
+        .getElementById("contact")
+        ?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+    }}
+    className="
+    text-white
+    py-3
+    flex
+    items-center
+    justify-center
+    text-center
+    border
+    border-orange-400/20
+    hover:bg-[#7C2D12]
+    transition
+    text-base
+    md:text-lg
+    font-bold
+    cursor-pointer
+    "
+  >
+    CONTACT
 </div>
 
         </div>
