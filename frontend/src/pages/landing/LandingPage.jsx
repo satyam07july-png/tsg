@@ -1015,135 +1015,197 @@ const prevSlide = () => {
   </div>
 
 </section>
-      {/* ==========================
-          POPULAR COURSES
-      ========================== */}
+{/* ==========================
+    POPULAR COURSES
+========================== */}
 
-      <section className="max-w-7xl mx-auto px-6 py-10">
+<section className="max-w-[1800px] mx-auto px-6 py-12">
 
-        <div className="text-center mb-16">
+  <div className="text-center mb-12">
 
-          <h1 className="text-5xl font-black text-[#7C2D12]">
+    <h1 className="text-4xl md:text-5xl font-bold text-[#0B1220]">
 
-            Popular Courses
+      Popular Courses
 
-          </h1>
+    </h1>
 
-          <p className="text-gray-600 mt-6 text-lg">
+    <div className="w-32 h-1 bg-[#D4A017] mx-auto mt-4"></div>
 
-            Explore high quality programs
-            designed for India’s future leaders.
+    <p className="text-gray-600 mt-5 text-lg">
 
-          </p>
+      Explore high quality programs designed for India's future leaders.
 
-        </div>
+    </p>
 
-        {/* COURSES GRID */}
+  </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+  {/* COURSES GRID */}
 
-          {
-            courses?.length > 0 ? (
+  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
-              courses?.map(
-                (course) => (
+    {
+      courses?.length > 0 ? (
 
-                  <div
-                    key={course.id}
-                    className="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all hover:-translate-y-2"
-                  >
+        courses.map((course) => (
 
-                    {/* IMAGE */}
+          <div
+            key={course.id}
+            className="
+            bg-white
+            border
+            border-slate-300
+            rounded-md
+            overflow-hidden
+            shadow-sm
+            hover:border-[#7C2D12]
+            transition
+            "
+          >
 
-                    <div className="h-[220px] bg-gradient-to-r from-black to-[#7C2D12] flex items-center justify-center">
+            {/* COURSE HEADER */}
 
-                      <h1 className="text-white text-3xl font-bold text-center px-4">
+            <div
+              className="
+              bg-[#0B1220]
+              border-b-4
+              border-[#D4A017]
+              h-[140px]
+              flex
+              items-center
+              justify-center
+              px-6
+              text-center
+              "
+            >
 
-                        {course.title}
+              <h1 className="text-white text-2xl font-bold">
 
-                      </h1>
+                {course.title}
 
-                    </div>
+              </h1>
 
-                    {/* CONTENT */}
+            </div>
 
-                    <div className="p-8">
+            {/* COURSE CONTENT */}
 
-                      <h2 className="text-3xl font-bold">
+            <div className="p-6">
 
-                        {course.title}
+              <h2 className="text-2xl font-bold text-[#0B1220]">
 
-                      </h2>
+                {course.title}
 
-                      <p className="text-gray-600 mt-4 leading-7">
+              </h2>
 
-                        {course.description}
+              <p className="text-gray-600 mt-4 leading-7 min-h-[120px]">
 
-                      </p>
+                {course.description}
 
-                      <div className="flex flex-wrap gap-4 mt-6">
+              </p>
 
-                        <div className="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-xl text-sm">
+              {/* INFO */}
 
-                          <FaClock />
+              <div className="flex flex-wrap gap-3 mt-5">
 
-                          {course.duration}
+                <div
+                  className="
+                  border
+                  border-slate-300
+                  px-3
+                  py-2
+                  rounded-md
+                  bg-white
+                  text-sm
+                  flex
+                  items-center
+                  gap-2
+                  "
+                >
 
-                        </div>
+                  <FaClock />
 
-                        <div className="flex items-center gap-2 bg-slate-100 px-4 py-2 rounded-xl text-sm">
+                  {course.duration}
 
-                          <FaSignal />
+                </div>
 
-                          {course.level}
+                <div
+                  className="
+                  border
+                  border-slate-300
+                  px-3
+                  py-2
+                  rounded-md
+                  bg-white
+                  text-sm
+                  flex
+                  items-center
+                  gap-2
+                  "
+                >
 
-                        </div>
+                  <FaSignal />
 
-                      </div>
+                  {course.level}
 
-                      <div className="mt-8 flex justify-between items-center">
-
-                        <h3 className="text-3xl font-bold text-[#7C2D12]">
-
-                          ₹{course.price}
-
-                        </h3>
-
-                        <Link
-                          to={`/course/${course.id}`}
-                          className="bg-black text-white px-6 py-3 rounded-xl hover:bg-[#7C2D12] transition"
-                        >
-
-                          Explore
-
-                        </Link>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                )
-              )
-
-            ) : (
-
-              <div className="col-span-3 text-center text-lg text-gray-400">
-
-                No Courses Found
+                </div>
 
               </div>
 
-            )
-          }
+              {/* PRICE + BUTTON */}
+
+              <div className="mt-6 flex justify-between items-center">
+
+                <h3 className="text-2xl font-bold text-green-700">
+
+                  ₹{course.price}
+
+                </h3>
+
+                <Link
+                  to={`/course/${course.id}`}
+                  className="
+                  bg-[#0B1220]
+                  text-white
+                  px-5
+                  py-2
+                  rounded-md
+                  font-semibold
+                  hover:bg-[#7C2D12]
+                  transition
+                  "
+                >
+
+                  Explore
+
+                </Link>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        ))
+
+      ) : (
+
+        <div className="col-span-3 text-center py-16">
+
+          <h2 className="text-2xl font-semibold text-gray-400">
+
+            No Courses Found
+
+          </h2>
 
         </div>
 
-      </section>
+      )
+    }
 
-      <Features />
+  </div>
 
+</section>
+
+<Features />
       {/* ==========================
     EDUCATION LEADERSHIP OF INDIA
 ========================== */}
