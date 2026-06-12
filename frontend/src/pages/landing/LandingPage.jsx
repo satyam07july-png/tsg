@@ -264,102 +264,312 @@ const prevSlide = () => {
 
   return (
 
-    <div className="bg-[#f8fafc] min-h-screen">
-{/* ==========================
-    VIKSHIT BHARAT HEADER
-========================== */}
+   <div className="bg-[#f8fafc] min-h-screen">
 
-<div className="bg-[#0B1220] text-white border-b-4 border-[#D4A017]">
+  {/* ==========================
+      VIKSHIT BHARAT HEADER
+  ========================== */}
 
-  <div className="max-w-7xl mx-auto px-6 py-6">
+  <div className="bg-[#0B1220] text-white border-b-4 border-[#D4A017]">
 
-    <div className="flex flex-col items-center">
+    <div className="max-w-7xl mx-auto px-6 py-6">
 
-      {/* LOGO */}
+      <div className="flex flex-col items-center">
 
-      <div
+        {/* LOGO */}
+
+        <div
+          className="
+          w-[80px]
+          h-[80px]
+          rounded-full
+          border-2
+          border-[#D4A017]
+          bg-white
+          text-[#0B1220]
+          flex
+          items-center
+          justify-center
+          text-2xl
+          font-bold
+          "
+        >
+          TGS
+        </div>
+
+        {/* TITLE */}
+
+        <h1
+          className="
+          text-3xl
+          md:text-5xl
+          font-bold
+          text-center
+          mt-4
+          leading-tight
+          "
+        >
+          A MISSION FOR
+          <br />
+          VIKSHIT BHARAT 2047
+        </h1>
+
+        {/* SUBTITLE */}
+
+        <p
+          className="
+          mt-3
+          text-sm
+          md:text-lg
+          text-[#D4A017]
+          font-semibold
+          tracking-wide
+          text-center
+          "
+        >
+          ASSOCIATED BY TIMELESS FOUNDATION
+        </p>
+
+        {/* TRUST LINE */}
+
+        <p
+          className="
+          mt-3
+          text-center
+          text-slate-300
+          text-sm
+          md:text-base
+          "
+        >
+          National Education • Competitive Exams • Future Skills • Career Development
+        </p>
+
+        {/* QUICK ACCESS */}
+
+        <div className="flex flex-wrap justify-center gap-3 mt-6">
+
+          <Link
+            to="/login"
+            className="
+            bg-[#1E293B]
+            border
+            border-[#D4A017]
+            px-4
+            py-2
+            rounded-md
+            text-sm
+            font-semibold
+            hover:bg-[#7C2D12]
+            transition
+            "
+          >
+            Student Portal
+          </Link>
+
+          <Link
+            to="/login"
+            className="
+            bg-[#1E293B]
+            border
+            border-[#D4A017]
+            px-4
+            py-2
+            rounded-md
+            text-sm
+            font-semibold
+            hover:bg-[#7C2D12]
+            transition
+            "
+          >
+            Admin Portal
+          </Link>
+
+          <Link
+            to="/login"
+            className="
+            bg-[#1E293B]
+            border
+            border-[#D4A017]
+            px-4
+            py-2
+            rounded-md
+            text-sm
+            font-semibold
+            hover:bg-[#7C2D12]
+            transition
+            "
+          >
+            Teacher Portal
+          </Link>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  {/* ==========================
+      NAVBAR
+  ========================== */}
+
+  <div className="bg-[#0B1220] sticky top-0 z-50 border-b border-orange-400/20">
+
+    {/* FIRST ROW */}
+
+    <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-6">
+
+      <Link
+        to="/"
         className="
-        w-[80px]
-        h-[80px]
-        rounded-full
-        border-2
-        border-[#D4A017]
-        bg-white
-        text-[#0B1220]
+        text-white
+        py-3
         flex
         items-center
         justify-center
-        text-2xl
-        font-bold
-        "
-      >
-        TGS
-      </div>
-
-      {/* TITLE */}
-
-      <h1
-        className="
-        text-3xl
-        md:text-5xl
-        font-bold
-        text-center
-        mt-4
-        leading-tight
-        "
-      >
-        A MISSION FOR
-        <br />
-        VIKSHIT BHARAT 2047
-      </h1>
-
-      {/* SUBTITLE */}
-
-      <p
-        className="
-        mt-3
-        text-sm
+        border
+        border-orange-400/20
+        hover:bg-[#7C2D12]
+        transition
+        text-base
         md:text-lg
-        text-[#D4A017]
-        font-semibold
-        tracking-wide
-        text-center
+        font-bold
         "
       >
-        ASSOCIATED BY TIMELESS FOUNDATION
-      </p>
+        HOME
+      </Link>
 
-      {/* TRUST LINE */}
-
-      <p
+      <Link
+        to="/login"
         className="
-        mt-3
-        text-center
-        text-slate-300
+        text-white
+        py-3
+        flex
+        items-center
+        justify-center
+        border
+        border-orange-400/20
+        hover:bg-[#7C2D12]
+        transition
+        text-base
+        md:text-lg
+        font-bold
+        "
+      >
+        STUDENT PORTAL
+      </Link>
+
+      <Link
+        to="/login"
+        className="
+        text-white
+        py-3
+        flex
+        items-center
+        justify-center
+        border
+        border-orange-400/20
+        hover:bg-[#7C2D12]
+        transition
+        text-base
+        md:text-lg
+        font-bold
+        "
+      >
+        ADMIN PORTAL
+      </Link>
+
+      <Link
+        to="/login"
+        className="
+        text-white
+        py-3
+        flex
+        items-center
+        justify-center
+        border
+        border-orange-400/20
+        hover:bg-[#7C2D12]
+        transition
+        text-base
+        md:text-lg
+        font-bold
+        "
+      >
+        TEACHER PORTAL
+      </Link>
+
+      <Link
+        to="/government-partners"
+        className="
+        text-white
+        py-3
+        flex
+        items-center
+        justify-center
+        border
+        border-orange-400/20
+        hover:bg-[#7C2D12]
+        transition
         text-sm
         md:text-base
+        font-bold
         "
       >
-        National Education • Competitive Exams • Future Skills • Career Development
-      </p>
+        GOVERNMENT PARTNERS
+      </Link>
 
-      {/* QUICK LINKS */}
+      <div
+        onClick={() => {
+          document
+            .getElementById("contact")
+            ?.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+        }}
+        className="
+        text-white
+        py-3
+        flex
+        items-center
+        justify-center
+        border
+        border-orange-400/20
+        hover:bg-[#7C2D12]
+        transition
+        text-base
+        md:text-lg
+        font-bold
+        cursor-pointer
+        "
+      >
+        CONTACT
+      </div>
 
-      <div className="flex flex-wrap justify-center gap-3 mt-6">
+    </div>
+
+    {/* SECOND ROW */}
+
+    <div className="bg-[#1E293B]">
+
+      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5">
 
         <Link
           to="/academic"
           className="
-          bg-[#1E293B]
+          text-orange-200
+          py-3
+          text-center
           border
-          border-[#D4A017]
-          px-4
-          py-2
-          rounded-md
-          text-sm
-          font-semibold
+          border-orange-400/20
           hover:bg-[#7C2D12]
           transition
+          text-base
+          md:text-lg
+          font-bold
+          block
           "
         >
           Academic
@@ -368,16 +578,17 @@ const prevSlide = () => {
         <Link
           to="/entrance"
           className="
-          bg-[#1E293B]
+          text-orange-200
+          py-3
+          text-center
           border
-          border-[#D4A017]
-          px-4
-          py-2
-          rounded-md
-          text-sm
-          font-semibold
+          border-orange-400/20
           hover:bg-[#7C2D12]
           transition
+          text-base
+          md:text-lg
+          font-bold
+          block
           "
         >
           Entrance
@@ -386,16 +597,17 @@ const prevSlide = () => {
         <Link
           to="/competition"
           className="
-          bg-[#1E293B]
+          text-orange-200
+          py-3
+          text-center
           border
-          border-[#D4A017]
-          px-4
-          py-2
-          rounded-md
-          text-sm
-          font-semibold
+          border-orange-400/20
           hover:bg-[#7C2D12]
           transition
+          text-base
+          md:text-lg
+          font-bold
+          block
           "
         >
           Competition
@@ -404,16 +616,17 @@ const prevSlide = () => {
         <Link
           to="/skilling"
           className="
-          bg-[#1E293B]
+          text-orange-200
+          py-3
+          text-center
           border
-          border-[#D4A017]
-          px-4
-          py-2
-          rounded-md
-          text-sm
-          font-semibold
+          border-orange-400/20
           hover:bg-[#7C2D12]
           transition
+          text-base
+          md:text-lg
+          font-bold
+          block
           "
         >
           Skilling
@@ -422,16 +635,17 @@ const prevSlide = () => {
         <Link
           to="/placement"
           className="
-          bg-[#1E293B]
+          text-orange-200
+          py-3
+          text-center
           border
-          border-[#D4A017]
-          px-4
-          py-2
-          rounded-md
-          text-sm
-          font-semibold
+          border-orange-400/20
           hover:bg-[#7C2D12]
           transition
+          text-base
+          md:text-lg
+          font-bold
+          block
           "
         >
           Placement
@@ -443,7 +657,6 @@ const prevSlide = () => {
 
   </div>
 
-</div>
 
       {/* ==========================
           TOP NEWS TICKER
