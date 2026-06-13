@@ -1447,263 +1447,296 @@ const prevSlide = () => {
 
     
 {/* ==========================
-    PREMIUM CONTACT SECTION
+    OFFICIAL CONTACT SECTION
 ========================== */}
 
 <section
   id="contact"
-  className="scroll-mt-32 bg-[#070014] text-white py-10 mt-20"
+  className="scroll-mt-32 bg-[#0B1220] text-white mt-20 border-t-4 border-[#D4A017]"
 >
 
-  <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14">
+  <div className="max-w-[1800px] mx-auto px-6 py-12">
 
-    {/* ABOUT */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
-    <div>
+      {/* ORGANIZATION */}
 
-      <h1
-        className="
-        text-5xl
-        font-black
-        text-orange-300
-        "
-      >
+      <div>
 
-       
-       TGS(TEAM GULSHAN SIR)
+        <h1 className="text-3xl font-bold text-white">
 
-      </h1>
+          TGS (TEAM GULSHAN SIR)
 
-      <p
-        className="
-        mt-8
-        text-gray-300
-        leading-8
-        text-lg
-        "
-      >
+        </h1>
 
-        A Mission For Vikshit Bharat 2047
-        is dedicated towards building
-        a stronger India through
-        education, innovation,
-        AI development,
-        digital transformation,
-        and skill empowerment.
+        <div className="w-20 h-1 bg-[#D4A017] mt-4"></div>
 
-      </p>
+        <p className="mt-6 text-gray-300 leading-8">
 
-      {/* SOCIALS */}
-
-      <div className="flex gap-5 mt-10 text-4xl">
-
-        <a href="#">
-
-          🌐
-
-        </a>
-
-        <a href="#">
-
-          📘
-
-        </a>
-
-        <a href="#">
-
-          📸
-
-        </a>
-
-        <a href="#">
-
-          ▶️
-
-        </a>
-
-      </div>
-
-    </div>
-
-    {/* QUICK LINKS */}
-
-    <div>
-
-      <h2
-        className="
-        text-4xl
-        font-black
-        text-cyan-400
-        "
-      >
-
-        Quick Links
-
-      </h2>
-
-      <div className="mt-8 space-y-5 text-xl">
-
-        <a
-          href="#"
-          className="block hover:text-orange-300"
-        >
-
-          🏠 Home
-
-        </a>
-
-        <a
-          href="#"
-          className="block hover:text-orange-300"
-        >
-
-          📚 Academic
-
-        </a>
-
-        <a
-          href="#"
-          className="block hover:text-orange-300"
-        >
-
-          🧠 AI Programs
-
-        </a>
-
-        <a
-          href="#"
-          className="block hover:text-orange-300"
-        >
-
-          🎯 Competition
-
-        </a>
-
-        <a
-          href="#"
-          className="block hover:text-orange-300"
-        >
-
-          💼 Placement
-
-        </a>
-
-      </div>
-
-    </div>
-
-    {/* CONTACT */}
-
-    <div>
-
-      <h2
-        className="
-        text-4xl
-        font-black
-        text-cyan-400
-        "
-      >
-
-        Contact Us
-
-      </h2>
-
-      <div className="mt-8 space-y-6 text-xl text-gray-300">
-
-        <p>
-
-          📍 2nd Floor, Spacetime Management Pvt Ltd Design House, 
-          behind Savitri Cinema Complex, Greater Kailash II, 
-          Chittaranjan Park, New Delhi, Delhi 110048
+          A Mission For Vikshit Bharat 2047 is dedicated towards
+          building a stronger India through education, innovation,
+          artificial intelligence, digital transformation,
+          entrepreneurship and skill empowerment.
 
         </p>
 
-        <p>
+        {/* SOCIAL LINKS */}
 
-          📞 +91 9876543210
+        <div className="flex flex-wrap gap-3 mt-8">
 
-        </p>
+          <a
+            href="#"
+            className="
+            border
+            border-slate-600
+            px-4
+            py-2
+            rounded-md
+            hover:bg-[#1E293B]
+            transition
+            "
+          >
+            Website
+          </a>
 
-        <p>
+          <a
+            href="#"
+            className="
+            border
+            border-slate-600
+            px-4
+            py-2
+            rounded-md
+            hover:bg-[#1E293B]
+            transition
+            "
+          >
+            Facebook
+          </a>
 
-          📧 support@vikshitbharat2047.in
+          <a
+            href="#"
+            className="
+            border
+            border-slate-600
+            px-4
+            py-2
+            rounded-md
+            hover:bg-[#1E293B]
+            transition
+            "
+          >
+            Instagram
+          </a>
 
-        </p>
-
-        <p>
-
-          🌐 www.vikshitbharat2047.in
-
-        </p>
-
-      </div>
-
-    </div>
-
-    {/* LOCATION */}
-
-    <div>
-
-      <h2
-        className="
-        text-4xl
-        font-black
-        text-cyan-400
-        "
-      >
-
-        Our Location
-
-      </h2>
-
-      <div
-        className="
-        mt-8
-        bg-[#0B1220]
-        rounded-3xl
-        p-8
-        border
-        border-cyan-500/20
-        h-[260px]
-        flex
-        flex-col
-        justify-center
-        items-center
-        shadow-xl
-        "
-      >
-
-        <div className="text-7xl">
-
-          📍
+          <a
+            href="#"
+            className="
+            border
+            border-slate-600
+            px-4
+            py-2
+            rounded-md
+            hover:bg-[#1E293B]
+            transition
+            "
+          >
+            YouTube
+          </a>
 
         </div>
 
-        <p className="mt-6 text-lg text-gray-300 text-center">
+      </div>
 
-          New Delhi, India
+      {/* QUICK LINKS */}
 
-        </p>
+      <div>
 
-        <a
-          href="https://www.google.com/maps/dir/28.5266773,77.2635499/DizitalAdda+Digital+Marketing+Institute,+2nd+Floor,+Spacetime+Management+Pvt+Ltd+Design+House,+behind+Savitri+Cinema+Complex,+Greater+Kailash+II,+Chittaranjan+Park,+New+Delhi,+Delhi+110048/@28.534149,77.2315623,14z/data=!3m1!4b1!4m10!4m9!1m1!4e1!1m5!1m1!1s0x390ce1b8032e0e7f:0x8d8484c29620d0c0!2m2!1d77.240722!2d28.541963!3e0?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
-          target="_DizitalAdda Digital Marketing Institute, 2nd Floor, Spacetime Management Pvt Ltd Design House, behind Savitri Cinema Complex, Greater Kailash II, Chittaranjan Park, New Delhi, Delhi 110048"
-          rel="noreferrer"
+        <h2 className="text-2xl font-bold text-[#D4A017]">
+
+          Quick Links
+
+        </h2>
+
+        <div className="mt-6 space-y-3">
+
+          <a
+            href="/"
+            className="
+            block
+            text-gray-300
+            hover:text-[#D4A017]
+            transition
+            "
+          >
+            Home
+          </a>
+
+          <a
+            href="/academic"
+            className="
+            block
+            text-gray-300
+            hover:text-[#D4A017]
+            transition
+            "
+          >
+            Academic
+          </a>
+
+          <a
+            href="/entrance"
+            className="
+            block
+            text-gray-300
+            hover:text-[#D4A017]
+            transition
+            "
+          >
+            Entrance
+          </a>
+
+          <a
+            href="/competition"
+            className="
+            block
+            text-gray-300
+            hover:text-[#D4A017]
+            transition
+            "
+          >
+            Competition
+          </a>
+
+          <a
+            href="/skilling"
+            className="
+            block
+            text-gray-300
+            hover:text-[#D4A017]
+            transition
+            "
+          >
+            Skilling
+          </a>
+
+          <a
+            href="/placement"
+            className="
+            block
+            text-gray-300
+            hover:text-[#D4A017]
+            transition
+            "
+          >
+            Placement
+          </a>
+
+        </div>
+
+      </div>
+
+      {/* CONTACT */}
+
+      <div>
+
+        <h2 className="text-2xl font-bold text-[#D4A017]">
+
+          Contact Information
+
+        </h2>
+
+        <div className="mt-6 space-y-4 text-gray-300">
+
+          <p>
+            Greater Kailash II,
+            New Delhi - 110048
+          </p>
+
+          <p>
+            +91 9876543210
+          </p>
+
+          <p>
+            support@vikshitbharat2047.in
+          </p>
+
+          <p>
+            www.vikshitbharat2047.in
+          </p>
+
+        </div>
+
+      </div>
+
+      {/* LOCATION */}
+
+      <div>
+
+        <h2 className="text-2xl font-bold text-[#D4A017]">
+
+          Headquarters
+
+        </h2>
+
+        <div
           className="
           mt-6
-          bg-cyan-500
-          hover:bg-cyan-600
-          px-6
-          py-3
-          rounded-xl
-          font-bold
-          transition
+          bg-[#1E293B]
+          border
+          border-slate-700
+          rounded-md
+          p-6
           "
         >
 
-          View On Google Maps
+          <h3 className="text-xl font-bold">
 
-        </a>
+            New Delhi, India
+
+          </h3>
+
+          <p className="mt-3 text-gray-400">
+
+            Timeless Foundation Headquarters
+
+          </p>
+
+          <a
+            href="https://www.google.com/maps"
+            target="_blank"
+            rel="noreferrer"
+            className="
+            inline-block
+            mt-6
+            bg-[#D4A017]
+            text-black
+            px-5
+            py-2
+            rounded-md
+            font-semibold
+            hover:opacity-90
+            transition
+            "
+          >
+            View On Google Maps
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    {/* FOOTER BOTTOM */}
+
+    <div className="border-t border-slate-700 mt-12">
+
+      <div className="py-6 text-center text-gray-400 text-sm">
+
+        © 2026 TGS (Team Gulshan Sir) |
+        A Mission For Vikshit Bharat 2047 |
+        All Rights Reserved
 
       </div>
 
@@ -1712,7 +1745,6 @@ const prevSlide = () => {
   </div>
 
 </section>
-
 
     </div>
 
