@@ -13,6 +13,8 @@ import Testimonials from "../../components/landing/Testimonials";
 
 import Footer from "../../components/landing/Footer";
 
+import logo from "../assets/logo.png";
+
 import {
   FaClock,
   FaSignal,
@@ -279,23 +281,27 @@ const prevSlide = () => {
         {/* LOGO */}
 
         <div
-          className="
-          w-[80px]
-          h-[80px]
-          rounded-full
-          border-2
-          border-[#D4A017]
-          bg-white
-          text-[#0B1220]
-          flex
-          items-center
-          justify-center
-          text-2xl
-          font-bold
-          "
-        >
-          TGS
-        </div>
+  className="
+  w-[90px]
+  h-[90px]
+  rounded-full
+  border-2
+  border-[#D4A017]
+  bg-white
+  overflow-hidden
+  flex
+  items-center
+  justify-center
+  "
+>
+
+  <img
+    src="/logo.png"
+    alt="TGS Logo"
+    className="w-full h-full object-cover"
+  />
+
+</div>
 
         {/* TITLE */}
 
@@ -676,64 +682,64 @@ const prevSlide = () => {
     className="text-black text-sm md:text-base font-bold"
   >
 
-    🤖 Artificial Intelligence Revolution
+     Artificial Intelligence Revolution
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    🚀 Machine Learning Development Program
+     Machine Learning Development Program
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    🧠 Deep Learning Research Mission
+     Deep Learning Research Mission
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    📊 Data Science & Analytics Training
+     Data Science & Analytics Training
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    💻 Full Stack AI Engineering Bootcamp
+    Full Stack AI Engineering Bootcamp
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    🔥 Generative AI Innovation Lab
+     Generative AI Innovation Lab
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    🛰️ AI Powered Digital India Mission
+    AI Powered Digital India Mission
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    📈 AI For Business Transformation
+     AI For Business Transformation
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    🤝 Human + AI Future Workforce Program
+     Human + AI Future Workforce Program
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    ⚡ AI Automation & Robotics Training
+     AI Automation & Robotics Training
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    🌐 Future Tech & Innovation Ecosystem
+     Future Tech & Innovation Ecosystem
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    🧬 AI Research & Development Initiative
+     AI Research & Development Initiative
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    🏆 India's Largest AI Learning Platform
+     India's Largest AI Learning Platform
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    📚 Learn Python, AI & Data Science
+     Learn Python, AI & Data Science
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    🎯 AI Career & Placement Mission
+     AI Career & Placement Mission
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    🖥️ Cloud Computing & AI Infrastructure
+     Cloud Computing & AI Infrastructure
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    🤖 AI Chatbot & Automation Systems
+     AI Chatbot & Automation Systems
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    🔬 Computer Vision & NLP Programs
+     Computer Vision & NLP Programs
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    📱 AI App Development Training
+     AI App Development Training
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    🌍 Building AI Powered Vikshit Bharat 2047 🇮🇳
+     Building AI Powered Vikshit Bharat 2047 🇮🇳
 
   </marquee>
 
