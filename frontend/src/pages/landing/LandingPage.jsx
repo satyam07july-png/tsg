@@ -1698,12 +1698,12 @@ const prevSlide = () => {
 
           <p className="mt-3 text-gray-400">
 
-            Timeless Foundation Headquarters
+            TgS Headquarter
 
           </p>
 
           <a
-            href="https://www.google.com/maps"
+            href="2nd Floor, DizitalAdda Digital Marketing Institute, Spacetime Management Pvt Ltd Design House, behind Savitri Cinema Complex, Greater Kailash II, Chittaranjan Park, New Delhi, Delhi 110048"
             target="_blank"
             rel="noreferrer"
             className="
