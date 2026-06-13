@@ -205,124 +205,153 @@ function Academic() {
 
 </div>
 
-      {/* BOARD SELECTION */}
+{/* BOARD SELECTION */}
 
-      <div className="max-w-6xl mx-auto mt-24">
+<div className="max-w-[1800px] mx-auto mt-16">
 
-        <h2
-          className="
-          text-5xl
-          font-black
-          mb-14
-          text-center
-          text-[#7C2D12]
-          "
-        >
+  <div className="text-center mb-10">
 
-          Choose Your Board
+    <h2
+      className="
+      text-3xl
+      md:text-4xl
+      font-bold
+      text-[#0B1220]
+      "
+    >
 
-        </h2>
+      Select Education Board
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+    </h2>
 
-          {/* CBSE */}
+    <div className="w-24 h-1 bg-[#D4A017] mx-auto mt-4"></div>
 
-          <button
-            onClick={() => {
+    <p className="text-slate-600 mt-4">
 
-              setBoard("CBSE");
+      Choose your board to access curriculum specific academic resources
 
-              setSelectedState("");
+    </p>
 
-            }}
-            className="
-            bg-gradient-to-br
-            from-white
-            to-orange-50
-            border
-            border-orange-200
-            shadow-2xl
-            rounded-[40px]
-            py-20
-            hover:scale-105
-            transition-all
-            "
-          >
+  </div>
 
-            <FaGraduationCap
-              className="
-              text-7xl
-              mx-auto
-              text-[#7C2D12]
-              mb-8
-              "
-            />
+  <div
+    className="
+    grid
+    grid-cols-1
+    md:grid-cols-2
+    gap-8
+    "
+  >
 
-            <h1
-              className="
-              text-5xl
-              font-black
-              "
-            >
+    {/* CBSE */}
 
-              CBSE
+    <button
+      onClick={() => {
 
-            </h1>
+        setBoard("CBSE");
 
-          </button>
+        setSelectedState("");
 
-          {/* STATE BOARD */}
-<button
-  onClick={() => {
+      }}
+      className="
+      bg-white
+      border
+      border-slate-300
+      text-left
+      p-8
+      hover:border-[#7C2D12]
+      transition
+      "
+    >
 
-    setBoard("STATE");
+      <div className="border-b border-slate-200 pb-4">
 
-    setSelectedState("");
+        <h3 className="text-2xl font-bold text-[#0B1220]">
 
-    setSelectedClass("");
+          Central Board of Secondary Education
 
-    setStream("");
+        </h3>
 
-  }}
-            className="
-            bg-gradient-to-br
-            from-white
-            to-orange-50
-            border
-            border-orange-200
-            shadow-2xl
-            rounded-[40px]
-            py-20
-            hover:scale-105
-            transition-all
-            "
-          >
+        <p className="text-slate-500 mt-2">
 
-            <FaBookOpen
-              className="
-              text-7xl
-              mx-auto
-              text-[#7C2D12]
-              mb-8
-              "
-            />
+          National Curriculum Framework
 
-            <h1
-              className="
-              text-5xl
-              font-black
-              "
-            >
-
-              STATE BOARD
-
-            </h1>
-
-          </button>
-
-        </div>
+        </p>
 
       </div>
+
+      <div className="mt-6 space-y-2 text-slate-700">
+
+        <p>• Classes 6 to 12</p>
+
+        <p>• NCERT Aligned Content</p>
+
+        <p>• Subject Wise Resources</p>
+
+        <p>• Digital Learning Materials</p>
+
+      </div>
+
+    </button>
+
+    {/* STATE BOARD */}
+
+    <button
+      onClick={() => {
+
+        setBoard("STATE");
+
+        setSelectedState("");
+
+        setSelectedClass("");
+
+        setStream("");
+
+      }}
+      className="
+      bg-white
+      border
+      border-slate-300
+      text-left
+      p-8
+      hover:border-[#7C2D12]
+      transition
+      "
+    >
+
+      <div className="border-b border-slate-200 pb-4">
+
+        <h3 className="text-2xl font-bold text-[#0B1220]">
+
+          State Education Boards
+
+        </h3>
+
+        <p className="text-slate-500 mt-2">
+
+          State Specific Curriculum
+
+        </p>
+
+      </div>
+
+      <div className="mt-6 space-y-2 text-slate-700">
+
+        <p>• Multiple State Boards</p>
+
+        <p>• Regional Academic Resources</p>
+
+        <p>• Curriculum Based Learning</p>
+
+        <p>• State Education Support</p>
+
+      </div>
+
+    </button>
+
+  </div>
+
+</div>
 
       {/* STATE SELECTION */}
 
