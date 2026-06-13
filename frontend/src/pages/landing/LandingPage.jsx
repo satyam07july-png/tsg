@@ -13,7 +13,7 @@ import Testimonials from "../../components/landing/Testimonials";
 
 import Footer from "../../components/landing/Footer";
 
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 
 import {
   FaClock,
