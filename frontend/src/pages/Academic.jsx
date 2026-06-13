@@ -52,55 +52,158 @@ function Academic() {
 
       {/* HERO SECTION */}
 
-      <div
-        className="
-        bg-gradient-to-br
-        from-[#0B1220]
-        via-[#111827]
-        to-[#7C2D12]
-        rounded-[40px]
-        text-white
-        p-16
-        text-center
-        shadow-2xl
-        "
-      >
+<div
+  className="
+  bg-white
+  border
+  border-slate-300
+  overflow-hidden
+  "
+>
 
-        <div className="text-8xl mb-8">
+  {/* HEADER */}
 
-          🎓
+  <div
+    className="
+    bg-[#0B1220]
+    text-white
+    border-b-4
+    border-[#D4A017]
+    py-10
+    px-6
+    "
+  >
 
-        </div>
+    <h1
+      className="
+      text-4xl
+      md:text-5xl
+      font-bold
+      text-center
+      "
+    >
 
-        <h1
-          className="
-          text-5xl
-          md:text-7xl
-          font-black
-          "
-        >
+      Academic Portal
 
-          Academic Portal
+    </h1>
 
-        </h1>
+    <p
+      className="
+      text-center
+      text-orange-200
+      mt-4
+      text-lg
+      "
+    >
 
-        <p
-          className="
-          text-2xl
-          text-orange-200
-          mt-8
-          max-w-4xl
-          mx-auto
-          leading-10
-          "
-        >
+      National Education & Learning Resources Platform
 
-          India's AI Powered Smart Education
-          Ecosystem For Future Ready Students
+    </p>
 
+  </div>
+
+  {/* CONTENT */}
+
+  <div className="p-10 text-center">
+
+    <h2
+      className="
+      text-2xl
+      md:text-3xl
+      font-semibold
+      text-[#0B1220]
+      "
+    >
+
+      Access Curriculum Based Learning Resources
+
+    </h2>
+
+    <div className="w-24 h-1 bg-[#D4A017] mx-auto mt-4"></div>
+
+    <p
+      className="
+      text-slate-600
+      text-lg
+      leading-8
+      mt-6
+      max-w-4xl
+      mx-auto
+      "
+    >
+
+      Explore board specific academic resources,
+      class wise study materials, subject wise content,
+      digital learning modules and future ready education
+      programs designed for students across India.
+
+    </p>
+
+    {/* QUICK STATS */}
+
+    <div
+      className="
+      grid
+      grid-cols-2
+      md:grid-cols-4
+      gap-6
+      mt-10
+      "
+    >
+
+      <div className="border border-slate-300 p-5">
+
+        <h3 className="text-3xl font-bold text-[#0B1220]">
+          15+
+        </h3>
+
+        <p className="text-slate-500 mt-2">
+          State Boards
         </p>
 
       </div>
+
+      <div className="border border-slate-300 p-5">
+
+        <h3 className="text-3xl font-bold text-[#0B1220]">
+          7
+        </h3>
+
+        <p className="text-slate-500 mt-2">
+          Classes
+        </p>
+
+      </div>
+
+      <div className="border border-slate-300 p-5">
+
+        <h3 className="text-3xl font-bold text-[#0B1220]">
+          50+
+        </h3>
+
+        <p className="text-slate-500 mt-2">
+          Subjects
+        </p>
+
+      </div>
+
+      <div className="border border-slate-300 p-5">
+
+        <h3 className="text-3xl font-bold text-[#0B1220]">
+          24x7
+        </h3>
+
+        <p className="text-slate-500 mt-2">
+          Access
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 
       {/* BOARD SELECTION */}
 
