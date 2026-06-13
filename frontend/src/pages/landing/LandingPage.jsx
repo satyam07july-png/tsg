@@ -296,10 +296,10 @@ const prevSlide = () => {
 >
 
   <img
-    src="/logo.png"
-    alt="TGS Logo"
-    className="w-full h-full object-cover"
-  />
+  src={logo}
+  alt="logo"
+  className="w-40 border"
+/>
 
 </div>
 
