@@ -1702,25 +1702,25 @@ const prevSlide = () => {
 
           </p>
 
-          <a
-            href="2nd Floor, DizitalAdda Digital Marketing Institute, Spacetime Management Pvt Ltd Design House, behind Savitri Cinema Complex, Greater Kailash II, Chittaranjan Park, New Delhi, Delhi 110048"
-            target="_blank"
-            rel="noreferrer"
-            className="
-            inline-block
-            mt-6
-            bg-[#D4A017]
-            text-black
-            px-5
-            py-2
-            rounded-md
-            font-semibold
-            hover:opacity-90
-            transition
-            "
-          >
-            View On Google Maps
-          </a>
+        <a
+  href="https://maps.google.com/?q=2nd+Floor+Spacetime+Management+Pvt+Ltd+Design+House+behind+Savitri+Cinema+Complex+Greater+Kailash+II+Chittaranjan+Park+New+Delhi+110048"
+  target="_blank"
+  rel="noreferrer"
+  className="
+  inline-block
+  mt-6
+  bg-[#D4A017]
+  text-black
+  px-5
+  py-2
+  rounded-md
+  font-semibold
+  hover:opacity-90
+  transition
+  "
+>
+  View On Google Maps
+</a>
 
         </div>
 
