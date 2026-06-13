@@ -1268,55 +1268,53 @@ const prevSlide = () => {
 </section>
 
 <Features />
-      {/* ==========================
+ {/* ==========================
     EDUCATION LEADERSHIP OF INDIA
 ========================== */}
 
-<section className="max-w-7xl mx-auto px-6 py-10">
+<section className="max-w-[1800px] mx-auto px-6 py-12">
 
-  <div className="text-center mb-16">
+  <div className="text-center mb-10">
 
-    <h1
-      className="
-      text-5xl
-      md:text-6xl
-      font-black
-      text-[#7C2D12]
-      "
-    >
+    <h1 className="text-4xl md:text-5xl font-bold text-[#0B1220]">
 
       Education Leadership Of India
 
     </h1>
 
-    <p
-      className="
-      text-gray-600
-      text-xl
-      mt-6
-      "
-    >
+    <div className="w-32 h-1 bg-[#D4A017] mx-auto mt-4"></div>
 
-      Visionary leaders shaping
-      India's future education ecosystem
+    <p className="text-gray-600 mt-5 text-lg">
+
+      Visionary leaders guiding India's education and skill development mission
 
     </p>
 
   </div>
 
-  {/* SLIDER */}
-
   <div
     className="
     relative
     bg-white
-    rounded-[40px]
-    shadow-2xl
-    p-14
     border
-    border-orange-100
+    border-slate-300
+    rounded-md
+    shadow-sm
+    overflow-hidden
     "
   >
+
+    {/* HEADER */}
+
+    <div className="bg-[#0B1220] text-white border-b-4 border-[#D4A017] p-6">
+
+      <h2 className="text-center text-2xl font-bold">
+
+        National Education Leadership Council
+
+      </h2>
+
+    </div>
 
     {/* LEFT BUTTON */}
 
@@ -1324,85 +1322,100 @@ const prevSlide = () => {
       onClick={prevSlide}
       className="
       absolute
-      left-5
+      left-4
       top-1/2
       -translate-y-1/2
-      bg-[#7C2D12]
+      bg-[#0B1220]
       text-white
-      w-14
-      h-14
+      w-12
+      h-12
       rounded-full
-      text-lg
-      font-black
-      hover:scale-110
-      transition-all
+      hover:bg-[#7C2D12]
+      transition
+      z-10
       "
     >
-
       ←
-
     </button>
 
     {/* CONTENT */}
 
-    <div className="text-center px-10">
+    <div className="p-10 md:p-14">
 
-      <div className="text-7xl mb-8">
+      <div className="flex flex-col items-center">
 
-        🇮🇳
+        {/* PROFILE */}
+
+        <div
+          className="
+          w-24
+          h-24
+          rounded-full
+          bg-[#0B1220]
+          text-white
+          flex
+          items-center
+          justify-center
+          text-3xl
+          font-bold
+          border-4
+          border-[#D4A017]
+          "
+        >
+          {ministers[currentSlide].name.charAt(0)}
+        </div>
+
+        {/* NAME */}
+
+        <h2 className="mt-6 text-3xl font-bold text-[#0B1220] text-center">
+
+          {ministers[currentSlide].name}
+
+        </h2>
+
+        {/* DESIGNATION */}
+
+        <p className="mt-2 text-[#7C2D12] font-semibold text-lg">
+
+          {ministers[currentSlide].state}
+
+        </p>
 
       </div>
 
-      <h1
+      {/* MESSAGE */}
+
+      <div
         className="
-        text-5xl
-        font-black
-        text-[#7C2D12]
-        "
-      >
-
-        {
-          ministers[currentSlide]
-            .name
-        }
-
-      </h1>
-
-      <h2
-        className="
-        text-lg
-        text-orange-500
-        font-bold
-        mt-4
-        "
-      >
-
-        {
-          ministers[currentSlide]
-            .state
-        }
-
-      </h2>
-
-      <p
-        className="
-        text-lg
-        text-gray-700
-        leading-8
         mt-10
-        max-w-4xl
-        mx-auto
+        bg-slate-50
+        border
+        border-slate-200
+        rounded-md
+        p-8
         "
       >
 
-        "
-        {
-          ministers[currentSlide]
-            .message
-        }
-        "
+        <p
+          className="
+          text-gray-700
+          leading-8
+          text-center
+          text-lg
+          "
+        >
+          {ministers[currentSlide].message}
+        </p>
 
-      </p>
+      </div>
+
+      {/* COUNTER */}
+
+      <div className="text-center mt-6 text-slate-500 font-semibold">
+
+        {currentSlide + 1} / {ministers.length}
+
+      </div>
 
     </div>
 
@@ -1412,23 +1425,20 @@ const prevSlide = () => {
       onClick={nextSlide}
       className="
       absolute
-      right-5
+      right-4
       top-1/2
       -translate-y-1/2
-      bg-[#7C2D12]
+      bg-[#0B1220]
       text-white
-      w-14
-      h-14
+      w-12
+      h-12
       rounded-full
-      text-lg
-      font-black
-      hover:scale-110
-      transition-all
+      hover:bg-[#7C2D12]
+      transition
+      z-10
       "
     >
-
       →
-
     </button>
 
   </div>
