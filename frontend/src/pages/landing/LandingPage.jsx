@@ -280,27 +280,26 @@ const prevSlide = () => {
 
         {/* LOGO */}
 
-        <div
+    <div
   className="
-  w-[90px]
-  h-[90px]
+  w-[110px]
+  h-[110px]
   rounded-full
   border-2
   border-[#D4A017]
-  bg-white
   overflow-hidden
-  flex
-  items-center
-  justify-center
+  bg-black
   "
 >
-
   <img
-  src={logo}
-  alt="logo"
-  className="w-40 border"
-/>
-
+    src={logo}
+    alt="TGS Logo"
+    className="
+    w-full
+    h-full
+    object-cover
+    "
+  />
 </div>
 
         {/* TITLE */}
