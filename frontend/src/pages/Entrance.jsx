@@ -1,187 +1,149 @@
 import React from "react";
-import {
-FaRocket,
-FaGraduationCap,
-FaBook,
-FaBrain,
-FaCalculator,
-FaShieldAlt,
-FaSearch,
-} from "react-icons/fa";
 
 function Entrance() {
-const exams = [
-{
-title: "JEE",
-icon: <FaRocket />,
-courses: [
-"Class 6 to JEE",
-"Class 8 to JEE",
-"Class 9 to JEE",
-"JEE Advanced",
-],
-},
-{
-title: "NEET",
-icon: <FaBrain />,
-courses: [
-"Class 6 to NEET",
-"Class 8 to NEET",
-"Class 9 to NEET",
-"NEET Advanced Biology",
-],
-},
-{
-title: "CA",
-icon: <FaCalculator />,
-courses: [
-"CA Foundation",
-"CA Intermediate",
-"Class 11 Commerce",
-"Class 12 Commerce",
-],
-},
-{
-title: "CUET",
-icon: <FaBook />,
-courses: [
-"CUET Science",
-"CUET Commerce",
-"CUET Arts",
-"CUET Crash Course",
-],
-},
-{
-title: "NDA",
-icon: <FaShieldAlt />,
-courses: [
-"NDA Foundation",
-"Class 10 NDA",
-"Defence Preparation",
-"SSB Training",
-],
-},
-{
-title: "CS",
-icon: <FaGraduationCap />,
-courses: [
-"CS Foundation",
-"CS Executive",
-"Commerce + CS",
-"Advanced CS",
-],
-},
-];
-
-return ( <div className="p-8 bg-slate-50 min-h-screen">
+return ( <div className="bg-[#f3f5f7] min-h-screen">
 
 ```
-  {/* Header */}
+  {/* HEADER */}
 
-  <div className="mb-10">
-    <h1 className="text-4xl font-bold text-slate-800">
-      Entrance Programs
-    </h1>
+  <div className="bg-[#001437] border-b-4 border-[#D4A017] py-16">
 
-    <p className="text-slate-500 mt-2">
-      Access preparation programs for competitive exams.
+    <div className="text-center">
+
+      <h1 className="text-white text-6xl font-bold">
+        Academic Portal
+      </h1>
+
+      <p className="text-[#f0c27b] text-2xl mt-5">
+        National Education & Learning Resources Platform
+      </p>
+
+    </div>
+
+  </div>
+
+  {/* MAIN SECTION */}
+
+  <div className="max-w-[1800px] mx-auto border border-gray-300 bg-white p-16">
+
+    <h2 className="text-center text-[#001437] font-semibold text-5xl">
+      Access Curriculum Based Learning Resources
+    </h2>
+
+    {/* GOLD LINE */}
+
+    <div className="w-32 h-1 bg-[#D4A017] mx-auto mt-6"></div>
+
+    <p className="text-center text-gray-600 text-2xl mt-12 max-w-6xl mx-auto leading-relaxed">
+      Explore board specific academic resources,
+      class wise study materials, subject wise content,
+      digital learning modules and future ready education
+      programs designed for students across India.
     </p>
-  </div>
 
-  {/* Search */}
+    {/* STATS */}
 
-  <div className="bg-white rounded-xl shadow-sm border p-4 mb-10 flex items-center gap-3">
-    <FaSearch className="text-slate-400" />
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
 
-    <input
-      type="text"
-      placeholder="Search exam or course..."
-      className="outline-none w-full"
-    />
-  </div>
+      <div className="border border-gray-300 bg-white p-10 text-center">
 
-  {/* Cards */}
+        <h3 className="text-5xl font-bold text-[#001437]">
+          15+
+        </h3>
 
-  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-
-    {exams.map((exam, index) => (
-      <div
-        key={index}
-        className="
-          bg-white
-          rounded-xl
-          border
-          shadow-sm
-          hover:shadow-lg
-          transition-all
-          duration-300
-          overflow-hidden
-        "
-      >
-
-        <div className="border-b p-6">
-
-          <div className="flex items-center gap-4">
-
-            <div
-              className="
-                h-14
-                w-14
-                rounded-lg
-                bg-blue-100
-                text-blue-700
-                flex
-                items-center
-                justify-center
-                text-2xl
-              "
-            >
-              {exam.icon}
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-slate-800">
-                {exam.title}
-              </h2>
-
-              <p className="text-sm text-slate-500">
-                {exam.courses.length} Programs
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div className="p-5">
-
-          <div className="space-y-3">
-
-            {exam.courses.map((course, i) => (
-              <div
-                key={i}
-                className="
-                  bg-slate-50
-                  border
-                  rounded-lg
-                  px-4
-                  py-3
-                  hover:bg-blue-50
-                  hover:border-blue-300
-                  cursor-pointer
-                  transition
-                "
-              >
-                {course}
-              </div>
-            ))}
-
-          </div>
-
-        </div>
+        <p className="text-gray-600 text-2xl mt-4">
+          State Boards
+        </p>
 
       </div>
-    ))}
+
+      <div className="border border-gray-300 bg-white p-10 text-center">
+
+        <h3 className="text-5xl font-bold text-[#001437]">
+          7
+        </h3>
+
+        <p className="text-gray-600 text-2xl mt-4">
+          Classes
+        </p>
+
+      </div>
+
+      <div className="border border-gray-300 bg-white p-10 text-center">
+
+        <h3 className="text-5xl font-bold text-[#001437]">
+          50+
+        </h3>
+
+        <p className="text-gray-600 text-2xl mt-4">
+          Subjects
+        </p>
+
+      </div>
+
+      <div className="border border-gray-300 bg-white p-10 text-center">
+
+        <h3 className="text-5xl font-bold text-[#001437]">
+          24x7
+        </h3>
+
+        <p className="text-gray-600 text-2xl mt-4">
+          Access
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  {/* BOARD SECTION */}
+
+  <div className="max-w-[1800px] mx-auto py-24">
+
+    <h2 className="text-center text-[#001437] text-5xl font-semibold">
+      Select Education Board
+    </h2>
+
+    <div className="w-32 h-1 bg-[#D4A017] mx-auto mt-6"></div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+
+      {[
+        "CBSE",
+        "ICSE",
+        "UP Board",
+        "Bihar Board",
+        "RBSE",
+        "MP Board",
+        "HBSE",
+        "Maharashtra Board"
+      ].map((board) => (
+
+        <div
+          key={board}
+          className="
+            bg-white
+            border
+            border-gray-300
+            p-8
+            text-center
+            hover:border-[#D4A017]
+            hover:shadow-md
+            transition-all
+            cursor-pointer
+          "
+        >
+
+          <h3 className="text-2xl font-semibold text-[#001437]">
+            {board}
+          </h3>
+
+        </div>
+
+      ))}
+
+    </div>
 
   </div>
 
