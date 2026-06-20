@@ -96,7 +96,7 @@ courses: [
 
 return (
 
-```
+
 <div className="min-h-screen bg-[#f5f6f8]">
 
   {/* HERO */}
@@ -356,10 +356,7 @@ return (
   </div>
 
 </div>
-```
-
 );
 
 }
-
 export default Competition;
