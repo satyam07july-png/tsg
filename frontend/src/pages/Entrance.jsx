@@ -1,258 +1,194 @@
 import React from "react";
-
 import {
-  FaRocket,
-  FaBook,
-  FaBrain,
-  FaGraduationCap,
+FaRocket,
+FaGraduationCap,
+FaBook,
+FaBrain,
+FaCalculator,
+FaShieldAlt,
+FaSearch,
 } from "react-icons/fa";
 
 function Entrance() {
-
-  const exams = [
-
-    {
-      title: "JEE",
-      courses: [
-        "Class 6 to JEE",
-        "Class 8 to JEE",
-        "Class 9 to JEE",
-        "Class 11 JEE Advanced",
-      ],
-    },
-
-    {
-      title: "NEET",
-      courses: [
-        "Class 6 to NEET",
-        "Class 8 to NEET",
-        "Class 9 to NEET",
-        "NEET Advanced Biology",
-      ],
-    },
-
-    {
-      title: "CA",
-      courses: [
-        "Class 9 to CA",
-        "Class 11 Commerce",
-        "CA Foundation",
-        "CA Intermediate",
-      ],
-    },
-
-    {
-      title: "CUET",
-      courses: [
-        "CUET Science",
-        "CUET Commerce",
-        "CUET Arts",
-        "CUET Crash Course",
-      ],
-    },
-
-    {
-      title: "NDA",
-      courses: [
-        "NDA Foundation",
-        "Class 10 NDA",
-        "Defence Preparation",
-        "SSB Interview Training",
-      ],
-    },
+const exams = [
 {
-  title: "CS",
-  courses: [
-    "Class 6 to CS",
-    "Class 8 to CS",
-    "CS Foundation",
-    "Company Secretary Executive",
-  ],
+title: "JEE",
+icon: <FaRocket />,
+courses: [
+"Class 6 to JEE",
+"Class 8 to JEE",
+"Class 9 to JEE",
+"JEE Advanced",
+],
 },
+{
+title: "NEET",
+icon: <FaBrain />,
+courses: [
+"Class 6 to NEET",
+"Class 8 to NEET",
+"Class 9 to NEET",
+"NEET Advanced Biology",
+],
+},
+{
+title: "CA",
+icon: <FaCalculator />,
+courses: [
+"CA Foundation",
+"CA Intermediate",
+"Class 11 Commerce",
+"Class 12 Commerce",
+],
+},
+{
+title: "CUET",
+icon: <FaBook />,
+courses: [
+"CUET Science",
+"CUET Commerce",
+"CUET Arts",
+"CUET Crash Course",
+],
+},
+{
+title: "NDA",
+icon: <FaShieldAlt />,
+courses: [
+"NDA Foundation",
+"Class 10 NDA",
+"Defence Preparation",
+"SSB Training",
+],
+},
+{
+title: "CS",
+icon: <FaGraduationCap />,
+courses: [
+"CS Foundation",
+"CS Executive",
+"Commerce + CS",
+"Advanced CS",
+],
+},
+];
 
-  ];
+return ( <div className="p-8 bg-slate-50 min-h-screen">
 
-  return (
+```
+  {/* Header */}
 
-    <div className="min-h-screen bg-[#f8fafc] px-6 py-16">
+  <div className="mb-10">
+    <h1 className="text-4xl font-bold text-slate-800">
+      Entrance Programs
+    </h1>
 
-      {/* HERO */}
+    <p className="text-slate-500 mt-2">
+      Access preparation programs for competitive exams.
+    </p>
+  </div>
 
+  {/* Search */}
+
+  <div className="bg-white rounded-xl shadow-sm border p-4 mb-10 flex items-center gap-3">
+    <FaSearch className="text-slate-400" />
+
+    <input
+      type="text"
+      placeholder="Search exam or course..."
+      className="outline-none w-full"
+    />
+  </div>
+
+  {/* Cards */}
+
+  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+    {exams.map((exam, index) => (
       <div
+        key={index}
         className="
-        bg-gradient-to-br
-        from-[#0B1220]
-        via-[#111827]
-        to-[#7C2D12]
-        rounded-[40px]
-        text-white
-        p-16
-        text-center
-        shadow-2xl
+          bg-white
+          rounded-xl
+          border
+          shadow-sm
+          hover:shadow-lg
+          transition-all
+          duration-300
+          overflow-hidden
         "
       >
 
-        <div className="text-8xl mb-8">
+        <div className="border-b p-6">
 
-          🚀
-
-        </div>
-
-        <h1
-          className="
-          text-5xl
-          md:text-7xl
-          font-black
-          "
-        >
-
-          Entrance Portal
-
-        </h1>
-
-        <p
-          className="
-          text-2xl
-          text-orange-200
-          mt-8
-          max-w-4xl
-          mx-auto
-          leading-10
-          "
-        >
-
-          India's Smart Entrance
-          Preparation Ecosystem
-          For Future Achievers
-
-        </p>
-
-      </div>
-
-      {/* EXAMS */}
-
-      <div className="max-w-7xl mx-auto mt-24">
-
-        <h2
-          className="
-          text-5xl
-          font-black
-          text-center
-          text-[#7C2D12]
-          mb-16
-          "
-        >
-
-          Choose Your Goal
-
-        </h2>
-
-        <div
-          className="
-          grid
-          grid-cols-1
-          md:grid-cols-2
-          lg:grid-cols-3
-          gap-12
-          "
-        >
-
-          {exams.map((exam, index) => (
+          <div className="flex items-center gap-4">
 
             <div
-              key={index}
               className="
-              bg-white
-              rounded-[40px]
-              shadow-2xl
-              overflow-hidden
-              hover:-translate-y-3
-              transition-all
-              border
-              border-orange-100
+                h-14
+                w-14
+                rounded-lg
+                bg-blue-100
+                text-blue-700
+                flex
+                items-center
+                justify-center
+                text-2xl
               "
             >
-
-              {/* HEADER */}
-
-              <div
-                className="
-                bg-[#7C2D12]
-                text-white
-                py-10
-                text-center
-                "
-              >
-
-                <FaGraduationCap
-                  className="
-                  text-6xl
-                  mx-auto
-                  mb-6
-                  "
-                />
-
-                <h1
-                  className="
-                  text-5xl
-                  font-black
-                  "
-                >
-
-                  {exam.title}
-
-                </h1>
-
-              </div>
-
-              {/* COURSES */}
-
-              <div className="p-10 space-y-6">
-
-                {exam.courses.map(
-                  (course, i) => (
-
-                    <div
-                      key={i}
-                      className="
-                      bg-orange-50
-                      rounded-2xl
-                      p-5
-                      font-bold
-                      text-lg
-                      flex
-                      items-center
-                      gap-4
-                      hover:bg-[#7C2D12]
-                      hover:text-white
-                      transition-all
-                      cursor-pointer
-                      "
-                    >
-
-                      <FaRocket />
-
-                      {course}
-
-                    </div>
-
-                  )
-                )}
-
-              </div>
-
+              {exam.icon}
             </div>
 
-          ))}
+            <div>
+              <h2 className="text-2xl font-bold text-slate-800">
+                {exam.title}
+              </h2>
+
+              <p className="text-sm text-slate-500">
+                {exam.courses.length} Programs
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div className="p-5">
+
+          <div className="space-y-3">
+
+            {exam.courses.map((course, i) => (
+              <div
+                key={i}
+                className="
+                  bg-slate-50
+                  border
+                  rounded-lg
+                  px-4
+                  py-3
+                  hover:bg-blue-50
+                  hover:border-blue-300
+                  cursor-pointer
+                  transition
+                "
+              >
+                {course}
+              </div>
+            ))}
+
+          </div>
 
         </div>
 
       </div>
+    ))}
 
-    </div>
+  </div>
 
-  );
+</div>
 
+
+);
 }
 
 export default Entrance;
