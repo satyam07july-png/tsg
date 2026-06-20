@@ -3,12 +3,11 @@ import React from "react";
 import {
 FaUniversity,
 FaShieldAlt,
-FaTrain,
 FaBookOpen,
+FaTrain,
 } from "react-icons/fa";
 
 function Competition() {
-
 const exams = [
 {
 title: "UPSC",
@@ -94,261 +93,254 @@ courses: [
 
 ];
 
-return (
+return ( <div className="min-h-screen bg-[#f8fafc] px-6 py-16">
 
-
-<div className="min-h-screen bg-[#f5f6f8]">
-
+```
   {/* HERO */}
 
-  <div className="bg-[#001437] border-b-4 border-[#D4A017] py-16">
-
-    <div className="text-center">
-
-      <h1 className="text-white text-6xl font-bold">
-        Competition Portal
-      </h1>
-
-      <p className="text-[#f0c27b] text-2xl mt-5">
-        Government & Public Sector Examination Resources
-      </p>
-
+  <div
+    className="
+    bg-gradient-to-br
+    from-[#0B1220]
+    via-[#111827]
+    to-[#7C2D12]
+    rounded-[40px]
+    text-white
+    p-16
+    text-center
+    shadow-2xl
+    "
+  >
+    <div className="text-8xl mb-8">
+      🇮🇳
     </div>
 
-  </div>
+    <h1
+      className="
+      text-5xl
+      md:text-7xl
+      font-black
+      "
+    >
+      Competition Portal
+    </h1>
 
-  {/* INTRO SECTION */}
-
-  <div className="max-w-[1800px] mx-auto bg-white border border-gray-300 p-14">
-
-    <h2 className="text-center text-[#001437] text-5xl font-semibold">
-      Access Government Examination Programs
-    </h2>
-
-    <div className="w-28 h-1 bg-[#D4A017] mx-auto mt-6"></div>
-
-    <p className="text-center text-gray-600 text-xl mt-10 max-w-6xl mx-auto leading-relaxed">
-      Explore comprehensive preparation resources,
-      exam specific study plans, practice modules,
-      previous year papers and expert guidance for
-      India's leading government recruitment examinations.
+    <p
+      className="
+      text-2xl
+      text-orange-200
+      mt-8
+      max-w-4xl
+      mx-auto
+      leading-10
+      "
+    >
+      India's Smart Government
+      Examination Preparation
+      Ecosystem
     </p>
-
-    {/* STATS */}
-
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
-
-      <div className="border border-gray-300 bg-white p-10 text-center">
-
-        <h3 className="text-5xl font-bold text-[#001437]">
-          8
-        </h3>
-
-        <p className="text-gray-600 text-xl mt-3">
-          Exam Categories
-        </p>
-
-      </div>
-
-      <div className="border border-gray-300 bg-white p-10 text-center">
-
-        <h3 className="text-5xl font-bold text-[#001437]">
-          32+
-        </h3>
-
-        <p className="text-gray-600 text-xl mt-3">
-          Learning Programs
-        </p>
-
-      </div>
-
-      <div className="border border-gray-300 bg-white p-10 text-center">
-
-        <h3 className="text-5xl font-bold text-[#001437]">
-          500+
-        </h3>
-
-        <p className="text-gray-600 text-xl mt-3">
-          Practice Tests
-        </p>
-
-      </div>
-
-      <div className="border border-gray-300 bg-white p-10 text-center">
-
-        <h3 className="text-5xl font-bold text-[#001437]">
-          24x7
-        </h3>
-
-        <p className="text-gray-600 text-xl mt-3">
-          Resource Access
-        </p>
-
-      </div>
-
-    </div>
-
   </div>
 
   {/* EXAMS */}
 
-  <div className="max-w-[1800px] mx-auto py-24">
+  <div className="max-w-7xl mx-auto mt-24">
 
-    <h2 className="text-center text-[#001437] text-5xl font-semibold">
-      Select Examination Category
+    <h2
+      className="
+      text-5xl
+      font-black
+      text-center
+      text-[#7C2D12]
+      mb-16
+      "
+    >
+      Government Exam Categories
     </h2>
 
-    <div className="w-28 h-1 bg-[#D4A017] mx-auto mt-6"></div>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
-
+    <div
+      className="
+      grid
+      grid-cols-1
+      md:grid-cols-2
+      lg:grid-cols-4
+      gap-10
+      "
+    >
       {exams.map((exam, index) => (
-
         <div
           key={index}
           className="
           bg-white
-          border
-          border-gray-300
+          rounded-[40px]
+          shadow-2xl
           overflow-hidden
-          hover:border-[#D4A017]
+          hover:-translate-y-3
           transition-all
+          border
+          border-orange-100
           "
         >
-
           {/* HEADER */}
 
-          <div className="bg-[#001437] text-white text-center py-8 border-b border-[#D4A017]">
-
+          <div
+            className="
+            bg-[#7C2D12]
+            text-white
+            py-8
+            text-center
+            "
+          >
             <FaUniversity
               className="
-              text-4xl
+              text-5xl
               mx-auto
               mb-4
               "
             />
 
-            <h1 className="text-2xl font-bold">
+            <h2
+              className="
+              text-3xl
+              font-black
+              "
+            >
               {exam.title}
-            </h1>
-
+            </h2>
           </div>
 
           {/* COURSES */}
 
-          <div className="p-5 space-y-3">
+          <div className="p-8 space-y-4">
 
             {exam.courses.map((course, i) => (
-
               <div
                 key={i}
                 className="
-                border
-                border-gray-300
+                bg-orange-50
+                rounded-2xl
                 p-4
+                font-bold
+                text-lg
                 flex
                 items-center
                 gap-3
-                text-[#001437]
-                hover:bg-gray-50
+                hover:bg-[#7C2D12]
+                hover:text-white
+                transition-all
                 cursor-pointer
                 "
               >
-
-                <FaShieldAlt className="text-[#D4A017]" />
-
+                <FaShieldAlt />
                 {course}
-
               </div>
-
             ))}
 
           </div>
 
         </div>
-
       ))}
-
     </div>
 
   </div>
 
   {/* FEATURES */}
 
-  <div className="max-w-[1800px] mx-auto pb-24">
+  <div className="max-w-7xl mx-auto mt-24">
 
-    <h2 className="text-center text-[#001437] text-5xl font-semibold">
-      Preparation Resources
+    <h2
+      className="
+      text-5xl
+      font-black
+      text-center
+      text-[#7C2D12]
+      mb-16
+      "
+    >
+      Learning Resources
     </h2>
 
-    <div className="w-28 h-1 bg-[#D4A017] mx-auto mt-6 mb-16"></div>
+    <div
+      className="
+      grid
+      grid-cols-1
+      md:grid-cols-3
+      gap-10
+      "
+    >
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-      <div className="bg-white border border-gray-300 p-12 text-center">
-
+      <div
+        className="
+        bg-white
+        rounded-[35px]
+        shadow-xl
+        p-12
+        text-center
+        border
+        border-orange-100
+        "
+      >
         <FaBookOpen
           className="
-          text-5xl
+          text-6xl
           mx-auto
-          text-[#001437]
-          mb-6
+          text-[#7C2D12]
+          mb-8
           "
         />
 
-        <h3 className="text-3xl font-semibold text-[#001437]">
-          Study Material
+        <h3 className="text-3xl font-black">
+          Smart Notes
         </h3>
-
-        <p className="text-gray-600 mt-4">
-          Structured notes, topic-wise content
-          and revision resources.
-        </p>
-
       </div>
 
-      <div className="bg-white border border-gray-300 p-12 text-center">
-
+      <div
+        className="
+        bg-white
+        rounded-[35px]
+        shadow-xl
+        p-12
+        text-center
+        border
+        border-orange-100
+        "
+      >
         <FaTrain
           className="
-          text-5xl
+          text-6xl
           mx-auto
-          text-[#001437]
-          mb-6
+          text-[#7C2D12]
+          mb-8
           "
         />
 
-        <h3 className="text-3xl font-semibold text-[#001437]">
-          Mock Assessments
+        <h3 className="text-3xl font-black">
+          Mock Tests
         </h3>
-
-        <p className="text-gray-600 mt-4">
-          Full-length practice tests and
-          performance analytics.
-        </p>
-
       </div>
 
-      <div className="bg-white border border-gray-300 p-12 text-center">
-
+      <div
+        className="
+        bg-white
+        rounded-[35px]
+        shadow-xl
+        p-12
+        text-center
+        border
+        border-orange-100
+        "
+      >
         <FaUniversity
           className="
-          text-5xl
+          text-6xl
           mx-auto
-          text-[#001437]
-          mb-6
+          text-[#7C2D12]
+          mb-8
           "
         />
 
-        <h3 className="text-3xl font-semibold text-[#001437]">
-          Expert Guidance
+        <h3 className="text-3xl font-black">
+          Expert Mentorship
         </h3>
-
-        <p className="text-gray-600 mt-4">
-          Dedicated mentorship and
-          examination strategy support.
-        </p>
-
       </div>
 
     </div>
@@ -356,7 +348,9 @@ return (
   </div>
 
 </div>
-);
 
+
+);
 }
+
 export default Competition;
