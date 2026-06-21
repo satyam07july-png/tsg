@@ -19,7 +19,7 @@ courses: [
 ],
 },
 
-```
+
 {
   title: "SSC",
   courses: [
@@ -89,13 +89,13 @@ courses: [
     "KVS Preparation",
   ],
 },
-```
+
 
 ];
 
 return ( <div className="min-h-screen bg-[#f8fafc] px-6 py-16">
 
-```
+
   {/* HERO */}
 
   <div
