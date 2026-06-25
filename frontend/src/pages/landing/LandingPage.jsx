@@ -270,47 +270,47 @@ const prevSlide = () => {
 
   {/* ==========================
       VIKSHIT BHARAT HEADER
-  ========================== */}
+========================== */}
 
-  <div className="bg-[#0B1220] text-white border-b-4 border-[#D4A017]">
+<div className="bg-[#0B1220] text-white border-b-4 border-[#D4A017]">
 
-    <div className="max-w-7xl mx-auto px-6 py-6">
+  <div className="max-w-7xl mx-auto px-6 py-8">
 
-      <div className="flex flex-col items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-8">
 
-        {/* LOGO */}
+      {/* ================= LOGO ================= */}
 
-    <div
-  className="
-  w-[110px]
-  h-[110px]
-  rounded-full
-  border-2
-  border-[#D4A017]
-  overflow-hidden
-  bg-black
-  "
->
-  <img
-    src={logo}
-    alt="TGS Logo"
-    className="
-    w-full
-    h-full
-    object-cover
-    "
-  />
-</div>
+      <div className="flex justify-center lg:justify-start">
 
-        {/* TITLE */}
+        <div
+          className="
+          w-[120px]
+          h-[120px]
+          rounded-full
+          border-2
+          border-[#D4A017]
+          overflow-hidden
+          bg-black
+          "
+        >
+          <img
+            src={logo}
+            alt="TGS Logo"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+      </div>
+
+      {/* ================= CENTER CONTENT ================= */}
+
+      <div className="text-center">
 
         <h1
           className="
-          text-3xl
-          md:text-5xl
-          font-bold
-          text-center
-          mt-4
+          text-4xl
+          md:text-6xl
+          font-black
           leading-tight
           "
         >
@@ -319,95 +319,97 @@ const prevSlide = () => {
           VIKSHIT BHARAT 2047
         </h1>
 
-        {/* SUBTITLE */}
-
         <p
           className="
-          mt-3
-          text-sm
-          md:text-lg
+          mt-4
+          text-lg
+          md:text-xl
           text-[#D4A017]
-          font-semibold
-          tracking-wide
-          text-center
+          font-bold
           "
         >
           ASSOCIATED BY TIMELESS FOUNDATION
         </p>
 
-        {/* TRUST LINE */}
+        <div className="w-28 h-1 bg-[#D4A017] mx-auto mt-4"></div>
 
         <p
           className="
-          mt-3
-          text-center
+          mt-5
           text-slate-300
           text-sm
           md:text-base
+          leading-7
           "
         >
-          National Education • Competitive Exams • Future Skills • Career Development
+          National Education • Competitive Exams •
+          Future Skills • Career Development
         </p>
 
-        {/* QUICK ACCESS */}
+      </div>
 
-        <div className="flex flex-wrap justify-center gap-3 mt-6">
+      {/* ================= PORTALS ================= */}
 
-          <Link
-            to="/login"
-            className="
-            bg-[#1E293B]
-            border
-            border-[#D4A017]
-            px-4
-            py-2
-            rounded-md
-            text-sm
-            font-semibold
-            hover:bg-[#7C2D12]
-            transition
-            "
-          >
-            Student Portal
-          </Link>
+      <div
+        className="
+        flex
+        flex-col
+        gap-3
+        items-center
+        lg:items-end
+        "
+      >
 
-          <Link
-            to="/login"
-            className="
-            bg-[#1E293B]
-            border
-            border-[#D4A017]
-            px-4
-            py-2
-            rounded-md
-            text-sm
-            font-semibold
-            hover:bg-[#7C2D12]
-            transition
-            "
-          >
-            Admin Portal
-          </Link>
+        <Link
+          to="/login"
+          className="
+          w-[220px]
+          text-center
+          bg-[#1E293B]
+          border
+          border-[#D4A017]
+          py-3
+          font-semibold
+          hover:bg-[#7C2D12]
+          transition
+          "
+        >
+          Student Portal
+        </Link>
 
-          <Link
-            to="/login"
-            className="
-            bg-[#1E293B]
-            border
-            border-[#D4A017]
-            px-4
-            py-2
-            rounded-md
-            text-sm
-            font-semibold
-            hover:bg-[#7C2D12]
-            transition
-            "
-          >
-            Teacher Portal
-          </Link>
+        <Link
+          to="/login"
+          className="
+          w-[220px]
+          text-center
+          bg-[#1E293B]
+          border
+          border-[#D4A017]
+          py-3
+          font-semibold
+          hover:bg-[#7C2D12]
+          transition
+          "
+        >
+          Admin Portal
+        </Link>
 
-        </div>
+        <Link
+          to="/login"
+          className="
+          w-[220px]
+          text-center
+          bg-[#1E293B]
+          border
+          border-[#D4A017]
+          py-3
+          font-semibold
+          hover:bg-[#7C2D12]
+          transition
+          "
+        >
+          Teacher Portal
+        </Link>
 
       </div>
 
@@ -415,151 +417,92 @@ const prevSlide = () => {
 
   </div>
 
+</div>
   {/* ==========================
       NAVBAR
   ========================== */}
 
   <div className="bg-[#0B1220] sticky top-0 z-50 border-b border-orange-400/20">
+  <div className="max-w-7xl mx-auto grid grid-cols-3">
 
-    {/* FIRST ROW */}
+  {/* HOME */}
 
-    <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-6">
+  <Link
+    to="/"
+    onClick={() =>
+      document
+        .getElementById("hero-section")
+        ?.scrollIntoView({
+          behavior: "smooth",
+        })
+    }
+    className="
+    text-white
+    py-3
+    flex
+    items-center
+    justify-center
+    border
+    border-orange-400/20
+    hover:bg-[#7C2D12]
+    transition
+    text-lg
+    font-bold
+    "
+  >
+    HOME
+  </Link>
 
-    <div
-  onClick={() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }}
-  className="
-  text-white
-  py-3
-  flex
-  items-center
-  justify-center
-  border
-  border-orange-400/20
-  hover:bg-[#7C2D12]
-  transition
-  text-base
-  md:text-lg
-  font-bold
-  cursor-pointer
-  "
->
-  HOME
+  {/* GOVERNMENT PARTNERS */}
+
+  <Link
+    to="/government-partners"
+    className="
+    text-white
+    py-3
+    flex
+    items-center
+    justify-center
+    border
+    border-orange-400/20
+    hover:bg-[#7C2D12]
+    transition
+    text-lg
+    font-bold
+    "
+  >
+    GOVERNMENT PARTNERS
+  </Link>
+
+  {/* CONTACT */}
+
+  <button
+    onClick={() => {
+      document
+        .getElementById("contact")
+        ?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+    }}
+    className="
+    text-white
+    py-3
+    flex
+    items-center
+    justify-center
+    border
+    border-orange-400/20
+    hover:bg-[#7C2D12]
+    transition
+    text-lg
+    font-bold
+    "
+  >
+    CONTACT
+  </button>
+
 </div>
-
-      <Link
-        to="/login"
-        className="
-        text-white
-        py-3
-        flex
-        items-center
-        justify-center
-        border
-        border-orange-400/20
-        hover:bg-[#7C2D12]
-        transition
-        text-base
-        md:text-lg
-        font-bold
-        "
-      >
-        STUDENT PORTAL
-      </Link>
-
-      <Link
-        to="/login"
-        className="
-        text-white
-        py-3
-        flex
-        items-center
-        justify-center
-        border
-        border-orange-400/20
-        hover:bg-[#7C2D12]
-        transition
-        text-base
-        md:text-lg
-        font-bold
-        "
-      >
-        ADMIN PORTAL
-      </Link>
-
-      <Link
-        to="/login"
-        className="
-        text-white
-        py-3
-        flex
-        items-center
-        justify-center
-        border
-        border-orange-400/20
-        hover:bg-[#7C2D12]
-        transition
-        text-base
-        md:text-lg
-        font-bold
-        "
-      >
-        TEACHER PORTAL
-      </Link>
-
-      <Link
-        to="/government-partners"
-        className="
-        text-white
-        py-3
-        flex
-        items-center
-        justify-center
-        border
-        border-orange-400/20
-        hover:bg-[#7C2D12]
-        transition
-        text-sm
-        md:text-base
-        font-bold
-        "
-      >
-        GOVERNMENT PARTNERS
-      </Link>
-
-      <div
-        onClick={() => {
-          document
-            .getElementById("contact")
-            ?.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-        }}
-        className="
-        text-white
-        py-3
-        flex
-        items-center
-        justify-center
-        border
-        border-orange-400/20
-        hover:bg-[#7C2D12]
-        transition
-        text-base
-        md:text-lg
-        font-bold
-        cursor-pointer
-        "
-      >
-        CONTACT
-      </div>
-
-    </div>
 
     {/* SECOND ROW */}
 

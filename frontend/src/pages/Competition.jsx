@@ -98,49 +98,69 @@ return ( <div className="min-h-screen bg-[#f8fafc] px-6 py-16">
 
   {/* HERO */}
 
-  <div
-    className="
-    bg-gradient-to-br
-    from-[#0B1220]
-    via-[#111827]
-    to-[#7C2D12]
-    rounded-[40px]
-    text-white
-    p-16
-    text-center
-    shadow-2xl
-    "
-  >
-    <div className="text-8xl mb-8">
-      🇮🇳
-    </div>
+<div className="bg-white border border-slate-300 overflow-hidden">
 
-    <h1
-      className="
-      text-5xl
-      md:text-7xl
-      font-black
-      "
-    >
+  <div className="bg-[#0B1220] text-white border-b-4 border-[#D4A017] py-10">
+
+    <h1 className="text-4xl md:text-5xl font-bold text-center">
+
       Competition Portal
+
     </h1>
 
-    <p
-      className="
-      text-2xl
-      text-orange-200
-      mt-8
-      max-w-4xl
-      mx-auto
-      leading-10
-      "
-    >
-      India's Smart Government
-      Examination Preparation
-      Ecosystem
+    <p className="text-center mt-4 text-orange-200">
+
+      Government Examination Preparation Platform
+
     </p>
+
   </div>
 
+  <div className="p-10 text-center">
+
+    <h2 className="text-2xl md:text-3xl font-semibold text-[#0B1220]">
+
+      National Competitive Examination Resources
+
+    </h2>
+
+    <div className="w-24 h-1 bg-[#D4A017] mx-auto mt-4"></div>
+
+    <p className="text-slate-600 text-lg mt-6 max-w-4xl mx-auto leading-8">
+
+      Access examination specific study materials, mock tests,
+      previous year papers, current affairs and expert guidance
+      for central and state government examinations.
+
+    </p>
+
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10">
+
+      <div className="border border-slate-300 p-5">
+        <h3 className="text-3xl font-bold">50+</h3>
+        <p className="text-slate-500 mt-2">Exams</p>
+      </div>
+
+      <div className="border border-slate-300 p-5">
+        <h3 className="text-3xl font-bold">500+</h3>
+        <p className="text-slate-500 mt-2">Mock Tests</p>
+      </div>
+
+      <div className="border border-slate-300 p-5">
+        <h3 className="text-3xl font-bold">1000+</h3>
+        <p className="text-slate-500 mt-2">Study Notes</p>
+      </div>
+
+      <div className="border border-slate-300 p-5">
+        <h3 className="text-3xl font-bold">24x7</h3>
+        <p className="text-slate-500 mt-2">Access</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
   {/* EXAMS */}
 
   <div className="max-w-7xl mx-auto mt-24">
@@ -190,7 +210,7 @@ return ( <div className="min-h-screen bg-[#f8fafc] px-6 py-16">
             text-center
             "
           >
-            <FaUniversity
+  --          <FaUniversity
               className="
               text-5xl
               mx-auto
