@@ -942,70 +942,85 @@ const prevSlide = () => {
   </div>
 
 </Link>
-    {/* COMPETITION */}
-    <Link
-      to="/competition"
-      className="
-      bg-white
-      border
-      border-slate-300
-      rounded-md
-      overflow-hidden
-      shadow-sm
-      hover:border-[#7C2D12]
-      transition
-      block
-      "
-    >
-      <div className="bg-[#0B1220] text-white text-center py-4 border-b-4 border-[#D4A017]">
+   {/* ENTRANCE */}
 
-        <p className="text-xs tracking-widest text-orange-300">
-         Career in
-        </p>
+<Link
+  to="/entrance"
+  className="
+  bg-white
+  border
+  border-slate-300
+  rounded-md
+  overflow-hidden
+  shadow-sm
+  hover:border-[#7C2D12]
+  transition
+  block
+  "
+>
 
-        <h3 className="text-xl font-bold mt-1">
-          Competition
-        </h3>
+  {/* HEADER */}
+
+  <div className="bg-[#0B1220] text-white text-center py-4 border-b-4 border-[#D4A017]">
+
+    <p className="text-xs tracking-widest text-orange-300 uppercase">
+      Career In
+    </p>
+
+    <h3 className="text-xl font-bold mt-1">
+      Entrance
+    </h3>
+
+  </div>
+
+  {/* COURSE LIST */}
+
+  <div>
+
+    {[
+      "JEE Main & JEE Advanced",
+      "NEET UG",
+      "CUET (UG & PG)",
+      "CLAT & Law Entrance",
+      "NDA Entrance Examination",
+      "NIFT Entrance Exam",
+      "NID Design Entrance",
+      "IPMAT (IIM Integrated Program)",
+      "BBA Entrance Examination",
+      "CAT (MBA Entrance)",
+      "GATE Examination",
+      "GRE Preparation",
+      "GMAT Preparation",
+      "SAT & International Admissions",
+      "Study Abroad Entrance Programs",
+    ].map((item, index) => (
+
+      <div
+        key={index}
+        className="
+        px-3
+        py-2
+        border-b
+        border-slate-200
+        hover:bg-slate-50
+        hover:text-[#7C2D12]
+        text-[#1E3A8A]
+        text-sm
+        font-medium
+        transition
+        cursor-pointer
+        "
+      >
+
+        {item}
 
       </div>
 
-      <div>
-        {[
-          "SSC CGL Complete Program",
-          "Railway Recruitment Training",
-          "Banking Exam Masterclass",
-          "UPSC Civil Services Preparation",
-          "State PSC Preparation",
-          "Teaching Eligibility Tests",
-          "Police Recruitment Program",
-          "Insurance Examination Training",
-          "Current Affairs Program",
-          "General Studies Mastery",
-          "Reasoning Development",
-          "Quantitative Aptitude",
-          "Interview Preparation",
-          "Government Job Mission",
-          "National Competitive Exams",
-        ].map((item, index) => (
-          <div
-            key={index}
-            className="
-            px-3
-            py-2
-            border-b
-            border-slate-200
-            hover:bg-slate-50
-            text-[#1E3A8A]
-            text-sm
-            font-medium
-            "
-          >
-            {item}
-          </div>
-        ))}
-      </div>
-    </Link>
+    ))}
 
+  </div>
+
+</Link>
     {/* SKILLING */}
     <Link
       to="/skilling"
