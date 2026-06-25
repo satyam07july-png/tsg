@@ -784,70 +784,85 @@ const prevSlide = () => {
   </div>
   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
 
-    {/* ACADEMIC */}
-    <Link
-      to="/academic"
-      className="
-      bg-white
-      border
-      border-slate-300
-      rounded-md
-      overflow-hidden
-      shadow-sm
-      hover:border-[#7C2D12]
-      transition
-      block
-      "
-    >
-      <div className="bg-[#0B1220] text-white text-center py-4 border-b-4 border-[#D4A017]">
+   {/* ACADEMIC */}
 
-        <p className="text-xs tracking-widest text-orange-300">
-         Career in
-        </p>
+<Link
+  to="/academic"
+  className="
+  bg-white
+  border
+  border-slate-300
+  rounded-md
+  overflow-hidden
+  shadow-sm
+  hover:border-[#7C2D12]
+  transition
+  block
+  "
+>
 
-        <h3 className="text-xl font-bold mt-1">
-          Academic
-        </h3>
+  {/* HEADER */}
+
+  <div className="bg-[#0B1220] text-white text-center py-4 border-b-4 border-[#D4A017]">
+
+    <p className="text-xs tracking-widest text-orange-300 uppercase">
+      Career In
+    </p>
+
+    <h3 className="text-xl font-bold mt-1">
+      Academic
+    </h3>
+
+  </div>
+
+  {/* PROGRAM LIST */}
+
+  <div>
+
+    {[
+      "Class 5 - Foundation Program",
+      "Class 6 - Digital Learning",
+      "Class 7 - Smart Learning Program",
+      "Class 8 - Academic Excellence",
+      "Class 9 - Career Foundation",
+      "Class 10 - Board Examination Preparation",
+      "Class 11 - Science, Commerce & Arts",
+      "Class 12 - Board & Competitive Preparation",
+      "Online BBA",
+      "Online BCA",
+      "Online B.Com",
+      "Online BA / B.Sc",
+      "Online MBA",
+      "Online MCA",
+      "Online M.Tech & PG Programs",
+    ].map((item, index) => (
+
+      <div
+        key={index}
+        className="
+        px-3
+        py-2
+        border-b
+        border-slate-200
+        hover:bg-slate-50
+        hover:text-[#7C2D12]
+        text-[#1E3A8A]
+        text-sm
+        font-medium
+        transition
+        cursor-pointer
+        "
+      >
+
+        {item}
 
       </div>
 
-      <div>
-        {[
-          "CBSE Digital Learning Program",
-          "Smart Classroom Education System",
-          "NEP 2020 Based Learning",
-          "AI Integrated School Curriculum",
-          "National Curriculum Framework",
-          "Higher Education Support",
-          "Teacher Training Mission",
-          "Digital Education Platform",
-          "Student Scholarship Program",
-          "Research & Innovation",
-          "Academic Excellence Initiative",
-          "Virtual Learning Resources",
-          "School Transformation Program",
-          "Educational Technology",
-          "Career Guidance Program",
-        ].map((item, index) => (
-          <div
-            key={index}
-            className="
-            px-3
-            py-2
-            border-b
-            border-slate-200
-            hover:bg-slate-50
-            text-[#1E3A8A]
-            text-sm
-            font-medium
-            "
-          >
-            {item}
-          </div>
-        ))}
-      </div>
-    </Link>
+    ))}
 
+  </div>
+
+</Link>
     {/* ENTRANCE */}
     <Link
       to="/entrance"
