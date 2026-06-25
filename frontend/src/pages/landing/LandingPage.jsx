@@ -802,7 +802,7 @@ const prevSlide = () => {
       <div className="bg-[#0B1220] text-white text-center py-4 border-b-4 border-[#D4A017]">
 
         <p className="text-xs tracking-widest text-orange-300">
-          NATIONAL PROGRAM
+         Career in
         </p>
 
         <h3 className="text-xl font-bold mt-1">
@@ -866,7 +866,7 @@ const prevSlide = () => {
       <div className="bg-[#0B1220] text-white text-center py-4 border-b-4 border-[#D4A017]">
 
         <p className="text-xs tracking-widest text-orange-300">
-          NATIONAL PROGRAM
+         Career in
         </p>
 
         <h3 className="text-xl font-bold mt-1">
@@ -930,7 +930,7 @@ const prevSlide = () => {
       <div className="bg-[#0B1220] text-white text-center py-4 border-b-4 border-[#D4A017]">
 
         <p className="text-xs tracking-widest text-orange-300">
-          NATIONAL PROGRAM
+         Career in
         </p>
 
         <h3 className="text-xl font-bold mt-1">
@@ -994,7 +994,7 @@ const prevSlide = () => {
       <div className="bg-[#0B1220] text-white text-center py-4 border-b-4 border-[#D4A017]">
 
         <p className="text-xs tracking-widest text-orange-300">
-          NATIONAL PROGRAM
+          Career in
         </p>
 
         <h3 className="text-xl font-bold mt-1">
