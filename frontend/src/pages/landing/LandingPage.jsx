@@ -863,70 +863,85 @@ const prevSlide = () => {
   </div>
 
 </Link>
-    {/* ENTRANCE */}
-    <Link
-      to="/entrance"
-      className="
-      bg-white
-      border
-      border-slate-300
-      rounded-md
-      overflow-hidden
-      shadow-sm
-      hover:border-[#7C2D12]
-      transition
-      block
-      "
-    >
-      <div className="bg-[#0B1220] text-white text-center py-4 border-b-4 border-[#D4A017]">
+   {/* COMPETITION */}
 
-        <p className="text-xs tracking-widest text-orange-300">
-         Career in
-        </p>
+<Link
+  to="/competition"
+  className="
+  bg-white
+  border
+  border-slate-300
+  rounded-md
+  overflow-hidden
+  shadow-sm
+  hover:border-[#7C2D12]
+  transition
+  block
+  "
+>
 
-        <h3 className="text-xl font-bold mt-1">
-          Entrance
-        </h3>
+  {/* HEADER */}
+
+  <div className="bg-[#0B1220] text-white text-center py-4 border-b-4 border-[#D4A017]">
+
+    <p className="text-xs tracking-widest text-orange-300 uppercase">
+      Career In
+    </p>
+
+    <h3 className="text-xl font-bold mt-1">
+      Competition
+    </h3>
+
+  </div>
+
+  {/* COURSE LIST */}
+
+  <div>
+
+    {[
+      "UPSC Civil Services (IAS / IPS / IFS)",
+      "State PCS Examinations",
+      "SSC (CGL, CHSL, CPO, MTS)",
+      "Banking (IBPS, SBI, RBI)",
+      "Railway Recruitment (RRB)",
+      "Defence (NDA, CDS, AFCAT)",
+      "Police Recruitment Exams",
+      "Teaching (CTET, UGC NET, DSSSB)",
+      "Judiciary Examination",
+      "CAPF Assistant Commandant",
+      "EPFO Enforcement Officer",
+      "Insurance (LIC, NIACL, UIIC)",
+      "Intelligence Bureau (IB)",
+      "Current Affairs & GS Preparation",
+      "Prelims, Mains & Interview Guidance",
+    ].map((item, index) => (
+
+      <div
+        key={index}
+        className="
+        px-3
+        py-2
+        border-b
+        border-slate-200
+        hover:bg-slate-50
+        hover:text-[#7C2D12]
+        text-[#1E3A8A]
+        text-sm
+        font-medium
+        transition
+        cursor-pointer
+        "
+      >
+
+        {item}
 
       </div>
 
-      <div>
-        {[
-          "JEE Advanced Preparation",
-          "NEET Medical Entrance Coaching",
-          "CUET Preparation Program",
-          "NDA & Defence Entrance Mission",
-          "Engineering Entrance Tests",
-          "Medical Entrance Support",
-          "University Admission Program",
-          "Law Entrance Preparation",
-          "Management Entrance Training",
-          "Mock Test Series",
-          "Previous Year Papers",
-          "National Entrance Guidance",
-          "Competitive Practice Tests",
-          "Exam Readiness Program",
-          "Admission Counselling",
-        ].map((item, index) => (
-          <div
-            key={index}
-            className="
-            px-3
-            py-2
-            border-b
-            border-slate-200
-            hover:bg-slate-50
-            text-[#1E3A8A]
-            text-sm
-            font-medium
-            "
-          >
-            {item}
-          </div>
-        ))}
-      </div>
-    </Link>
+    ))}
 
+  </div>
+
+</Link>
     {/* COMPETITION */}
     <Link
       to="/competition"
