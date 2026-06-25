@@ -277,13 +277,13 @@ const prevSlide = () => {
   className="bg-[#0B1220] text-white border-b-4 border-[#D4A017]"
 >
 
-  <div className="w-full px-8 xl:px-14 py-6">
+  <div className="max-w-7xl mx-auto px-6 py-6">
 
     <div className="relative min-h-[320px]">
 
       {/* ================= LOGO ================= */}
 
-      <div className="absolute left-0 top-2">
+      <div className="absolute left-0 top-0">
 
         <div
           className="
@@ -313,11 +313,11 @@ const prevSlide = () => {
         className="
         absolute
         right-0
-        top-2
+        top-0
         flex
         flex-col
-        gap-4
-        w-[240px]
+        gap-3
+        w-[220px]
         "
       >
 
@@ -373,59 +373,59 @@ const prevSlide = () => {
 
       {/* ================= CENTER CONTENT ================= */}
 
-<div
-  className="
-  absolute
-  inset-0
-  flex
-  flex-col
-  justify-center
-  items-center
-  text-center
-  "
->
+      <div
+        className="
+        h-[320px]
+        flex
+        flex-col
+        justify-end
+        items-center
+        text-center
+        px-[260px]
+        pb-2
+        "
+      >
 
-  <h1
-    className="
-    text-5xl
-    md:text-7xl
-    xl:text-8xl
-    font-black
-    leading-[1.1]
-    tracking-tight
-    max-w-[900px]
-    "
-  >
-    A MISSION FOR
-    <br />
-    VIKSHIT BHARAT 2047
-  </h1>
+        <h1
+          className="
+          text-4xl
+          md:text-6xl
+          font-black
+          leading-tight
+          "
+        >
+          A MISSION FOR
+          <br />
+          VIKSHIT BHARAT 2047
+        </h1>
 
-  <p
-    className="
-    mt-6
-    text-xl
-    font-bold
-    text-[#D4A017]
-    "
-  >
-    ASSOCIATED BY TIMELESS FOUNDATION
-  </p>
+        <p
+          className="
+          mt-3
+          text-lg
+          md:text-xl
+          text-[#D4A017]
+          font-bold
+          "
+        >
+          ASSOCIATED BY TIMELESS FOUNDATION
+        </p>
 
-  <div className="w-32 h-1 bg-[#D4A017] mt-4"></div>
+        <div className="w-28 h-1 bg-[#D4A017] mt-3"></div>
 
-  <p
-    className="
-    mt-5
-    text-lg
-    text-slate-300
-    max-w-4xl
-    "
-  >
-    National Education • Competitive Exams • Future Skills • Career Development
-  </p>
+        <p
+          className="
+          mt-4
+          text-slate-300
+          text-sm
+          md:text-base
+          leading-7
+          "
+        >
+          National Education • Competitive Exams • Future Skills • Career Development
+        </p>
 
-</div>
+      </div>
 
     </div>
 
