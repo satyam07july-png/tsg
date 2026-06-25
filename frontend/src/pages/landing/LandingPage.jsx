@@ -268,19 +268,22 @@ const prevSlide = () => {
 
    <div className="bg-[#f8fafc] min-h-screen">
 
-  {/* ==========================
-      VIKSHIT BHARAT HEADER
+{/* ==========================
+    VIKSHIT BHARAT HEADER
 ========================== */}
 
-<div className="bg-[#0B1220] text-white border-b-4 border-[#D4A017]">
+<div
+  id="hero-section"
+  className="bg-[#0B1220] text-white border-b-4 border-[#D4A017]"
+>
 
-  <div className="max-w-7xl mx-auto px-6 py-8">
+  <div className="max-w-7xl mx-auto px-6 py-6">
 
-    <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-8">
+    <div className="relative min-h-[320px]">
 
       {/* ================= LOGO ================= */}
 
-      <div className="flex justify-center lg:justify-start">
+      <div className="absolute left-0 top-0">
 
         <div
           className="
@@ -293,58 +296,14 @@ const prevSlide = () => {
           bg-black
           "
         >
+
           <img
             src={logo}
             alt="TGS Logo"
             className="w-full h-full object-cover"
           />
+
         </div>
-
-      </div>
-
-      {/* ================= CENTER CONTENT ================= */}
-
-      <div className="text-center">
-
-        <h1
-          className="
-          text-4xl
-          md:text-6xl
-          font-black
-          leading-tight
-          "
-        >
-          A MISSION FOR
-          <br />
-          VIKSHIT BHARAT 2047
-        </h1>
-
-        <p
-          className="
-          mt-4
-          text-lg
-          md:text-xl
-          text-[#D4A017]
-          font-bold
-          "
-        >
-          ASSOCIATED BY TIMELESS FOUNDATION
-        </p>
-
-        <div className="w-28 h-1 bg-[#D4A017] mx-auto mt-4"></div>
-
-        <p
-          className="
-          mt-5
-          text-slate-300
-          text-sm
-          md:text-base
-          leading-7
-          "
-        >
-          National Education • Competitive Exams •
-          Future Skills • Career Development
-        </p>
 
       </div>
 
@@ -352,18 +311,19 @@ const prevSlide = () => {
 
       <div
         className="
+        absolute
+        right-0
+        top-0
         flex
         flex-col
         gap-3
-        items-center
-        lg:items-end
+        w-[220px]
         "
       >
 
         <Link
           to="/login"
           className="
-          w-[220px]
           text-center
           bg-[#1E293B]
           border
@@ -380,7 +340,6 @@ const prevSlide = () => {
         <Link
           to="/login"
           className="
-          w-[220px]
           text-center
           bg-[#1E293B]
           border
@@ -397,7 +356,6 @@ const prevSlide = () => {
         <Link
           to="/login"
           className="
-          w-[220px]
           text-center
           bg-[#1E293B]
           border
@@ -410,6 +368,62 @@ const prevSlide = () => {
         >
           Teacher Portal
         </Link>
+
+      </div>
+
+      {/* ================= CENTER CONTENT ================= */}
+
+      <div
+        className="
+        h-[320px]
+        flex
+        flex-col
+        justify-end
+        items-center
+        text-center
+        px-[260px]
+        pb-2
+        "
+      >
+
+        <h1
+          className="
+          text-4xl
+          md:text-6xl
+          font-black
+          leading-tight
+          "
+        >
+          A MISSION FOR
+          <br />
+          VIKSHIT BHARAT 2047
+        </h1>
+
+        <p
+          className="
+          mt-3
+          text-lg
+          md:text-xl
+          text-[#D4A017]
+          font-bold
+          "
+        >
+          ASSOCIATED BY TIMELESS FOUNDATION
+        </p>
+
+        <div className="w-28 h-1 bg-[#D4A017] mt-3"></div>
+
+        <p
+          className="
+          mt-4
+          text-slate-300
+          text-sm
+          md:text-base
+          leading-7
+          "
+        >
+          National Education • Competitive Exams • Future Skills • Career Development
+        </p>
 
       </div>
 
