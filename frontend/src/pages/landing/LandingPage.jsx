@@ -277,13 +277,13 @@ const prevSlide = () => {
   className="bg-[#0B1220] text-white border-b-4 border-[#D4A017]"
 >
 
-  <div className="max-w-7xl mx-auto px-6 py-6">
+  <div className="w-full px-8 xl:px-14 py-6">
 
     <div className="relative min-h-[320px]">
 
       {/* ================= LOGO ================= */}
 
-      <div className="absolute left-0 top-0">
+      <div className="absolute left-0 top-2">
 
         <div
           className="
@@ -313,11 +313,11 @@ const prevSlide = () => {
         className="
         absolute
         right-0
-        top-0
+        top-2
         flex
         flex-col
-        gap-3
-        w-[220px]
+        gap-4
+        w-[240px]
         "
       >
 
@@ -381,15 +381,15 @@ const prevSlide = () => {
         justify-end
         items-center
         text-center
-        px-[260px]
+        px-[300px]
         pb-2
         "
       >
 
         <h1
           className="
-          text-4xl
-          md:text-6xl
+          text-5xl
+          md:text-7xl
           font-black
           leading-tight
           "
@@ -401,9 +401,8 @@ const prevSlide = () => {
 
         <p
           className="
-          mt-3
-          text-lg
-          md:text-xl
+          mt-4
+          text-xl
           text-[#D4A017]
           font-bold
           "
@@ -411,15 +410,13 @@ const prevSlide = () => {
           ASSOCIATED BY TIMELESS FOUNDATION
         </p>
 
-        <div className="w-28 h-1 bg-[#D4A017] mt-3"></div>
+        <div className="w-32 h-1 bg-[#D4A017] mt-4"></div>
 
         <p
           className="
-          mt-4
+          mt-5
           text-slate-300
-          text-sm
-          md:text-base
-          leading-7
+          text-lg
           "
         >
           National Education • Competitive Exams • Future Skills • Career Development
