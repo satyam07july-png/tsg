@@ -540,7 +540,7 @@ const prevSlide = () => {
           block
           "
         >
-          Academic
+         Academics
         </Link>
 
         <Link
@@ -702,20 +702,28 @@ const prevSlide = () => {
 </div>
       
 
-      {/* ==========================
-          WELCOME TEXT
-      ========================== */}
-      <div className="flex justify-center mt-4">
-      <div className="w-20 h-[2px] bg-[#D4A017]" />
+{/* ==========================
+    WELCOME TEXT
+========================== */}
+
+<div className="flex justify-center mt-2">
+  <div className="w-20 h-[2px] bg-[#D4A017]" />
 </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-12">
+<div className="max-w-7xl mx-auto px-6 pt-6 pb-4">
 
-  <div className="bg-white border border-slate-200 rounded-md shadow-sm p-8 md:p-12">
+  <div className="bg-white border border-slate-200 rounded-md shadow-sm p-6 md:p-8">
 
     <div className="text-center">
 
-      <p className="text-[#7C2D12] font-semibold tracking-widest uppercase">
+      <p
+        className="
+        text-[#7C2D12]
+        font-semibold
+        tracking-widest
+        uppercase
+        "
+      >
         National Education Mission
       </p>
 
@@ -735,7 +743,7 @@ const prevSlide = () => {
 
       <p
         className="
-        mt-8
+        mt-5
         text-base
         md:text-lg
         text-slate-700
@@ -759,20 +767,21 @@ const prevSlide = () => {
     INDIA EDUCATION SECTIONS
 ========================== */}
 
-<section className="max-w-[1800px] mx-auto px-4 py-10">
+<section className="max-w-[1800px] mx-auto px-4 pt-2 pb-8">
 
-  <div className="text-center mb-10">
+  <div className="text-center mb-6">
 
     <h2 className="text-3xl md:text-4xl font-bold text-[#0B1220]">
       National Education & Skill Development Programs
     </h2>
+
+    <div className="w-24 h-1 bg-[#D4A017] mx-auto mt-3"></div>
 
     <p className="mt-3 text-slate-600">
       Academic Excellence • Competitive Examinations • Future Skills • Career Development
     </p>
 
   </div>
-
   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
 
     {/* ACADEMIC */}
