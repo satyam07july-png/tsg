@@ -373,56 +373,59 @@ const prevSlide = () => {
 
       {/* ================= CENTER CONTENT ================= */}
 
-      <div
-        className="
-        h-[320px]
-        flex
-        flex-col
-        justify-end
-        items-center
-        text-center
-        px-[300px]
-        pb-2
-        "
-      >
+<div
+  className="
+  absolute
+  inset-0
+  flex
+  flex-col
+  justify-center
+  items-center
+  text-center
+  "
+>
 
-        <h1
-          className="
-          text-5xl
-          md:text-7xl
-          font-black
-          leading-tight
-          "
-        >
-          A MISSION FOR
-          <br />
-          VIKSHIT BHARAT 2047
-        </h1>
+  <h1
+    className="
+    text-5xl
+    md:text-7xl
+    xl:text-8xl
+    font-black
+    leading-[1.1]
+    tracking-tight
+    max-w-[900px]
+    "
+  >
+    A MISSION FOR
+    <br />
+    VIKSHIT BHARAT 2047
+  </h1>
 
-        <p
-          className="
-          mt-4
-          text-xl
-          text-[#D4A017]
-          font-bold
-          "
-        >
-          ASSOCIATED BY TIMELESS FOUNDATION
-        </p>
+  <p
+    className="
+    mt-6
+    text-xl
+    font-bold
+    text-[#D4A017]
+    "
+  >
+    ASSOCIATED BY TIMELESS FOUNDATION
+  </p>
 
-        <div className="w-32 h-1 bg-[#D4A017] mt-4"></div>
+  <div className="w-32 h-1 bg-[#D4A017] mt-4"></div>
 
-        <p
-          className="
-          mt-5
-          text-slate-300
-          text-lg
-          "
-        >
-          National Education • Competitive Exams • Future Skills • Career Development
-        </p>
+  <p
+    className="
+    mt-5
+    text-lg
+    text-slate-300
+    max-w-4xl
+    "
+  >
+    National Education • Competitive Exams • Future Skills • Career Development
+  </p>
 
-      </div>
+</div>
 
     </div>
 
