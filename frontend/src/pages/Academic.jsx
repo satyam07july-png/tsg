@@ -5,20 +5,21 @@ import {
   FaGraduationCap,
 } from "react-icons/fa";
 
+function Academic() {
 
-const [educationType, setEducationType] = useState("school");
+  const [educationType, setEducationType] = useState("school");
 
-const [board, setBoard] = useState("");
+  const [board, setBoard] = useState("");
 
-const [selectedState, setSelectedState] = useState("");
+  const [selectedState, setSelectedState] = useState("");
 
-const [selectedClass, setSelectedClass] = useState("");
+  const [selectedClass, setSelectedClass] = useState("");
 
-const [selectedCourse, setSelectedCourse] = useState("");
+  const [selectedCourse, setSelectedCourse] = useState("");
 
-const [selectedSemester, setSelectedSemester] = useState("");
+  const [selectedSemester, setSelectedSemester] = useState("");
 
-const [stream, setStream] = useState("");
+  const [stream, setStream] = useState("");
 
 const pgCourses = [
   "MBA",
@@ -1200,3 +1201,7 @@ selectedSemester && (
 </div>
 
 );
+
+}
+
+export default Academic;
