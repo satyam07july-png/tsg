@@ -8,6 +8,8 @@ import {
   Link,
 } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 
 import {
@@ -23,6 +25,8 @@ import {
 } from "react-icons/fa";
 
 const CourseDetails = () => {
+
+  const navigate = useNavigate();
 
   const { id } =
     useParams();
@@ -136,19 +140,19 @@ const CourseDetails = () => {
 
           <div>
 
-            👨‍🎓 {course.students} Students
+             {course.students} Students
 
           </div>
 
           <div>
 
-            📖 {course.language}
+             {course.language}
 
           </div>
 
           <div>
 
-            ⏳ {course.duration}
+             {course.duration}
 
           </div>
 
@@ -230,24 +234,29 @@ const CourseDetails = () => {
             </div>
 
             <button
-              className="
-              w-full
-              bg-[#0B1220]
-              text-white
-              py-4
-              rounded-xl
-              text-xl
-              font-bold
-              mt-8
-              hover:bg-[#D4A017]
-              hover:text-black
-              transition
-              "
-            >
-
-              Enroll Now
-
-            </button>
+  onClick={() =>
+    navigate("/checkout", {
+      state: {
+        course,
+      },
+    })
+  }
+  className="
+    w-full
+    bg-[#0B1220]
+    text-white
+    py-4
+    rounded-xl
+    text-xl
+    font-bold
+    mt-8
+    hover:bg-[#D4A017]
+    hover:text-black
+    transition
+  "
+>
+  Enroll Now
+</button>
 
             <button
               className="
@@ -803,49 +812,7 @@ const CourseDetails = () => {
 
               ₹{course.price}
 
-            </h2>
-
-            <button className="w-full bg-black text-white py-4 rounded-2xl text-xl font-semibold mt-8 hover:bg-slate-800 transition">
-
-              Enroll Now
-
-            </button>
-
-            <div className="mt-10 space-y-5 text-lg">
-
-              <div>
-
-                ⏳ Duration:
-                {" "}
-                {
-                  course.duration
-                }
-
-              </div>
-
-              <div>
-
-                📈 Level:
-                {" "}
-                {
-                  course.level
-                }
-
-              </div>
-
-              <div>
-
-                📚 Full Lifetime Access
-
-              </div>
-
-              <div>
-
-                🏆 Certificate Included
-
-              </div>
-
-            </div>
+            </h2> 
 
             <Link
 

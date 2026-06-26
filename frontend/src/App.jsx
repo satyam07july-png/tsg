@@ -37,6 +37,7 @@ import Skilling from "./pages/Skilling";
 import Placement from "./pages/Placement";
 import AddStudent from "./pages/admin/AddStudent";
 import CourseListing from "./pages/CourseListing";
+import Checkout from "./pages/Checkout";
 function App() {
 
   return (
@@ -219,6 +220,8 @@ function App() {
   path="/courses"
   element={<CourseListing />}
 />
+
+<Route path="/checkout" element={<Checkout />} />
 
     </Routes>
 
