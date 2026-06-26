@@ -267,48 +267,6 @@ function CourseListing() {
   </div>
 
 </section>
-
-      {/* Search */}
-
-      <div className="max-w-7xl mx-auto px-6 py-8">
-
-        <input
-          type="text"
-          placeholder="Search Courses..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="
-          w-full
-          border
-          border-slate-300
-          rounded-lg
-          p-4
-          outline-none
-          focus:border-[#D4A017]
-          "
-        />
-
-      </div>
-
-      {/* Cards */}
-
-      <div className="max-w-7xl mx-auto px-6 pb-12">
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-          {filteredCourses.map((course) => (
-
-            <CourseCard
-              key={course.id}
-              course={course}
-            />
-
-          ))}
-
-        </div>
-
-      </div>
-
     </div>
   );
 }

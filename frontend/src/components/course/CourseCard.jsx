@@ -118,6 +118,112 @@ function CourseCard({ course }) {
 
         </p>
 
+        {/* Instructor */}
+
+<div className="flex items-center justify-between mt-4">
+
+  <div>
+
+    <p className="text-sm text-slate-500">
+
+      Instructor
+
+    </p>
+
+    <h4 className="font-semibold text-[#0B1220]">
+
+      {course.instructor}
+
+    </h4>
+
+  </div>
+
+  <span className="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-semibold">
+
+    Live Classes
+
+  </span>
+
+</div>
+
+{/* Course Features */}
+
+<div className="grid grid-cols-2 gap-3 mt-5 text-sm">
+
+  <div className="bg-slate-50 rounded-lg p-3 text-center">
+
+    <br />
+
+    <span className="font-semibold">
+
+      {course.videos}
+
+    </span>
+
+    <p className="text-slate-500">
+
+      Videos
+
+    </p>
+
+  </div>
+
+  <div className="bg-slate-50 rounded-lg p-3 text-center">
+
+    <br />
+
+    <span className="font-semibold">
+
+      {course.notes}
+
+    </span>
+
+    <p className="text-slate-500">
+
+      Notes
+
+    </p>
+
+  </div>
+
+  <div className="bg-slate-50 rounded-lg p-3 text-center">
+
+    <br />
+
+    <span className="font-semibold">
+
+      {course.tests}
+
+    </span>
+
+    <p className="text-slate-500">
+
+      Tests
+
+    </p>
+
+  </div>
+
+  <div className="bg-slate-50 rounded-lg p-3 text-center">
+
+    <br />
+
+    <span className="font-semibold">
+
+      Yes
+
+    </span>
+
+    <p className="text-slate-500">
+
+      Certificate
+
+    </p>
+
+  </div>
+
+</div>
+
         {/* Price */}
 
         <div className="flex items-center gap-3 mt-5">
