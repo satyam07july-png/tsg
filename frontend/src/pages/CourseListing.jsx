@@ -12,28 +12,84 @@ function CourseListing() {
   return (
     <div className="min-h-screen bg-slate-100">
 
-      {/* Hero */}
+     {/* ==========================
+      HERO SECTION
+========================== */}
 
-      <section className="bg-[#0B1220] text-white py-14 border-b-4 border-[#D4A017]">
+<section className="bg-[#0B1220] text-white border-b-4 border-[#D4A017]">
 
-        <div className="max-w-7xl mx-auto px-6">
+  <div className="max-w-7xl mx-auto px-6 py-16">
 
-          <h1 className="text-5xl font-bold">
+    <h1 className="text-5xl md:text-6xl font-bold">
 
-            Academic Courses
+      Academic Courses
 
-          </h1>
+    </h1>
 
-          <p className="mt-4 text-orange-300 text-lg">
+    <p className="text-orange-300 text-xl mt-5">
 
-            Choose the best course and start your learning journey.
+      Find the perfect course for your academic journey.
 
-          </p>
+    </p>
 
-        </div>
+    <div className="w-28 h-1 bg-[#D4A017] mt-6 rounded-full"></div>
 
-      </section>
+    <div className="mt-8 flex flex-wrap items-center gap-3 text-sm text-slate-300">
 
+      <span className="bg-white/10 px-4 py-2 rounded-full">
+        📚 Schooling
+      </span>
+
+      <span>›</span>
+
+      <span className="bg-white/10 px-4 py-2 rounded-full">
+        CBSE
+      </span>
+
+      <span>›</span>
+
+      <span className="bg-white/10 px-4 py-2 rounded-full">
+        Class 10
+      </span>
+
+      <span>›</span>
+
+      <span className="bg-[#D4A017] text-black px-4 py-2 rounded-full font-semibold">
+        Mathematics
+      </span>
+
+    </div>
+
+    <div className="mt-8 flex items-center justify-between flex-wrap gap-5">
+
+      <p className="text-slate-300">
+
+        Showing <span className="text-[#D4A017] font-bold">12</span> Courses
+
+      </p>
+
+      <button
+        className="
+        bg-[#D4A017]
+        text-black
+        px-6
+        py-3
+        rounded-lg
+        font-semibold
+        hover:bg-yellow-500
+        transition
+        "
+      >
+
+        Explore Courses
+
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
       {/* Search */}
 
       <div className="max-w-7xl mx-auto px-6 py-8">
