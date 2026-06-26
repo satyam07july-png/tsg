@@ -36,6 +36,7 @@ import Competition from "./pages/Competition";
 import Skilling from "./pages/Skilling";
 import Placement from "./pages/Placement";
 import AddStudent from "./pages/admin/AddStudent";
+import CourseListing from "./pages/CourseListing";
 function App() {
 
   return (
@@ -218,6 +219,11 @@ function App() {
 <Route
  path="/admin/add-student"
  element={<AddStudent />}
+/>
+
+<Route
+  path="/courses"
+  element={<CourseListing />}
 />
 
     </Routes>

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 import {
   FaBookOpen,
@@ -18,6 +20,8 @@ function Academic() {
   const [selectedCourse, setSelectedCourse] = useState("");
 
   const [selectedSemester, setSelectedSemester] = useState("");
+  
+  const navigate = useNavigate();
 
   const [stream, setStream] = useState("");
 
@@ -588,248 +592,232 @@ return (
 
       )}
 
-      {/* ==========================
-            STEP 4
-      ========================== */}
+    {/* ==========================
+        STEP 4
+========================== */}
 
-      {step === 4 && (
+{step === 4 && (
 
-        <>
+  <>
 
-          {/* ================= SCHOOL ================= */}
+    {/* ================= SCHOOL ================= */}
 
-          {educationType === "school" && (
+    {educationType === "school" && (
 
-            <>
+      <>
 
-              {/* CLASS 11 & 12 */}
+        {/* STREAM SELECTION */}
 
-              {(selectedClass === "11" || selectedClass === "12") && !stream && (
+        {(selectedClass === "11" || selectedClass === "12") && !stream && (
 
-                <>
+          <>
 
-                  <h2 className="text-4xl font-bold text-center text-[#0B1220]">
-                    Select Stream
-                  </h2>
+            <h2 className="text-4xl font-bold text-center text-[#0B1220]">
+              Select Stream
+            </h2>
 
-                  <p className="text-center text-slate-500 mt-4">
-                    Choose your stream
-                  </p>
+            <p className="text-center text-slate-500 mt-4">
+              Choose your stream
+            </p>
 
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
 
-                    {["Science","Commerce","Arts"].map((item)=>(
+              {["Science", "Commerce", "Arts"].map((item) => (
 
-                      <button
-                        key={item}
-                        onClick={()=>setStream(item)}
-                        className="border rounded-lg p-10 hover:border-[#7C2D12] hover:bg-slate-50 transition"
-                      >
-                        {item}
-                      </button>
+                <button
+                  key={item}
+                  onClick={() => setStream(item)}
+                  className="border rounded-lg p-10 hover:border-[#7C2D12] hover:bg-slate-50 transition"
+                >
+                  {item}
+                </button>
 
-                    ))}
+              ))}
 
-                  </div>
+            </div>
 
-                </>
+          </>
 
-              )}
+        )}
 
-              {/* SUBJECTS */}
+        {/* SUBJECTS */}
 
-              {(selectedClass !== "11" && selectedClass !== "12") || stream ? (
+        {(selectedClass !== "11" && selectedClass !== "12") || stream ? (
 
-                <>
+          <>
 
-                  <h2 className="text-4xl font-bold text-center text-[#0B1220]">
-                    Select Subject
-                  </h2>
+            <h2 className="text-4xl font-bold text-center text-[#0B1220]">
+              Select Subject
+            </h2>
 
-                  <p className="text-center text-slate-500 mt-4">
-                    Choose your subject
-                  </p>
+            <p className="text-center text-slate-500 mt-4">
+              Choose your subject
+            </p>
 
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-12">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-12">
 
-                    {(
-                      selectedClass === "11" || selectedClass === "12"
-                        ? stream === "Science"
-                          ? ["Physics","Chemistry","Mathematics","Biology","Computer Science"]
-                          : stream === "Commerce"
-                          ? ["Accountancy","Business Studies","Economics","Mathematics","English"]
-                          : ["History","Political Science","Geography","Economics","English"]
-                        : [
-                            "Mathematics",
-                            "Science",
-                            "English",
-                            "Hindi",
-                            "Social Science",
-                            "Computer Science",
-                          ]
-                    ).map((subject)=>(
+              {(
+                selectedClass === "11" || selectedClass === "12"
+                  ? stream === "Science"
+                    ? [
+                        "Physics",
+                        "Chemistry",
+                        "Mathematics",
+                        "Biology",
+                        "Computer Science",
+                      ]
+                    : stream === "Commerce"
+                    ? [
+                        "Accountancy",
+                        "Business Studies",
+                        "Economics",
+                        "Mathematics",
+                        "English",
+                      ]
+                    : [
+                        "History",
+                        "Political Science",
+                        "Geography",
+                        "Economics",
+                        "English",
+                      ]
+                  : [
+                      "Mathematics",
+                      "Science",
+                      "English",
+                      "Hindi",
+                      "Social Science",
+                      "Computer Science",
+                    ]
+              ).map((subject) => (
 
-                      <button
-                        key={subject}
-                        onClick={()=>{
-                          setStep(5);
-                        }}
-                        className="border rounded-lg py-8 hover:border-[#7C2D12] hover:bg-slate-50 transition"
-                      >
-                        {subject}
-                      </button>
+                <button
+                  key={subject}
+                  onClick={() => {
 
-                    ))}
+                    setSelectedSubject(subject);
 
-                  </div>
+                    navigate("/courses", {
+                      state: {
+                        educationType,
+                        board,
+                        selectedState,
+                        selectedClass,
+                        stream,
+                        subject,
+                      },
+                    });
 
-                </>
-
-              ) : null}
-
-            </>
-
-          )}
-
-          {/* ================= UG ================= */}
-
-          {(educationType === "ug" || educationType === "pg") && (
-
-            <>
-
-              <h2 className="text-4xl font-bold text-center text-[#0B1220]">
-                Select Subject
-              </h2>
-
-              <p className="text-center text-slate-500 mt-4">
-                {selectedCourse} • Semester {selectedSemester}
-              </p>
-
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-12">
-
-                {[
-                  "Core Subject",
-                  "Practical",
-                  "Lab",
-                  "Assignment",
-                  "Project",
-                  "Elective",
-                  "Skill Enhancement",
-                  "Open Elective",
-                ].map((subject)=>(
-
-                  <button
-                    key={subject}
-                    onClick={()=>{
-                      setStep(5);
-                    }}
-                    className="border rounded-lg py-8 hover:border-[#7C2D12] hover:bg-slate-50 transition"
-                  >
-                    {subject}
-                  </button>
-
-                ))}
-
-              </div>
-
-            </>
-
-          )}
-
-          <div className="flex justify-center mt-12">
-
-            <button
-              onClick={()=>setStep(3)}
-              className="bg-[#0B1220] text-white px-8 py-3 rounded-lg hover:bg-[#7C2D12] transition"
-            >
-              Back
-            </button>
-
-          </div>
-
-        </>
-
-      )}
-
-      {/* ==========================
-            STEP 5
-      ========================== */}
-
-      {step === 5 && (
-
-        <>
-
-          <h2 className="text-4xl font-bold text-center text-[#0B1220]">
-
-            {selectedSubject || "Learning Resources"}
-
-          </h2>
-
-          <p className="text-center text-slate-500 mt-4">
-
-            Choose a learning resource
-
-          </p>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
-
-            {[
-              "Video Lectures",
-              "Study Notes",
-              "Assignments",
-              "Mock Tests",
-              "Previous Year Papers",
-              "Books & PDFs",
-              "Quiz",
-              "Discussion Forum",
-            ].map((item) => (
-
-              <button
-                key={item}
-                className="
+                  }}
+                  className="
                   border
                   rounded-lg
                   py-8
-                  px-4
                   hover:border-[#7C2D12]
                   hover:bg-slate-50
                   transition
-                "
-              >
+                  "
+                >
+                  {subject}
+                </button>
 
-                {item}
+              ))}
 
-              </button>
+            </div>
 
-            ))}
+          </>
 
-          </div>
+        ) : null}
 
-          <div className="flex justify-center mt-12">
+      </>
+
+    )}
+
+    {/* ================= UG & PG ================= */}
+
+    {(educationType === "ug" || educationType === "pg") && (
+
+      <>
+
+        <h2 className="text-4xl font-bold text-center text-[#0B1220]">
+          Select Subject
+        </h2>
+
+        <p className="text-center text-slate-500 mt-4">
+          {selectedCourse} • Semester {selectedSemester}
+        </p>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-12">
+
+          {[
+            "Core Subject",
+            "Practical",
+            "Lab",
+            "Assignment",
+            "Project",
+            "Elective",
+            "Skill Enhancement",
+            "Open Elective",
+          ].map((subject) => (
 
             <button
-              onClick={() => setStep(4)}
+              key={subject}
+              onClick={() => {
+
+                setSelectedSubject(subject);
+
+                navigate("/courses", {
+                  state: {
+                    educationType,
+                    selectedCourse,
+                    selectedSemester,
+                    subject,
+                  },
+                });
+
+              }}
               className="
-                bg-[#0B1220]
-                text-white
-                px-8
-                py-3
-                rounded-lg
-                hover:bg-[#7C2D12]
-                transition
+              border
+              rounded-lg
+              py-8
+              hover:border-[#7C2D12]
+              hover:bg-slate-50
+              transition
               "
             >
-
-              Back
-
+              {subject}
             </button>
 
-          </div>
+          ))}
 
-        </>
+        </div>
 
-      )}
+      </>
 
+    )}
+
+    <div className="flex justify-center mt-12">
+
+      <button
+        onClick={() => setStep(3)}
+        className="
+        bg-[#0B1220]
+        text-white
+        px-8
+        py-3
+        rounded-lg
+        hover:bg-[#7C2D12]
+        transition
+        "
+      >
+        Back
+      </button>
+
+    </div>
+
+  </>
+
+)}
     </div>
 
   </div>
