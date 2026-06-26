@@ -90,6 +90,184 @@ function CourseListing() {
   </div>
 
 </section>
+
+{/* ==========================
+      SEARCH & FILTER
+========================== */}
+
+<section className="bg-white border-b">
+
+  <div className="max-w-7xl mx-auto px-6 py-8">
+
+    <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
+
+      {/* Search */}
+
+      <input
+        type="text"
+        placeholder="🔍 Search Course..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="
+        lg:col-span-2
+        border
+        border-slate-300
+        rounded-xl
+        px-5
+        py-4
+        outline-none
+        focus:border-[#D4A017]
+        "
+      />
+
+      {/* Category */}
+
+      <select
+        className="
+        border
+        border-slate-300
+        rounded-xl
+        px-4
+        py-4
+        outline-none
+        focus:border-[#D4A017]
+        "
+      >
+        <option>All Categories</option>
+        <option>Schooling</option>
+        <option>Undergraduate</option>
+        <option>Postgraduate</option>
+      </select>
+
+      {/* Rating */}
+
+      <select
+        className="
+        border
+        border-slate-300
+        rounded-xl
+        px-4
+        py-4
+        outline-none
+        focus:border-[#D4A017]
+        "
+      >
+        <option>Rating</option>
+        <option>4★ & Above</option>
+        <option>3★ & Above</option>
+      </select>
+
+      {/* Sort */}
+
+      <select
+        className="
+        border
+        border-slate-300
+        rounded-xl
+        px-4
+        py-4
+        outline-none
+        focus:border-[#D4A017]
+        "
+      >
+        <option>Sort By</option>
+        <option>Newest</option>
+        <option>Price Low → High</option>
+        <option>Price High → Low</option>
+        <option>Most Popular</option>
+      </select>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+{/* ==========================
+      COURSES SECTION
+========================== */}
+
+<section className="bg-[#f8fafc] py-12">
+
+  <div className="max-w-7xl mx-auto px-6">
+
+    <div className="flex items-center justify-between mb-8">
+
+      <div>
+
+        <h2 className="text-3xl font-bold text-[#0B1220]">
+
+          Available Courses
+
+        </h2>
+
+        <p className="text-slate-500 mt-2">
+
+          Choose the best course based on your academic selection.
+
+        </p>
+
+      </div>
+
+      <span
+        className="
+        bg-[#D4A017]
+        text-black
+        px-5
+        py-2
+        rounded-full
+        font-semibold
+        "
+      >
+
+        {filteredCourses.length} Courses
+
+      </span>
+
+    </div>
+
+    {/* Cards */}
+
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+      {filteredCourses.length > 0 ? (
+
+        filteredCourses.map((course) => (
+
+          <CourseCard
+            key={course.id}
+            course={course}
+          />
+
+        ))
+
+      ) : (
+
+        <div className="col-span-full text-center py-20">
+
+          <h3 className="text-2xl font-bold text-slate-700">
+
+            No Courses Found
+
+          </h3>
+
+          <p className="text-slate-500 mt-3">
+
+            Try searching with another keyword.
+
+          </p>
+
+        </div>
+
+      )}
+
+    </div>
+
+  </div>
+
+</section>
+
       {/* Search */}
 
       <div className="max-w-7xl mx-auto px-6 py-8">
