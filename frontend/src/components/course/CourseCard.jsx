@@ -263,27 +263,20 @@ function CourseCard({ course }) {
             View Details
           </Link>
 
-         <button
-  onClick={() =>
-    navigate("/checkout", {
-      state: {
-        course,
-      },
-    })
-  }
-  className="
-    w-full
-    text-center
-    bg-[#D4A017]
-    py-3
-    rounded-lg
-    font-semibold
-    hover:bg-[#b88a10]
-    transition
-  "
->
-  Buy Now
-</button>
+          <Link
+            to="/checkout"
+            className="
+            text-center
+            bg-[#D4A017]
+            py-3
+            rounded-lg
+            font-semibold
+            hover:bg-[#b88a10]
+            transition
+            "
+          >
+            Buy Now
+          </Link>
 
         </div>
 
