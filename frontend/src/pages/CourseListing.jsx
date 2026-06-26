@@ -19,9 +19,28 @@ const {
 
   const [search, setSearch] = useState("");
 
-  const filteredCourses = courses.filter((course) =>
-    course.title.toLowerCase().includes(search.toLowerCase())
-  );
+ const filteredCourses = courses.filter((course) => {
+
+  const matchSearch = course.title
+    .toLowerCase()
+    .includes(search.toLowerCase());
+
+  const matchEducation =
+    !educationType || course.category.toLowerCase() ===
+    (
+      educationType === "school"
+        ? "schooling"
+        : educationType === "ug"
+        ? "undergraduate"
+        : "postgraduate"
+    );
+
+  const matchSubject =
+    !subject || course.subject === subject;
+
+  return matchSearch && matchEducation && matchSubject;
+
+});
 
   return (
     <div className="min-h-screen bg-slate-100">
