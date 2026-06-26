@@ -23,6 +23,8 @@ function Academic() {
   
   const navigate = useNavigate();
 
+  const [selectedSubject, setSelectedSubject] = useState("");
+
   const [stream, setStream] = useState("");
 
   const [step, setStep] = useState(1);
