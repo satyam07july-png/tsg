@@ -94,12 +94,6 @@ function App() {
         path="/admin/users"
         element={<UsersPage />}
       />
-
-      <Route
-        path="/courses"
-        element={<Courses />}
-      />
-
       <Route
         path="/about"
         element={<About />}
