@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaStar, FaClock, FaUsers } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function CourseCard({ course }) {
+
+  const navigate = useNavigate();
+  
   return (
     <div
       className="
@@ -263,20 +267,27 @@ function CourseCard({ course }) {
             View Details
           </Link>
 
-          <Link
-            to="/checkout"
-            className="
-            text-center
-            bg-[#D4A017]
-            py-3
-            rounded-lg
-            font-semibold
-            hover:bg-[#b88a10]
-            transition
-            "
-          >
-            Buy Now
-          </Link>
+         <button
+  onClick={() =>
+    navigate("/checkout", {
+      state: {
+        course,
+      },
+    })
+  }
+  className="
+    w-full
+    text-center
+    bg-[#D4A017]
+    py-3
+    rounded-lg
+    font-semibold
+    hover:bg-[#b88a10]
+    transition
+  "
+>
+  Buy Now
+</button>
 
         </div>
 
