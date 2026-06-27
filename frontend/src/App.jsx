@@ -110,10 +110,7 @@ function App() {
         element={<ActivityPage />}
       />
 
-      <Route
-        path="/payment/:id"
-        element={<PaymentPage />}
-      />
+      
 
       <Route
         path="/admin/students/:id"
