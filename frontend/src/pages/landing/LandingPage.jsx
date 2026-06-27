@@ -279,11 +279,25 @@ const prevSlide = () => {
 
   <div className="max-w-7xl mx-auto px-6 py-6">
 
-    <div className="relative min-h-[320px]">
+    <div
+className="
+relative
+lg:min-lg:h-[320px]
+min-h-[300px]
+flex
+flex-col
+lg:block
+items-center
+"
+>
 
       {/* ================= LOGO ================= */}
 
-      <div className="absolute left-0 top-0">
+      <div className="relative
+lg:absolute
+left-0
+top-0
+mb-8">
 
         <div
           className="
@@ -311,13 +325,18 @@ const prevSlide = () => {
 
       <div
         className="
-        absolute
-        right-0
-        top-0
-        flex
-        flex-col
-        gap-3
-        w-[220px]
+       relative
+lg:absolute
+right-0
+top-0
+flex
+flex-col
+gap-3
+w-full
+sm:w-[320px]
+lg:w-[220px]
+mt-8
+lg:mt-0
         "
       >
 
@@ -375,27 +394,30 @@ const prevSlide = () => {
 
       <div
         className="
-        h-[320px]
+        lg:h-[320px]
+min-h-[300px]
         flex
         flex-col
         justify-end
         items-center
         text-center
-        px-[260px]
+        px-4
+md:px-10
+lg:px-[260px]
         pb-2
         "
       >
 
         <h1
           className="
-          text-4xl
-          md:text-6xl
-          font-black
-          leading-tight
+          text-3xl
+sm:text-4xl
+md:text-5xl
+lg:text-6xl
           "
         >
           A MISSION FOR
-          <br />
+            <br />
           VIKSHIT BHARAT 2047
         </h1>
 
@@ -416,10 +438,13 @@ const prevSlide = () => {
         <p
           className="
           mt-4
-          text-slate-300
-          text-sm
-          md:text-base
-          leading-7
+text-slate-300
+text-sm
+sm:text-base
+leading-7
+max-w-2xl
+mx-auto
+px-4
           "
         >
           National Education • Competitive Exams • Future Skills • Career Development
