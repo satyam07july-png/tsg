@@ -199,3 +199,10 @@ app.listen(PORT, () => {
   );
 
 });
+
+app.get("/api/payment/test", (req, res) => {
+  res.json({
+    success: true,
+    message: "Payment Route Working ✅",
+  });
+});
