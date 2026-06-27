@@ -38,6 +38,7 @@ require(
  "./routes/adminDashboardRoutes"
 );
 
+const paymentRoutes = require("./routes/payment.routes");
 // ==========================
 // MIDDLEWARE
 // ==========================
@@ -140,6 +141,8 @@ app.use(
  "/api/admin",
  adminDashboardRoutes
 );
+
+app.use("/api/payment", paymentRoutes);
 
 // ==========================
 // 404 ROUTE
