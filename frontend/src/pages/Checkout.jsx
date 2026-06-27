@@ -13,81 +13,45 @@ import axios from "axios";
 
 const Checkout = () => {
 
-  const handlePayment = async () => {
-  try {
+  const handlePayment = () => {
 
-    const { data } = await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/payment/create-order`,
-      {
-        amount: Number(course.price),
-      }
-    );
+  alert("Step 1");
 
-    const options = {
+  console.log("Step 1");
 
-      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+  console.log(window.Razorpay);
 
-      amount: data.amount,
+  const options = {
 
-      currency: data.currency,
+    key: "rzp_test_T0bvuXdCpuKBMS",
 
-      name: "DIZITAL ADDA",
+    amount: 100,
 
-      description: course.title,
+    currency: "INR",
 
-      image: "/logo.png",
+    name: "DIZITAL ADDA",
 
-      order_id: data.id,
+    description: "Test Payment",
 
-      handler: async function (response) {
+    handler: function(response) {
 
-        try {
+      alert("Success");
 
-          await axios.post(
-            `${import.meta.env.VITE_API_URL}/api/payment/verify`,
-            response
-          );
+    }
 
-          alert("Payment Successful ✅");
+  };
 
-          navigate("/payment-success", {
-            state: {
-              course,
-              payment: response,
-            },
-          });
+  alert("Step 2");
 
-        } catch (err) {
+  const rzp = new window.Razorpay(options);
 
-          console.log(err);
+  alert("Step 3");
 
-          alert("Payment Verification Failed");
+  rzp.open();
 
-        }
+  alert("Step 4");
 
-      },
-
-      theme: {
-
-        color: "#0B1220",
-
-      },
-
-    };
-
-    const razor = new window.Razorpay(options);
-
-    razor.open();
-
-  } catch (err) {
-
-    console.log(err);
-
-    alert("Unable to start payment.");
-
-  }
 };
-
   const navigate = useNavigate();
   const { state } = useLocation();
 
