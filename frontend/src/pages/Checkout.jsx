@@ -530,32 +530,32 @@ const Checkout = () => {
 
       {/* Button */}
 
-      <button
-        onClick={() =>
-          navigate("/payment", {
-            state: {
-              course,
-            },
-          })
-        }
-        className="
-        w-full
-        mt-8
-        bg-[#D4A017]
-        hover:bg-[#b88a10]
-        text-white
-        py-4
-        rounded-2xl
-        text-lg
-        font-bold
-        transition-all
-        duration-300
-        shadow-lg
-        hover:shadow-xl
-        "
-      >
-        Proceed To Payment →
-      </button>
+     <button
+  onClick={() =>
+    navigate(`/payment/${course.id}`, {
+      state: {
+        course,
+      },
+    })
+  }
+  className="
+  w-full
+  mt-8
+  bg-[#D4A017]
+  hover:bg-[#b88a10]
+  text-white
+  py-4
+  rounded-2xl
+  text-lg
+  font-bold
+  transition-all
+  duration-300
+  shadow-lg
+  hover:shadow-xl
+  "
+>
+  Proceed To Payment →
+</button>
 
       <p className="text-center text-gray-500 text-xs mt-4 leading-6">
 
