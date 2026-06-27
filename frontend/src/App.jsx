@@ -223,6 +223,11 @@ function App() {
 
 <Route path="/checkout" element={<Checkout />} />
 
+<Route
+  path="/payment/:id"
+  element={<PaymentPage />}
+/>
+
     </Routes>
 
   );
