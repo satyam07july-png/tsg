@@ -13,7 +13,7 @@ import RevenuePage from "./pages/admin/RevenuePage";
 import UsersPage from "./pages/admin/UsersPage";
 import AddCourse from "./pages/admin/AddCourse";
 import ActivityPage from "./pages/admin/ActivityPage";
-import PaymentPage from "./pages/PaymentPage";
+
 import LearningPage from "./pages/student/LearningPage";
 import TeacherDashboard from "./pages/teacher/TeacherDashboard";
 import StudentProfile from "./pages/admin/StudentProfile";
@@ -223,10 +223,7 @@ function App() {
 
 <Route path="/checkout" element={<Checkout />} />
 
-<Route
-  path="/payment/:id"
-  element={<PaymentPage />}
-/>
+
 
     </Routes>
 

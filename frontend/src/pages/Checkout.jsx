@@ -8,8 +8,86 @@ import {
   Award,
   ChevronRight,
 } from "lucide-react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
+
+  const handlePayment = async () => {
+  try {
+
+    const { data } = await axios.post(
+      `${import.meta.env.VITE_API_URL}/api/payment/create-order`,
+      {
+        amount: Number(course.price),
+      }
+    );
+
+    const options = {
+
+      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+
+      amount: data.amount,
+
+      currency: data.currency,
+
+      name: "DIZITAL ADDA",
+
+      description: course.title,
+
+      image: "/logo.png",
+
+      order_id: data.id,
+
+      handler: async function (response) {
+
+        try {
+
+          await axios.post(
+            `${import.meta.env.VITE_API_URL}/api/payment/verify`,
+            response
+          );
+
+          alert("Payment Successful ✅");
+
+          navigate("/payment-success", {
+            state: {
+              course,
+              payment: response,
+            },
+          });
+
+        } catch (err) {
+
+          console.log(err);
+
+          alert("Payment Verification Failed");
+
+        }
+
+      },
+
+      theme: {
+
+        color: "#0B1220",
+
+      },
+
+    };
+
+    const razor = new window.Razorpay(options);
+
+    razor.open();
+
+  } catch (err) {
+
+    console.log(err);
+
+    alert("Unable to start payment.");
+
+  }
+};
+
   const navigate = useNavigate();
   const { state } = useLocation();
 
@@ -530,28 +608,24 @@ const Checkout = () => {
 
       {/* Button */}
 
-     <button
-  onClick={() =>
-    navigate(`/payment/${course.id}`, {
-      state: {
-        course,
-      },
-    })
-  }
+  {/* Proceed To Payment */}
+
+<button
+  onClick={handlePayment}
   className="
-  w-full
-  mt-8
-  bg-[#D4A017]
-  hover:bg-[#b88a10]
-  text-white
-  py-4
-  rounded-2xl
-  text-lg
-  font-bold
-  transition-all
-  duration-300
-  shadow-lg
-  hover:shadow-xl
+    w-full
+    mt-8
+    bg-[#D4A017]
+    hover:bg-[#b88a10]
+    text-white
+    py-4
+    rounded-2xl
+    text-lg
+    font-bold
+    transition-all
+    duration-300
+    shadow-lg
+    hover:shadow-xl
   "
 >
   Proceed To Payment →
