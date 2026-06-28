@@ -72,6 +72,12 @@ const loginUser = async (req, res) => {
 
     // JWT TOKEN
 
+    if (!process.env.JWT_SECRET) {
+      return res.status(500).json({
+        message: "JWT secret is not configured",
+      });
+    }
+
     const token = jwt.sign(
 
       {
@@ -82,7 +88,7 @@ const loginUser = async (req, res) => {
 
       },
 
-      "lmssecret",
+      process.env.JWT_SECRET,
 
       {
 

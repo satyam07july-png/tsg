@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import axios from "axios";
+import api from "../../lib/api";
 
 import TeacherSidebar from "../../components/teacher/TeacherSidebar";
 
@@ -108,7 +108,7 @@ const UploadLecture = () => {
 
       // API CALL
 
-      const response = await axios.post(
+      const response = await api.post(
 
         `${import.meta.env.VITE_API_URL}/api/lectures/upload`,
 

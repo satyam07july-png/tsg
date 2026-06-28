@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import axios from "axios";
+import api from "../../lib/api";
 
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -28,11 +28,7 @@ function EditCourse() {
 
       try {
 
-        const response = await axios.get(
-
-          `http://https://https://tsg-qlb1.onrender.com/api/admin/course/${id}`
-
-        );
+        const response = await api.get(`/api/courses/${id}`);
 
         setFormData(response.data.course);
 
@@ -68,9 +64,9 @@ function EditCourse() {
 
     try {
 
-      const response = await axios.put(
+      const response = await api.put(
 
-        `http://https://https://tsg-qlb1.onrender.com/api/admin/edit-course/${id}`,
+        `/api/admin/edit-course/${id}`,
 
         formData
 

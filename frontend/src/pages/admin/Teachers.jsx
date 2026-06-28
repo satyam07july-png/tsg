@@ -5,7 +5,7 @@ import {
 
 import { useNavigate } from "react-router-dom";
 
-import axios from "axios";
+import api from "../../lib/api";
 import {
   FaSearch,
   FaChalkboardTeacher,
@@ -31,7 +31,7 @@ const fetchTeachers =
     try {
 
       const response =
-        await axios.get(
+        await api.get(
 
           "https://tsg-qlb1.onrender.com/api/admin/teachers"
 

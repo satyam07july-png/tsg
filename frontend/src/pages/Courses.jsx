@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import axios from "axios";
+import api from "../lib/api";
 
 import { Link } from "react-router-dom";
 
@@ -20,9 +20,8 @@ function Courses() {
 
     try {
 
-      axios.get(
-  `   ${import.meta.env.VITE_API_URL}/api/courses`
-)
+      const response = await api.get("/api/courses");
+
       setCourses(response.data);
 
     }
@@ -43,11 +42,7 @@ function Courses() {
 
   try {
 
-    const response = await axios.delete(
-
-      `http://https://https://tsg-qlb1.onrender.com/api/admin/delete-course/${id}`
-
-    );
+    const response = await api.delete(`/api/admin/delete-course/${id}`);
 
     alert(response.data.message);
 

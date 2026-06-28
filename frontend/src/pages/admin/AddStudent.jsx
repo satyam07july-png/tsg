@@ -1,5 +1,5 @@
 
-import axios from "axios";
+import api from "../../lib/api";
 import { useNavigate } from "react-router-dom";
 import {
   useState,
@@ -35,9 +35,7 @@ const fetchTeachers = async () => {
 
   try {
 
-    const res = await axios.get(
-      "https://tsg-qlb1.onrender.com/api/teachers"
-    );
+    const res = await api.get("/api/teachers");
 
     setTeachers(res.data);
 
@@ -66,10 +64,7 @@ const fetchTeachers = async () => {
 
     try {
 
-      await axios.post(
-        "https://tsg-qlb1.onrender.com/api/students",
-        formData
-      );
+      await api.post("/api/students", formData);
 
       alert("Student Added Successfully ✅");
 

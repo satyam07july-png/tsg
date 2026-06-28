@@ -4,7 +4,7 @@ import React, {
   useState,
 } from "react";
 
-import axios from "axios";
+import api from "../../lib/api";
 
 const LearningPage = () => {
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ const handleLogout = () => {
       try {
 
         const response =
-          await axios.get(
+          await api.get(
 
             `${import.meta.env.VITE_API_URL}/api/lectures`
 

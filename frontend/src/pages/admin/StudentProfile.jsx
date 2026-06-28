@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
-import axios from "axios";
+import api from "../../lib/api";
 
 function StudentProfile() {
   const [courses, setCourses] = useState([]);
@@ -79,7 +79,7 @@ function StudentProfile() {
 
   try {
 
-    const response = await axios.get(
+    const response = await api.get(
 
       `${import.meta.env.VITE_API_URL}/api/courses`
 

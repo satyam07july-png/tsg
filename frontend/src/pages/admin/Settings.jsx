@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../../lib/api";
 
 import {
   FaUserCog,
@@ -27,7 +27,7 @@ const updatePassword = async () => {
 
   try {
 
-    await axios.put(
+    await api.put(
 
       "http://https://https://tsg-qlb1.onrender.com/api/admin/update-password",
 

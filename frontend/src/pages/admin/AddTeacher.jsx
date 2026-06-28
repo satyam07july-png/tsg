@@ -1,4 +1,5 @@
 import { useState } from "react";
+import api from "../../lib/api";
 
 import {
   FaUser,
@@ -38,27 +39,12 @@ function AddTeacher() {
 
     try {
 
-      const response = await fetch(
-        "https://tsg-qlb1.onrender.com/api/admin/add-teacher",
-        {
+      const response = await api.post("/api/admin/add-teacher", {
+        ...formData,
+        role: "teacher",
+      });
 
-          method: "POST",
-
-          headers: {
-            "Content-Type": "application/json",
-          },
-
-          body: JSON.stringify({
-
-            ...formData,
-            role: "teacher",
-
-          }),
-
-        }
-      );
-
-      const data = await response.json();
+      const data = response.data;
 
       console.log(data);
 

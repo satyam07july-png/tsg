@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
-import axios from "axios";
+import api from "../../lib/api";
 function Courses() {
 const [courses, setCourses] = useState([]);
 useEffect(() => {
@@ -22,11 +22,7 @@ const fetchCourses = async () => {
 
   try {
 
-    const response = await axios.get(
-
-      `${import.meta.env.VITE_API_URL}/api/courses`
-
-    );
+    const response = await api.get("/api/courses");
 
     setCourses(response.data);
 
@@ -35,6 +31,28 @@ const fetchCourses = async () => {
   catch (error) {
 
     console.log(error);
+
+  }
+
+};
+
+const handleDelete = async (id) => {
+
+  try {
+
+    const response = await api.delete(`/api/admin/delete-course/${id}`);
+
+    alert(response.data.message);
+
+    fetchCourses();
+
+  }
+
+  catch (error) {
+
+    console.log(error);
+
+    alert("Delete Failed");
 
   }
 

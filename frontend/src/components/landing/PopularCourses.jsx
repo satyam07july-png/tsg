@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import axios from "axios";
+import api from "../../lib/api";
 function Courses() {
 const [courses, setCourses] = useState([]);
 useEffect(() => {
@@ -13,7 +13,7 @@ const fetchCourses = async () => {
 
   try {
 
-    const response = await axios.get(
+    const response = await api.get(
 
       `${import.meta.env.VITE_API_URL}/api/courses`
 

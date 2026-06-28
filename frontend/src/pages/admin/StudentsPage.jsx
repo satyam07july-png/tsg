@@ -9,7 +9,7 @@ import {
   FaMoneyBillWave,
   FaChartLine,
 } from "react-icons/fa";
-import axios from "axios";
+import api from "../../lib/api";
 import {
  useEffect,
  useState
@@ -29,7 +29,7 @@ useEffect(() => {
 const getStudents = async () => {
   try {
 
-    const res = await axios.get(
+    const res = await api.get(
       "https://tsg-qlb1.onrender.com/api/students"
     );
 

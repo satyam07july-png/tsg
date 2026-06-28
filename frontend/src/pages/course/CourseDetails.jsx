@@ -10,7 +10,7 @@ import {
 
 import { useNavigate } from "react-router-dom";
 
-import axios from "axios";
+import api from "../../lib/api";
 
 import {
 
@@ -50,7 +50,7 @@ const CourseDetails = () => {
       try {
 
         const response =
-          await axios.get(
+          await api.get(
 
             `${import.meta.env.VITE_API_URL}/api/courses/${id}`
 

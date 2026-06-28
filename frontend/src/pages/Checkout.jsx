@@ -8,7 +8,7 @@ import {
   Award,
   ChevronRight,
 } from "lucide-react";
-import axios from "axios";
+import api from "../lib/api";
 
 
 const Checkout = () => {

@@ -73,6 +73,13 @@ router.post("/login", async (req, res) => {
 
     // TOKEN
 
+    if (!process.env.JWT_SECRET) {
+      return res.status(500).json({
+        success: false,
+        message: "JWT secret is not configured",
+      });
+    }
+
     const token =
       jwt.sign(
 
@@ -81,8 +88,7 @@ router.post("/login", async (req, res) => {
           role: user.role,
         },
 
-        process.env.JWT_SECRET ||
-        "secretkey",
+        process.env.JWT_SECRET,
 
         {
           expiresIn: "7d",

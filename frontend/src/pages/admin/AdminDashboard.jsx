@@ -1,7 +1,7 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import axios from "axios";
+import api from "../../lib/api";
 
 import {
   FaUserGraduate,
@@ -74,11 +74,7 @@ const fetchTeachers =
     try {
 
       const response =
-        await axios.get(
-
-          "https://tsg-qlb1.onrender.com/api/admin/teachers"
-
-        );
+        await api.get("/api/admin/teachers");
 
       setTeachers(
         response.data.teachers

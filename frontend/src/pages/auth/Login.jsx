@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../../lib/api";
 import { Link, useNavigate } from "react-router-dom";
 
 import {
@@ -30,9 +30,9 @@ const handleLogin = async (e) => {
     // CLEAR OLD USER DATA
     localStorage.clear();
 
-    const response = await axios.post(
+    const response = await api.post(
 
-      "https://tsg-qlb1.onrender.com/api/auth/login",
+      "/api/auth/login",
 
       {
         email,

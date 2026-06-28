@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../../lib/api";
 
 function AddCourse() {
 
@@ -32,9 +32,9 @@ function AddCourse() {
 
     try {
 
-      const response = await axios.post(
+      const response = await api.post(
 
-        "http://https://https://tsg-qlb1.onrender.com/api/admin/add-course",
+        "/api/admin/add-course",
 
         formData
 

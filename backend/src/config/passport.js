@@ -15,7 +15,7 @@ passport.use(
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 
       callbackURL:
-        "http://https://https://tsg-qlb1.onrender.com/api/auth/google/callback",
+        process.env.GOOGLE_CALLBACK_URL,
 
     },
 

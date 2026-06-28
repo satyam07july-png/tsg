@@ -5,7 +5,7 @@ import React, {
 
 import { Link } from "react-router-dom";
 
-import axios from "axios";
+import api from "../../lib/api";
 
 import Features from "../../components/landing/Features";
 
@@ -222,7 +222,7 @@ const prevSlide = () => {
       try {
 
         const response =
-          await axios.get(
+          await api.get(
 
             `${import.meta.env.VITE_API_URL}/api/courses`
 
