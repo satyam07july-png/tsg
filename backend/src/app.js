@@ -26,23 +26,21 @@ const userRoutes = require("./routes/user.routes");
 
 const app = express();
 
-const allowedOrigins = (process.env.CORS_ORIGIN || "https://tsg-qlb1.onrender.com")
-  .split(",")
-  .map((origin) => origin.trim())
-  .filter(Boolean);
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://tsg-ecru.vercel.app",
+  "https://tsg-qs2huqhdh-satyammishra07july-7431s-projects.vercel.app",
+];
 
 app.use(
   cors({
-    origin(origin, callback) {
+    origin: (origin, callback) => {
       if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-        return;
+        return callback(null, true);
       }
-
-      callback(new Error("Not allowed by CORS"));
+      return callback(new Error("Not allowed by CORS"));
     },
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   })
 );
 
