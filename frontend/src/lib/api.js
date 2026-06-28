@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const baseURL = (import.meta.env.VITE_API_URL || "http://localhost:5000")
+const baseURL = (import.meta.env.VITE_API_URL || "https://tsg-qlb1.onrender.com")
   .trim()
   .replace(/\/+$/, "");
 
-const api = api.create({
+const api = axios.create({
   baseURL,
 });
 
