@@ -27,10 +27,9 @@ const userRoutes = require("./routes/user.routes");
 const app = express();
 
 const allowedOrigins = [
-  "http://localhost:5173",
+  
   "https://tsg-ecru.vercel.app",
-  "https://tsg-qs2huqhdh-satyammishra07july-7431s-projects.vercel.app",
-];
+  "https://tsg-qlb1.onrender.com",];
 
 app.use(
   cors({
