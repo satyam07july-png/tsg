@@ -35,6 +35,8 @@ app.use(
   cors({
     origin: (origin, callback) => {
       console.log("Incoming Origin:", origin);
+      console.log("Incoming Origin:", origin);
+console.log("Blocked Origin:", origin);
 
       if (!origin || allowedOrigins.includes(origin)) {
         return callback(null, true);
