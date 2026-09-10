@@ -1,7 +1,7 @@
 import React from "react";
 import {
 FaRocket,
-FaBrain,
+FaHeartbeat,
 FaCalculator,
 FaBook,
 FaShieldAlt,
@@ -17,7 +17,7 @@ description: "Engineering Entrance Preparation",
 },
 {
 title: "NEET",
-icon: <FaBrain />,
+icon: <FaHeartbeat />,
 description: "Medical Entrance Preparation",
 },
 {

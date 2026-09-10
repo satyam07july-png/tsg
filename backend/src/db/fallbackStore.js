@@ -171,17 +171,21 @@ const INITIAL_SECTIONS = [
   { id: 3, course_id: 1, title: "Module 3: Google Ads & Performance Max Campaigns", order_num: 3 },
   { id: 4, course_id: 2, title: "Module 1: Comprehensive Master Strategy & AI Suite", order_num: 1 },
   { id: 5, course_id: 3, title: "Module 1: Rapid Executive Upskilling & Lead Gen", order_num: 1 },
+  { id: 6, course_id: 3, title: "Module 2: Meta Ads, Funnels & GA4 Analytics", order_num: 2 },
+  { id: 7, course_id: 4, title: "Module 1: Foundations of Digital Marketing & SEO", order_num: 1 },
+  { id: 8, course_id: 4, title: "Module 2: Social Media Marketing & AI Tools", order_num: 2 },
 ];
 
 const INITIAL_LECTURES = [
+  // Course 1: Advanced Digital Marketing
   {
     id: 1,
     section_id: 1,
     course_id: 1,
     title: "1.1 Introduction to the Performance Marketing Framework",
-    description: "Overview of customer journeys, acquisition funnels, and marketing technology stack.",
+    description: "Overview of customer journeys, acquisition funnels, and modern digital marketing technology stack.",
     video_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    pdf_url: null,
+    pdf_url: "https://dizitaladda.com/curriculum/performance-framework.pdf",
     duration: "24:30",
     order_num: 1,
     is_free_preview: true,
@@ -202,11 +206,73 @@ const INITIAL_LECTURES = [
     id: 3,
     section_id: 2,
     course_id: 1,
-    title: "2.1 Semantic Search, Entity SEO & ChatGPT Automation",
+    title: "2.1 Semantic Search, Entity SEO & AI Automation",
     description: "How modern search engines index entities and using AI agents for keyword clustering.",
     video_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     pdf_url: null,
     duration: "45:00",
+    order_num: 1,
+    is_free_preview: false,
+  },
+  {
+    id: 4,
+    section_id: 3,
+    course_id: 1,
+    title: "3.1 Google Ads Search & Performance Max Mastery",
+    description: "Architecting high-converting Search campaigns, smart bidding, and asset group optimization.",
+    video_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    pdf_url: null,
+    duration: "38:20",
+    order_num: 1,
+    is_free_preview: false,
+  },
+  // Course 3: Digital Marketing For Professionals
+  {
+    id: 5,
+    section_id: 5,
+    course_id: 3,
+    title: "1.1 High-ROI Growth Frameworks for Professionals",
+    description: "Modern lead generation funnels, B2B and BC client acquisition, and campaign strategy.",
+    video_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    pdf_url: null,
+    duration: "28:10",
+    order_num: 1,
+    is_free_preview: true,
+  },
+  {
+    id: 6,
+    section_id: 6,
+    course_id: 3,
+    title: "2.1 Meta Ads Architecture & Scaling Secrets",
+    description: "Custom audiences, lookalikes, creative testing, and scaling budgets with positive ROAS.",
+    video_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    pdf_url: null,
+    duration: "35:45",
+    order_num: 1,
+    is_free_preview: false,
+  },
+  // Course 4: Digital Marketing For Beginners
+  {
+    id: 7,
+    section_id: 7,
+    course_id: 4,
+    title: "1.1 Fundamentals of Digital Marketing & Online Presence",
+    description: "Introduction to digital channels, search engines, websites, and brand presence.",
+    video_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    pdf_url: null,
+    duration: "20:15",
+    order_num: 1,
+    is_free_preview: true,
+  },
+  {
+    id: 8,
+    section_id: 8,
+    course_id: 4,
+    title: "2.1 Social Media Marketing & 40+ AI Tools Overview",
+    description: "Creating engaging content with ChatGPT, Canva, and scheduling organic social media campaigns.",
+    video_url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    pdf_url: null,
+    duration: "30:00",
     order_num: 1,
     is_free_preview: false,
   },
@@ -271,7 +337,59 @@ class FallbackStore {
       return { rows: [], rowCount: 0 };
     }
 
-    // 2. COURSES QUERIES
+    // 2a. ENROLLED COURSES FOR LOGGED-IN USER (myCourses)
+    if (
+      upperQ.includes("FROM COURSES") &&
+      (upperQ.includes("JOIN ENROLLMENTS") || upperQ.includes("JOIN STUDENTS") || upperQ.includes("ENROLLMENTS.USER_ID = $1") || upperQ.includes("STUDENTS.USER_ID = $1"))
+    ) {
+      const userId = Number(params[0]);
+      const userStudents = this.data.students.filter((s) => Number(s.user_id) === userId);
+      const userEnrollments = this.data.enrollments.filter((e) => Number(e.user_id) === userId);
+
+      const enrolledCourses = this.data.courses.filter((c) => {
+        const inStudent = userStudents.some(
+          (s) =>
+            (s.course_id && Number(s.course_id) === Number(c.id)) ||
+            (s.course_code && s.course_code === c.course_id) ||
+            (s.course && s.course.toLowerCase().trim() === c.title.toLowerCase().trim())
+        );
+        const inEnrollment = userEnrollments.some(
+          (e) =>
+            (e.course_id && Number(e.course_id) === Number(c.id)) ||
+            (e.course_code && e.course_code === c.course_id)
+        );
+        return inStudent || inEnrollment;
+      });
+
+      const formatted = enrolledCourses.map((c) => {
+        const sRec = userStudents.find(
+          (s) =>
+            (s.course_id && Number(s.course_id) === Number(c.id)) ||
+            (s.course_code && s.course_code === c.course_id) ||
+            (s.course && s.course.toLowerCase().trim() === c.title.toLowerCase().trim())
+        );
+        const eRec = userEnrollments.find(
+          (e) =>
+            (e.course_id && Number(e.course_id) === Number(c.id)) ||
+            (e.course_code && e.course_code === c.course_id)
+        );
+
+        const lecCount = this.data.lectures.filter((l) => Number(l.course_id) === Number(c.id)).length;
+        const totalLec = lecCount > 0 ? lecCount : (c.total_lectures || 36);
+
+        return {
+          ...c,
+          enrolled_at: eRec?.enrolled_at || sRec?.created_at || new Date().toISOString(),
+          enrollment_status: eRec?.status || sRec?.status || "Active",
+          total_lectures: totalLec,
+          completed_lectures: 0,
+        };
+      });
+
+      return { rows: formatted, rowCount: formatted.length };
+    }
+
+    // 2b. General Courses Query
     if (upperQ.includes("FROM COURSES") && (upperQ.includes("TOTAL_LECTURES") || upperQ.includes("SELECT C.*") || upperQ.includes("SELECT * FROM COURSES"))) {
       let filtered = this.data.courses.filter((c) => c.is_published !== false);
 
@@ -291,7 +409,7 @@ class FallbackStore {
       return { rows: filtered, rowCount: filtered.length };
     }
 
-    // 2b. Single Course: SELECT * FROM courses WHERE id::text = $1 OR course_id = $1
+    // 2c. Single Course: SELECT * FROM courses WHERE id::text = $1 OR course_id = $1
     if (upperQ.includes("FROM COURSES") && (upperQ.includes("ID::TEXT = $1") || upperQ.includes("COURSE_ID = $1") || upperQ.includes("WHERE ID = $1"))) {
       const idOrSlug = String(params[0]);
       const course = this.data.courses.find(
@@ -300,18 +418,25 @@ class FallbackStore {
       return { rows: course ? [course] : [], rowCount: course ? 1 : 0 };
     }
 
-    // 2c. Course Sections: SELECT * FROM sections WHERE course_id = $1
+    // 2d. Course Sections: SELECT * FROM sections WHERE course_id = $1
     if (upperQ.includes("FROM SECTIONS") && upperQ.includes("COURSE_ID = $1")) {
       const courseId = Number(params[0]);
       const sections = this.data.sections.filter((s) => s.course_id === courseId);
       return { rows: sections, rowCount: sections.length };
     }
 
-    // 2d. Course Lectures: SELECT ... FROM lectures WHERE course_id = $1
-    if (upperQ.includes("FROM LECTURES") && upperQ.includes("COURSE_ID = $1")) {
-      const courseId = Number(params[0]);
-      const lectures = this.data.lectures.filter((l) => l.course_id === courseId);
-      return { rows: lectures, rowCount: lectures.length };
+    // 2e. Course Lectures (supports courseId numeric or slug)
+    if (upperQ.includes("FROM LECTURES")) {
+      let filtered = this.data.lectures;
+      if (params.length > 0 && params[0] !== undefined) {
+        const courseIdStr = String(params[0]);
+        const targetCourse = this.data.courses.find(
+          (c) => String(c.id) === courseIdStr || c.course_id === courseIdStr
+        );
+        const matchedCourseId = targetCourse ? targetCourse.id : Number(courseIdStr);
+        filtered = filtered.filter((l) => Number(l.course_id) === Number(matchedCourseId));
+      }
+      return { rows: filtered, rowCount: filtered.length };
     }
 
     // 2e. Add Course: INSERT INTO courses (...) VALUES (...) RETURNING *
@@ -365,7 +490,7 @@ class FallbackStore {
         role,
         phone,
         status: "Active",
-        avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=" + encodeURIComponent(params[0] || "student"),
+        avatar: "https://ui-avatars.com/api/?name=" + encodeURIComponent(params[0] || "Student") + "&background=0B1220&color=D4A017&bold=true",
         created_at: new Date().toISOString(),
       };
       this.data.users.push(newUser);
@@ -389,13 +514,16 @@ class FallbackStore {
     // 4. STUDENTS QUERIES
     if (upperQ.includes("FROM STUDENTS") && upperQ.includes("USER_ID = $1")) {
       const userId = Number(params[0]);
-      const student = this.data.students.find((s) => s.user_id === userId);
+      const student = [...this.data.students].reverse().find((s) => Number(s.user_id) === userId);
       if (!student) {
         return { rows: [], rowCount: 0 };
       }
-      const user = this.data.users.find((u) => u.id === userId);
+      const user = this.data.users.find((u) => Number(u.id) === userId);
       const course = this.data.courses.find(
-        (c) => c.id === student.course_id || c.course_id === student.course_code
+        (c) =>
+          (student.course_id && Number(c.id) === Number(student.course_id)) ||
+          (student.course_code && c.course_id === student.course_code) ||
+          (student.course && c.title.toLowerCase().trim() === student.course.toLowerCase().trim())
       );
       const combined = {
         ...student,

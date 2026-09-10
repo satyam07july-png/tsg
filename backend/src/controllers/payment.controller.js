@@ -8,8 +8,8 @@ const getJwtSecret = () => process.env.JWT_SECRET || "dizital_adda_secret_jwt_ke
 
 // Initialize Razorpay instance with environment fallback
 const getRazorpayInstance = () => {
-  const key_id = process.env.RAZORPAY_KEY_ID || "rzp_test_T0bvuXdCpuKBMS";
-  const key_secret = process.env.RAZORPAY_SECRET || "NX1rhhontSgIt2qDSBkS3r5H";
+  const key_id = process.env.RAZORPAY_KEY_ID || "rzp_test_TWPxFYGnxRpKCL";
+  const key_secret = process.env.RAZORPAY_SECRET || "mAMXyMCSTkWmTfT8UaQgHxpK";
   return new Razorpay({ key_id, key_secret });
 };
 
@@ -125,7 +125,7 @@ const createOrder = async (req, res, next) => {
       success: true,
       order,
       isMock: String(order.id).startsWith("order_test_"),
-      keyId: process.env.RAZORPAY_KEY_ID || "rzp_test_T0bvuXdCpuKBMS",
+      keyId: process.env.RAZORPAY_KEY_ID || "rzp_test_TWPxFYGnxRpKCL",
       course: {
         id: course.id,
         course_id: course.course_id,
@@ -163,7 +163,7 @@ const verifyPayment = async (req, res, next) => {
       });
     }
 
-    const secret = process.env.RAZORPAY_SECRET || "NX1rhhontSgIt2qDSBkS3r5H";
+    const secret = process.env.RAZORPAY_SECRET || "mAMXyMCSTkWmTfT8UaQgHxpK";
     const body = `${razorpay_order_id}|${razorpay_payment_id}`;
 
     const expectedSignature = crypto

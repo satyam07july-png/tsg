@@ -10,7 +10,8 @@
       "phone": "+919876543210",
       "specialization": "LMS Administration",
       "status": "Active",
-      "created_at": "2026-09-10T10:39:50.937Z"
+      "created_at": "2026-09-10T10:39:50.937Z",
+      "avatar": "https://ui-avatars.com/api/?name=System%20Admin&background=0B1220&color=D4A017&bold=true"
     },
     {
       "id": 2,
@@ -22,7 +23,8 @@
       "phone": "+918810606010",
       "specialization": "Digital Marketing & Search AI",
       "status": "Active",
-      "created_at": "2026-09-10T10:39:50.937Z"
+      "created_at": "2026-09-10T10:39:50.937Z",
+      "avatar": "https://ui-avatars.com/api/?name=Dr.%20Gulshan%20Kumar&background=0B1220&color=D4A017&bold=true"
     },
     {
       "id": 3,
@@ -33,7 +35,7 @@
       "role": "+919999999999",
       "phone": null,
       "status": "Active",
-      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Test%20Student",
+      "avatar": "https://ui-avatars.com/api/?name=Test%20Student&background=0B1220&color=D4A017&bold=true",
       "created_at": "2026-09-10T10:39:50.944Z"
     },
     {
@@ -45,7 +47,7 @@
       "role": "student",
       "phone": "+919999999999",
       "status": "Active",
-      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Test%20Student",
+      "avatar": "https://ui-avatars.com/api/?name=Test%20Student&background=0B1220&color=D4A017&bold=true",
       "created_at": "2026-09-10T10:40:04.382Z"
     },
     {
@@ -57,7 +59,7 @@
       "role": "student",
       "phone": "9876543210",
       "status": "Active",
-      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Rohit%20Sharma",
+      "avatar": "https://ui-avatars.com/api/?name=Rohit%20Sharma&background=0B1220&color=D4A017&bold=true",
       "created_at": "2026-09-10T10:42:20.421Z",
       "updated_at": "2026-09-10T11:17:35.453Z"
     },
@@ -66,12 +68,26 @@
       "name": "Satyam Mishra",
       "full_name": "Satyam Mishra",
       "email": "satyam07july@gmail.com",
-      "password": "$2b$10$qLYCQbAvjDNv5obX9ptjMe91a4con9tXbHFGDmINLg0.ZdesW7oh.",
+      "password": "$2b$10$/Bko4N1CfSR48vo0/o.GVOhpBQhnaampo2pOEO1JzuIfdpZIne..6",
       "role": "student",
       "phone": "9315507417",
       "status": "Active",
-      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Satyam%20Mishra",
-      "created_at": "2026-09-10T10:58:06.894Z"
+      "avatar": "https://ui-avatars.com/api/?name=Satyam%20Mishra&background=0B1220&color=D4A017&bold=true",
+      "created_at": "2026-09-10T10:58:06.894Z",
+      "updated_at": "2026-09-10T11:20:23.009Z"
+    },
+    {
+      "id": 7,
+      "name": "Anjali Verma",
+      "full_name": "Anjali Verma",
+      "email": "anjali.verma@test.com",
+      "password": "$2b$10$aQG2TrmPQEnRPYh/RRfY4eO.grshU77sBXuzl.FT6knu8XfbGve5a",
+      "role": "student",
+      "phone": "9876543210",
+      "status": "Active",
+      "avatar": "https://ui-avatars.com/api/?name=Anjali%20Verma&background=0B1220&color=D4A017&bold=true",
+      "created_at": "2026-09-10T11:28:55.031Z",
+      "updated_at": "2026-09-10T11:28:55.305Z"
     }
   ],
   "courses": [
@@ -318,6 +334,36 @@
       "batch": "Regular 2026",
       "status": "Active",
       "created_at": "2026-09-10T10:42:21.326Z"
+    },
+    {
+      "id": 4,
+      "user_id": 6,
+      "student_id": "DA-STU-23011",
+      "course_id": 4,
+      "course_code": "dm-beginners",
+      "name": "Satyam Mishra",
+      "email": "satyam07july@gmail.com",
+      "password": "$2b$10$/Bko4N1CfSR48vo0/o.GVOhpBQhnaampo2pOEO1JzuIfdpZIne..6",
+      "phone": "9315507417",
+      "course": "Digital Marketing For Beginners",
+      "batch": "Regular 2026",
+      "status": "Active",
+      "created_at": "2026-09-10T11:20:23.012Z"
+    },
+    {
+      "id": 5,
+      "user_id": 7,
+      "student_id": "DA-STU-35306",
+      "course_id": 1,
+      "course_code": "dm-advanced",
+      "name": "Anjali Verma",
+      "email": "anjali.verma@test.com",
+      "password": "$2b$10$Z1V5rJO8nQgkaFONa4htSeJUktxeRoO/Gy2GSTLwSlyej9T.U2bBK",
+      "phone": "9876543210",
+      "course": "Advanced Digital Marketing Course",
+      "batch": "Regular 2026",
+      "status": "Active",
+      "created_at": "2026-09-10T11:28:55.306Z"
     }
   ],
   "orders": [
@@ -397,6 +443,72 @@
       "currency": "INR",
       "status": "created",
       "created_at": "2026-09-10T11:17:35.457Z"
+    },
+    {
+      "id": 8,
+      "user_id": 6,
+      "student_id": null,
+      "course_id": 4,
+      "razorpay_order_id": "order_test_39209857",
+      "amount": 9999,
+      "currency": "INR",
+      "status": "created",
+      "created_at": "2026-09-10T11:20:09.857Z"
+    },
+    {
+      "id": 9,
+      "user_id": 6,
+      "student_id": 4,
+      "course_id": 4,
+      "razorpay_order_id": "order_test_39209857",
+      "amount": 9999,
+      "currency": "INR",
+      "status": "created",
+      "created_at": "2026-09-10T11:20:23.014Z"
+    },
+    {
+      "id": 10,
+      "user_id": 6,
+      "student_id": 4,
+      "course_id": 4,
+      "razorpay_order_id": "order_test_39305945",
+      "amount": 9999,
+      "currency": "INR",
+      "status": "created",
+      "created_at": "2026-09-10T11:21:45.945Z"
+    },
+    {
+      "id": 11,
+      "user_id": 5,
+      "student_id": 3,
+      "course_id": 1,
+      "razorpay_order_id": "order_TaJkdBL3i23S15",
+      "amount": 18999,
+      "currency": "INR",
+      "status": "created",
+      "created_at": "2026-09-10T11:28:30.086Z"
+    },
+    {
+      "id": 12,
+      "user_id": 7,
+      "student_id": null,
+      "course_id": 1,
+      "razorpay_order_id": "order_TaJl4baPSzYi9R",
+      "amount": 18999,
+      "currency": "INR",
+      "status": "created",
+      "created_at": "2026-09-10T11:28:55.213Z"
+    },
+    {
+      "id": 13,
+      "user_id": 7,
+      "student_id": 5,
+      "course_id": 1,
+      "razorpay_order_id": "order_TaJl4baPSzYi9R",
+      "amount": 18999,
+      "currency": "INR",
+      "status": "created",
+      "created_at": "2026-09-10T11:28:55.307Z"
     }
   ],
   "enrollments": [
@@ -432,6 +544,28 @@
       "payment_status": "Paid",
       "progress": 0,
       "created_at": "2026-09-10T11:17:35.458Z"
+    },
+    {
+      "id": 4,
+      "user_id": 6,
+      "student_id": 4,
+      "course_id": 4,
+      "enrollment_date": "2026-09-10T11:20:23.016Z",
+      "status": "Active",
+      "payment_status": "Paid",
+      "progress": 0,
+      "created_at": "2026-09-10T11:20:23.016Z"
+    },
+    {
+      "id": 5,
+      "user_id": 7,
+      "student_id": 5,
+      "course_id": 1,
+      "enrollment_date": "2026-09-10T11:28:55.309Z",
+      "status": "Active",
+      "payment_status": "Paid",
+      "progress": 0,
+      "created_at": "2026-09-10T11:28:55.309Z"
     }
   ],
   "notifications": []

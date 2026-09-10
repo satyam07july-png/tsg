@@ -1,34 +1,55 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
+import {
+  FaPlayCircle,
+  FaCheckCircle,
+  FaArrowLeft,
+  FaFilePdf,
+  FaSignOutAlt,
+  FaClock,
+  FaBookOpen,
+  FaChalkboardTeacher,
+  FaExternalLinkAlt,
+  FaWhatsapp,
+} from "react-icons/fa";
 import api from "../../lib/api";
 
 const LearningPage = () => {
   const navigate = useNavigate();
   const { id: courseId } = useParams();
 
+  const [course, setCourse] = useState(null);
   const [lectures, setLectures] = useState([]);
   const [selectedLecture, setSelectedLecture] = useState(null);
-  const [activeSection, setActiveSection] = useState("lectures");
   const [marking, setMarking] = useState(false);
+  const [activeTab, setActiveTab] = useState("overview"); // overview | notes | doubts
 
   const handleLogout = () => {
     localStorage.clear();
     navigate("/login");
   };
 
-  const fetchLectures = useCallback(async () => {
+  const fetchCourseAndLectures = useCallback(async () => {
     try {
       const endpoint = courseId
         ? `/api/lectures?courseId=${courseId}`
         : "/api/lectures";
 
-      const response = await api.get(endpoint);
-      const lectureData = response.data?.lectures || response.data || [];
+      const [lecRes, courseRes] = await Promise.allSettled([
+        api.get(endpoint),
+        courseId ? api.get(`/api/courses/${courseId}`) : Promise.reject(),
+      ]);
 
-      setLectures(lectureData);
+      if (lecRes.status === "fulfilled") {
+        const lectureData = lecRes.value.data?.lectures || lecRes.value.data || [];
+        setLectures(lectureData);
+        if (lectureData.length > 0) {
+          setSelectedLecture((prev) => prev || lectureData[0]);
+        }
+      }
 
-      if (lectureData?.length > 0) {
-        setSelectedLecture(lectureData[0]);
+      if (courseRes.status === "fulfilled" && courseRes.value.data?.course) {
+        setCourse(courseRes.value.data.course);
       }
     } catch (error) {
       console.error("FETCH ERROR:", error);
@@ -36,8 +57,8 @@ const LearningPage = () => {
   }, [courseId]);
 
   useEffect(() => {
-    fetchLectures();
-  }, [fetchLectures]);
+    fetchCourseAndLectures();
+  }, [fetchCourseAndLectures]);
 
   const handleMarkComplete = async (lecId) => {
     try {
@@ -47,8 +68,7 @@ const LearningPage = () => {
         courseId,
         completed: true,
       });
-      // Refresh lectures to show updated progress
-      fetchLectures();
+      fetchCourseAndLectures();
     } catch (err) {
       console.error("Error marking lecture complete:", err);
     } finally {
@@ -56,855 +76,302 @@ const LearningPage = () => {
     }
   };
 
+  const completedCount = lectures.filter((l) => l.is_completed).length;
+  const progressPercent = lectures.length > 0 ? Math.round((completedCount / lectures.length) * 100) : 0;
+
   return (
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-800 flex flex-col font-sans">
+      {/* =========================================================
+          CLASSICAL HEADER (NAVY #0B1220 + GOLD #D4A017)
+      ========================================================= */}
+      <header className="bg-[#0B1220] text-white border-b-4 border-[#D4A017] sticky top-0 z-40 shadow-md">
+        <div className="max-w-7xl mx-auto px-6 py-3.5 flex items-center justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <Link
+              to="/student"
+              className="bg-[#1E293B] hover:bg-[#7C2D12] text-white text-xs font-semibold px-3 py-2 rounded-lg transition flex items-center gap-1.5 border border-slate-700"
+            >
+              <FaArrowLeft />
+              <span>Back to Dashboard</span>
+            </Link>
 
-    <div className="flex h-screen bg-zinc-100">
-
-      {/* ======================
-          SIDEBAR
-      ====================== */}
-
-      <div className="w-[320px] bg-white border-r flex flex-col">
-
-        {/* LOGO */}
-
-        <div className="p-6 border-b">
-
-          <h1 className="text-3xl font-bold">
-
-            LMS Panel
-
-          </h1>
-
-        </div>
-
-        {/* MENU */}
-
-        <div className="flex-1 p-4 space-y-3 overflow-y-auto">
-
-          {/* LECTURES */}
-
-          <div
-
-            onClick={() =>
-              setActiveSection(
-                "lectures"
-              )
-            }
-
-            className={`p-4 rounded-xl cursor-pointer transition-all
-
-            ${
-              activeSection ===
-              "lectures"
-
-                ? "bg-black text-white"
-
-                : "bg-zinc-100 hover:bg-zinc-200"
-            }
-            `}
-          >
-
-            📚 Lectures
-
-          </div>
-          {
-  activeSection ===
-  "lectures" && (
-
-    <div>
-
-      {
-        selectedLecture && (
-
-          <div>
-
-            {/* MAIN VIDEO */}
-
-            <div className="bg-black rounded-3xl overflow-hidden shadow-xl">
-
-              <video
-                controls
-                className="w-full h-[650px] bg-black"
-              >
-
-                <source
-                  src={
-                    selectedLecture.video_url
-                  }
-
-                  type="video/mp4"
-
-                />
-
-              </video>
-
-            </div>
-
-            {/* VIDEO DETAILS */}
-
-            <div className="mt-8 bg-white rounded-3xl p-8 shadow-md">
-
-              <h1 className="text-4xl font-bold">
-
-                {
-                  selectedLecture.title
-                }
-
+            <div className="hidden sm:block border-l border-slate-700 pl-4">
+              <h1 className="text-base font-bold text-white truncate max-w-md">
+                {course?.title || "Dizital Adda Classroom"}
               </h1>
-
-              <p className="text-zinc-600 mt-4 text-lg leading-relaxed">
-
-                {
-                  selectedLecture.description
-                }
-
+              <p className="text-[11px] text-[#D4A017] font-semibold">
+                Instructor: {course?.teacher || "Dr. Gulshan Kumar"}
               </p>
+            </div>
+          </div>
 
-              {/* ACTION BUTTONS */}
-
-              <div className="flex gap-4 mt-8">
-
-                {/* NOTES */}
-                {(selectedLecture.pdf_url || selectedLecture.notes_url) && (
-                  <a
-                    href={selectedLecture.pdf_url || selectedLecture.notes_url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="bg-black text-white px-6 py-3 rounded-xl hover:bg-zinc-800 transition font-medium"
-                  >
-                    📄 Download Notes / PDF
-                  </a>
-                )}
-
-                {/* COMPLETE */}
-                <button
-                  onClick={() => handleMarkComplete(selectedLecture.id)}
-                  disabled={marking || selectedLecture.is_completed}
-                  className={`px-6 py-3 rounded-xl font-semibold transition ${
-                    selectedLecture.is_completed
-                      ? "bg-emerald-700 text-white cursor-default"
-                      : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
-                  }`}
-                >
-                  {selectedLecture.is_completed
-                    ? "Completed ✅"
-                    : marking
-                    ? "Saving..."
-                    : "Mark Complete ✓"}
-                </button>
-
+          <div className="flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-2 text-xs font-semibold text-slate-300">
+              <span>Progress: {progressPercent}%</span>
+              <div className="w-24 bg-slate-700 rounded-full h-2 overflow-hidden">
+                <div
+                  className="bg-[#D4A017] h-2 rounded-full"
+                  style={{ width: `${progressPercent}%` }}
+                ></div>
               </div>
-
             </div>
 
-            {/* NEXT VIDEOS */}
-
-            <div className="mt-12">
-
-              <div className="flex justify-between items-center mb-8">
-
-                <h2 className="text-3xl font-bold">
-
-                  Continue Learning
-
-                </h2>
-
-                <button
-
-                  onClick={() =>
-                    setActiveSection(
-                      "allLectures"
-                    )
-                  }
-
-                  className="text-blue-600 font-semibold text-lg"
-
-                >
-
-                  View All →
-
-                </button>
-
-              </div>
-
-              {/* HORIZONTAL VIDEOS */}
-
-              <div className="flex gap-6 overflow-x-auto pb-4">
-
-                {
-                  lectures
-
-                    ?.filter(
-                      (lecture) =>
-                        lecture.id !==
-                        selectedLecture.id
-                    )
-
-                    ?.map((lecture) => (
-
-                      <div
-
-                        key={lecture.id}
-
-                        onClick={() =>
-                          setSelectedLecture(
-                            lecture
-                          )
-                        }
-
-                        className="min-w-[350px] bg-white rounded-3xl overflow-hidden shadow-md cursor-pointer hover:scale-[1.02] transition-all"
-
-                      >
-
-                        {/* VIDEO */}
-
-                        <video
-                          className="w-full h-[220px] object-cover"
-                        >
-
-                          <source
-                            src={
-                              lecture.video_url
-                            }
-                          />
-
-                        </video>
-
-                        {/* CONTENT */}
-
-                        <div className="p-5">
-
-                          <h3 className="text-2xl font-bold">
-
-                            {lecture.title}
-
-                          </h3>
-
-                          <p className="text-zinc-600 mt-3">
-
-                            {
-                              lecture.description
-                            }
-
-                          </p>
-
-                        </div>
-
-                      </div>
-
-                    ))
-                }
-
-              </div>
-
-            </div>
-
+            <button
+              onClick={handleLogout}
+              className="bg-red-700 hover:bg-red-800 text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition flex items-center gap-1 cursor-pointer"
+            >
+              <FaSignOutAlt />
+              <span>Logout</span>
+            </button>
           </div>
-
-        )
-      }
-
-    </div>
-
-  )
-}
-
-          {/* ASSIGNMENTS */}
-
-          <div
-
-            onClick={() =>
-              setActiveSection(
-                "assignments"
-              )
-            }
-
-            className={`p-4 rounded-xl cursor-pointer transition-all
-
-            ${
-              activeSection ===
-              "assignments"
-
-                ? "bg-black text-white"
-
-                : "bg-zinc-100 hover:bg-zinc-200"
-            }
-            `}
-          >
-
-             Assignments
-
-          </div>
-
-          {/* TESTS */}
-
-          <div
-
-            onClick={() =>
-              setActiveSection(
-                "tests"
-              )
-            }
-
-            className={`p-4 rounded-xl cursor-pointer transition-all
-
-            ${
-              activeSection ===
-              "tests"
-
-                ? "bg-black text-white"
-
-                : "bg-zinc-100 hover:bg-zinc-200"
-            }
-            `}
-          >
-
-             Tests
-
-          </div>
-
-          {/* NOTES */}
-
-          <div
-
-            onClick={() =>
-              setActiveSection(
-                "notes"
-              )
-            }
-
-            className={`p-4 rounded-xl cursor-pointer transition-all
-
-            ${
-              activeSection ===
-              "notes"
-
-                ? "bg-black text-white"
-
-                : "bg-zinc-100 hover:bg-zinc-200"
-            }
-            `}
-          >
-
-             Notes
-
-          </div>
-
-          {/* PROGRESS */}
-
-          <div
-
-            onClick={() =>
-              setActiveSection(
-                "progress"
-              )
-            }
-
-            className={`p-4 rounded-xl cursor-pointer transition-all
-
-            ${
-              activeSection ===
-              "progress"
-
-                ? "bg-black text-white"
-
-                : "bg-zinc-100 hover:bg-zinc-200"
-            }
-            `}
-          >
-
-             Progress
-
-          </div>
-
-
-
-          {/* CERTIFICATE */}
-
-          <div
-
-            onClick={() =>
-              setActiveSection(
-                "certificate"
-              )
-            }
-
-            className={`p-4 rounded-xl cursor-pointer transition-all
-
-            ${
-              activeSection ===
-              "certificate"
-
-                ? "bg-black text-white"
-
-                : "bg-zinc-100 hover:bg-zinc-200"
-            }
-            `}
-          >
-
-             Certificate
-
-          </div>
-
         </div>
+      </header>
 
-        {/* FOOTER */}
-
-        <div className="p-4 border-t">
-
-          <button
-  onClick={handleLogout}
-  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl"
->
-  Logout
-</button>
-        </div>
-
-      </div>
-
-      {/* ======================
-          MAIN CONTENT
-      ====================== */}
-
-      <div className="flex-1 overflow-y-auto p-8">
-
-        {/* ======================
-            LECTURES SECTION
-        ====================== */}
-
-        {
-          activeSection ===
-          "lectures" && (
-
+      {/* =========================================================
+          CLASSROOM MAIN LAYOUT
+      ========================================================= */}
+      <div className="max-w-7xl mx-auto px-6 py-6 flex-1 w-full flex flex-col lg:flex-row gap-6">
+        {/* =======================================================
+            LEFT/MAIN CONTENT: VIDEO PLAYER & DETAILS
+        ======================================================= */}
+        <div className="flex-1 space-y-6">
+          {selectedLecture ? (
             <div>
+              {/* VIDEO CONTAINER */}
+              <div className="bg-black rounded-2xl overflow-hidden shadow-lg border border-slate-200">
+                {selectedLecture.video_url && selectedLecture.video_url.includes("youtube.com") ? (
+                  <iframe
+                    title={selectedLecture.title}
+                    src={selectedLecture.video_url.replace("watch?v=", "embed/")}
+                    className="w-full aspect-video"
+                    allowFullScreen
+                  ></iframe>
+                ) : (
+                  <video
+                    controls
+                    key={selectedLecture.id}
+                    src={selectedLecture.video_url}
+                    className="w-full aspect-video bg-black"
+                  >
+                    Your browser does not support HTML video.
+                  </video>
+                )}
+              </div>
 
-              {/* VIDEO PLAYER */}
-
-              {
-                selectedLecture && (
-
+              {/* LECTURE HEADER & ACTIONS */}
+              <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm mt-5">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 pb-4">
                   <div>
-
-                    <h1 className="text-4xl font-bold mb-4">
-
-                      {
-                        selectedLecture.title
-                      }
-
-                    </h1>
-
-                    <p className="text-zinc-600 mb-8">
-
-                      {
-                        selectedLecture.description
-                      }
-
+                    <span className="bg-[#7C2D12]/10 text-[#7C2D12] text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">
+                      {selectedLecture.section_title || "Official Curriculum"}
+                    </span>
+                    <h2 className="text-xl sm:text-2xl font-bold text-[#0B1220] mt-2">
+                      {selectedLecture.title}
+                    </h2>
+                    <p className="text-xs text-slate-500 mt-1 flex items-center gap-2">
+                      <FaClock className="text-slate-400" />
+                      <span>Duration: {selectedLecture.duration || "Self-Paced Lab"}</span>
+                      <span>•</span>
+                      <span>Mentor: Dr. Gulshan Kumar</span>
                     </p>
-
-                    {/* VIDEO */}
-
-                    <div className="bg-black rounded-2xl overflow-hidden shadow-lg mb-8">
-
-                      <video
-                        controls
-                        className="w-full h-[600px]"
-                      >
-
-                        <source
-
-                          src={
-                            selectedLecture.video_url
-                          }
-
-                          type="video/mp4"
-
-                        />
-
-                      </video>
-
-                    </div>
-
-                    {/* NOTES */}
-
-                    <div className="bg-white p-6 rounded-2xl shadow-md">
-
-                      <h2 className="text-2xl font-bold mb-4">
-
-                        Lecture Notes
-
-                      </h2>
-
-                      <a
-
-                        href={
-                          selectedLecture.notes_url
-                        }
-
-                        target="_blank"
-
-                        rel="noreferrer"
-
-                        className="bg-black text-white px-6 py-3 rounded-xl inline-block"
-
-                      >
-
-                        Download PDF
-
-                      </a>
-
-                    </div>
-
-                    {/* NEXT VIDEOS */}
-
-                    <div className="mt-12">
-
-                      <div className="flex justify-between items-center mb-6">
-
-                        <h2 className="text-3xl font-bold">
-
-                          Next Lectures
-
-                        </h2>
-
-                        <button
-
-                          onClick={() =>
-                            setActiveSection(
-                              "allLectures"
-                            )
-                          }
-
-                          className="text-blue-600 font-semibold"
-
-                        >
-
-                          View All →
-
-                        </button>
-
-                      </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                        {
-                          lectures
-
-                            ?.filter(
-                              (lecture) =>
-                                lecture.id !==
-                                selectedLecture.id
-                            )
-
-                            ?.slice(0, 3)
-
-                            ?.map((lecture) => (
-
-                              <div
-
-                                key={lecture.id}
-
-                                onClick={() =>
-                                  setSelectedLecture(
-                                    lecture
-                                  )
-                                }
-
-                                className="bg-white rounded-2xl overflow-hidden shadow-md cursor-pointer hover:scale-[1.02] transition-all"
-
-                              >
-
-                                {/* VIDEO */}
-
-                                <video
-                                  className="w-full h-[200px] object-cover"
-                                >
-
-                                  <source
-                                    src={lecture.video_url}
-                                  />
-
-                                </video>
-
-                                {/* CONTENT */}
-
-                                <div className="p-4">
-
-                                  <h3 className="text-xl font-bold">
-
-                                    {lecture.title}
-
-                                  </h3>
-
-                                  <p className="text-sm text-zinc-600 mt-2">
-
-                                    {
-                                      lecture.description
-                                    }
-
-                                  </p>
-
-                                </div>
-
-                              </div>
-
-                            ))
-                        }
-
-                      </div>
-
-                    </div>
-
                   </div>
 
-                )
-              }
+                  <div className="flex items-center gap-3 shrink-0 flex-wrap">
+                    {(selectedLecture.pdf_url || selectedLecture.notes_url) && (
+                      <a
+                        href={selectedLecture.pdf_url || selectedLecture.notes_url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 text-xs sm:text-sm font-semibold px-4 py-2 rounded-xl transition flex items-center gap-1.5"
+                      >
+                        <FaFilePdf className="text-[#7C2D12]" />
+                        <span>Download Notes</span>
+                      </a>
+                    )}
 
+                    <button
+                      onClick={() => handleMarkComplete(selectedLecture.id)}
+                      disabled={marking || selectedLecture.is_completed}
+                      className={`text-xs sm:text-sm font-bold px-4 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm ${
+                        selectedLecture.is_completed
+                          ? "bg-emerald-700 text-white cursor-default"
+                          : "bg-[#0B1220] hover:bg-[#7C2D12] text-white cursor-pointer"
+                      }`}
+                    >
+                      <FaCheckCircle />
+                      <span>{selectedLecture.is_completed ? "Completed ✅" : marking ? "Saving..." : "Mark Complete"}</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* TABS: OVERVIEW / NOTES / MENTOR */}
+                <div className="flex border-b border-slate-200 mt-5">
+                  <button
+                    onClick={() => setActiveTab("overview")}
+                    className={`pb-3 px-4 font-bold text-xs sm:text-sm cursor-pointer border-b-2 transition ${
+                      activeTab === "overview"
+                        ? "border-[#7C2D12] text-[#7C2D12]"
+                        : "border-transparent text-slate-500 hover:text-slate-800"
+                    }`}
+                  >
+                    Lecture Overview
+                  </button>
+                  <button
+                    onClick={() => setActiveTab("notes")}
+                    className={`pb-3 px-4 font-bold text-xs sm:text-sm cursor-pointer border-b-2 transition ${
+                      activeTab === "notes"
+                        ? "border-[#7C2D12] text-[#7C2D12]"
+                        : "border-transparent text-slate-500 hover:text-slate-800"
+                    }`}
+                  >
+                    Class Notes & Links
+                  </button>
+                  <button
+                    onClick={() => setActiveTab("doubts")}
+                    className={`pb-3 px-4 font-bold text-xs sm:text-sm cursor-pointer border-b-2 transition ${
+                      activeTab === "doubts"
+                        ? "border-[#7C2D12] text-[#7C2D12]"
+                        : "border-transparent text-slate-500 hover:text-slate-800"
+                    }`}
+                  >
+                    Mentor Assistance
+                  </button>
+                </div>
+
+                <div className="pt-4 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {activeTab === "overview" && (
+                    <p>
+                      {selectedLecture.description ||
+                        "In this lecture, Dr. Gulshan Kumar demonstrates standard industrial frameworks, actionable campaign blueprints, and real brand case studies."}
+                    </p>
+                  )}
+
+                  {activeTab === "notes" && (
+                    <div className="space-y-2">
+                      <p className="font-semibold text-slate-800">Resources for this lecture:</p>
+                      <ul className="list-disc pl-5 space-y-1 text-slate-600">
+                        <li>Official Dizital Adda Lecture Blueprint & Slide Deck</li>
+                        <li>Standard Operating Procedures (SOPs) for Google Ads & SEO audits</li>
+                        <li>Recommended AI tool integrations (ChatGPT, Canva Pro, Looker Studio)</li>
+                      </ul>
+                    </div>
+                  )}
+
+                  {activeTab === "doubts" && (
+                    <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                      <div>
+                        <h4 className="font-bold text-[#0B1220]">Have questions about this session?</h4>
+                        <p className="text-xs text-slate-500 mt-0.5">
+                          Directly message mentor Dr. Gulshan Kumar on the student WhatsApp hotline.
+                        </p>
+                      </div>
+                      <a
+                        href="https://wa.me/918810606010?text=Hi%20Dr.%20Gulshan,%20I%20have%20a%20doubt%20in%20lecture%20session"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2 rounded-lg transition flex items-center gap-1.5 shrink-0 shadow-sm"
+                      >
+                        <FaWhatsapp className="text-sm" />
+                        <span>Chat with Mentor</span>
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center shadow-sm">
+              <FaBookOpen className="text-4xl text-slate-400 mx-auto mb-3" />
+              <h3 className="text-lg font-bold text-[#0B1220]">No Lectures Selected</h3>
+              <p className="text-slate-500 text-sm mt-1">
+                Select a lecture from the curriculum playlist on the right to start watching.
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* =======================================================
+            RIGHT COLUMN: CURRICULUM PLAYLIST (CLEAN & CLASSICAL)
+        ======================================================= */}
+        <div className="w-full lg:w-96 shrink-0">
+          <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden sticky top-24">
+            <div className="p-4 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
+              <div>
+                <h3 className="font-bold text-[#0B1220] text-sm sm:text-base">
+                  Curriculum Playlist
+                </h3>
+                <p className="text-[11px] text-slate-500">
+                  {completedCount} of {lectures.length} lessons completed
+                </p>
+              </div>
+              <span className="text-xs font-bold text-[#7C2D12] bg-[#7C2D12]/10 px-2.5 py-1 rounded-md">
+                {lectures.length} Lectures
+              </span>
             </div>
 
-          )
-        }
-
-        {/* ======================
-            ALL LECTURES
-        ====================== */}
-
-        {
-          activeSection ===
-          "allLectures" && (
-
-            <div>
-
-              <h1 className="text-4xl font-bold mb-8">
-
-                All Lectures
-
-              </h1>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                {
-                  lectures?.map(
-                    (lecture) => (
-
-                      <div
-
-                        key={lecture.id}
-
-                        onClick={() => {
-
-                          setSelectedLecture(
-                            lecture
-                          );
-
-                          setActiveSection(
-                            "lectures"
-                          );
-
-                        }}
-
-                        className="bg-white rounded-2xl overflow-hidden shadow-md cursor-pointer hover:scale-[1.02] transition-all"
-
-                      >
-
-                        {/* VIDEO */}
-
-                        <video
-                          className="w-full h-[220px] object-cover"
-                        >
-
-                          <source
-                            src={lecture.video_url}
+            <div className="max-h-[600px] overflow-y-auto divide-y divide-slate-100">
+              {lectures.length === 0 ? (
+                <div className="p-6 text-center text-xs text-slate-500">
+                  No lectures have been uploaded for this course yet.
+                </div>
+              ) : (
+                lectures.map((lec, idx) => {
+                  const isSelected = selectedLecture?.id === lec.id;
+                  return (
+                    <div
+                      key={lec.id}
+                      onClick={() => setSelectedLecture(lec)}
+                      className={`p-3.5 cursor-pointer transition flex items-start gap-3 ${
+                        isSelected
+                          ? "bg-[#0B1220] text-white"
+                          : "hover:bg-slate-50 text-slate-700"
+                      }`}
+                    >
+                      <div className="mt-0.5 shrink-0">
+                        {lec.is_completed ? (
+                          <FaCheckCircle className="text-emerald-500 text-sm" />
+                        ) : (
+                          <FaPlayCircle
+                            className={`text-sm ${isSelected ? "text-[#D4A017]" : "text-slate-400"}`}
                           />
-
-                        </video>
-
-                        {/* CONTENT */}
-
-                        <div className="p-5">
-
-                          <h2 className="text-2xl font-bold">
-
-                            {lecture.title}
-
-                          </h2>
-
-                          <p className="mt-3 text-zinc-600">
-
-                            {
-                              lecture.description
-                            }
-
-                          </p>
-
-                        </div>
-
+                        )}
                       </div>
 
-                    )
-                  )
-                }
-
-              </div>
-
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-1">
+                          <span
+                            className={`text-[10px] font-bold uppercase tracking-wider ${
+                              isSelected ? "text-[#D4A017]" : "text-slate-400"
+                            }`}
+                          >
+                            Lesson {idx + 1}
+                          </span>
+                          <span
+                            className={`text-[10px] font-medium ${
+                              isSelected ? "text-slate-300" : "text-slate-400"
+                            }`}
+                          >
+                            {lec.duration || "25m"}
+                          </span>
+                        </div>
+                        <h4
+                          className={`text-xs sm:text-sm font-semibold truncate mt-0.5 ${
+                            isSelected ? "text-white" : "text-slate-800"
+                          }`}
+                        >
+                          {lec.title}
+                        </h4>
+                      </div>
+                    </div>
+                  );
+                })
+              )}
             </div>
-
-          )
-        }
-
-        {/* ======================
-            ASSIGNMENTS
-        ====================== */}
-
-        {
-          activeSection ===
-          "assignments" && (
-
-            <div className="bg-white p-8 rounded-2xl shadow-md">
-
-              <h1 className="text-4xl font-bold mb-6">
-
-                Assignments
-
-              </h1>
-
-              <p className="text-zinc-600">
-
-                No assignments uploaded yet.
-
-              </p>
-
-            </div>
-
-          )
-        }
-
-        {/* ======================
-            TESTS
-        ====================== */}
-
-        {
-          activeSection ===
-          "tests" && (
-
-            <div className="bg-white p-8 rounded-2xl shadow-md">
-
-              <h1 className="text-4xl font-bold mb-6">
-
-                Tests
-
-              </h1>
-
-              <p className="text-zinc-600">
-
-                No tests available yet.
-
-              </p>
-
-            </div>
-
-          )
-        }
-
-        {/* ======================
-            NOTES
-        ====================== */}
-
-        {
-          activeSection ===
-          "notes" && (
-
-            <div className="bg-white p-8 rounded-2xl shadow-md">
-
-              <h1 className="text-4xl font-bold mb-6">
-
-                Notes
-
-              </h1>
-
-              <p className="text-zinc-600">
-
-                Download lecture notes here.
-
-              </p>
-
-            </div>
-
-          )
-        }
-
-        {/* ======================
-            PROGRESS
-        ====================== */}
-
-        {
-          activeSection ===
-          "progress" && (
-
-            <div className="bg-white p-8 rounded-2xl shadow-md">
-
-              <h1 className="text-4xl font-bold mb-6">
-
-                Progress
-
-              </h1>
-
-              <div className="w-full bg-zinc-200 h-6 rounded-full overflow-hidden">
-
-                <div className="bg-green-500 h-full w-[70%]"></div>
-
-              </div>
-
-              <p className="mt-4 text-lg">
-
-                70% Course Completed
-
-              </p>
-
-            </div>
-
-          )
-        }
-
-        {/* ======================
-            CERTIFICATE
-        ====================== */}
-
-        {
-          activeSection ===
-          "certificate" && (
-
-            <div className="bg-white p-8 rounded-2xl shadow-md">
-
-              <h1 className="text-4xl font-bold mb-6">
-
-                Certificate
-
-              </h1>
-
-              <p className="text-zinc-600 mb-6">
-
-                Complete the course to unlock your certificate.
-
-              </p>
-
-              <button className="bg-black text-white px-6 py-3 rounded-xl">
-
-                Download Certificate
-
-              </button>
-
-            </div>
-
-          )
-        }
-
+          </div>
+        </div>
       </div>
-
     </div>
-
   );
-
 };
 
 export default LearningPage;

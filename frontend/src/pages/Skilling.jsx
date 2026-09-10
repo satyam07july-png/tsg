@@ -2,7 +2,6 @@ import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-  FaBrain,
   FaShieldAlt,
   FaChartLine,
   FaDatabase,
@@ -25,7 +24,6 @@ import {
   FaUndo,
   FaExternalLinkAlt,
   FaWhatsapp,
-  FaRobot,
   FaSearch,
   FaBullhorn,
   FaLaptopCode,
@@ -630,7 +628,7 @@ const DOMAINS = [
     id: "ai-prompt-engineering",
     title: "AI & Prompt Engineering",
     subtitle: "Generative AI, ChatGPT, Claude, LangChain, AI Agents & Automation",
-    icon: <FaBrain />,
+    icon: <FaLaptopCode />,
     badge: "Trending Tech 2025",
     badgeColor: "bg-purple-100 text-purple-900 border-purple-300",
     avgSalary: "₹7 - ₹26 LPA",
@@ -1607,7 +1605,7 @@ function Skilling() {
                             : "bg-slate-100 hover:bg-slate-200 text-slate-700"
                         }`}
                       >
-                        <FaRobot />
+                        <FaLayerGroup />
                         <span>{selectedCourse.details.aiToolsCount} AI Tools Stack</span>
                         <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full">
                           {selectedCourse.details.toolClusters?.length || 6} Clusters
@@ -1900,7 +1898,7 @@ function Skilling() {
                             >
                               <div className="flex items-center justify-between gap-3 mb-4">
                                 <h6 className="text-base sm:text-lg font-black text-slate-900 flex items-center gap-2">
-                                  <FaRobot className="text-[#7C2D12]" />
+                                  <FaLayerGroup className="text-[#7C2D12]" />
                                   <span>{cluster.name}</span>
                                 </h6>
                                 <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-white border border-slate-200 text-slate-700">
