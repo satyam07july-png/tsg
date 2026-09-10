@@ -2,12 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   FaBrain,
-  FaCode,
   FaShieldAlt,
-  FaCloud,
-  FaMobileAlt,
   FaChartLine,
-  FaLaptopCode,
   FaDatabase,
   FaArrowLeft,
   FaArrowRight,
@@ -27,430 +23,229 @@ import {
 } from "react-icons/fa";
 
 // ==========================================
-// SKILLING DATA ARCHITECTURE
+// SKILLING DATA ARCHITECTURE (4 DOMAINS)
 // ==========================================
 const DOMAINS = [
+  // 1. Digital Marketing
   {
-    id: "fullstack",
-    title: "Full Stack Web Development",
-    subtitle: "MERN, Next.js, Cloud APIs & Microservices",
-    icon: <FaCode />,
-    badge: "Highest Hiring",
-    badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
-    avgSalary: "₹6 - ₹18 LPA",
+    id: "digital-marketing",
+    title: "Digital Marketing",
+    subtitle: "Performance Marketing, SEO, Social Media & Growth Funnels",
+    icon: <FaChartLine />,
+    badge: "High ROI & Demand",
+    badgeColor: "bg-amber-100 text-amber-900 border-amber-300",
+    avgSalary: "₹4.5 - ₹15 LPA",
     description:
-      "Master modern frontend frameworks, scalable backend architectures, database modeling, and cloud deployment pipelines.",
+      "Master ROI-driven digital campaigns, paid performance ads on Meta & Google, organic search optimization, viral social media branding, and automated sales funnels.",
     courses: [
       {
-        id: "mern-stack",
-        title: "MERN Stack Specialization",
-        subtitle: "MongoDB, Express.js, React.js & Node.js",
+        id: "performance-marketing",
+        title: "Performance Marketing & Paid Ads",
+        subtitle: "Meta Ads, Google Ads, TikTok Ads & ROAS Optimization",
         level: "Beginner to Advanced",
         durationDefault: "6 Months",
-        techStack: ["MongoDB", "Express", "React", "Node.js", "Redux", "Tailwind"],
+        techStack: ["Meta Ads Manager", "Google Ads", "Google Analytics 4", "Canva", "Tag Manager"],
         highlights: [
-          "Build 4 enterprise production apps",
-          "Authentication, JWT, Razorpay gateway integration",
-          "Production deployment on AWS & Vercel",
+          "Manage live ad budgets with real ROAS optimization",
+          "Conversion Rate Optimization (CRO) & landing pages",
+          "Retargeting funnels & custom audience lookalikes",
         ],
         modules: [
-          "HTML5, Modern CSS3 & JavaScript ES6+",
-          "React 19, State Management & Custom Hooks",
-          "Node.js Backend, REST APIs & Express Middleware",
-          "MongoDB Database Design & Aggregations",
-          "End-to-End Capstone Project & CI/CD",
+          "Marketing Psychology & High-Converting Funnel Architecture",
+          "Google Search, Display & Performance Max Ads Setup",
+          "Meta Ads: Creative Testing, CBO/ABO & Budget Scaling",
+          "Analytics, Tracking Pixels, Conversion API & GA4",
+          "Client Acquisition, Portfolio & Agency Scaling Model",
         ],
       },
       {
-        id: "nextjs-ts",
-        title: "Next.js & TypeScript Full Stack",
-        subtitle: "Server Components, App Router & PostgreSQL",
-        level: "Intermediate to Pro",
-        durationDefault: "6 Months",
-        techStack: ["Next.js 15", "TypeScript", "Prisma", "PostgreSQL", "Tailwind"],
-        highlights: [
-          "Full SSR/SSG/ISR architectures",
-          "Type-safe API routes & Prisma ORM",
-          "Docker containerization & deployment",
-        ],
-        modules: [
-          "TypeScript Deep Dive & Design Patterns",
-          "Next.js App Router, Server Actions & Cache",
-          "PostgreSQL, Neon DB & Prisma ORM",
-          "Microservices & Serverless Functions",
-          "Production Optimization & Security",
-        ],
-      },
-      {
-        id: "python-django",
-        title: "Python Full Stack Development",
-        subtitle: "Python, Django, FastAPI & React",
+        id: "seo-masterclass",
+        title: "SEO & Content Marketing Strategy",
+        subtitle: "Technical SEO, On-Page, Off-Page, Semrush & AI Workflows",
         level: "Beginner to Intermediate",
         durationDefault: "6 Months",
-        techStack: ["Python", "Django", "FastAPI", "React", "PostgreSQL"],
+        techStack: ["Semrush", "Ahrefs", "Google Search Console", "Screaming Frog", "WordPress"],
         highlights: [
-          "High-performance REST & GraphQL APIs",
-          "Automated unit testing with PyTest",
-          "Celery, Redis & background task queues",
+          "Rank websites #1 on Google for high-intent keywords",
+          "Technical site audits & Core Web Vitals fixes",
+          "Authority link building & programmatic SEO",
         ],
         modules: [
-          "Python Core & Object-Oriented Programming",
-          "Django Framework & Django REST Framework",
-          "FastAPI Asynchronous Microservices",
-          "Frontend Integration with React",
-          "Cloud Deployment on AWS Elastic Beanstalk",
+          "Search Engine Algorithms & Advanced Keyword Research",
+          "On-Page SEO, Content Optimization & Schema Markup",
+          "Technical SEO Audits, Crawlability & Speed Optimization",
+          "Backlink Strategies, Broken Links & Digital PR",
+          "AI-Assisted Content Production & Programmatic SEO",
         ],
       },
       {
-        id: "backend-microservices",
-        title: "Backend Engineering & Microservices",
-        subtitle: "Distributed Systems, Redis, Kafka & Docker",
-        level: "Advanced",
+        id: "social-media-growth",
+        title: "Social Media & Personal Brand Growth",
+        subtitle: "Instagram, YouTube, LinkedIn Inbound & Viral Content",
+        level: "Beginner to Intermediate",
         durationDefault: "6 Months",
-        techStack: ["Node.js", "Go", "Docker", "Kafka", "Redis", "Kubernetes"],
+        techStack: ["CapCut", "Canva", "Notion", "Buffer", "YouTube Studio"],
         highlights: [
-          "Event-driven architecture with Apache Kafka",
-          "Caching & rate-limiting with Redis",
-          "gRPC, WebSocket & high-concurrency systems",
+          "Script, film & edit viral short-form content",
+          "Organic follower growth strategies across platforms",
+          "Brand partnerships & monetization pipelines",
         ],
         modules: [
-          "Scalable Architecture & System Design",
-          "Event-Driven Systems with Kafka & RabbitMQ",
-          "Caching, Sharding & Database Indexing",
-          "Docker & Kubernetes Cluster Orchestration",
-          "Monitoring with Prometheus & Grafana",
+          "Platform Algorithms, Trends & Content Strategy",
+          "Hook Writing, Storytelling & Short-Form Video Production",
+          "LinkedIn Thought Leadership & B2B Inbound Leads",
+          "Community Management, Live Streams & Brand Engagement",
+          "Monetization: Brand Sponsorships, Products & Consulting",
+        ],
+      },
+      {
+        id: "marketing-automation",
+        title: "Marketing Automation & Sales Funnels",
+        subtitle: "HubSpot, Mailchimp, Zapier, WhatsApp API & CRM",
+        level: "Intermediate to Advanced",
+        durationDefault: "6 Months",
+        techStack: ["HubSpot", "Mailchimp", "Zapier", "WhatsApp API", "Make.com"],
+        highlights: [
+          "Automate lead nurture sequences & onboarding flows",
+          "High-converting WhatsApp Business broadcast funnels",
+          "CRM integration & customer lifecycle management",
+        ],
+        modules: [
+          "Customer Lifecycle Mapping & Predictive Lead Scoring",
+          "Automated Email Drip Sequences & Deliverability Setup",
+          "WhatsApp Business API & Conversational AI Chatbots",
+          "Zapier & Make.com Automated Workflow Pipelines",
+          "CRM Pipeline Reporting & Revenue Attribution",
         ],
       },
     ],
   },
+
+  // 2. Data science & data analystic
   {
-    id: "aiml",
-    title: "AI & Machine Learning",
-    subtitle: "Generative AI, Deep Learning, PyTorch & LLMs",
-    icon: <FaBrain />,
-    badge: "Trending Tech",
-    badgeColor: "bg-purple-100 text-purple-800 border-purple-300",
-    avgSalary: "₹8 - ₹25 LPA",
-    description:
-      "Build intelligent systems, train neural networks, develop custom LLM applications, and deploy generative AI solutions.",
-    courses: [
-      {
-        id: "gen-ai-llm",
-        title: "Generative AI & LLM Engineering",
-        subtitle: "OpenAI, LangChain, Llama, RAG & Vector DBs",
-        level: "Intermediate to Pro",
-        durationDefault: "6 Months",
-        techStack: ["Python", "LangChain", "OpenAI API", "ChromaDB", "Hugging Face"],
-        highlights: [
-          "Build Retrieval-Augmented Generation (RAG) apps",
-          "Fine-tune open-source models (Llama 3, Mistral)",
-          "Deploy multi-agent systems with LangGraph",
-        ],
-        modules: [
-          "Foundations of Transformers & LLM Architectures",
-          "Prompt Engineering & Vector Embeddings",
-          "RAG Systems with LangChain & Pinecone",
-          "Fine-Tuning Open Source Models (LoRA/QLoRA)",
-          "Autonomous AI Agents & Production Deployment",
-        ],
-      },
-      {
-        id: "applied-ml",
-        title: "Applied Machine Learning & Deep Learning",
-        subtitle: "Scikit-Learn, TensorFlow, PyTorch & Math for ML",
-        level: "Beginner to Advanced",
-        durationDefault: "6 Months",
-        techStack: ["Python", "PyTorch", "TensorFlow", "Scikit-Learn", "NumPy"],
-        highlights: [
-          "Mathematics, Statistics & Calculus for AI",
-          "Supervised & Unsupervised Learning algorithms",
-          "Convolutional & Recurrent Neural Networks",
-        ],
-        modules: [
-          "Mathematics & Statistics for Machine Learning",
-          "Supervised & Unsupervised Learning Algorithms",
-          "Deep Neural Networks with PyTorch",
-          "Model Evaluation, Overfitting & Hyperparameter Tuning",
-          "Production Model Serving with FastAPI & Docker",
-        ],
-      },
-      {
-        id: "cv-nlp",
-        title: "Computer Vision & Natural Language Processing",
-        subtitle: "OpenCV, YOLO, BERT, Transformers & Audio AI",
-        level: "Advanced",
-        durationDefault: "6 Months",
-        techStack: ["OpenCV", "YOLOv8", "BERT", "PyTorch", "Transformers"],
-        highlights: [
-          "Real-time object detection & facial recognition",
-          "Sentiment analysis, translation & text generation",
-          "Edge AI deployment on mobile & IoT devices",
-        ],
-        modules: [
-          "Image Processing & Computer Vision with OpenCV",
-          "Object Detection & Segmentation with YOLOv8",
-          "Text Classification & NLP with BERT",
-          "Speech-to-Text & Multimodal AI Models",
-          "Capstone: Autonomous Vision & Speech Assistant",
-        ],
-      },
-      {
-        id: "ai-agents",
-        title: "Autonomous AI Agents & Automation",
-        subtitle: "CrewAI, AutoGen, MCP Protocols & Tool Calling",
-        level: "Intermediate to Pro",
-        durationDefault: "6 Months",
-        techStack: ["CrewAI", "AutoGen", "Python", "FastAPI", "WebSockets"],
-        highlights: [
-          "Create autonomous multi-agent software teams",
-          "Custom tool calling & MCP protocol integrations",
-          "Enterprise workflow automation with AI",
-        ],
-        modules: [
-          "Agentic Workflows vs Traditional Pipelines",
-          "Multi-Agent Collaboration with CrewAI & AutoGen",
-          "Model Context Protocol (MCP) & Tool Integrations",
-          "Memory Management & Vector Storage for Agents",
-          "Enterprise Automation Case Studies",
-        ],
-      },
-    ],
-  },
-  {
-    id: "datascience",
-    title: "Data Science & Big Data",
-    subtitle: "Python, SQL, Power BI, Tableau & Analytics",
+    id: "data-science",
+    title: "Data Science & Data Analytics",
+    subtitle: "Python, SQL, Power BI, Tableau, Machine Learning & Statistics",
     icon: <FaDatabase />,
-    badge: "High Demand",
-    badgeColor: "bg-blue-100 text-blue-800 border-blue-300",
-    avgSalary: "₹7 - ₹20 LPA",
+    badge: "High Growth",
+    badgeColor: "bg-blue-100 text-blue-900 border-blue-300",
+    avgSalary: "₹6 - ₹22 LPA",
     description:
-      "Transform raw data into strategic insights with statistical modeling, predictive analytics, and executive business dashboards.",
+      "Transform complex raw data into actionable business decisions. Master data wrangling with Python, advanced SQL, interactive business intelligence dashboards, and predictive modeling.",
     courses: [
       {
-        id: "ds-analytics",
-        title: "Data Science & Business Analytics",
-        subtitle: "Python, Pandas, Advanced SQL & Statistics",
+        id: "bi-data-analytics",
+        title: "Data Analytics & Business Intelligence (BI)",
+        subtitle: "Power BI, Tableau, Advanced SQL & Excel Dashboards",
         level: "Beginner to Intermediate",
         durationDefault: "6 Months",
-        techStack: ["Python", "Pandas", "SQL", "Matplotlib", "Seaborn"],
-        highlights: [
-          "Exploratory Data Analysis on million-row datasets",
-          "Complex SQL joins, window functions & CTEs",
-          "Statistical hypothesis testing & A/B testing",
-        ],
-        modules: [
-          "Python for Data Science (NumPy, Pandas, SciPy)",
-          "Relational Databases & Advanced SQL for Analytics",
-          "Statistical Methods, Distributions & A/B Testing",
-          "Data Cleaning & Feature Engineering",
-          "Predictive Modeling & Business Case Studies",
-        ],
-      },
-      {
-        id: "bi-dashboards",
-        title: "Business Intelligence with Power BI & Tableau",
-        subtitle: "DAX, Data Modeling, ETL & Executive Dashboards",
-        level: "Beginner to Intermediate",
-        durationDefault: "3 Months",
-        techStack: ["Power BI", "Tableau", "DAX", "SQL", "Excel"],
+        techStack: ["Power BI", "Tableau", "SQL", "Advanced Excel", "DAX"],
         highlights: [
           "Build 10+ real-time interactive business dashboards",
-          "Advanced DAX formulas and data modeling",
+          "Advanced DAX formulas and multi-table data modeling",
           "Automated executive reports & data storytelling",
         ],
         modules: [
-          "Data Preparation & ETL in Power Query",
+          "Advanced Excel, Pivot Modeling & Power Query ETL",
+          "Relational Databases & Advanced SQL (Joins, Windows, CTEs)",
           "Star & Snowflake Data Modeling in Power BI",
-          "Advanced DAX Measures & Time Intelligence",
+          "Advanced DAX Measures & Time-Intelligence Calculations",
           "Interactive Visualizations & Storyboarding in Tableau",
-          "Portfolio Projects: Finance, Sales & HR Analytics",
         ],
       },
       {
-        id: "big-data-spark",
-        title: "Big Data Engineering & Apache Spark",
-        subtitle: "Spark, Hadoop, Hive, Databricks & Airflow",
-        level: "Advanced",
+        id: "python-data-science",
+        title: "Python for Data Science & Machine Learning",
+        subtitle: "Pandas, NumPy, Scikit-Learn, Matplotlib & EDA",
+        level: "Beginner to Advanced",
         durationDefault: "6 Months",
-        techStack: ["Apache Spark", "PySpark", "Airflow", "Kafka", "Databricks"],
+        techStack: ["Python", "Pandas", "NumPy", "Scikit-Learn", "Matplotlib"],
         highlights: [
-          "Process terabyte-scale distributed data streams",
-          "ETL pipeline orchestration with Apache Airflow",
-          "Data lakehouse architecture on Databricks",
+          "Exploratory Data Analysis on million-row datasets",
+          "Supervised & unsupervised machine learning models",
+          "Statistical hypothesis testing & A/B test experiments",
         ],
         modules: [
-          "Distributed Computing Fundamentals & Hadoop",
-          "PySpark RDDs, DataFrames & Spark SQL",
-          "Data Pipeline Orchestration with Apache Airflow",
-          "Delta Lake & Modern Data Lakehouse Architecture",
-          "Streaming Analytics with Spark Structured Streaming",
+          "Python Foundations & Vectorized Math with NumPy",
+          "Data Cleaning, Wrangling & Aggregation with Pandas",
+          "Statistical Methods, Distributions & A/B Testing",
+          "Machine Learning with Scikit-Learn (Regression & Classification)",
+          "Clustering, Dimensionality Reduction & Capstone Project",
         ],
       },
       {
-        id: "predictive-analytics",
-        title: "Predictive Analytics & Financial Modeling",
-        subtitle: "Time Series, Risk Modeling & Market Forecasting",
-        level: "Intermediate",
+        id: "advanced-sql-engineering",
+        title: "Advanced SQL & Database Engineering",
+        subtitle: "PostgreSQL, MySQL, Query Optimization & Data Warehousing",
+        level: "Intermediate to Advanced",
         durationDefault: "6 Months",
-        techStack: ["Python", "ARIMA", "Prophet", "Statsmodels", "Excel"],
+        techStack: ["PostgreSQL", "MySQL", "Snowflake", "DBeaver", "Git"],
         highlights: [
-          "Stock market & demand forecasting models",
-          "Credit risk scoring & churn prediction",
-          "Monte Carlo simulations & decision trees",
+          "High-performance SQL query tuning & execution plan analysis",
+          "ACID transactions, stored procedures & triggers",
+          "Modern cloud data warehousing concepts",
         ],
         modules: [
-          "Time-Series Analysis & Decomposition",
-          "ARIMA, SARIMA & Prophet Forecasting Models",
-          "Classification Models for Customer Churn",
-          "Risk Analysis & Monte Carlo Simulation",
-          "End-to-End Financial Portfolio Project",
-        ],
-      },
-    ],
-  },
-  {
-    id: "clouddevops",
-    title: "Cloud Computing & DevOps",
-    subtitle: "AWS, Azure, Docker, Kubernetes & Terraform",
-    icon: <FaCloud />,
-    badge: "Enterprise Standard",
-    badgeColor: "bg-sky-100 text-sky-800 border-sky-300",
-    avgSalary: "₹7 - ₹22 LPA",
-    description:
-      "Design resilient cloud architectures, automate infrastructure with code, and establish continuous deployment pipelines.",
-    courses: [
-      {
-        id: "aws-architect",
-        title: "AWS Certified Solutions Architect",
-        subtitle: "EC2, S3, VPC, IAM, RDS & Serverless Lambda",
-        level: "Beginner to Pro",
-        durationDefault: "6 Months",
-        techStack: ["AWS", "VPC", "Lambda", "S3", "IAM", "CloudFormation"],
-        highlights: [
-          "Architect highly available & fault-tolerant systems",
-          "Serverless architecture with AWS Lambda & API Gateway",
-          "Official AWS SAA-C03 exam preparation",
-        ],
-        modules: [
-          "Cloud Computing Core & AWS Global Infrastructure",
-          "Identity, Access Management (IAM) & Security",
-          "Compute (EC2, ECS), Storage (S3, EBS) & Networking (VPC)",
-          "Relational & NoSQL Cloud Databases (RDS, DynamoDB)",
-          "Serverless & Event-Driven Cloud Architectures",
+          "Complex SQL Queries, Window Functions & Subqueries",
+          "Indexes, Partitioning & Execution Plan Tuning",
+          "Stored Procedures, Triggers & Transactions in PostgreSQL",
+          "Data Warehouse Dimensional Modeling (Star/Snowflake Schema)",
+          "ETL Data Pipelines & Cloud Warehouse Integration",
         ],
       },
       {
-        id: "devops-k8s",
-        title: "DevOps & Kubernetes Engineering",
-        subtitle: "Docker, Kubernetes, GitHub Actions, Helm & CI/CD",
+        id: "predictive-big-data",
+        title: "Predictive Analytics & Big Data",
+        subtitle: "Time-Series Forecasting, Apache Spark & Machine Learning",
         level: "Intermediate to Pro",
         durationDefault: "6 Months",
-        techStack: ["Docker", "Kubernetes", "Helm", "GitHub Actions", "Terraform"],
+        techStack: ["Apache Spark", "PySpark", "Statsmodels", "ARIMA", "Databricks"],
         highlights: [
-          "Zero-downtime rolling updates & canary deployments",
-          "End-to-end CI/CD pipelines with automated tests",
-          "Kubernetes cluster administration & monitoring",
+          "Forecast sales, stock trends & customer churn",
+          "Big data processing with PySpark on Databricks",
+          "Production deployment of predictive pipelines",
         ],
         modules: [
-          "Linux Essentials, Bash Scripting & Git Workflows",
-          "Containerization with Docker & Multi-stage Builds",
-          "Kubernetes Pods, Services, Ingress & Deployments",
-          "CI/CD Automation with GitHub Actions & GitLab",
-          "Infrastructure as Code (IaC) with Terraform",
-        ],
-      },
-      {
-        id: "azure-cloud",
-        title: "Microsoft Azure Cloud Engineering",
-        subtitle: "Azure Virtual Machines, AKS, Blob & Azure DevOps",
-        level: "Intermediate",
-        durationDefault: "6 Months",
-        techStack: ["Azure", "AKS", "Azure DevOps", "ARM Templates", "Entra ID"],
-        highlights: [
-          "Enterprise hybrid cloud solutions on Azure",
-          "Azure DevOps pipelines and boards",
-          "Official AZ-104 & AZ-204 exam coverage",
-        ],
-        modules: [
-          "Azure Governance, Subscriptions & Resource Groups",
-          "Azure Virtual Networks, VPN & ExpressRoute",
-          "Azure App Services, Containers & AKS",
-          "Azure Active Directory / Entra ID Security",
-          "Automated Infrastructure with Bicep & ARM",
-        ],
-      },
-      {
-        id: "site-reliability",
-        title: "Site Reliability Engineering (SRE)",
-        subtitle: "Observability, SLO/SLA, Prometheus & Incident Ops",
-        level: "Advanced",
-        durationDefault: "6 Months",
-        techStack: ["Prometheus", "Grafana", "ELK Stack", "OpenTelemetry", "Linux"],
-        highlights: [
-          "Design observability with Prometheus & Grafana",
-          "Chaos engineering & incident post-mortems",
-          "Automated disaster recovery systems",
-        ],
-        modules: [
-          "SRE Principles, Error Budgets & SLO/SLI",
-          "Metrics, Logs & Tracing with OpenTelemetry",
-          "Alerting Rules & PagerDuty Integration",
-          "Chaos Engineering & Fault Injection",
-          "Disaster Recovery & High Availability",
+          "Time-Series Analysis & Decomposition with ARIMA/Prophet",
+          "Classification Models for Customer Churn & Credit Risk",
+          "Distributed Computing Fundamentals & PySpark DataFrames",
+          "Data Lakehouse Architecture on Databricks",
+          "End-to-End Enterprise Predictive Pipeline Capstone",
         ],
       },
     ],
   },
+
+  // 3. Cyber Security
   {
-    id: "cybersecurity",
-    title: "Cyber Security & Ethical Hacking",
-    subtitle: "Penetration Testing, SOC, Network Defence & Forensics",
+    id: "cyber-security",
+    title: "Cyber Security",
+    subtitle: "Ethical Hacking, SOC Analyst, Network Defence & Penetration Testing",
     icon: <FaShieldAlt />,
     badge: "Mission Critical",
-    badgeColor: "bg-red-100 text-red-800 border-red-300",
-    avgSalary: "₹6 - ₹20 LPA",
+    badgeColor: "bg-red-100 text-red-900 border-red-300",
+    avgSalary: "₹6 - ₹24 LPA",
     description:
-      "Defend digital infrastructure from cyber threats, perform authorized penetration tests, and analyze incident forensics.",
+      "Defend digital infrastructure against modern threats, detect cyber attacks in real time, identify system vulnerabilities, and master ethical hacking techniques.",
     courses: [
       {
         id: "ethical-hacking",
-        title: "Certified Ethical Hacker (CEH)",
-        subtitle: "Kali Linux, Metasploit, Wireshark & Vulnerability Assessment",
+        title: "Certified Ethical Hacking & Penetration Testing",
+        subtitle: "Kali Linux, Metasploit, Nmap, Wireshark & Vulnerability Assessment",
         level: "Beginner to Intermediate",
         durationDefault: "6 Months",
         techStack: ["Kali Linux", "Metasploit", "Nmap", "Wireshark", "Burp Suite"],
         highlights: [
-          "Practical hands-on vulnerability assessment labs",
-          "Footprinting, scanning & system exploitation",
-          "Ethical hacking methodology & reporting",
+          "Hands-on vulnerability assessment virtual labs",
+          "System reconnaissance, network scanning & exploitation",
+          "Official CEH aligned methodology & penetration reports",
         ],
         modules: [
           "Introduction to Ethical Hacking & Legalities",
           "Network Scanning & Enumeration with Nmap",
-          "System Hacking, Password Attacks & Privilege Escalation",
-          "Malware Threats, Trojans & Social Engineering",
-          "Defensive Countermeasures & Hardening",
-        ],
-      },
-      {
-        id: "web-pentest",
-        title: "Web Application Penetration Testing",
-        subtitle: "OWASP Top 10, SQLi, XSS, SSRF & Bug Bounty",
-        level: "Intermediate to Pro",
-        durationDefault: "6 Months",
-        techStack: ["Burp Suite Pro", "OWASP ZAP", "Python", "SQLmap", "Postman"],
-        highlights: [
-          "Exploiting & remediating OWASP Top 10 vulnerabilities",
-          "Bug bounty hunting methodologies on HackerOne",
-          "API security testing & authentication bypass",
-        ],
-        modules: [
-          "Web Architecture, HTTP Protocol & Burp Suite",
-          "Injection Attacks (SQLi, Command Injection)",
-          "Cross-Site Scripting (XSS) & CSRF Exploits",
-          "Broken Access Control & Business Logic Flaws",
-          "Bug Bounty Practical Labs & Live Targets",
+          "System Exploitation, Password Attacks & Privilege Escalation",
+          "Malware Analysis, Trojans & Social Engineering",
+          "Defensive Countermeasures & Hardening Guidelines",
         ],
       },
       {
@@ -474,302 +269,138 @@ const DOMAINS = [
         ],
       },
       {
+        id: "web-pentest",
+        title: "Web Application Security & Bug Bounty",
+        subtitle: "OWASP Top 10, SQLi, XSS, SSRF & Bug Bounty Hunting",
+        level: "Intermediate to Pro",
+        durationDefault: "6 Months",
+        techStack: ["Burp Suite Pro", "OWASP ZAP", "Python", "SQLmap", "Postman"],
+        highlights: [
+          "Exploiting & remediating OWASP Top 10 vulnerabilities",
+          "Bug bounty hunting methodologies on HackerOne & Bugcrowd",
+          "API security testing & authentication bypasses",
+        ],
+        modules: [
+          "Web Architecture, HTTP Protocol & Burp Suite Setup",
+          "Injection Attacks (SQLi, Command Injection)",
+          "Cross-Site Scripting (XSS) & CSRF Exploits",
+          "Broken Access Control & Business Logic Flaws",
+          "Bug Bounty Practical Labs & Live Target Hunting",
+        ],
+      },
+      {
         id: "network-defence",
-        title: "Network Security & Cyber Forensics",
-        subtitle: "Firewalls, IDS/IPS, VPNs, Cryptography & Evidence Recovery",
+        title: "Network Security & Digital Forensics",
+        subtitle: "Firewalls, IDS/IPS, VPNs, Cryptography & Disk Forensics",
         level: "Intermediate",
         durationDefault: "6 Months",
         techStack: ["pfSense", "Snort", "Autopsy", "FTK Imager", "OpenVPN"],
         highlights: [
-          "Configure enterprise next-gen firewalls",
+          "Configure enterprise next-gen firewalls & VPN tunnels",
           "Digital forensics & chain-of-custody evidence handling",
-          "Public Key Infrastructure (PKI) & secure communications",
+          "Public Key Infrastructure (PKI) & secure encryption",
         ],
         modules: [
           "Network Protocols, Routing & Switching Security",
           "Firewall Configurations, DMZ & VPN Tunnels",
-          "Intrusion Detection & Prevention (IDS/IPS)",
-          "Digital Forensics Acquisition & Disk Imaging",
-          "Evidence Reporting for Legal Proceedings",
+          "Intrusion Detection & Prevention (IDS/IPS) with Snort",
+          "Digital Forensics Acquisition & Disk Imaging with FTK",
+          "Evidence Reporting for Legal & Corporate Audits",
         ],
       },
     ],
   },
+
+  // 4. Ai and prompt engreeing
   {
-    id: "digitalmarketing",
-    title: "Digital Marketing & Growth",
-    subtitle: "Performance Ads, SEO, Social Media & Funnels",
-    icon: <FaChartLine />,
-    badge: "High Growth",
-    badgeColor: "bg-amber-100 text-amber-800 border-amber-300",
-    avgSalary: "₹5 - ₹14 LPA",
+    id: "ai-prompt-engineering",
+    title: "AI & Prompt Engineering",
+    subtitle: "Generative AI, ChatGPT, Claude, LangChain, AI Agents & Automation",
+    icon: <FaBrain />,
+    badge: "Trending Tech 2025",
+    badgeColor: "bg-purple-100 text-purple-900 border-purple-300",
+    avgSalary: "₹7 - ₹26 LPA",
     description:
-      "Drive customer acquisition, scale revenue with paid ad campaigns, optimize organic search visibility, and build viral brands.",
+      "Harness the power of Generative AI, master advanced prompt engineering techniques, build autonomous multi-agent systems, and integrate modern LLMs into real-world applications.",
     courses: [
       {
-        id: "performance-marketing",
-        title: "Performance Marketing & Paid Ads",
-        subtitle: "Meta Ads, Google Ads, TikTok Ads & ROAS Optimization",
-        level: "Beginner to Pro",
-        durationDefault: "3 Months",
-        techStack: ["Meta Ads Manager", "Google Ads", "Google Analytics 4", "Canva"],
-        highlights: [
-          "Manage live ad budgets with positive ROAS",
-          "Conversion rate optimization (CRO) & landing pages",
-          "Retargeting funnels & custom audience lookalikes",
-        ],
-        modules: [
-          "Marketing Psychology & High-Converting Funnels",
-          "Google Search, Display & Performance Max Ads",
-          "Meta Ads: Creative Testing, CBO & Scaling",
-          "Analytics, Tracking Pixels & GA4 Setup",
-          "Client Acquisition & Agency Growth Model",
-        ],
-      },
-      {
-        id: "seo-masterclass",
-        title: "SEO & Content Marketing Strategy",
-        subtitle: "Technical SEO, On-Page, Off-Page, Semrush & AI Content",
-        level: "Beginner to Intermediate",
-        durationDefault: "3 Months",
-        techStack: ["Semrush", "Ahrefs", "Google Search Console", "Screaming Frog"],
-        highlights: [
-          "Rank websites #1 on Google for high-intent keywords",
-          "Technical site audits & Core Web Vitals fixes",
-          "Authority link building & programmatic SEO",
-        ],
-        modules: [
-          "Search Engine Algorithms & Keyword Research",
-          "On-Page SEO, Content Optimization & Schema",
-          "Technical SEO Audits & Speed Optimization",
-          "Backlink Strategies & Digital PR",
-          "AI-Assisted Content Production & Programmatic SEO",
-        ],
-      },
-      {
-        id: "social-media-growth",
-        title: "Social Media & Personal Brand Growth",
-        subtitle: "Instagram, YouTube, LinkedIn Growth & Viral Video",
-        level: "Beginner to Intermediate",
-        durationDefault: "3 Months",
-        techStack: ["CapCut", "Canva", "Notion", "Buffer", "YouTube Studio"],
-        highlights: [
-          "Script, film & edit viral short-form content",
-          "Organic follower growth strategies across platforms",
-          "Brand partnerships & monetization pipelines",
-        ],
-        modules: [
-          "Content Strategy & Platform Algorithms",
-          "Hook Writing, Storytelling & Short-Form Video",
-          "LinkedIn Thought Leadership & B2B Leads",
-          "Community Management & Brand Engagement",
-          "Monetization: Sponsorships, Products & Consulting",
-        ],
-      },
-      {
-        id: "marketing-automation",
-        title: "Marketing Automation & CRM Systems",
-        subtitle: "HubSpot, Mailchimp, Zapier, Webhooks & Email Flows",
-        level: "Intermediate",
-        durationDefault: "3 Months",
-        techStack: ["HubSpot", "Mailchimp", "Zapier", "ActiveCampaign", "Klaviyo"],
-        highlights: [
-          "Automate lead nurture sequences & onboarding flows",
-          "E-commerce retention & abandoned cart recoveries",
-          "CRM integration & customer lifecycle management",
-        ],
-        modules: [
-          "Customer Lifecycle Mapping & Lead Scoring",
-          "Email Marketing Strategy & Deliverability",
-          "Zapier & Make.com Workflow Automation",
-          "E-Commerce Automation with Klaviyo & Shopify",
-          "CRM Reporting & Sales Pipeline Alignment",
-        ],
-      },
-    ],
-  },
-  {
-    id: "uiux",
-    title: "UI/UX & Product Design",
-    subtitle: "Figma, UX Research, Design Systems & Prototyping",
-    icon: <FaLaptopCode />,
-    badge: "Creative & Tech",
-    badgeColor: "bg-pink-100 text-pink-800 border-pink-300",
-    avgSalary: "₹5 - ₹16 LPA",
-    description:
-      "Craft intuitive user experiences, build scalable component design systems in Figma, and design modern mobile & web apps.",
-    courses: [
-      {
-        id: "figma-mastery",
-        title: "Figma UI Design & Design Systems",
-        subtitle: "Auto-Layout, Variables, Component Libraries & Tokens",
-        level: "Beginner to Advanced",
-        durationDefault: "3 Months",
-        techStack: ["Figma", "FigJam", "Design Tokens", "Plugin API"],
-        highlights: [
-          "Create production-ready design systems with variables",
-          "Advanced responsive Auto-Layout & micro-interactions",
-          "Design-to-code developer handoff best practices",
-        ],
-        modules: [
-          "Figma Fundamentals, Vector Tools & Layout Grids",
-          "Typography, Color Theory & Visual Hierarchy",
-          "Auto-Layout 5.0, Component Variants & Properties",
-          "Scalable Design Systems & Variable Modes",
-          "Interactive Prototyping & Smart Animate",
-        ],
-      },
-      {
-        id: "ux-research",
-        title: "User Experience (UX) Research & Strategy",
-        subtitle: "User Interviews, Wireframing, Usability Testing & Journey Maps",
-        level: "Intermediate",
-        durationDefault: "6 Months",
-        techStack: ["Miro", "Maze", "Optimal Workshop", "Figma"],
-        highlights: [
-          "Conduct real qualitative & quantitative user studies",
-          "Information architecture & card sorting exercises",
-          "Usability testing with real target user cohorts",
-        ],
-        modules: [
-          "Design Thinking Framework & Problem Framing",
-          "Qualitative User Interviews & Persona Creation",
-          "Information Architecture & User Journey Mapping",
-          "Low-Fidelity Wireframing & Usability Testing",
-          "UX Metrics (SUS, NPS, CSAT) & Product Iteration",
-        ],
-      },
-      {
-        id: "product-design-pro",
-        title: "End-to-End Product Design (UI + UX)",
-        subtitle: "From Zero Problem Statement to Clickable MVP",
-        level: "Beginner to Pro",
-        durationDefault: "6 Months",
-        techStack: ["Figma", "Miro", "Lottie", "Notion"],
-        highlights: [
-          "3 comprehensive case studies ready for recruiter review",
-          "Mobile-first responsive design principles",
-          "Interview prep & portfolio defense presentation",
-        ],
-        modules: [
-          "Product Discovery & Competitor Benchmarking",
-          "UX Wireframes & Rapid Concept Testing",
-          "High-Fidelity Visual Design & Micro-copy",
-          "Complex Interactive Prototyping & Micro-animations",
-          "Portfolio Building & UX Case Study Presentation",
-        ],
-      },
-      {
-        id: "design-engineering",
-        title: "Design Engineering & Frontend Handoff",
-        subtitle: "Figma to Code, Tailwind CSS, Storybook & Framer",
-        level: "Intermediate to Pro",
-        durationDefault: "3 Months",
-        techStack: ["Figma", "Tailwind CSS", "Storybook", "Framer Motion"],
-        highlights: [
-          "Bridge the gap between design tokens and React components",
-          "Build animated marketing sites in Framer",
-          "Storybook component documentation setup",
-        ],
-        modules: [
-          "Design Tokens & Tailwind CSS Configuration",
-          "Component Architecture & State Mapping",
-          "No-Code Production Websites in Framer",
-          "Micro-Interactions with Framer Motion",
-          "Developer Collaboration & Git for Designers",
-        ],
-      },
-    ],
-  },
-  {
-    id: "mobile",
-    title: "Mobile App Development",
-    subtitle: "Flutter, React Native, Android Kotlin & iOS Swift",
-    icon: <FaMobileAlt />,
-    badge: "App Economy",
-    badgeColor: "bg-teal-100 text-teal-800 border-teal-300",
-    avgSalary: "₹6 - ₹18 LPA",
-    description:
-      "Build native and cross-platform mobile apps for iOS and Android with smooth 60fps animations and offline database support.",
-    courses: [
-      {
-        id: "flutter-mastery",
-        title: "Flutter & Dart Cross-Platform Mastery",
-        subtitle: "Bloc Pattern, Riverpod, Firebase & App Store Deployment",
-        level: "Beginner to Advanced",
-        durationDefault: "6 Months",
-        techStack: ["Flutter", "Dart", "Firebase", "Bloc", "REST APIs"],
-        highlights: [
-          "Build 3 cross-platform apps for Android & iOS",
-          "Clean Architecture & Bloc State Management",
-          "Publishing to Google Play Store & Apple App Store",
-        ],
-        modules: [
-          "Dart Programming Language Core & OOP",
-          "Flutter Widget Tree, Layouts & Custom Painters",
-          "State Management with Bloc & Riverpod",
-          "Firebase Auth, Firestore & Cloud Storage",
-          "App Store Guidelines & Production Publishing",
-        ],
-      },
-      {
-        id: "react-native-pro",
-        title: "React Native & Expo Full Stack Mobile",
-        subtitle: "TypeScript, Redux Toolkit, Native Modules & Push Notifications",
-        level: "Intermediate to Pro",
-        durationDefault: "6 Months",
-        techStack: ["React Native", "Expo", "TypeScript", "Redux", "Node.js"],
-        highlights: [
-          "Modern Expo EAS build & OTA update workflows",
-          "Offline SQLite storage & real-time sync",
-          "Hardware sensors (Camera, GPS, Biometrics) integration",
-        ],
-        modules: [
-          "React Native Architecture & Core Components",
-          "Expo Ecosystem, EAS CLI & Bare Workflows",
-          "Navigation with React Navigation & Deep Linking",
-          "Local Storage, SQLite & Offline-First Sync",
-          "Push Notifications & In-App Purchases",
-        ],
-      },
-      {
-        id: "android-kotlin",
-        title: "Native Android Development with Kotlin",
-        subtitle: "Jetpack Compose, Coroutines, Room DB & MVVM",
+        id: "gen-ai-prompting",
+        title: "Generative AI & Advanced Prompt Engineering",
+        subtitle: "ChatGPT, Claude 3.5, Midjourney, Advanced Prompting & Workflows",
         level: "Beginner to Intermediate",
         durationDefault: "6 Months",
-        techStack: ["Kotlin", "Jetpack Compose", "Coroutines", "Room", "Hilt"],
+        techStack: ["ChatGPT", "Claude", "Midjourney", "Runway", "Notion AI"],
         highlights: [
-          "Declarative UI development with Jetpack Compose",
-          "Asynchronous programming with Kotlin Coroutines & Flow",
-          "Modern Android MVVM architecture with Hilt DI",
+          "Chain-of-Thought, Few-Shot & ReAct advanced prompting",
+          "Enterprise AI workflow automation for business tasks",
+          "Multimodal AI generation: text, imagery, voice & video",
         ],
         modules: [
-          "Kotlin Fundamentals, Lambdas & Collections",
-          "Jetpack Compose UI Layouts & Material 3",
-          "Kotlin Coroutines, Flow & Network with Retrofit",
-          "Local Persistence with Room Database",
-          "Dependency Injection with Hilt & Unit Testing",
+          "Foundations of Generative AI & Transformer Models",
+          "Advanced Prompt Architectures (Chain-of-Thought, Role Prompting)",
+          "Image, Video & Voice Generation with Midjourney & Runway",
+          "AI Productivity Workflows & Enterprise Automation",
+          "Prompt Injection Defense & Hallucination Mitigation",
         ],
       },
       {
-        id: "ios-swift",
-        title: "iOS App Development with Swift",
-        subtitle: "SwiftUI, Combine, Swift Data, CoreML & TestFlight",
+        id: "autonomous-ai-agents",
+        title: "Autonomous AI Agents & Multi-Agent Teams",
+        subtitle: "CrewAI, AutoGen, Model Context Protocol (MCP) & LangGraph",
         level: "Intermediate to Pro",
         durationDefault: "6 Months",
-        techStack: ["Swift", "SwiftUI", "SwiftData", "Combine", "Xcode"],
+        techStack: ["CrewAI", "LangGraph", "Python", "MCP", "FastAPI"],
         highlights: [
-          "Declarative iOS interfaces with SwiftUI & iOS 18 features",
-          "Local storage with modern SwiftData framework",
-          "CoreML integration for on-device machine learning",
+          "Build autonomous AI teams that research, plan, and write code",
+          "Model Context Protocol (MCP) tool integration",
+          "Enterprise workflow automation with autonomous agents",
         ],
         modules: [
-          "Swift 6 Syntax, Optionals & Protocols",
-          "SwiftUI Navigation, Lists & Modern State",
-          "Networking with async/await & JSON Decoding",
-          "SwiftData & CloudKit Synchronization",
-          "TestFlight Beta Testing & App Store Submission",
+          "Agentic Workflows vs Traditional Single-Prompt LLMs",
+          "CrewAI Multi-Agent Teams, Roles & Delegation",
+          "LangGraph State Machines & Graph-based Agents",
+          "Model Context Protocol (MCP) & Custom Tool Calling",
+          "Enterprise Agent Deployment & Real-World Case Studies",
+        ],
+      },
+      {
+        id: "llm-rag-development",
+        title: "LLM Application Development & RAG Systems",
+        subtitle: "LangChain, Vector Databases (Chroma/Pinecone), RAG & Python",
+        level: "Intermediate to Pro",
+        durationDefault: "6 Months",
+        techStack: ["Python", "LangChain", "ChromaDB", "OpenAI API", "Streamlit"],
+        highlights: [
+          "Build Retrieval-Augmented Generation (RAG) applications",
+          "Semantic search over enterprise PDFs, docs & databases",
+          "Deploy full-stack generative AI applications",
+        ],
+        modules: [
+          "Python for AI & API Integration with FastAPI",
+          "Vector Embeddings & Vector Databases (ChromaDB, Pinecone)",
+          "Chunking Strategies & RAG Pipeline Optimization",
+          "Context Window Management & Re-ranking Methods",
+          "Building Interactive Chatbots with Streamlit & React",
+        ],
+      },
+      {
+        id: "fine-tuning-llms",
+        title: "Fine-Tuning & Open Source AI Models",
+        subtitle: "Llama 3, Mistral, Hugging Face, LoRA/QLoRA & Model Serving",
+        level: "Advanced",
+        durationDefault: "6 Months",
+        techStack: ["Hugging Face", "PyTorch", "LoRA", "QLoRA", "vLLM"],
+        highlights: [
+          "Fine-tune open source models on custom business datasets",
+          "4-bit & 8-bit quantization for efficient GPU deployment",
+          "High-throughput model serving with vLLM & Docker",
+        ],
+        modules: [
+          "Open Source AI Ecosystem vs Proprietary APIs",
+          "Custom Dataset Preparation, Tokenization & Cleaning",
+          "Parameter-Efficient Fine-Tuning (PEFT) with LoRA & QLoRA",
+          "Model Evaluation, Benchmarking & Safety Guardrails",
+          "Production Inference Deployment with vLLM & Docker",
         ],
       },
     ],
@@ -890,7 +521,7 @@ function Skilling() {
   const navigate = useNavigate();
 
   // Multi-step State
-  // Step 1: Domain Selection
+  // Step 1: Domain Selection (Digital Marketing, Data Science, Cyber Security, AI & Prompt Eng)
   // Step 2: Course Selection
   // Step 3: Duration Selection (3, 6, 12 Months)
   // Step 4: Final Course Package & Enrollment Details
@@ -911,7 +542,6 @@ function Skilling() {
   // Step 1: Select a Domain
   const handleDomainSelect = (domain) => {
     setSelectedDomain(domain);
-    // Reset subordinate selections
     setSelectedCourse(null);
     setSelectedDuration(null);
     setStep(2);
@@ -921,7 +551,6 @@ function Skilling() {
   // Step 2: Select a Course
   const handleCourseSelect = (course) => {
     setSelectedCourse(course);
-    // Auto-select 6 Months as default recommended
     const defaultDur =
       DURATION_OPTIONS.find((d) => d.id === "6-months") || DURATION_OPTIONS[1];
     setSelectedDuration(defaultDur);
@@ -1036,12 +665,12 @@ function Skilling() {
           {/* Quick Metrics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12 pt-8 border-t border-slate-800">
             <div className="p-3 bg-white/5 rounded-2xl border border-white/10">
-              <p className="text-3xl font-black text-[#D4A017]">8+</p>
-              <p className="text-xs sm:text-sm text-slate-300 mt-1">Tech Domains</p>
+              <p className="text-3xl font-black text-[#D4A017]">4</p>
+              <p className="text-xs sm:text-sm text-slate-300 mt-1">Core Tech Domains</p>
             </div>
             <div className="p-3 bg-white/5 rounded-2xl border border-white/10">
-              <p className="text-3xl font-black text-[#D4A017]">32+</p>
-              <p className="text-xs sm:text-sm text-slate-300 mt-1">Industry Courses</p>
+              <p className="text-3xl font-black text-[#D4A017]">16+</p>
+              <p className="text-xs sm:text-sm text-slate-300 mt-1">Specialized Courses</p>
             </div>
             <div className="p-3 bg-white/5 rounded-2xl border border-white/10">
               <p className="text-3xl font-black text-[#D4A017]">3, 6, 12 M</p>
@@ -1078,7 +707,6 @@ function Skilling() {
             <div
               key={item.num}
               onClick={() => {
-                // Allow jumping back to previously reached steps
                 if (item.num < step) setStep(item.num);
               }}
               className={`relative z-10 flex flex-col items-center cursor-pointer transition-all ${
@@ -1180,12 +808,12 @@ function Skilling() {
                 Step 1: Choose Your Career Domain
               </h2>
               <p className="text-slate-600 mt-2 text-base sm:text-lg">
-                Select a high-demand technology track to explore its specialized programs.
+                Select from our 4 specialized industry domains to view its courses.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {DOMAINS.map((domain) => (
+              {DOMAINS.map((domain, index) => (
                 <div
                   key={domain.id}
                   onClick={() => handleDomainSelect(domain)}
@@ -1197,19 +825,23 @@ function Skilling() {
                       <div className="w-14 h-14 rounded-2xl bg-orange-50 text-[#7C2D12] group-hover:bg-[#7C2D12] group-hover:text-white transition-colors duration-300 flex items-center justify-center text-2xl shadow-inner">
                         {domain.icon}
                       </div>
-                      <span
-                        className={`text-xs px-2.5 py-1 rounded-full font-bold border ${domain.badgeColor}`}
-                      >
-                        {domain.badge}
+                      <span className="text-xs font-bold text-slate-400 bg-slate-100 px-2.5 py-1 rounded-full">
+                        0{index + 1}
                       </span>
                     </div>
+
+                    <span
+                      className={`inline-block text-xs px-2.5 py-0.5 rounded-full font-bold border mb-2 ${domain.badgeColor}`}
+                    >
+                      {domain.badge}
+                    </span>
 
                     <h3 className="text-xl font-bold text-[#0B1220] group-hover:text-[#7C2D12] transition-colors leading-tight">
                       {domain.title}
                     </h3>
 
                     <p className="text-xs font-semibold text-slate-400 mt-1 uppercase tracking-wider">
-                      {domain.courses.length} Courses Available
+                      {domain.courses.length} Specialized Courses
                     </p>
 
                     <p className="text-slate-600 text-sm mt-3 line-clamp-3 leading-relaxed">
@@ -1710,7 +1342,6 @@ function Skilling() {
 
                       <button
                         onClick={() => {
-                          // Navigate to courses/checkout with pre-selected query
                           navigate("/courses", {
                             state: {
                               preselectedCategory: "Skilling",
