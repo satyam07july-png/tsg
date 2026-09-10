@@ -124,6 +124,7 @@ const createOrder = async (req, res, next) => {
     res.status(200).json({
       success: true,
       order,
+      isMock: String(order.id).startsWith("order_test_"),
       keyId: process.env.RAZORPAY_KEY_ID || "rzp_test_T0bvuXdCpuKBMS",
       course: {
         id: course.id,
