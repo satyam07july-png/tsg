@@ -2083,29 +2083,89 @@ function Skilling() {
                               <span className="text-xs font-bold text-[#7C2D12] block mt-3">
                                 EMI: Starting at {selectedCourse.emi} (No-Cost EMI)
                               </span>
+                              <button
+                                onClick={() => {
+                                  navigate("/checkout", {
+                                    state: {
+                                      course: {
+                                        id: selectedCourse.id,
+                                        title: `${selectedCourse.title} (Offline Classroom)`,
+                                        price: selectedCourse.details.offlinePrice || selectedCourse.price,
+                                        originalPrice: selectedCourse.originalPrice,
+                                        original_price: selectedCourse.originalPrice,
+                                        duration: selectedCourse.duration,
+                                        level: `${selectedCourse.level} - Offline`,
+                                        image:
+                                          selectedCourse.thumbnail ||
+                                          "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+                                        thumbnail:
+                                          selectedCourse.thumbnail ||
+                                          "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+                                        category: selectedDomain?.title || "Digital Marketing",
+                                        description: selectedCourse.shortDesc || selectedCourse.subtitle,
+                                      },
+                                    },
+                                  });
+                                }}
+                                className="mt-4 w-full py-3 rounded-xl font-bold text-xs bg-[#7C2D12] hover:bg-[#60230e] text-white flex items-center justify-center gap-2 transition shadow-md hover:scale-[1.02] cursor-pointer"
+                              >
+                                <span>Enroll in Offline Batch</span>
+                                <FaArrowRight className="text-xs" />
+                              </button>
                             </div>
 
-                            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
-                              <span className="text-xs font-black uppercase tracking-wider text-blue-700 bg-blue-100 px-3 py-1 rounded-full inline-block mb-3">
-                                Live Interactive Online
-                              </span>
-                              <div className="flex items-baseline gap-2">
-                                <span className="text-3xl font-black text-[#0B1220]">
-                                  ₹{(selectedCourse.details.onlinePrice || selectedCourse.price).toLocaleString("en-IN")}
+                            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                              <div>
+                                <span className="text-xs font-black uppercase tracking-wider text-blue-700 bg-blue-100 px-3 py-1 rounded-full inline-block mb-3">
+                                  Live Interactive Online
                                 </span>
-                                <span className="text-sm line-through text-slate-400">
-                                  ₹{selectedCourse.originalPrice.toLocaleString("en-IN")}
-                                </span>
-                                <span className="text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
-                                  Save ₹{(selectedCourse.originalPrice - (selectedCourse.details.onlinePrice || selectedCourse.price)).toLocaleString("en-IN")}
+                                <div className="flex items-baseline gap-2">
+                                  <span className="text-3xl font-black text-[#0B1220]">
+                                    ₹{(selectedCourse.details.onlinePrice || selectedCourse.price).toLocaleString("en-IN")}
+                                  </span>
+                                  <span className="text-sm line-through text-slate-400">
+                                    ₹{selectedCourse.originalPrice.toLocaleString("en-IN")}
+                                  </span>
+                                  <span className="text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
+                                    Save ₹{(selectedCourse.originalPrice - (selectedCourse.details.onlinePrice || selectedCourse.price)).toLocaleString("en-IN")}
+                                  </span>
+                                </div>
+                                <p className="text-xs text-slate-600 mt-2">
+                                  Live 2-way audio/video sessions, cloud lab, recordings on LMS, and remote paid agency internship.
+                                </p>
+                                <span className="text-xs font-bold text-[#7C2D12] block mt-3">
+                                  EMI: Starting at {selectedCourse.emi} (No-Cost EMI)
                                 </span>
                               </div>
-                              <p className="text-xs text-slate-600 mt-2">
-                                Live 2-way audio/video sessions, cloud lab, recordings on LMS, and remote paid agency internship.
-                              </p>
-                              <span className="text-xs font-bold text-[#7C2D12] block mt-3">
-                                EMI: Starting at {selectedCourse.emi} (No-Cost EMI)
-                              </span>
+                              <button
+                                onClick={() => {
+                                  navigate("/checkout", {
+                                    state: {
+                                      course: {
+                                        id: selectedCourse.id,
+                                        title: `${selectedCourse.title} (Online Live)`,
+                                        price: selectedCourse.details.onlinePrice || selectedCourse.price,
+                                        originalPrice: selectedCourse.originalPrice,
+                                        original_price: selectedCourse.originalPrice,
+                                        duration: selectedCourse.duration,
+                                        level: `${selectedCourse.level} - Online`,
+                                        image:
+                                          selectedCourse.thumbnail ||
+                                          "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+                                        thumbnail:
+                                          selectedCourse.thumbnail ||
+                                          "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+                                        category: selectedDomain?.title || "Digital Marketing",
+                                        description: selectedCourse.shortDesc || selectedCourse.subtitle,
+                                      },
+                                    },
+                                  });
+                                }}
+                                className="mt-4 w-full py-3 rounded-xl font-bold text-xs bg-[#0B1220] hover:bg-slate-900 text-[#D4A017] flex items-center justify-center gap-2 transition shadow-md hover:scale-[1.02] cursor-pointer"
+                              >
+                                <span>Enroll in Online Batch</span>
+                                <FaArrowRight className="text-xs" />
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -2166,17 +2226,33 @@ function Skilling() {
 
                         <button
                           onClick={() => {
-                            navigate("/courses", {
+                            navigate("/checkout", {
                               state: {
-                                preselectedCategory: "Skilling",
-                                courseTitle: selectedCourse.title,
-                                domain: selectedDomain.title,
-                                duration: selectedCourse.duration,
-                                price: selectedCourse.price,
+                                course: {
+                                  id: selectedCourse.id,
+                                  title: selectedCourse.title,
+                                  price: selectedCourse.price,
+                                  originalPrice: selectedCourse.originalPrice,
+                                  original_price: selectedCourse.originalPrice,
+                                  duration: selectedCourse.duration,
+                                  level: selectedCourse.level,
+                                  image:
+                                    selectedCourse.thumbnail ||
+                                    "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+                                  thumbnail:
+                                    selectedCourse.thumbnail ||
+                                    "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+                                  category: selectedDomain?.title || "Digital Marketing",
+                                  description:
+                                    selectedCourse.shortDesc ||
+                                    selectedCourse.subtitle ||
+                                    selectedCourse.description ||
+                                    selectedCourse.details?.overviewDescription,
+                                },
                               },
                             });
                           }}
-                          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0B1220] hover:bg-slate-900 text-[#D4A017] font-black px-6 py-3.5 rounded-2xl transition shadow-md text-sm"
+                          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0B1220] hover:bg-slate-900 text-[#D4A017] font-black px-7 py-3.5 rounded-2xl transition shadow-xl text-sm hover:scale-105 cursor-pointer"
                         >
                           <span>Enroll via LMS</span>
                           <FaArrowRight className="text-xs" />
