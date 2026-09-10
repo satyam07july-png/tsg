@@ -1,28 +1,31 @@
 import { useParams } from "react-router-dom";
-
 import {
   FaEnvelope,
   FaPhone,
   FaBookOpen,
   FaClock,
-  FaChartLine,
   FaFileAlt,
   FaMoneyBillWave,
-  FaDownload,
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
-
 import api from "../../lib/api";
 
 function StudentProfile() {
   const [courses, setCourses] = useState([]);
-  useEffect(() => {
-
-  fetchCourses();
-
-}, []);
-
   const { id } = useParams();
+
+  const fetchCourses = async () => {
+    try {
+      const response = await api.get("/api/courses");
+      setCourses(response.data?.courses || response.data || []);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
 
   // ALL STUDENTS
   const students = [
@@ -74,69 +77,7 @@ function StudentProfile() {
     );
 
   }
-// course 
-  const fetchCourses = async () => {
 
-  try {
-
-    const response = await api.get(
-
-      `${import.meta.env.VITE_API_URL}/api/courses`
-
-    );
-
-    setCourses(response.data);
-
-  }
-
-  catch (error) {
-
-    console.log(error);
-
-  }
-
-};
-  // ASSIGNMENTS
-  const assignments = [
-
-    {
-      id: 1,
-      title: "React Dashboard UI",
-      marks: "92/100",
-      status: "Submitted",
-      feedback: "Outstanding Work",
-    },
-
-    {
-      id: 2,
-      title: "AI Prediction Model",
-      marks: "78/100",
-      status: "Reviewed",
-      feedback: "Good Logic Building",
-    },
-
-  ];
-
-  // PAYMENTS
-  const payments = [
-
-    {
-      id: 1,
-      course: "Full Stack Development",
-      amount: "₹12,000",
-      status: "Paid",
-      date: "12 Jan 2026",
-    },
-
-    {
-      id: 2,
-      course: "Machine Learning",
-      amount: "₹8,000",
-      status: "Paid",
-      date: "4 Feb 2026",
-    },
-
-  ];
 
   return (
 

@@ -23,8 +23,6 @@ function Academic() {
   
   const navigate = useNavigate();
 
-  const [selectedSubject, setSelectedSubject] = useState("");
-
   const [stream, setStream] = useState("");
 
   const [step, setStep] = useState(1);
@@ -696,9 +694,6 @@ return (
                 <button
                   key={subject}
                   onClick={() => {
-
-                    setSelectedSubject(subject);
-
                     navigate("/courses", {
                       state: {
                         educationType,
@@ -765,9 +760,6 @@ return (
             <button
               key={subject}
               onClick={() => {
-
-                setSelectedSubject(subject);
-
                 navigate("/courses", {
                   state: {
                     educationType,

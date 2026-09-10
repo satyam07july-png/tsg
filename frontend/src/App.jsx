@@ -38,194 +38,216 @@ import Placement from "./pages/Placement";
 import AddStudent from "./pages/admin/AddStudent";
 import CourseListing from "./pages/CourseListing";
 import Checkout from "./pages/Checkout";
+
 function App() {
-
   return (
-
     <Routes>
-
+      {/* ================= PUBLIC ROUTES ================= */}
       <Route path="/" element={<LandingPage />} />
-
       <Route path="/login" element={<Login />} />
-     <Route path="/popular" element={<PopularCourses />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/courses" element={<CourseListing />} />
+      <Route path="/courses-explore" element={<Courses />} />
+      <Route path="/course/:id" element={<CourseDetails />} />
+      <Route path="/popular" element={<PopularCourses />} />
+      <Route path="/government-partners" element={<GovernmentPartners />} />
+      <Route path="/academic" element={<Academic />} />
+      <Route path="/entrance" element={<Entrance />} />
+      <Route path="/competition" element={<Competition />} />
+      <Route path="/skilling" element={<Skilling />} />
+      <Route path="/placement" element={<Placement />} />
 
+      {/* ================= STUDENT / ENROLLED ROUTES ================= */}
       <Route
-       path="/admin"
-       element={
-      <ProtectedRoute
-       allowedRole="admin"
-      >
-        <AdminDashboard />
-        </ProtectedRoute>
-      }
-      />
-
-      <Route
-       path="/student"
+        path="/checkout"
         element={
-      <ProtectedRoute
-       allowedRole="student"
-      >
-       <StudentDashboard />
-       </ProtectedRoute>
-      }
-      />
-
-      <Route path="/admin/courses" element={<CoursesPage />} />
-
-      <Route path="/admin/students" element={<StudentsPage />} />
-
-      <Route
-        path="/teacher-dashboard"
-       element={
-      <ProtectedRoute
-       allowedRole="teacher"
-      >
-        <TeacherDashboard />
-        </ProtectedRoute>
-      }
-      />
-
-      <Route
-        path="/admin/revenue"
-        element={<RevenuePage />}
-      />
-
-      <Route
-        path="/admin/users"
-        element={<UsersPage />}
+          <ProtectedRoute allowedRoles={["student", "teacher", "admin"]}>
+            <Checkout />
+          </ProtectedRoute>
+        }
       />
       <Route
-        path="/about"
-        element={<About />}
+        path="/student"
+        element={
+          <ProtectedRoute allowedRoles={["student", "admin"]}>
+            <StudentDashboard />
+          </ProtectedRoute>
+        }
       />
-
-      <Route
-        path="/admin/add-course"
-        element={<AddCourse />}
-      />
-
-      <Route
-        path="/admin/activity"
-        element={<ActivityPage />}
-      />
-
-      
-
-      <Route
-        path="/admin/students/:id"
-        element={<StudentProfile />}
-      />
-
-      <Route
-        path="/admin/teachers/:id"
-        element={<TeacherProfile />}
-      />
-
       <Route
         path="/learn/:id"
-        element={<LearningPage />}
+        element={
+          <ProtectedRoute allowedRoles={["student", "teacher", "admin"]}>
+            <LearningPage />
+          </ProtectedRoute>
+        }
       />
 
+      {/* ================= TEACHER ROUTES ================= */}
       <Route
-        path="/admin/teachers"
-        element={<Teachers />}
+        path="/teacher-dashboard"
+        element={
+          <ProtectedRoute allowedRoles={["teacher", "admin"]}>
+            <TeacherDashboard />
+          </ProtectedRoute>
+        }
       />
-
       <Route
-        path="/admin/add-teacher"
-        element={<AddTeacher />}
+        path="/my-courses"
+        element={
+          <ProtectedRoute allowedRoles={["teacher", "admin"]}>
+            <MyCourses />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/upload-lecture"
+        element={
+          <ProtectedRoute allowedRoles={["teacher", "admin"]}>
+            <UploadLecture />
+          </ProtectedRoute>
+        }
       />
 
+      {/* ================= ADMIN ROUTES ================= */}
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <AdminDashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/courses"
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <CoursesPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/add-course"
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <AddCourse />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/admin/edit-course/:id"
-        element={<EditCourse />}
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <EditCourse />
+          </ProtectedRoute>
+        }
       />
-
+      <Route
+        path="/admin/students"
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <StudentsPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/add-student"
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <AddStudent />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/students/:id"
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <StudentProfile />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/teachers"
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <Teachers />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/add-teacher"
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <AddTeacher />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/teachers/:id"
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <TeacherProfile />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/revenue"
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <RevenuePage />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/admin/payments"
-        element={<Payments />}
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <Payments />
+          </ProtectedRoute>
+        }
       />
-
+      <Route
+        path="/admin/users"
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <UsersPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/activity"
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <ActivityPage />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/admin/assignments"
-        element={<Assignments />}
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <Assignments />
+          </ProtectedRoute>
+        }
       />
-
       <Route
         path="/admin/notifications"
-        element={<Notifications />}
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <Notifications />
+          </ProtectedRoute>
+        }
       />
-
       <Route
         path="/admin/settings"
-        element={<Settings />}
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <Settings />
+          </ProtectedRoute>
+        }
       />
-      
-      <Route
-      path="/my-courses"
-      element={<MyCourses />}
-    />
-
-    <Route
-    path="/upload-lecture"
-    element={<UploadLecture />}
-  />
-
-  <Route
-
-  path="/course/:id"
-
-  element={<CourseDetails />}
-
-/>
-<Route
-  path="/government-partners"
-  element={<GovernmentPartners />}
-/>
-<Route
-  path="/academic"
-  element={<Academic />}
-/>
-
-<Route
-  path="/entrance"
-  element={<Entrance />}
-/>
-
-<Route
-  path="/competition"
-  element={<Competition />}
-/>
-
-<Route
-  path="/skilling"
-  element={<Skilling />}
-/>
-
-<Route
-  path="/placement"
-  element={<Placement />}
-/>
-
-<Route
- path="/admin/add-student"
- element={<AddStudent />}
-/>
-
-<Route
-  path="/courses"
-  element={<CourseListing />}
-/>
-
-<Route path="/checkout" element={<Checkout />} />
-
-
-
     </Routes>
-
   );
-
 }
 
 export default App;

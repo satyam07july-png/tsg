@@ -1,10 +1,31 @@
-require("dotenv").config();
+const path = require("path");
+const fs = require("fs");
+const dotenv = require("dotenv");
+
+// Auto-discover environment variables from any standard location
+const envPaths = [
+  path.join(__dirname, ".env"),
+  path.join(__dirname, "..", ".env"),
+  path.join(__dirname, "..", "..", ".env"),
+];
+for (const p of envPaths) {
+  if (fs.existsSync(p)) {
+    dotenv.config({ path: p });
+  }
+}
 
 const express = require("express");
 const cors = require("cors");
+const helmet = require("helmet");
 
+// Database initialization
 require("./config/db");
 
+// Middlewares
+const rateLimit = require("./middleware/rateLimit.middleware");
+const errorHandler = require("./middleware/error.middleware");
+
+// Routes
 const activityRoutes = require("./routes/activity.routes");
 const adminDashboardRoutes = require("./routes/adminDashboardRoutes");
 const adminRoutes = require("./routes/admin.routes");
@@ -26,41 +47,83 @@ const userRoutes = require("./routes/user.routes");
 
 const app = express();
 
-const allowedOrigins = [
-  
+// Production Security Headers
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+  })
+);
+
+// CORS configuration
+const defaultAllowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "http://localhost:5174",
   "https://tsg-ecru.vercel.app",
-  "https://tsg-qlb1.onrender.com",];
+  "https://tsg-qlb1.onrender.com",
+];
+
+const envAllowed = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(",").map((s) => s.trim())
+  : [];
+
+const allowedOrigins = Array.from(new Set([...defaultAllowedOrigins, ...envAllowed]));
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      console.log("Incoming Origin:", origin);
-      console.log("Incoming Origin:", origin);
-console.log("Blocked Origin:", origin);
-
-      if (!origin || allowedOrigins.includes(origin)) {
+      // Allow non-browser requests (Postman, curl, server-to-server) or matching allowed origins
+      if (!origin || allowedOrigins.includes(origin) || origin.endsWith(".vercel.app") || origin.endsWith(".onrender.com")) {
         return callback(null, true);
       }
-
-      console.log("Blocked Origin:", origin);
-
-      return callback(new Error("Not allowed by CORS"));
+      return callback(new Error(`Origin ${origin} not allowed by CORS`));
     },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-app.use(express.json({ limit: process.env.JSON_BODY_LIMIT || "1mb" }));
-app.use(express.urlencoded({ extended: true }));
+// Body Parsers
+app.use(express.json({ limit: process.env.JSON_BODY_LIMIT || "5mb" }));
+app.use(express.urlencoded({ extended: true, limit: "5mb" }));
 
+// Rate Limiting
+const globalLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 300,
+  message: "Too many requests from this IP, please try again after a minute.",
+});
+
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 30,
+  message: "Too many login/register attempts. Please try again after 15 minutes.",
+});
+
+app.use("/api", globalLimiter);
+app.use("/api/auth/login", authLimiter);
+
+// Root & Health check
 app.get("/", (req, res) => {
-  res.send("Dizital Adda LMS API Running");
+  res.json({
+    success: true,
+    message: "Dizital Adda LMS Production API is operational 🚀",
+    version: "1.0.0",
+    timestamp: new Date().toISOString(),
+  });
 });
 
 app.get("/api/health", (req, res) => {
-  res.json({ success: true, message: "API healthy" });
+  res.json({
+    success: true,
+    status: "healthy",
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString(),
+  });
 });
 
+// Mounted Routes
 app.use("/api/activity", activityRoutes);
 app.use("/api/admin/analytics", adminDashboardRoutes);
 app.use("/api/admin", adminRoutes);
@@ -81,20 +144,15 @@ app.use("/api/students", studentRoutes);
 app.use("/api/teachers", teacherRoutes);
 app.use("/api/user", userRoutes);
 
+// 404 Route Handler
 app.use((req, res) => {
   res.status(404).json({
     success: false,
-    message: "Route Not Found",
+    message: `Route not found: ${req.method} ${req.originalUrl}`,
   });
 });
 
-app.use((err, req, res, next) => {
-  console.error("SERVER ERROR:", err);
-
-  res.status(err.status || 500).json({
-    success: false,
-    message: err.message || "Internal Server Error",
-  });
-});
+// Centralized Error Handler
+app.use(errorHandler);
 
 module.exports = app;

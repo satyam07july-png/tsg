@@ -1,74 +1,25 @@
-import React, {
-  useEffect,
-  useState,
-} from "react";
-
-import {
-  useParams,
-  Link,
-} from "react-router-dom";
-
-import { useNavigate } from "react-router-dom";
-
+import { useEffect, useState, useCallback } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import api from "../../lib/api";
-
-import {
-
-  FaClock,
-
-  FaSignal,
-
-  FaRupeeSign,
-
-  FaCheckCircle,
-
-} from "react-icons/fa";
+import { FaClock, FaCheckCircle } from "react-icons/fa";
 
 const CourseDetails = () => {
-
   const navigate = useNavigate();
+  const { id } = useParams();
+  const [course, setCourse] = useState(null);
 
-  const { id } =
-    useParams();
-
-  const [course, setCourse] =
-    useState(null);
-
-  // ==========================
-  // FETCH COURSE
-  // ==========================
+  const fetchCourse = useCallback(async () => {
+    try {
+      const response = await api.get(`/api/courses/${id}`);
+      setCourse(response.data.course);
+    } catch (error) {
+      console.error("Course Details Fetch Error:", error);
+    }
+  }, [id]);
 
   useEffect(() => {
-
     fetchCourse();
-
-  }, []);
-
-  const fetchCourse =
-    async () => {
-
-      try {
-
-        const response =
-          await api.get(
-
-            `${import.meta.env.VITE_API_URL}/api/courses/${id}`
-
-          );
-
-        setCourse(
-          response.data.course
-        );
-
-      }
-
-      catch (error) {
-
-        console.log(error);
-
-      }
-
-    };
+  }, [fetchCourse]);
 
   // LOADING
 

@@ -28,21 +28,12 @@ const updatePassword = async () => {
   try {
 
     await api.put(
-
-      "http://https://https://tsg-qlb1.onrender.com/api/admin/update-password",
-
+      "/api/admin/update-password",
       {
-
         email: adminData.email,
-
-        currentPassword:
-          passwordData.currentPassword,
-
-        newPassword:
-          passwordData.newPassword,
-
+        currentPassword: passwordData.currentPassword,
+        newPassword: passwordData.newPassword,
       }
-
     );
 
     alert("Password Updated Successfully 🚀");

@@ -2,34 +2,23 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import api from "../../lib/api";
-function Courses() {
-const [courses, setCourses] = useState([]);
-useEffect(() => {
+function PopularCourses() {
+  const [courses, setCourses] = useState([]);
 
-  fetchCourses();
+  const fetchCourses = async () => {
+    try {
+      const response = await api.get("/api/courses");
+      const courseList = response.data?.courses || response.data || [];
+      setCourses(courseList);
+    } catch (error) {
+      console.error("PopularCourses fetch error:", error);
+    }
+  };
 
-}, []);
-const fetchCourses = async () => {
+  useEffect(() => {
+    fetchCourses();
+  }, []);
 
-  try {
-
-    const response = await api.get(
-
-      `${import.meta.env.VITE_API_URL}/api/courses`
-
-    );
-
-    setCourses(response.data);
-
-  }
-
-  catch (error) {
-
-    console.log(error);
-
-  }
-
-};
 
   return (
 

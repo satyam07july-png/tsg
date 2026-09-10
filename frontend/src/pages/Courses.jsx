@@ -10,53 +10,22 @@ function Courses() {
 
   const [search, setSearch] = useState("");
 
-  useEffect(() => {
-
-    fetchCourses();
-
-  }, []);
-
   const fetchCourses = async () => {
-
     try {
-
       const response = await api.get("/api/courses");
-
-      setCourses(response.data);
-
+      setCourses(response.data?.courses || response.data || []);
+    } catch (error) {
+      console.error(error);
     }
-
-    catch (error) {
-
-      console.log(error);
-
-    }
-
   };
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
 
   const filteredCourses = courses.filter((course) =>
     course.title.toLowerCase().includes(search.toLowerCase())
   );
-
-   const handleDelete = async (id) => {
-
-  try {
-
-    const response = await api.delete(`/api/admin/delete-course/${id}`);
-
-    alert(response.data.message);
-
-    window.location.reload();
-
-  } catch (error) {
-
-    console.log(error);
-
-    alert("Delete Failed");
-
-  }
-
-};
 
   return (
 

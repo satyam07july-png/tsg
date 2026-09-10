@@ -1,132 +1,61 @@
 const express = require("express");
 const router = express.Router();
 const pool = require("../config/db");
+const { verifyToken } = require("../middleware/auth.middleware");
+const { checkRole } = require("../middleware/role.middleware");
 
-router.get("/dashboard", async (req, res) => {
+// Protect analytics with Admin role
+router.use(verifyToken);
+router.use(checkRole("admin"));
 
+router.get("/dashboard", async (req, res, next) => {
   try {
+    const studentsResult = await pool.query(
+      "SELECT COUNT(*) FROM users WHERE role = 'student'"
+    );
 
-    const studentsResult =
-      await pool.query(
-        "SELECT COUNT(*) FROM students"
-      );
+    const teachersResult = await pool.query(
+      "SELECT COUNT(*) FROM users WHERE role = 'teacher'"
+    );
 
-    const teachersResult =
-      await pool.query(`
-        SELECT COUNT(*)
-        FROM users
-        WHERE role='teacher'
-      `);
+    const coursesResult = await pool.query(
+      "SELECT COUNT(*) FROM courses"
+    );
 
-    let coursesCount = 0;
+    const revenueResult = await pool.query(
+      "SELECT COALESCE(SUM(amount), 0) AS revenue FROM payments WHERE status = 'Success'"
+    );
 
-    try {
+    const recentStudents = await pool.query(`
+      SELECT s.id, s.name, s.email, s.course, s.status, s.created_at
+      FROM students s
+      ORDER BY s.id DESC
+      LIMIT 6
+    `);
 
-      const coursesResult =
-        await pool.query(
-          "SELECT COUNT(*) FROM courses"
-        );
-
-      coursesCount =
-        coursesResult.rows[0].count;
-
-    } catch {
-
-      coursesCount = 0;
-
-    }
-
-    const recentStudents =
-      await pool.query(`
-        SELECT *
-        FROM students
-        ORDER BY id DESC
-        LIMIT 5
-      `);
-
-    let recentPayments = [];
-
-    let revenue = 0;
-
-    try {
-
-      const paymentResult =
-        await pool.query(`
-          SELECT *
-          FROM payments
-          ORDER BY id DESC
-          LIMIT 5
-        `);
-
-      recentPayments =
-        paymentResult.rows;
-
-      const revenueResult =
-        await pool.query(`
-          SELECT COALESCE(
-            SUM(amount),
-            0
-          ) AS revenue
-          FROM payments
-        `);
-
-      revenue =
-        revenueResult.rows[0].revenue;
-
-    } catch {
-
-      recentPayments = [];
-      revenue = 0;
-
-    }
+    const recentPayments = await pool.query(`
+      SELECT p.id, p.amount, p.status, p.created_at, u.name as student_name, c.title as course_title
+      FROM payments p
+      LEFT JOIN users u ON p.user_id = u.id
+      LEFT JOIN courses c ON p.course_id = c.id
+      ORDER BY p.id DESC
+      LIMIT 6
+    `);
 
     res.json({
-
+      success: true,
       stats: {
-
-        totalStudents:
-          Number(
-            studentsResult.rows[0]
-              .count
-          ),
-
-        totalTeachers:
-          Number(
-            teachersResult.rows[0]
-              .count
-          ),
-
-        totalCourses:
-          Number(coursesCount),
-
-        revenue:
-          Number(revenue),
-
+        totalStudents: Number(studentsResult.rows[0]?.count || 0),
+        totalTeachers: Number(teachersResult.rows[0]?.count || 0),
+        totalCourses: Number(coursesResult.rows[0]?.count || 0),
+        revenue: Number(revenueResult.rows[0]?.revenue || 0),
       },
-
-      recentStudents:
-        recentStudents.rows,
-
-      recentPayments,
-
+      recentStudents: recentStudents.rows,
+      recentPayments: recentPayments.rows,
     });
-
+  } catch (error) {
+    next(error);
   }
-
-  catch (error) {
-
-    console.log(error);
-
-    res.status(500).json({
-
-      success: false,
-      message:
-        "Dashboard Error",
-
-    });
-
-  }
-
 });
 
 module.exports = router;

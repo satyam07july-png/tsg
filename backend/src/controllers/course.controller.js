@@ -1,243 +1,183 @@
-const pool =
-require("../config/db");
+const pool = require("../config/db");
 
+// ==========================================
+// 1. GET ALL COURSES (Public)
+// ==========================================
+const getCourses = async (req, res, next) => {
+  try {
+    const { category, search } = req.query;
 
-// ==========================
-// ADD COURSE
-// ==========================
+    let query = `
+      SELECT
+        c.*,
+        (SELECT COUNT(*) FROM lectures WHERE lectures.course_id = c.id) as total_lectures,
+        (SELECT COUNT(*) FROM enrollments WHERE enrollments.course_id = c.id) as total_students
+      FROM courses c
+      WHERE c.is_published = true
+    `;
+    const params = [];
 
-const addCourse =
-  async (req, res) => {
+    if (category && category !== "All") {
+      params.push(category);
+      query += ` AND c.category = $${params.length}`;
+    }
 
-    try {
+    if (search) {
+      params.push(`%${search.trim()}%`);
+      query += ` AND (c.title ILIKE $${params.length} OR c.description ILIKE $${params.length})`;
+    }
 
-      const {
+    query += ` ORDER BY c.id DESC`;
 
+    const result = await pool.query(query, params);
+
+    res.status(200).json({
+      success: true,
+      courses: result.rows,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// ==========================================
+// 2. GET SINGLE COURSE WITH CURRICULUM
+// ==========================================
+const getSingleCourse = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const courseResult = await pool.query(
+      `SELECT * FROM courses WHERE id = $1`,
+      [id]
+    );
+
+    if (courseResult.rows.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "Course not found",
+      });
+    }
+
+    const course = courseResult.rows[0];
+
+    // Fetch sections
+    const sectionsResult = await pool.query(
+      `SELECT * FROM sections WHERE course_id = $1 ORDER BY order_num ASC, id ASC`,
+      [id]
+    );
+
+    // Fetch lectures
+    const lecturesResult = await pool.query(
+      `SELECT id, section_id, course_id, title, description, video_url, pdf_url, duration, order_num, is_free_preview
+       FROM lectures
+       WHERE course_id = $1
+       ORDER BY order_num ASC, id ASC`,
+      [id]
+    );
+
+    // Structure sections with lectures
+    const sectionsWithLectures = sectionsResult.rows.map((sec) => ({
+      ...sec,
+      lectures: lecturesResult.rows.filter((lec) => lec.section_id === sec.id),
+    }));
+
+    res.status(200).json({
+      success: true,
+      course: {
+        ...course,
+        sections: sectionsWithLectures,
+        lectures: lecturesResult.rows,
+      },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// ==========================================
+// 3. ADD COURSE (Teacher or Admin)
+// ==========================================
+const addCourse = async (req, res, next) => {
+  try {
+    const {
+      title,
+      description,
+      duration,
+      level,
+      category,
+      price,
+      originalPrice,
+      teacher,
+      thumbnail,
+    } = req.body;
+
+    if (!title || price === undefined) {
+      return res.status(400).json({
+        success: false,
+        message: "Title and price are required",
+      });
+    }
+
+    const teacherName = teacher || req.user?.name || "Dizital Adda Instructor";
+    const teacherId = req.user?.role === "teacher" ? req.user.id : null;
+
+    const result = await pool.query(
+      `INSERT INTO courses
+       (title, description, duration, level, category, price, original_price, teacher, teacher_id, thumbnail, is_published)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, true)
+       RETURNING *`,
+      [
         title,
-
-        description,
-
-        duration,
-
-        level,
-
-        price,
-
-      } = req.body;
-
-      // VALIDATION
-
-      if (
-        !title ||
-        !description ||
-        !duration ||
-        !level ||
-        !price
-      ) {
-
-        return res.status(400).json({
-
-          success: false,
-
-          message:
-            "All fields are required",
-
-        });
-
-      }
-
-      // INSERT COURSE
-
-      const result =
-        await pool.query(
-
-          `
-          INSERT INTO courses
-          (
-            title,
-            description,
-            duration,
-            level,
-            price
-          )
-
-          VALUES ($1, $2, $3, $4, $5)
-
-          RETURNING *
-          `,
-
-          [
-
-            title,
-
-            description,
-
-            duration,
-
-            level,
-
-            price,
-
-          ]
-
-        );
-
-      return res.status(201).json({
-
-        success: true,
-
-        message:
-          "Course Added Successfully 🚀",
-
-        course:
-          result.rows[0],
-
-      });
-
-    }
-
-    catch (error) {
-
-      console.log(error);
-
-      return res.status(500).json({
-
-        success: false,
-
-        message:
-          "Failed to add course",
-
-      });
-
-    }
-
-  };
-
-
-// ==========================
-// GET ALL COURSES
-// ==========================
-
-const getCourses =
-  async (req, res) => {
-
-    try {
-
-      const result =
-        await pool.query(
-
-          `
-          SELECT *
-          FROM courses
-          ORDER BY id DESC
-          `
-
-        );
-
-      return res.status(200).json({
-
-        success: true,
-
-        courses:
-          result.rows,
-
-      });
-
-    }
-
-    catch (error) {
-
-      console.log(error);
-
-      return res.status(500).json({
-
-        success: false,
-
-        message:
-          "Failed to fetch courses",
-
-      });
-
-    }
-
-  };
-
-  // ==========================
-// GET SINGLE COURSE
-// ==========================
-
-const getSingleCourse =
-  async (req, res) => {
-
-    try {
-
-      const { id } = req.params;
-
-      const result =
-        await pool.query(
-
-          `
-          SELECT *
-          FROM courses
-          WHERE id = $1
-          `,
-
-          [id]
-
-        );
-
-      // COURSE NOT FOUND
-
-      if (
-        result.rows.length === 0
-      ) {
-
-        return res.status(404).json({
-
-          success: false,
-
-          message:
-            "Course not found",
-
-        });
-
-      }
-
-      return res.status(200).json({
-
-        success: true,
-
-        course:
-          result.rows[0],
-
-      });
-
-    }
-
-    catch (error) {
-
-      console.log(error);
-
-      return res.status(500).json({
-
-        success: false,
-
-        message:
-          "Failed to fetch course",
-
-      });
-
-    }
-
-  };
-
+        description || "",
+        duration || "4 Weeks",
+        level || "Beginner",
+        category || "General",
+        Number(price),
+        Number(originalPrice || price),
+        teacherName,
+        teacherId,
+        thumbnail || "",
+      ]
+    );
+
+    res.status(201).json({
+      success: true,
+      message: "Course Added Successfully 🚀",
+      course: result.rows[0],
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// ==========================================
+// 4. GET MY TEACHER COURSES
+// ==========================================
+const getTeacherCourses = async (req, res, next) => {
+  try {
+    const teacherId = req.user.id;
+    const teacherName = req.user.name;
+
+    const result = await pool.query(
+      `SELECT * FROM courses
+       WHERE teacher_id = $1 OR teacher ILIKE $2
+       ORDER BY id DESC`,
+      [teacherId, `%${teacherName}%`]
+    );
+
+    res.json({
+      success: true,
+      courses: result.rows,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports = {
-
-  addCourse,
-
   getCourses,
-
   getSingleCourse,
-
+  addCourse,
+  getTeacherCourses,
 };

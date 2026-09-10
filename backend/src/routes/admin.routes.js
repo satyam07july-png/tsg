@@ -1,552 +1,331 @@
 const express = require("express");
-
 const router = express.Router();
+const bcrypt = require("bcryptjs");
 
-const {
-  verifyToken,
-} = require("../middleware/auth.middleware");
+const { verifyToken } = require("../middleware/auth.middleware");
+const { checkRole } = require("../middleware/role.middleware");
+const pool = require("../config/db");
 
-const {
-  checkRole,
-} = require("../middleware/role.middleware");
-
-const pool =
-  require("../config/db");
-
-const bcrypt =
-  require("bcryptjs");
-
-const {
-  getDashboardAnalytics,
-} = require("../controllers/admin.controller");
+// Protect ALL admin routes with token verification and admin role check
+router.use(verifyToken);
+router.use(checkRole("admin"));
 
 // ==========================
-// ADMIN DASHBOARD
+// 1. ADMIN DASHBOARD TEST
 // ==========================
+router.get("/dashboard", (req, res) => {
+  res.json({
+    success: true,
+    message: "Welcome Admin 🚀",
+    user: req.user,
+  });
+});
 
-router.get(
-  "/dashboard",
-  verifyToken,
-  checkRole("admin"),
-  (req, res) => {
+// ==========================
+// 2. GET ALL TEACHERS
+// ==========================
+router.get("/teachers", async (req, res, next) => {
+  try {
+    const teachers = await pool.query(
+      `SELECT id, name, email, role, phone, specialization, status, created_at
+       FROM users
+       WHERE role = 'teacher'
+       ORDER BY id DESC`
+    );
 
-    res.json({
-
-      message:
-        "Welcome Admin 🚀",
-
+    res.status(200).json({
+      success: true,
+      teachers: teachers.rows,
     });
-
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 // ==========================
-// GET ALL TEACHERS
+// 3. ADD TEACHER
 // ==========================
+router.post("/add-teacher", async (req, res, next) => {
+  try {
+    const { name, email, password, phone, specialization } = req.body;
 
-router.get(
-  "/teachers",
-  async (req, res) => {
-
-    try {
-
-      const teachers =
-        await pool.query(
-
-          `
-          SELECT *
-          FROM users
-          WHERE role = 'teacher'
-          ORDER BY id DESC
-          `
-
-        );
-
-      res.status(200).json({
-
-        success: true,
-
-        teachers:
-          teachers.rows,
-
-      });
-
-    }
-
-    catch (error) {
-
-      console.log(error);
-
-      res.status(500).json({
-
+    if (!name || !email || !password) {
+      return res.status(400).json({
         success: false,
-
-        message:
-          error.message,
-
+        message: "Name, email, and password are required",
       });
-
     }
 
-  }
-);
+    const existingUser = await pool.query(
+      "SELECT id FROM users WHERE email = $1",
+      [email]
+    );
 
-// ==========================
-// ADD TEACHER
-// ==========================
-
-router.post(
-  "/add-teacher",
-  async (req, res) => {
-
-    try {
-
-      console.log(req.body);
-
-      const {
-
-        name,
-        email,
-        password,
-        phone,
-        specialization,
-
-      } = req.body;
-
-      // CHECK EXISTING USER
-
-      const existingUser =
-        await pool.query(
-
-          `
-          SELECT *
-          FROM users
-          WHERE email = $1
-          `,
-
-          [email]
-
-        );
-
-      if (
-        existingUser.rows.length > 0
-      ) {
-
-        return res.status(400).json({
-
-          success: false,
-
-          message:
-            "Teacher already exists",
-
-        });
-
-      }
-
-      // HASH PASSWORD
-
-      const hashedPassword =
-        await bcrypt.hash(
-          password,
-          10
-        );
-
-      // INSERT TEACHER
-
-      await pool.query(
-
-        `
-        INSERT INTO users
-        (
-          name,
-          email,
-          password,
-          role,
-          phone,
-          specialization
-        )
-
-        VALUES ($1,$2,$3,$4,$5,$6)
-        `,
-
-        [
-          name,
-          email,
-          hashedPassword,
-          "teacher",
-          phone,
-          specialization,
-        ]
-
-      );
-
-      res.status(200).json({
-
-        success: true,
-
-        message:
-          "Teacher Added Successfully 🚀",
-
-      });
-
-    }
-
-    catch (error) {
-
-      console.log(error);
-
-      res.status(500).json({
-
+    if (existingUser.rows.length > 0) {
+      return res.status(400).json({
         success: false,
-
-        message:
-          error.message,
-
+        message: "A user with this email already exists",
       });
-
     }
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const result = await pool.query(
+      `INSERT INTO users (name, full_name, email, password, role, phone, specialization)
+       VALUES ($1, $2, $3, $4, 'teacher', $5, $6)
+       RETURNING id, name, email, role, phone, specialization, created_at`,
+      [name, name, email, hashedPassword, phone, specialization]
+    );
+
+    res.status(201).json({
+      success: true,
+      message: "Teacher added successfully 🚀",
+      teacher: result.rows[0],
+    });
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 // ==========================
-// ADD COURSE
+// 4. GET ALL COURSES (ADMIN)
 // ==========================
+router.get("/courses", async (req, res, next) => {
+  try {
+    const courses = await pool.query(
+      `SELECT * FROM courses ORDER BY id DESC`
+    );
 
-router.post(
-  "/add-course",
-  async (req, res) => {
+    res.status(200).json({
+      success: true,
+      courses: courses.rows,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
 
-    try {
+// ==========================
+// 5. ADD COURSE
+// ==========================
+router.post("/add-course", async (req, res, next) => {
+  try {
+    const {
+      title,
+      description,
+      price,
+      originalPrice,
+      duration,
+      level,
+      category,
+      teacher,
+      teacher_id,
+      thumbnail,
+    } = req.body;
 
-      const {
+    if (!title || price === undefined) {
+      return res.status(400).json({
+        success: false,
+        message: "Course title and price are required",
+      });
+    }
 
+    const result = await pool.query(
+      `INSERT INTO courses
+       (title, description, price, original_price, duration, level, category, teacher, teacher_id, thumbnail, is_published)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, true)
+       RETURNING *`,
+      [
+        title,
+        description || "",
+        Number(price),
+        Number(originalPrice || price),
+        duration || "",
+        level || "Beginner",
+        category || "General",
+        teacher || "",
+        teacher_id || null,
+        thumbnail || "",
+      ]
+    );
+
+    res.status(201).json({
+      success: true,
+      message: "Course added successfully 🚀",
+      course: result.rows[0],
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// ==========================
+// 6. EDIT COURSE
+// ==========================
+router.put("/edit-course/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const {
+      title,
+      description,
+      price,
+      originalPrice,
+      duration,
+      level,
+      category,
+      teacher,
+      thumbnail,
+      is_published,
+    } = req.body;
+
+    const result = await pool.query(
+      `UPDATE courses
+       SET
+         title = COALESCE($1, title),
+         description = COALESCE($2, description),
+         price = COALESCE($3, price),
+         original_price = COALESCE($4, original_price),
+         duration = COALESCE($5, duration),
+         level = COALESCE($6, level),
+         category = COALESCE($7, category),
+         teacher = COALESCE($8, teacher),
+         thumbnail = COALESCE($9, thumbnail),
+         is_published = COALESCE($10, is_published),
+         updated_at = CURRENT_TIMESTAMP
+       WHERE id = $11
+       RETURNING *`,
+      [
         title,
         description,
-        price,
+        price !== undefined ? Number(price) : null,
+        originalPrice !== undefined ? Number(originalPrice) : null,
         duration,
+        level,
+        category,
         teacher,
         thumbnail,
+        is_published,
+        id,
+      ]
+    );
 
-      } = req.body;
-
-      await pool.query(
-
-        `
-        INSERT INTO courses
-        (
-          title,
-          description,
-          price,
-          duration,
-          teacher,
-          thumbnail
-        )
-
-        VALUES ($1,$2,$3,$4,$5,$6)
-        `,
-
-        [
-          title,
-          description,
-          price,
-          duration,
-          teacher,
-          thumbnail,
-        ]
-
-      );
-
-      res.status(200).json({
-
-        success: true,
-
-        message:
-          "Course Added Successfully 🚀",
-
-      });
-
-    }
-
-    catch (error) {
-
-      console.log(error);
-
-      res.status(500).json({
-
+    if (result.rows.length === 0) {
+      return res.status(404).json({
         success: false,
-
-        message:
-          error.message,
-
+        message: "Course not found",
       });
-
     }
 
+    res.status(200).json({
+      success: true,
+      message: "Course updated successfully 🚀",
+      course: result.rows[0],
+    });
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 // ==========================
-// UPDATE PASSWORD
+// 7. DELETE COURSE
 // ==========================
+router.delete("/delete-course/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
 
-router.put(
-  "/update-password",
-  async (req, res) => {
+    const result = await pool.query(
+      "DELETE FROM courses WHERE id = $1 RETURNING id",
+      [id]
+    );
 
-    try {
-
-      const {
-
-        email,
-        currentPassword,
-        newPassword,
-
-      } = req.body;
-
-      // FIND USER
-
-      const user =
-        await pool.query(
-
-          `
-          SELECT *
-          FROM users
-          WHERE email = $1
-          `,
-
-          [email]
-
-        );
-
-      if (
-        user.rows.length === 0
-      ) {
-
-        return res.status(404).json({
-
-          success: false,
-
-          message:
-            "User not found",
-
-        });
-
-      }
-
-      const existingUser =
-        user.rows[0];
-
-      // CHECK PASSWORD
-
-      const isMatch =
-        await bcrypt.compare(
-
-          currentPassword,
-
-          existingUser.password
-
-        );
-
-      if (!isMatch) {
-
-        return res.status(400).json({
-
-          success: false,
-
-          message:
-            "Current password incorrect",
-
-        });
-
-      }
-
-      // HASH NEW PASSWORD
-
-      const hashedPassword =
-        await bcrypt.hash(
-          newPassword,
-          10
-        );
-
-      // UPDATE PASSWORD
-
-      await pool.query(
-
-        `
-        UPDATE users
-        SET password = $1
-        WHERE email = $2
-        `,
-
-        [
-          hashedPassword,
-          email,
-        ]
-
-      );
-
-      res.status(200).json({
-
-        success: true,
-
-        message:
-          "Password updated successfully 🚀",
-
-      });
-
-    }
-
-    catch (error) {
-
-      console.log(error);
-
-      res.status(500).json({
-
+    if (result.rows.length === 0) {
+      return res.status(404).json({
         success: false,
-
-        message:
-          "Server Error",
-
+        message: "Course not found",
       });
-
     }
 
+    res.status(200).json({
+      success: true,
+      message: "Course deleted successfully 🚀",
+    });
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 // ==========================
-// DELETE COURSE
+// 8. UPDATE PASSWORD (ADMIN SELF)
 // ==========================
+router.put("/update-password", async (req, res, next) => {
+  try {
+    // Take user identity from verified token rather than arbitrary client input!
+    const adminUserId = req.user.id;
+    const { currentPassword, newPassword } = req.body;
 
-router.delete(
-  "/delete-course/:id",
-  async (req, res) => {
-
-    try {
-
-      const { id } =
-        req.params;
-
-      await pool.query(
-
-        `
-        DELETE FROM courses
-        WHERE id = $1
-        `,
-
-        [id]
-
-      );
-
-      res.status(200).json({
-
-        success: true,
-
-        message:
-          "Course Deleted Successfully 🚀",
-
-      });
-
-    }
-
-    catch (error) {
-
-      console.log(error);
-
-      res.status(500).json({
-
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({
         success: false,
-
-        message:
-          error.message,
-
+        message: "Current password and new password are required",
       });
-
     }
 
-  }
-);
+    const userQuery = await pool.query(
+      "SELECT * FROM users WHERE id = $1",
+      [adminUserId]
+    );
 
-// ==========================
-// EDIT COURSE
-// ==========================
-
-router.put(
-  "/edit-course/:id",
-  async (req, res) => {
-
-    try {
-
-      const { id } =
-        req.params;
-
-      const {
-
-        title,
-        description,
-        price,
-        duration,
-        teacher,
-        thumbnail,
-
-      } = req.body;
-
-      await pool.query(
-
-        `
-        UPDATE courses
-
-        SET
-
-        title = $1,
-        description = $2,
-        price = $3,
-        duration = $4,
-        teacher = $5,
-        thumbnail = $6
-
-        WHERE id = $7
-        `,
-
-        [
-          title,
-          description,
-          price,
-          duration,
-          teacher,
-          thumbnail,
-          id,
-        ]
-
-      );
-
-      res.status(200).json({
-
-        success: true,
-
-        message:
-          "Course Updated Successfully 🚀",
-
-      });
-
-    }
-
-    catch (error) {
-
-      console.log(error);
-
-      res.status(500).json({
-
+    if (userQuery.rows.length === 0) {
+      return res.status(404).json({
         success: false,
-        message:
-          error.message,
-
+        message: "User not found",
       });
-
     }
 
+    const user = userQuery.rows[0];
+
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    if (!isMatch) {
+      return res.status(400).json({
+        success: false,
+        message: "Current password is incorrect",
+      });
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    await pool.query(
+      "UPDATE users SET password = $1, updated_at = CURRENT_TIMESTAMP WHERE id = $2",
+      [hashedPassword, adminUserId]
+    );
+
+    res.status(200).json({
+      success: true,
+      message: "Password updated successfully 🚀",
+    });
+  } catch (error) {
+    next(error);
   }
-);
+});
+
+// ==========================
+// 9. GET ALL USERS (ADMIN)
+// ==========================
+router.get("/users", async (req, res, next) => {
+  try {
+    const users = await pool.query(
+      `SELECT id, name, email, role, phone, status, created_at
+       FROM users
+       ORDER BY id DESC`
+    );
+
+    res.status(200).json({
+      success: true,
+      users: users.rows,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;

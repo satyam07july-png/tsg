@@ -1,18 +1,7 @@
-import React, {
-  useEffect,
-  useState,
-} from "react";
-
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import api from "../../lib/api";
-
 import Features from "../../components/landing/Features";
-
-import Testimonials from "../../components/landing/Testimonials";
-
-import Footer from "../../components/landing/Footer";
-
 import logo from "../../assets/logo.png";
 
 import {
@@ -210,59 +199,19 @@ const prevSlide = () => {
   // FETCH COURSES
   // ==========================
 
+  const fetchCourses = async () => {
+    try {
+      const response = await api.get("/api/courses");
+      const courseData = response.data?.courses || response.data || [];
+      setCourses(Array.isArray(courseData) ? courseData : []);
+    } catch (error) {
+      console.error("COURSE FETCH ERROR:", error);
+    }
+  };
+
   useEffect(() => {
-
     fetchCourses();
-
   }, []);
-
-  const fetchCourses =
-    async () => {
-
-      try {
-
-        const response =
-          await api.get(
-
-            `${import.meta.env.VITE_API_URL}/api/courses`
-
-          );
-
-        console.log(
-          "COURSE API:",
-          response.data
-        );
-
-        const courseData =
-
-          response.data?.courses ||
-
-          response.data ||
-
-          [];
-
-        setCourses(
-
-          Array.isArray(courseData)
-
-            ? courseData
-
-            : []
-
-        );
-
-      }
-
-      catch (error) {
-
-        console.log(
-          "COURSE FETCH ERROR:",
-          error
-        );
-
-      }
-
-    };
 
   return (
 

@@ -12,29 +12,18 @@ import { useEffect, useState } from "react";
 import api from "../../lib/api";
 function Courses() {
 const [courses, setCourses] = useState([]);
-useEffect(() => {
+  const fetchCourses = async () => {
+    try {
+      const response = await api.get("/api/courses");
+      setCourses(response.data?.courses || response.data || []);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  fetchCourses();
-
-}, []);
-
-const fetchCourses = async () => {
-
-  try {
-
-    const response = await api.get("/api/courses");
-
-    setCourses(response.data);
-
-  }
-
-  catch (error) {
-
-    console.log(error);
-
-  }
-
-};
+  useEffect(() => {
+    fetchCourses();
+  }, []);
 
 const handleDelete = async (id) => {
 

@@ -1,129 +1,30 @@
 const express = require("express");
-
-const multer = require("multer");
-
 const router = express.Router();
+const upload = require("../middleware/upload");
+const {
+  uploadLecture,
+  getLectures,
+  deleteLecture,
+} = require("../controllers/lecture.controller");
+const { verifyToken, optionalAuth } = require("../middleware/auth.middleware");
+const { checkRole } = require("../middleware/role.middleware");
 
-
-// =========================
-// DUMMY CONTROLLERS
-// =========================
-
-const uploadLecture =
-  async (req, res) => {
-
-    try {
-
-      res.status(201).json({
-
-        success: true,
-
-        message:
-          "Lecture Uploaded Successfully",
-
-      });
-
-    }
-
-    catch (error) {
-
-      res.status(500).json({
-
-        success: false,
-
-        message:
-          error.message,
-
-      });
-
-    }
-
-  };
-
-
-const getLectures =
-  async (req, res) => {
-
-    try {
-
-      res.status(200).json({
-
-        success: true,
-
-        lectures: [],
-
-      });
-
-    }
-
-    catch (error) {
-
-      res.status(500).json({
-
-        success: false,
-
-        message:
-          error.message,
-
-      });
-
-    }
-
-  };
-
-
-// =========================
-// MULTER
-// =========================
-
-const storage =
-  multer.memoryStorage();
-
-const upload = multer({
-  storage,
-});
-
-
-// =========================
-// ROUTES
-// =========================
-
+// Upload lecture (Teacher or Admin)
 router.post(
-
   "/upload",
-
+  verifyToken,
+  checkRole("admin", "teacher"),
   upload.fields([
-
-    {
-
-      name: "video",
-
-      maxCount: 1,
-
-    },
-
-    {
-
-      name: "pdf",
-
-      maxCount: 1,
-
-    },
-
+    { name: "video", maxCount: 1 },
+    { name: "pdf", maxCount: 1 },
   ]),
-
   uploadLecture
-
 );
 
+// Get lectures (Public or enrolled student progress check)
+router.get("/", optionalAuth, getLectures);
 
-router.get(
-
-  "/",
-
-  getLectures
-
-);
-
+// Delete lecture (Admin or Teacher)
+router.delete("/:id", verifyToken, checkRole("admin", "teacher"), deleteLecture);
 
 module.exports = router;

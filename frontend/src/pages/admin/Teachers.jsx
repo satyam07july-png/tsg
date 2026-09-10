@@ -16,42 +16,22 @@ import {
 
 
 function Teachers() {
-  const [teachers, setTeachers] =
-  useState([]);
+  const navigate = useNavigate();
+  const [teachers, setTeachers] = useState([]);
+
+  const fetchTeachers = async () => {
+    try {
+      const response = await api.get("/api/admin/teachers");
+      setTeachers(response.data.teachers || response.data || []);
+    } catch (error) {
+      console.error("Fetch Teachers Error:", error);
+    }
+  };
 
   useEffect(() => {
+    fetchTeachers();
+  }, []);
 
-  fetchTeachers();
-
-}, []);
-
-const fetchTeachers =
-  async () => {
-
-    try {
-
-      const response =
-        await api.get(
-
-          "https://tsg-qlb1.onrender.com/api/admin/teachers"
-
-        );
-
-      console.log(response.data);
-
-      setTeachers(
-        response.data.teachers
-      );
-
-    }
-
-    catch (error) {
-
-      console.log(error);
-
-    }
-
-  };
 
   return (
 

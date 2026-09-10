@@ -12,83 +12,63 @@ import {
 } from "react-icons/fa";
 
 function AdminDashboard() {
-  const [teachers, setTeachers] =
-  useState([]);
+  const [stats, setStats] = useState({
+    totalStudents: 0,
+    totalTeachers: 0,
+    totalCourses: 0,
+    revenue: 0,
+  });
 
   const navigate = useNavigate();
 
   const admin = JSON.parse(
-    localStorage.getItem("user")
+    localStorage.getItem("user") || "{}"
   );
 
   // LOGOUT
-
   const handleLogout = () => {
-
     localStorage.clear();
-
     navigate("/login");
-
   };
 
-  // DASHBOARD CARDS
-
-  const cards = [
-
-    {
-      title: "Total Students",
-      value: "2,540",
-      icon: <FaUserGraduate />,
-    },
-
-    {
-      title: "Total Teachers",
-      value: "48",
-      icon: <FaChalkboardTeacher />,
-    },
-
-    {
-      title: "Total Courses",
-      value: "126",
-      icon: <FaBookOpen />,
-    },
-
-    {
-      title: "Revenue",
-      value: "₹8.4L",
-      icon: <FaMoneyBillWave />,
-    },
-
-  ];
-// teacher fetch
+  const fetchDashboardData = async () => {
+    try {
+      const analyticsRes = await api.get("/api/admin/analytics/dashboard").catch(() => null);
+      if (analyticsRes?.data?.stats) {
+        setStats(analyticsRes.data.stats);
+      }
+    } catch (error) {
+      console.error("Dashboard data fetch error:", error);
+    }
+  };
 
   useEffect(() => {
+    fetchDashboardData();
+  }, []);
 
-  fetchTeachers();
-
-}, []);
-
-const fetchTeachers =
-  async () => {
-
-    try {
-
-      const response =
-        await api.get("/api/admin/teachers");
-
-      setTeachers(
-        response.data.teachers
-      );
-
-    }
-
-    catch (error) {
-
-      console.log(error);
-
-    }
-
-  };
+  // DASHBOARD CARDS
+  const cards = [
+    {
+      title: "Total Students",
+      value: stats.totalStudents ? stats.totalStudents.toLocaleString() : "0",
+      icon: <FaUserGraduate />,
+    },
+    {
+      title: "Total Teachers",
+      value: stats.totalTeachers ? stats.totalTeachers.toLocaleString() : "0",
+      icon: <FaChalkboardTeacher />,
+    },
+    {
+      title: "Total Courses",
+      value: stats.totalCourses ? stats.totalCourses.toLocaleString() : "0",
+      icon: <FaBookOpen />,
+    },
+    {
+      title: "Revenue",
+      value: stats.revenue ? `₹${stats.revenue.toLocaleString()}` : "₹0",
+      icon: <FaMoneyBillWave />,
+    },
+  ];
 
   return (
 

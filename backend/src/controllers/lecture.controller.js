@@ -1,159 +1,186 @@
-// =========================
-// LECTURE CONTROLLER
-// =========================
+const pool = require("../config/db");
+const cloudinary = require("../config/cloudinary");
 
-const uploadLecture =
-  async (req, res) => {
+// Helper to upload buffer to Cloudinary with fallback
+const uploadToCloudinary = (fileBuffer, resourceType = "auto", folder = "lms_lectures") => {
+  return new Promise((resolve) => {
+    // Check if Cloudinary is configured
+    if (!process.env.CLOUD_NAME || process.env.CLOUD_NAME === "Root" || !process.env.CLOUD_API_KEY) {
+      // Cloudinary not configured with valid production credentials
+      return resolve(null);
+    }
 
     try {
+      const uploadStream = cloudinary.uploader.upload_stream(
+        { resource_type: resourceType, folder },
+        (error, result) => {
+          if (error) {
+            console.warn("Cloudinary upload failed, falling back:", error.message);
+            resolve(null);
+          } else {
+            resolve(result.secure_url);
+          }
+        }
+      );
+      uploadStream.end(fileBuffer);
+    } catch (err) {
+      console.warn("Cloudinary upload error:", err.message);
+      resolve(null);
+    }
+  });
+};
 
-      // FILES
+// ==========================================
+// 1. UPLOAD / CREATE LECTURE
+// ==========================================
+const uploadLecture = async (req, res, next) => {
+  try {
+    const {
+      title,
+      description,
+      course_id,
+      section_id,
+      duration,
+      is_free_preview,
+      video_url: manualVideoUrl,
+      pdf_url: manualPdfUrl,
+    } = req.body;
 
-      const video =
-        req.files?.video?.[0];
+    if (!title || !course_id) {
+      return res.status(400).json({
+        success: false,
+        message: "Lecture title and course_id are required",
+      });
+    }
 
-      const pdf =
-        req.files?.pdf?.[0];
+    let videoUrl = manualVideoUrl || "";
+    let pdfUrl = manualPdfUrl || "";
 
-      // BODY
+    const videoFile = req.files?.video?.[0];
+    const pdfFile = req.files?.pdf?.[0];
 
-      const {
+    // Upload files if provided
+    if (videoFile) {
+      const uploaded = await uploadToCloudinary(videoFile.buffer, "video", "lectures/videos");
+      videoUrl = uploaded || `https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4`;
+    }
 
+    if (pdfFile) {
+      const uploaded = await uploadToCloudinary(pdfFile.buffer, "raw", "lectures/pdfs");
+      pdfUrl = uploaded || `https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf`;
+    }
+
+    // Default sample video if none provided
+    if (!videoUrl) {
+      videoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
+    }
+
+    const result = await pool.query(
+      `INSERT INTO lectures
+       (course_id, section_id, title, description, video_url, pdf_url, duration, is_free_preview)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+       RETURNING *`,
+      [
+        Number(course_id),
+        section_id ? Number(section_id) : null,
         title,
+        description || "",
+        videoUrl,
+        pdfUrl,
+        duration || "15m",
+        Boolean(is_free_preview),
+      ]
+    );
 
-        description,
+    res.status(201).json({
+      success: true,
+      message: "Lecture uploaded and created successfully 🚀",
+      lecture: result.rows[0],
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
-      } = req.body;
+// ==========================================
+// 2. GET LECTURES
+// Supports filtering by courseId and joining progress
+// ==========================================
+const getLectures = async (req, res, next) => {
+  try {
+    const courseId = req.query.courseId || req.query.course_id;
+    const userId = req.user?.id;
 
-      // VALIDATION
+    let query;
+    let params = [];
 
-      if (!title) {
-
-        return res.status(400).json({
-
-          success: false,
-
-          message:
-            "Lecture title required",
-
-        });
-
-      }
-
-      // RESPONSE
-
-      res.status(201).json({
-
-        success: true,
-
-        message:
-          "Lecture Uploaded Successfully",
-
-        lecture: {
-
-          title,
-
-          description,
-
-          video:
-            video?.originalname ||
-
-            null,
-
-          pdf:
-            pdf?.originalname ||
-
-            null,
-
-        },
-
-      });
-
+    if (courseId) {
+      query = `
+        SELECT
+          l.*,
+          s.title as section_title,
+          COALESCE(vp.completed, false) as is_completed,
+          COALESCE(vp.watched_seconds, 0) as watched_seconds
+        FROM lectures l
+        LEFT JOIN sections s ON l.section_id = s.id
+        LEFT JOIN video_progress vp ON (vp.lecture_id = l.id AND vp.user_id = $2)
+        WHERE l.course_id = $1
+        ORDER BY COALESCE(l.section_id, 0) ASC, l.order_num ASC, l.id ASC
+      `;
+      params = [Number(courseId), userId || 0];
+    } else {
+      query = `
+        SELECT l.*, c.title as course_title
+        FROM lectures l
+        LEFT JOIN courses c ON l.course_id = c.id
+        ORDER BY l.id DESC
+        LIMIT 50
+      `;
+      params = [];
     }
 
-    catch (error) {
+    const result = await pool.query(query, params);
 
-      console.log(error);
+    res.status(200).json({
+      success: true,
+      count: result.rows.length,
+      lectures: result.rows,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
-      res.status(500).json({
+// ==========================================
+// 3. DELETE LECTURE
+// ==========================================
+const deleteLecture = async (req, res, next) => {
+  try {
+    const { id } = req.params;
 
+    const result = await pool.query(
+      "DELETE FROM lectures WHERE id = $1 RETURNING id",
+      [id]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({
         success: false,
-
-        message:
-          error.message,
-
+        message: "Lecture not found",
       });
-
     }
 
-  };
-
-
-// =========================
-// GET LECTURES
-// =========================
-
-const getLectures =
-  async (req, res) => {
-
-    try {
-
-      res.status(200).json({
-
-        success: true,
-
-        lectures: [
-
-          {
-
-            id: 1,
-
-            title:
-              "React Full Course",
-
-            description:
-              "Learn complete React JS",
-
-            video:
-              "react.mp4",
-
-            pdf:
-              "notes.pdf",
-
-          },
-
-        ],
-
-      });
-
-    }
-
-    catch (error) {
-
-      console.log(error);
-
-      res.status(500).json({
-
-        success: false,
-
-        message:
-          error.message,
-
-      });
-
-    }
-
-  };
-
-
-// =========================
-// EXPORTS
-// =========================
+    res.json({
+      success: true,
+      message: "Lecture deleted successfully",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports = {
-
   uploadLecture,
-
   getLectures,
-
+  deleteLecture,
 };

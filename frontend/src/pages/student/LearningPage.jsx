@@ -1,88 +1,60 @@
-import { useNavigate } from "react-router-dom";
-import React, {
-  useEffect,
-  useState,
-} from "react";
-
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState, useCallback } from "react";
 import api from "../../lib/api";
 
 const LearningPage = () => {
   const navigate = useNavigate();
+  const { id: courseId } = useParams();
 
-  const [lectures, setLectures] =
-    useState([]);
+  const [lectures, setLectures] = useState([]);
+  const [selectedLecture, setSelectedLecture] = useState(null);
+  const [activeSection, setActiveSection] = useState("lectures");
+  const [marking, setMarking] = useState(false);
 
-  const [selectedLecture,
-    setSelectedLecture] =
-    useState(null);
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
 
-  const [activeSection,
-    setActiveSection] =
-    useState("lectures");
+  const fetchLectures = useCallback(async () => {
+    try {
+      const endpoint = courseId
+        ? `/api/lectures?courseId=${courseId}`
+        : "/api/lectures";
 
-const handleLogout = () => {
+      const response = await api.get(endpoint);
+      const lectureData = response.data?.lectures || response.data || [];
 
-  localStorage.clear();
+      setLectures(lectureData);
 
-  navigate("/login");
-
-};
-  // ======================
-  // FETCH LECTURES
-  // ======================
+      if (lectureData?.length > 0) {
+        setSelectedLecture(lectureData[0]);
+      }
+    } catch (error) {
+      console.error("FETCH ERROR:", error);
+    }
+  }, [courseId]);
 
   useEffect(() => {
-
     fetchLectures();
+  }, [fetchLectures]);
 
-  }, []);
-
-  const fetchLectures =
-    async () => {
-
-      try {
-
-        const response =
-          await api.get(
-
-            `${import.meta.env.VITE_API_URL}/api/lectures`
-
-          );
-
-        console.log(
-          "LECTURES:",
-          response.data
-        );
-
-        const lectureData =
-          response.data?.lectures ||
-          response.data ||
-          [];
-
-        setLectures(
-          lectureData
-        );
-
-        if (
-          lectureData?.length > 0
-        ) {
-
-          setSelectedLecture(
-            lectureData[0]
-          );
-
-        }
-
-      } catch (error) {
-
-        console.log(
-          "FETCH ERROR:",
-          error
-        );
-
-      }
-
-    };
+  const handleMarkComplete = async (lecId) => {
+    try {
+      setMarking(true);
+      await api.post("/api/progress/mark-complete", {
+        lectureId: lecId,
+        courseId,
+        completed: true,
+      });
+      // Refresh lectures to show updated progress
+      fetchLectures();
+    } catch (err) {
+      console.error("Error marking lecture complete:", err);
+    } finally {
+      setMarking(false);
+    }
+  };
 
   return (
 
@@ -194,31 +166,32 @@ const handleLogout = () => {
               <div className="flex gap-4 mt-8">
 
                 {/* NOTES */}
-
-                <a
-
-                  href={
-                    selectedLecture.notes_url
-                  }
-
-                  target="_blank"
-
-                  rel="noreferrer"
-
-                  className="bg-black text-white px-6 py-3 rounded-xl"
-
-                >
-
-                  Download Notes
-
-                </a>
+                {(selectedLecture.pdf_url || selectedLecture.notes_url) && (
+                  <a
+                    href={selectedLecture.pdf_url || selectedLecture.notes_url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="bg-black text-white px-6 py-3 rounded-xl hover:bg-zinc-800 transition font-medium"
+                  >
+                    📄 Download Notes / PDF
+                  </a>
+                )}
 
                 {/* COMPLETE */}
-
-                <button className="bg-green-500 text-white px-6 py-3 rounded-xl">
-
-                  Mark Complete
-
+                <button
+                  onClick={() => handleMarkComplete(selectedLecture.id)}
+                  disabled={marking || selectedLecture.is_completed}
+                  className={`px-6 py-3 rounded-xl font-semibold transition ${
+                    selectedLecture.is_completed
+                      ? "bg-emerald-700 text-white cursor-default"
+                      : "bg-green-600 hover:bg-green-700 text-white cursor-pointer"
+                  }`}
+                >
+                  {selectedLecture.is_completed
+                    ? "Completed ✅"
+                    : marking
+                    ? "Saving..."
+                    : "Mark Complete ✓"}
                 </button>
 
               </div>

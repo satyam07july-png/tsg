@@ -1,26 +1,18 @@
 {
-  "name": "lms",
+  "name": "dizital-adda-lms",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "1.0.0",
+  "description": "Production-Grade Learning Management System (LMS)",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build:frontend": "npm --prefix frontend run build",
+    "lint:frontend": "npm --prefix frontend run lint",
+    "db:migrate": "node backend/src/db/migrate.js",
+    "db:seed": "node backend/src/db/seed.js",
+    "start:backend": "npm --prefix backend start"
   },
-  "dependencies": {
-    "axios": "^1.9.0",
-    "cloudinary": "^1.41.3",
-    "multer": "^2.1.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-icons": "^5.6.0",
-    "react-router-dom": "^7.6.0",
-    "recharts": "^2.15.3",
-    "streamifier": "^0.1.1"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.4",
-    "vite": "^6.3.5"
-  }
+  "keywords": ["lms", "react", "nodejs", "express", "postgresql"],
+  "author": "Dizital Adda",
+  "license": "ISC"
 }

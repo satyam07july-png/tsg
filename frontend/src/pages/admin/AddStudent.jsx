@@ -27,25 +27,18 @@ function AddStudent() {
 
   });
 
+  const fetchTeachers = async () => {
+    try {
+      const res = await api.get("/api/teachers");
+      setTeachers(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
-  fetchTeachers();
-}, []);
-
-const fetchTeachers = async () => {
-
-  try {
-
-    const res = await api.get("/api/teachers");
-
-    setTeachers(res.data);
-
-  } catch(error){
-
-    console.log(error);
-
-  }
-
-};
+    fetchTeachers();
+  }, []);
 
   const handleChange = (e) => {
 

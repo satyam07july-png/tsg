@@ -22,30 +22,18 @@ function Students() {
  const [students,setStudents] =
 useState([]);
 
-useEffect(() => {
-  getStudents();
-}, []);
+  const getStudents = async () => {
+    try {
+      const res = await api.get("/api/students");
+      setStudents(res.data);
+    } catch (error) {
+      console.error("Student Fetch Error:", error);
+    }
+  };
 
-const getStudents = async () => {
-  try {
-
-    const res = await api.get(
-      "https://tsg-qlb1.onrender.com/api/students"
-    );
-
-    console.log(res.data);
-
-    setStudents(res.data);
-
-  } catch (error) {
-
-    console.log(
-      "Student Fetch Error:",
-      error
-    );
-
-  }
-};
+  useEffect(() => {
+    getStudents();
+  }, []);
 
   return (
 

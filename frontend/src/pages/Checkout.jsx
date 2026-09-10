@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   ShieldCheck,
@@ -12,50 +13,96 @@ import api from "../lib/api";
 
 
 const Checkout = () => {
-
-  const handlePayment = () => {
-
-  alert("Step 1");
-
-  console.log("Step 1");
-
-  console.log(window.Razorpay);
-
-  const options = {
-
-    key: "rzp_test_T0bvuXdCpuKBMS",
-
-    amount: 100,
-
-    currency: "INR",
-
-    name: "DIZITAL ADDA",
-
-    description: "Test Payment",
-
-    handler: function(response) {
-
-      alert("Success");
-
-    }
-
-  };
-
-  alert("Step 2");
-
-  const rzp = new window.Razorpay(options);
-
-  alert("Step 3");
-
-  rzp.open();
-
-  alert("Step 4");
-
-};
   const navigate = useNavigate();
   const { state } = useLocation();
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const course = state?.course;
+
+  const loadRazorpayScript = () => {
+    return new Promise((resolve) => {
+      if (window.Razorpay) {
+        return resolve(true);
+      }
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
+
+  const handlePayment = async () => {
+    if (!course) return;
+
+    try {
+      setIsProcessing(true);
+
+      const isLoaded = await loadRazorpayScript();
+      if (!isLoaded) {
+        alert("Unable to load Razorpay payment SDK. Check your internet connection.");
+        setIsProcessing(false);
+        return;
+      }
+
+      // 1. Create order on backend
+      const orderRes = await api.post("/api/payment/create-order", {
+        courseId: course.id,
+      });
+
+      const { order, keyId } = orderRes.data;
+
+      // 2. Configure Razorpay checkout options
+      const options = {
+        key: keyId || import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_test_T0bvuXdCpuKBMS",
+        amount: order.amount,
+        currency: order.currency || "INR",
+        name: "DIZITAL ADDA LMS",
+        description: course.title,
+        order_id: order.id,
+        handler: async function (response) {
+          try {
+            // 3. Verify signature on backend
+            const verifyRes = await api.post("/api/payment/verify-payment", {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+              courseId: course.id,
+            });
+
+            if (verifyRes.data.success) {
+              alert("Payment Verified! Enrollment Activated 🎉");
+              navigate(`/learn/${course.id}`, { replace: true });
+            }
+          } catch (err) {
+            console.error("Verification failed:", err);
+            alert("Payment completed but verification failed. Please contact support.");
+          } finally {
+            setIsProcessing(false);
+          }
+        },
+        prefill: {
+          name: JSON.parse(localStorage.getItem("user") || "{}")?.name || "",
+          email: JSON.parse(localStorage.getItem("user") || "{}")?.email || "",
+        },
+        theme: {
+          color: "#D4A017",
+        },
+        modal: {
+          ondismiss: function () {
+            setIsProcessing(false);
+          },
+        },
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+    } catch (error) {
+      console.error("Order creation failed:", error);
+      alert(error.response?.data?.message || "Failed to initialize payment.");
+      setIsProcessing(false);
+    }
+  };
 
   if (!course) {
     return (
@@ -576,7 +623,8 @@ const Checkout = () => {
 
 <button
   onClick={handlePayment}
-  className="
+  disabled={isProcessing}
+  className={`
     w-full
     mt-8
     bg-[#D4A017]
@@ -590,9 +638,10 @@ const Checkout = () => {
     duration-300
     shadow-lg
     hover:shadow-xl
-  "
+    ${isProcessing ? "opacity-60 cursor-not-allowed" : "cursor-pointer"}
+  `}
 >
-  Proceed To Payment →
+  {isProcessing ? "Processing Payment..." : "Proceed To Payment →"}
 </button>
 
       <p className="text-center text-gray-500 text-xs mt-4 leading-6">

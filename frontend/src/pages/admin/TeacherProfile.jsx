@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-
 import {
   FaEnvelope,
   FaPhone,
@@ -7,23 +6,28 @@ import {
   FaMoneyBillWave,
   FaStar,
   FaUsers,
-  FaChalkboardTeacher,
-  FaCalendarAlt,
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
-
 import api from "../../lib/api";
 
 function TeacherProfile() {
-const [courses, setCourses] = useState([]);
-useEffect(() => {
-
-  fetchCourses();
-
-}, []);
-
-
+  const [courses, setCourses] = useState([]);
   const { id } = useParams();
+
+  const fetchCourses = async () => {
+    try {
+      const response = await api.get("/api/courses");
+      setCourses(response.data?.courses || response.data || []);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCourses();
+  }, []);
+
+
 
   // ALL TEACHERS
   const teachers = [
@@ -86,27 +90,7 @@ useEffect(() => {
 
   }
 
-  const fetchCourses = async () => {
 
-  try {
-
-    const response = await api.get(
-
-      `${import.meta.env.VITE_API_URL}/api/courses`
-
-    );
-
-    setCourses(response.data);
-
-  }
-
-  catch (error) {
-
-    console.log(error);
-
-  }
-
-};
 
   // LIVE CLASSES
   const liveClasses = [
