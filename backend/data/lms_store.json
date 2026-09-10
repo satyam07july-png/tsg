@@ -1,0 +1,382 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "System Admin",
+      "full_name": "System Admin",
+      "email": "admin@dizitaladda.com",
+      "password": "$2b$10$zcehro1as2ECKhdFi.dVK.LsTyeHcspHMFkBaUsKauY5RPbxTP6.a",
+      "role": "admin",
+      "phone": "+919876543210",
+      "specialization": "LMS Administration",
+      "status": "Active",
+      "created_at": "2026-09-10T10:39:50.937Z"
+    },
+    {
+      "id": 2,
+      "name": "Dr. Gulshan Kumar",
+      "full_name": "Dr. Gulshan Kumar",
+      "email": "gulshan@dizitaladda.com",
+      "password": "$2b$10$HMITdGIgiBPEkZNStxQSI..o6Qt5uTgpO9IsKIsRrppiFWXlZMVb.",
+      "role": "teacher",
+      "phone": "+918810606010",
+      "specialization": "Digital Marketing & Search AI",
+      "status": "Active",
+      "created_at": "2026-09-10T10:39:50.937Z"
+    },
+    {
+      "id": 3,
+      "name": "Test Student",
+      "full_name": "Test Student",
+      "email": "teststudent@gmail.com",
+      "password": "hash123",
+      "role": "+919999999999",
+      "phone": null,
+      "status": "Active",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Test%20Student",
+      "created_at": "2026-09-10T10:39:50.944Z"
+    },
+    {
+      "id": 4,
+      "name": "Test Student",
+      "full_name": "Test Student",
+      "email": "teststudent@gmail.com",
+      "password": "hash123",
+      "role": "student",
+      "phone": "+919999999999",
+      "status": "Active",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Test%20Student",
+      "created_at": "2026-09-10T10:40:04.382Z"
+    },
+    {
+      "id": 5,
+      "name": "Rohit Sharma",
+      "full_name": "Rohit Sharma",
+      "email": "rohit.sharma@test.com",
+      "password": "$2b$10$gx1.g2Dj/y8yecHpqXNrwONiSrxzAKRK7/lSi7GE.orsMZiHglq4y",
+      "role": "student",
+      "phone": "9876543210",
+      "status": "Active",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Rohit%20Sharma",
+      "created_at": "2026-09-10T10:42:20.421Z",
+      "updated_at": "2026-09-10T10:49:24.563Z"
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "course_id": "dm-advanced",
+      "title": "Advanced Digital Marketing Course",
+      "description": "6-month Advanced Digital Marketing Course — 10 live brand campaigns, 54+ AI tools, Google & Meta certifications, and agency internship.",
+      "price": 18999,
+      "original_price": 35999,
+      "duration": "6 Months",
+      "level": "Advanced",
+      "category": "Digital Marketing",
+      "teacher": "Dr. Gulshan Kumar",
+      "teacher_id": 2,
+      "thumbnail": "https://dizitaladda.com/images/digital-marketing-institute.webp",
+      "is_published": true,
+      "total_lectures": 60,
+      "total_students": 1420,
+      "created_at": "2026-09-10T10:39:50.935Z"
+    },
+    {
+      "id": 2,
+      "course_id": "dm-expert",
+      "title": "Expert in Digital Marketing",
+      "description": "12-month master program with 70 comprehensive modules, 60+ AI tools, 10 live brand projects, paid agency internship, and 100% placement guarantee.",
+      "price": 34999,
+      "original_price": 69999,
+      "duration": "12 Months",
+      "level": "Expert",
+      "category": "Digital Marketing",
+      "teacher": "Dr. Gulshan Kumar",
+      "teacher_id": 2,
+      "thumbnail": "https://dizitaladda.com/images/digital-marketing-institute.webp",
+      "is_published": true,
+      "total_lectures": 70,
+      "total_students": 890,
+      "created_at": "2026-09-10T10:39:50.937Z"
+    },
+    {
+      "id": 3,
+      "course_id": "dm-professionals",
+      "title": "Digital Marketing For Professionals",
+      "description": "4-month targeted upskilling track with 40 modules, 50+ AI tools, 10 live brand projects, and flexible evening/weekend batches.",
+      "price": 14999,
+      "original_price": 27999,
+      "duration": "4 Months",
+      "level": "Professional",
+      "category": "Digital Marketing",
+      "teacher": "Dr. Gulshan Kumar",
+      "teacher_id": 2,
+      "thumbnail": "https://dizitaladda.com/images/digital-marketing-institute.webp",
+      "is_published": true,
+      "total_lectures": 40,
+      "total_students": 650,
+      "created_at": "2026-09-10T10:39:50.937Z"
+    },
+    {
+      "id": 4,
+      "course_id": "dm-beginners",
+      "title": "Digital Marketing For Beginners",
+      "description": "3-month foundational course with 30 modules, 40+ AI tools, basic SEO, social media marketing, and guided capstone.",
+      "price": 9999,
+      "original_price": 19999,
+      "duration": "3 Months",
+      "level": "Beginner",
+      "category": "Digital Marketing",
+      "teacher": "Dr. Gulshan Kumar",
+      "teacher_id": 2,
+      "thumbnail": "https://dizitaladda.com/images/digital-marketing-institute.webp",
+      "is_published": true,
+      "total_lectures": 30,
+      "total_students": 2100,
+      "created_at": "2026-09-10T10:39:50.937Z"
+    },
+    {
+      "id": 5,
+      "course_id": "ds-advanced",
+      "title": "Data Science & Data Analytics",
+      "description": "Complete hands-on data science track covering Python, SQL, Power BI, predictive modeling, machine learning, and business intelligence.",
+      "price": 55000,
+      "original_price": 75000,
+      "duration": "6 Months",
+      "level": "Advanced",
+      "category": "Data Science",
+      "teacher": "Dr. Gulshan Kumar",
+      "teacher_id": 2,
+      "thumbnail": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop",
+      "is_published": true,
+      "total_lectures": 50,
+      "total_students": 480,
+      "created_at": "2026-09-10T10:39:50.937Z"
+    },
+    {
+      "id": 6,
+      "course_id": "cyber-advanced",
+      "title": "Cyber Security & Ethical Hacking",
+      "description": "Comprehensive network security, penetration testing, CEH certification prep, incident response, and cloud security labs.",
+      "price": 50000,
+      "original_price": 70000,
+      "duration": "6 Months",
+      "level": "Advanced",
+      "category": "Cyber Security",
+      "teacher": "Dr. Gulshan Kumar",
+      "teacher_id": 2,
+      "thumbnail": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+      "is_published": true,
+      "total_lectures": 48,
+      "total_students": 390,
+      "created_at": "2026-09-10T10:39:50.937Z"
+    },
+    {
+      "id": 7,
+      "course_id": "ai-expert",
+      "title": "AI & Prompt Engineering Masterclass",
+      "description": "Master generative AI, large language models, autonomous AI agents, LangChain, API automation, and multi-modal creative tech.",
+      "price": 48000,
+      "original_price": 65000,
+      "duration": "6 Months",
+      "level": "Expert",
+      "category": "Artificial Intelligence",
+      "teacher": "Dr. Gulshan Kumar",
+      "teacher_id": 2,
+      "thumbnail": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop",
+      "is_published": true,
+      "total_lectures": 55,
+      "total_students": 720,
+      "created_at": "2026-09-10T10:39:50.937Z"
+    }
+  ],
+  "sections": [
+    {
+      "id": 1,
+      "course_id": 1,
+      "title": "Module 1: Digital Marketing Ecosystem & Strategy",
+      "order_num": 1
+    },
+    {
+      "id": 2,
+      "course_id": 1,
+      "title": "Module 2: Advanced SEO & AI Search Optimization",
+      "order_num": 2
+    },
+    {
+      "id": 3,
+      "course_id": 1,
+      "title": "Module 3: Google Ads & Performance Max Campaigns",
+      "order_num": 3
+    },
+    {
+      "id": 4,
+      "course_id": 2,
+      "title": "Module 1: Comprehensive Master Strategy & AI Suite",
+      "order_num": 1
+    },
+    {
+      "id": 5,
+      "course_id": 3,
+      "title": "Module 1: Rapid Executive Upskilling & Lead Gen",
+      "order_num": 1
+    }
+  ],
+  "lectures": [
+    {
+      "id": 1,
+      "section_id": 1,
+      "course_id": 1,
+      "title": "1.1 Introduction to the Performance Marketing Framework",
+      "description": "Overview of customer journeys, acquisition funnels, and marketing technology stack.",
+      "video_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "pdf_url": null,
+      "duration": "24:30",
+      "order_num": 1,
+      "is_free_preview": true
+    },
+    {
+      "id": 2,
+      "section_id": 1,
+      "course_id": 1,
+      "title": "1.2 Setting Up Your Digital Workspace & Tracking Pixels",
+      "description": "Step-by-step setup of Google Tag Manager, GA4, Meta Pixel, and server-side tracking.",
+      "video_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "pdf_url": null,
+      "duration": "32:15",
+      "order_num": 2,
+      "is_free_preview": false
+    },
+    {
+      "id": 3,
+      "section_id": 2,
+      "course_id": 1,
+      "title": "2.1 Semantic Search, Entity SEO & ChatGPT Automation",
+      "description": "How modern search engines index entities and using AI agents for keyword clustering.",
+      "video_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "pdf_url": null,
+      "duration": "45:00",
+      "order_num": 1,
+      "is_free_preview": false
+    }
+  ],
+  "students": [
+    {
+      "id": 1,
+      "user_id": 3,
+      "student_id": "DIZ-998877",
+      "course_id": 1,
+      "course_code": "dm-advanced",
+      "name": "Test Student",
+      "email": "teststudent@gmail.com",
+      "password": "$2b$10$gx1.g2Dj/y8yecHpqXNrwONiSrxzAKRK7/lSi7GE.orsMZiHglq4y",
+      "phone": "+919999999999",
+      "course": "Advanced Digital Marketing Course",
+      "batch": "Regular 2026",
+      "status": "Active",
+      "created_at": "2026-09-10T10:39:50.947Z",
+      "updated_at": "2026-09-10T10:49:24.565Z"
+    },
+    {
+      "id": 2,
+      "user_id": 4,
+      "student_id": "DIZ-998877",
+      "course_id": 1,
+      "course_code": "dm-advanced",
+      "name": "Test Student",
+      "email": "teststudent@gmail.com",
+      "password": "hash123",
+      "phone": "+919999999999",
+      "course": "Advanced Digital Marketing Course",
+      "batch": "Regular 2026",
+      "status": "Active",
+      "created_at": "2026-09-10T10:40:04.384Z"
+    },
+    {
+      "id": 3,
+      "user_id": 5,
+      "student_id": "DA-STU-41326",
+      "course_id": 1,
+      "course_code": "dm-advanced",
+      "name": "Rohit Sharma",
+      "email": "rohit.sharma@test.com",
+      "password": "$2b$10$J9r7P2jNlWVCAQajiwZLHOSvmdAbXt4CbkwgUFH36r6gS5eL1GwPC",
+      "phone": "9876543210",
+      "course": "Advanced Digital Marketing Course",
+      "batch": "Regular 2026",
+      "status": "Active",
+      "created_at": "2026-09-10T10:42:21.326Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "user_id": 5,
+      "student_id": null,
+      "course_id": 1,
+      "razorpay_order_id": "order_test_36941235",
+      "amount": 18999,
+      "currency": "INR",
+      "status": "created",
+      "created_at": "2026-09-10T10:42:21.236Z"
+    },
+    {
+      "id": 2,
+      "user_id": 5,
+      "student_id": 3,
+      "course_id": 1,
+      "razorpay_order_id": "order_test_36941235",
+      "amount": 18999,
+      "currency": "INR",
+      "status": "created",
+      "created_at": "2026-09-10T10:42:21.327Z"
+    },
+    {
+      "id": 3,
+      "user_id": 5,
+      "student_id": 3,
+      "course_id": 1,
+      "razorpay_order_id": "order_test_37364476",
+      "amount": 18999,
+      "currency": "INR",
+      "status": "created",
+      "created_at": "2026-09-10T10:49:24.476Z"
+    },
+    {
+      "id": 4,
+      "user_id": 5,
+      "student_id": 3,
+      "course_id": 1,
+      "razorpay_order_id": "order_test_37364476",
+      "amount": 18999,
+      "currency": "INR",
+      "status": "created",
+      "created_at": "2026-09-10T10:49:24.566Z"
+    }
+  ],
+  "enrollments": [
+    {
+      "id": 1,
+      "user_id": 5,
+      "student_id": 3,
+      "course_id": 1,
+      "enrollment_date": "2026-09-10T10:42:21.329Z",
+      "status": "Active",
+      "payment_status": "Paid",
+      "progress": 0,
+      "created_at": "2026-09-10T10:42:21.329Z"
+    },
+    {
+      "id": 2,
+      "user_id": 5,
+      "student_id": 3,
+      "course_id": 1,
+      "enrollment_date": "2026-09-10T10:49:24.567Z",
+      "status": "Active",
+      "payment_status": "Paid",
+      "progress": 0,
+      "created_at": "2026-09-10T10:49:24.567Z"
+    }
+  ],
+  "notifications": []
+}
