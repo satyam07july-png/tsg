@@ -58,14 +58,7 @@ function App() {
       <Route path="/placement" element={<Placement />} />
 
       {/* ================= STUDENT / ENROLLED ROUTES ================= */}
-      <Route
-        path="/checkout"
-        element={
-          <ProtectedRoute allowedRoles={["student", "teacher", "admin"]}>
-            <Checkout />
-          </ProtectedRoute>
-        }
-      />
+      <Route path="/checkout" element={<Checkout />} />
       <Route
         path="/student"
         element={

@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   FaBrain,
   FaShieldAlt,
@@ -15,15 +16,31 @@ import {
   FaAward,
   FaRocket,
   FaChevronRight,
+  FaChevronDown,
+  FaChevronUp,
   FaPhoneAlt,
   FaCalendarAlt,
   FaUsers,
   FaCheck,
   FaUndo,
+  FaExternalLinkAlt,
+  FaWhatsapp,
+  FaRobot,
+  FaSearch,
+  FaBullhorn,
+  FaLaptopCode,
+  FaPalette,
+  FaVideo,
+  FaLayerGroup,
+  FaUserTie,
+  FaBookOpen,
 } from "react-icons/fa";
+import { EXPERT_DIGITAL_MARKETING_DETAILS } from "../data/expertDigitalMarketingData.js";
+import { ADVANCED_DIGITAL_MARKETING_DETAILS } from "../data/advancedDigitalMarketingData.js";
+import { PROFESSIONAL_DIGITAL_MARKETING_DETAILS } from "../data/professionalDigitalMarketingData.js";
 
 // ==========================================
-// DURATION DEFINITIONS (3, 4, 6, 12 MONTHS)
+// DURATION DEFINITIONS
 // ==========================================
 const DURATION_OPTIONS = [
   {
@@ -31,31 +48,16 @@ const DURATION_OPTIONS = [
     duration: "3 Months",
     name: "Beginner Level Track",
     badge: "Beginner",
-    badgeColor: "bg-amber-100 text-amber-800 border-amber-300",
-    popular: false,
-    tagline: "Master foundational concepts, core practical tools & build real working prototypes quickly.",
-    idealFor: "Students & Career Starters",
     hoursPerWeek: "8 - 10 Hours / Week",
     liveHours: "60+ Hours Live Sessions",
     projects: "Guided & Mini Projects",
     mentorship: "Group Learning & Weekly Q&A",
     placementSupport: "Resume Review & Dizital Adda Job Board Access",
     certification: "Completion Certificate",
-    basePrice: 9999,
-    originalPrice: 19999,
-    emiStartsAt: "₹3,499/mo",
-    features: [
-      "Live interactive evening & weekend batches",
-      "Hands-on project repository access",
-      "Official course completion certificate",
-      "Community discussion forum & discord access",
-      "Official LMS lifetime study notes & recordings",
-      "Self-paced assignments & automated feedback",
-    ],
     roadmap: [
       { phase: "Month 1", title: "Core Fundamentals & Tooling Setup", desc: "Environment setup, fundamental theory, syntax, and essential tools." },
-      { phase: "Month 2", title: "Applied Frameworks & Mini Projects", desc: "Hands-on implementation of core concepts, libraries, and real exercises." },
-      { phase: "Month 3", title: "Final Guided Capstone & Portfolio", desc: "Building a working portfolio project with mentor feedback." },
+      { phase: "Month 2", title: "Applied Concepts & Hands-on Exercises", desc: "Hands-on implementation of core tools, libraries, and real exercises." },
+      { phase: "Month 3", title: "Guided Capstone & Portfolio Review", desc: "Building a working portfolio project with mentor feedback." },
     ],
   },
   {
@@ -63,27 +65,12 @@ const DURATION_OPTIONS = [
     duration: "4 Months",
     name: "Professional Level Track",
     badge: "Professional",
-    badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
-    popular: false,
-    tagline: "Focused professional track with weekly mentorship, focused modules, and mini projects.",
-    idealFor: "Working Professionals & Quick Learners",
     hoursPerWeek: "10 - 12 Hours / Week",
     liveHours: "90+ Hours Live Sessions",
     projects: "Mini Projects & Real Exercises",
     mentorship: "Weekly Mentorship",
     placementSupport: "Placement Portal Access & Resume Review",
     certification: "Digital Certificate",
-    basePrice: 14999,
-    originalPrice: 27999,
-    emiStartsAt: "₹3,750/mo",
-    features: [
-      "Everything in the 3 Months track",
-      "90+ Hours live interactive classes with working professionals",
-      "Mini projects & real-world scenario assignments",
-      "Weekly dedicated mentorship sessions",
-      "Resume enhancement & LinkedIn profile optimization",
-      "Direct job updates from our hiring partner network",
-    ],
     roadmap: [
       { phase: "Month 1", title: "Core Concepts & Essential Skills", desc: "Foundational mastery, industry best practices, and standard tooling." },
       { phase: "Month 2", title: "Applied Specialization & Workflows", desc: "Executing real workflows, campaign and system setups." },
@@ -95,30 +82,13 @@ const DURATION_OPTIONS = [
     id: "6-months",
     duration: "6 Months",
     name: "Advanced Level Track",
-    badge: "⭐ Most Popular",
-    badgeColor: "bg-blue-100 text-blue-900 border-blue-300",
-    popular: true,
-    tagline: "Comprehensive job-ready curriculum with end-to-end live industry projects and group mentorship.",
-    idealFor: "Marketing Professionals & Career Switchers",
+    badge: "Advanced",
     hoursPerWeek: "12 - 15 Hours / Week",
     liveHours: "150+ Hours Live Sessions",
     projects: "Practice Projects + Major Capstone",
-    mentorship: "Group Mentorship & 1:1 Code Reviews",
+    mentorship: "Group Mentorship & 1:1 Reviews",
     placementSupport: "Dedicated Placement Support + 5 Mock Technical Interviews",
-    certification: "Course Certification + ISO Verification",
-    basePrice: 18999,
-    originalPrice: 35999,
-    emiStartsAt: "₹3,299/mo",
-    features: [
-      "Everything in the 4 Months track",
-      "150+ Hours live interactive classes with senior engineers",
-      "Practice projects suitable for recruiter review",
-      "Group mentorship & bi-weekly progress tracking",
-      "Resume enhancement, LinkedIn optimization & GitHub audit",
-      "5 Mock interviews with industry technical leads",
-      "Direct referrals to 50+ hiring partner companies",
-      "Dizital Adda Verified Professional Credential",
-    ],
+    certification: "Course Certification + ISO Verified",
     roadmap: [
       { phase: "Month 1 - 2", title: "Advanced Architecture & Mechanics", desc: "Deep dive into language mechanics, design patterns, and architecture." },
       { phase: "Month 3 - 4", title: "Production Workflows & Integrations", desc: "Building scalable production systems, data persistence & security." },
@@ -129,30 +99,13 @@ const DURATION_OPTIONS = [
     id: "12-months",
     duration: "12 Months",
     name: "Expert Level Track",
-    badge: "🚀 100% Placement Guarantee",
-    badgeColor: "bg-fuchsia-100 text-fuchsia-900 border-fuchsia-300",
-    popular: false,
-    tagline: "Comprehensive expert mastery with 1-on-1 mentorship, real project portfolio, and guaranteed placement.",
-    idealFor: "Future Digital Marketing Leaders & Entrepreneurs",
+    badge: "Expert",
     hoursPerWeek: "15 - 20 Hours / Week",
     liveHours: "300+ Hours Live Sessions",
     projects: "Real Project Portfolio + 2 Major Capstones",
     mentorship: "1-on-1 Mentorship & Leadership Coaching",
     placementSupport: "100% Placement Guarantee (with formal agreement)",
     certification: "Industry Certification + Internship Letter",
-    basePrice: 34999,
-    originalPrice: 69999,
-    emiStartsAt: "₹3,199/mo",
-    features: [
-      "Everything in the 6 Months track",
-      "300+ Hours intensive live training with industry leads",
-      "1-on-1 dedicated mentorship and leadership coaching",
-      "Guaranteed 3-Month Paid Internship with partner startups",
-      "100% Job Placement Guarantee (or full refund as per terms)",
-      "System design, strategy & business leadership masterclass",
-      "Direct interview scheduling with top multinational companies",
-      "Dual global certification & authorized experience letter",
-    ],
     roadmap: [
       { phase: "Month 1 - 3", title: "Comprehensive Foundations & Strategy", desc: "Deep foundational knowledge, strategy development & tool mastery." },
       { phase: "Month 4 - 6", title: "Advanced Execution & High-Budget Ops", desc: "Managing enterprise workflows, complex campaigns & predictive analytics." },
@@ -163,7 +116,7 @@ const DURATION_OPTIONS = [
 ];
 
 // ==========================================
-// 4 CORE DOMAINS
+// 4 CORE DOMAINS (EXACT AS REQUESTED)
 // ==========================================
 const DOMAINS = [
   // 1. Digital Marketing (EXACT FROM USER SCREENSHOTS)
@@ -185,6 +138,7 @@ const DOMAINS = [
           title: "Digital Marketing For Beginners",
           subtitle: "30 Basic Modules • 40+ AI Tools Introduction",
           duration: "3 Months",
+          durationId: "3-months",
           level: "BEGINNER LEVEL",
           levelColor: "border-amber-400 text-amber-700 bg-amber-50",
           checkColor: "text-amber-500",
@@ -192,14 +146,21 @@ const DOMAINS = [
           modulesType: "Basic Modules",
           aiToolsCount: "40+",
           aiToolsType: "AI Tools Introduction",
+          hoursPerWeek: "8 - 10 Hours / Week",
+          modulesPill: "30 Basic Modules • 40+ AI Tools Introduction",
+          shortDesc: "Master foundational concepts, core practical tools & build real working prototypes quickly.",
+          projectsHighlight: "Guided & Mini Projects",
+          certHighlight: "Completion Certificate",
           price: 9999,
           originalPrice: 19999,
           emi: "₹3,499/mo",
-          projects: "Guided Projects",
+          projects: "Guided & Mini Projects",
           mentorship: "Group Learning",
           certification: "Completion Certificate",
           perfectFor: "Students & Career Starters",
           perfectForBg: "bg-amber-50/80 border-amber-200 text-amber-900",
+          enrollUrl: "https://dizitaladda.com/courses/digital-marketing-for-beginners",
+          whatsappUrl: "https://wa.me/918810606010?text=Hi%2C+I+am+interested+in+the+Digital+Marketing+For+Beginners+Course",
           featureList: [
             "30 Basic Modules",
             "40+ AI Tools Introduction",
@@ -224,8 +185,9 @@ const DOMAINS = [
         {
           id: "dm-professionals",
           title: "Digital Marketing For Professionals",
-          subtitle: "40 Focused Modules • 50+ AI Tools Overview",
+          subtitle: "40 Focused Modules • 50+ AI Tools Overview • 10 Live Projects",
           duration: "4 Months",
+          durationId: "4-months",
           level: "PROFESSIONAL LEVEL",
           levelColor: "border-emerald-400 text-emerald-700 bg-emerald-50",
           checkColor: "text-emerald-500",
@@ -233,14 +195,24 @@ const DOMAINS = [
           modulesType: "Focused Modules",
           aiToolsCount: "50+",
           aiToolsType: "AI Tools Overview",
+          hoursPerWeek: "10 - 12 Hours / Week",
+          modulesPill: "40 Focused Modules • 50+ AI Tools Overview",
+          shortDesc: "Focused professional track with weekly mentorship, focused modules, and mini projects.",
+          projectsHighlight: "Mini Projects & Real Exercises",
+          certHighlight: "Digital Certificate",
           price: 14999,
           originalPrice: 27999,
+          onlinePrice: 14999,
+          offlinePrice: 45000,
           emi: "₹3,750/mo",
-          projects: "Mini Projects",
-          mentorship: "Weekly Mentorship",
-          certification: "Digital Certificate",
+          projects: "10 Live Brand Projects",
+          mentorship: "Weekly Mentorship & Live Q&A",
+          certification: "Digital Certificate + 10 Global Certifications",
           perfectFor: "Working Professionals & Quick Learners",
           perfectForBg: "bg-emerald-50/80 border-emerald-200 text-emerald-900",
+          enrollUrl: "https://dizitaladda.com/courses/digital-marketing-for-professional",
+          whatsappUrl: "https://wa.me/918810606010?text=Hi%2C+I+want+to+enquire+about+the+Digital+Marketing+For+Professional+Course",
+          details: PROFESSIONAL_DIGITAL_MARKETING_DETAILS,
           featureList: [
             "40 Focused Modules",
             "50+ AI Tools Overview",
@@ -265,8 +237,9 @@ const DOMAINS = [
         {
           id: "dm-advanced",
           title: "Advanced Digital Marketing",
-          subtitle: "60 Detailed Modules • 54+ AI Tools Coverage",
+          subtitle: "60 Detailed Modules • 54+ AI Tools Coverage • 10 Live Projects",
           duration: "6 Months",
+          durationId: "6-months",
           level: "ADVANCED LEVEL",
           levelColor: "border-blue-400 text-blue-700 bg-blue-50",
           checkColor: "text-blue-500",
@@ -274,31 +247,45 @@ const DOMAINS = [
           modulesType: "Detailed Modules",
           aiToolsCount: "54+",
           aiToolsType: "AI Tools Coverage",
+          hoursPerWeek: "12 - 15 Hours / Week",
+          modulesPill: "60 Detailed Modules • 54+ AI Tools Coverage",
+          shortDesc: "Comprehensive job-ready curriculum with end-to-end live industry projects and group mentorship.",
+          projectsHighlight: "Practice Projects + Major Capstone",
+          certHighlight: "Course Certification + ISO Verification",
+          isPopular: true,
           price: 18999,
           originalPrice: 35999,
+          onlinePrice: 18999,
+          offlinePrice: 50000,
           emi: "₹3,299/mo",
-          projects: "Practice Projects",
-          mentorship: "Group Mentorship",
-          certification: "Course Certification",
-          perfectFor: "Marketing Professionals & Career Switchers",
+          rating: 4.9,
+          ratingsCount: "1,043+ students",
+          projects: "10 Live Brand Campaigns",
+          mentorship: "Industry Expert Mentorship & Weekly Live Q&A",
+          certification: "10+ Global Certifications + Agency Internship Certificate",
+          placementGuarantee: "100% Placement Support (500+ Hiring Partners)",
+          perfectFor: "Ambitious Graduates, Working Professionals & Career Switchers",
           perfectForBg: "bg-blue-50/80 border-blue-200 text-blue-900",
+          enrollUrl: "https://dizitaladda.com/courses/advanced-digital-marketing-course",
+          whatsappUrl: "https://wa.me/918810606010?text=Hi%2C+I+am+interested+in+the+Advanced+Digital+Marketing+Course+in+Delhi+%E2%80%94+6+Months+%7C+100%25+Placement.",
+          details: ADVANCED_DIGITAL_MARKETING_DETAILS,
           featureList: [
             "60 Detailed Modules",
             "54+ AI Tools Coverage",
-            "Comprehensive SEO",
-            "Content Strategy",
-            "Campaign Management",
-            "Group Mentorship",
-            "Practice Projects",
-            "Course Certification",
+            "10 Live Brand Projects",
+            "Paid In-House Agency Internship",
+            "Next-Gen Search AI (AEO / LLMO)",
+            "Industry Expert Mentorship",
+            "Real Project Portfolio",
+            "10+ Global Certifications",
           ],
           modules: [
-            "Comprehensive SEO & Advanced Keyword Architecture",
-            "High-Converting Content Strategy & Editorial Calendars",
-            "Full Campaign Management (Google Ads & Meta Ads Manager)",
-            "54+ AI Tools for Automation, Bidding & Reporting",
-            "Conversion Rate Optimization (CRO) & Funnel Scaling",
-            "Practice Projects, Group Mentorship & Course Certification",
+            "60 Detailed Modules across 25 Practical Digital Marketing Domains",
+            "10 Live Brand Projects with Real Ad Budgets & Proof-of-Work",
+            "Next-Gen Search AI: Answer Engine (AEO) & LLM Optimization (LLMO)",
+            "Paid In-House Agency Internship Managing Live Client Brand Accounts",
+            "54+ Modern AI Marketing Tools Integrated into Daily Workflows",
+            "Expert Mentorship, 10+ Global Certifications & 100% Placement Support",
           ],
         },
       ],
@@ -306,8 +293,9 @@ const DOMAINS = [
         {
           id: "dm-expert",
           title: "Expert in Digital Marketing",
-          subtitle: "70 Comprehensive Modules • 60+ AI Tools Integration",
+          subtitle: "70 Comprehensive Modules • 60+ AI Tools Integration • 10 Live Projects",
           duration: "12 Months",
+          durationId: "12-months",
           level: "EXPERT LEVEL",
           levelColor: "border-fuchsia-400 text-fuchsia-700 bg-fuchsia-50",
           checkColor: "text-fuchsia-500",
@@ -315,31 +303,44 @@ const DOMAINS = [
           modulesType: "Comprehensive Modules",
           aiToolsCount: "60+",
           aiToolsType: "AI Tools Integration",
+          hoursPerWeek: "15 - 20 Hours / Week",
+          modulesPill: "70 Comprehensive Modules • 60+ AI Tools Integration",
+          shortDesc: "Comprehensive expert mastery with 1-on-1 mentorship, real project portfolio, and guaranteed placement.",
+          projectsHighlight: "Real Project Portfolio + 2 Major Capstones",
+          certHighlight: "Industry Certification + Internship Letter",
           price: 34999,
           originalPrice: 69999,
+          onlinePrice: 34999,
+          offlinePrice: 95000,
           emi: "₹3,199/mo",
-          projects: "Real Project Portfolio",
-          mentorship: "1-on-1 Mentorship",
-          certification: "Industry Certification",
+          rating: 4.9,
+          ratingsCount: "1,580+ reviews",
+          projects: "10 Live Brand Campaigns",
+          mentorship: "1-on-1 Mentorship & Leadership Coaching",
+          certification: "10+ Industry Certifications + Agency Internship Letter",
+          placementGuarantee: "100% Placement Assistance (250+ Hiring Partners)",
           perfectFor: "Future Digital Marketing Leaders & Entrepreneurs",
           perfectForBg: "bg-fuchsia-50/80 border-fuchsia-200 text-fuchsia-900",
+          enrollUrl: "https://dizitaladda.com/courses/expert-digital-marketing-course",
+          whatsappUrl: "https://wa.me/918810606010?text=Hi%2C+I+want+to+enquire+about+the+Expert+in+Digital+Marketing+Course",
+          details: EXPERT_DIGITAL_MARKETING_DETAILS,
           featureList: [
             "70 Comprehensive Modules",
             "60+ AI Tools Integration",
-            "Advanced SEO & Analytics",
-            "Digital Strategy Development",
-            "Leadership Training",
+            "10 Live Brand Campaigns",
+            "Paid In-House Agency Internship",
+            "Advanced SEO, AEO & LLMO",
             "1-on-1 Mentorship",
             "Real Project Portfolio",
-            "Industry Certification",
+            "10+ Industry Certifications",
           ],
           modules: [
-            "70 In-Depth Modules Covering Complete Digital Ecosystem",
-            "Advanced SEO, Programmatic SEO & Deep Data Analytics",
-            "Full Digital Strategy Development & Enterprise Omnichannel Scaling",
-            "Leadership Training & Marketing Department Management",
-            "60+ Advanced AI Tools Integration for Automated Operations",
-            "1-on-1 Senior Mentorship, Real Client Portfolio & Industry Certification",
+            "70 In-Depth Modules across 32 Industry Specializations",
+            "10 Live Brand Campaigns with Real Ad Budgets",
+            "Next-Gen Search AI: Answer Engine (AEO) & LLM Optimization (LLMO)",
+            "Paid In-House Agency Internship Managing Live Client Accounts",
+            "60+ Advanced AI Tools Integration for Automated Workflows",
+            "1-on-1 Senior Mentorship, 10+ Certifications & 100% Placement Support",
           ],
         },
       ],
@@ -365,6 +366,7 @@ const DOMAINS = [
           title: "Business Intelligence & Data Analytics with Power BI",
           subtitle: "Power BI, Advanced Excel, DAX & Executive Dashboards",
           duration: "3 Months",
+          durationId: "3-months",
           level: "BEGINNER LEVEL",
           levelColor: "border-amber-400 text-amber-700 bg-amber-50",
           checkColor: "text-amber-500",
@@ -405,6 +407,7 @@ const DOMAINS = [
           title: "Data Science with Python & Machine Learning",
           subtitle: "Python, Pandas, NumPy, Scikit-Learn, Statistics & EDA",
           duration: "6 Months",
+          durationId: "6-months",
           level: "ADVANCED LEVEL",
           levelColor: "border-blue-400 text-blue-700 bg-blue-50",
           checkColor: "text-blue-500",
@@ -445,6 +448,7 @@ const DOMAINS = [
           title: "Data Science, Big Data & Deep Learning Master Track",
           subtitle: "PySpark, Databricks, Deep Learning, TensorFlow & NLP",
           duration: "12 Months",
+          durationId: "12-months",
           level: "EXPERT LEVEL",
           levelColor: "border-fuchsia-400 text-fuchsia-700 bg-fuchsia-50",
           checkColor: "text-fuchsia-500",
@@ -501,6 +505,7 @@ const DOMAINS = [
           title: "Cyber Security & Ethical Hacking Fundamentals",
           subtitle: "Kali Linux, Network Protocols, Scanning & Vulnerability Tools",
           duration: "3 Months",
+          durationId: "3-months",
           level: "BEGINNER LEVEL",
           levelColor: "border-amber-400 text-amber-700 bg-amber-50",
           checkColor: "text-amber-500",
@@ -541,6 +546,7 @@ const DOMAINS = [
           title: "Certified Ethical Hacker (CEH) & Penetration Testing",
           subtitle: "Metasploit, Burp Suite, Web App Pentesting & Privilege Escalation",
           duration: "6 Months",
+          durationId: "6-months",
           level: "ADVANCED LEVEL",
           levelColor: "border-blue-400 text-blue-700 bg-blue-50",
           checkColor: "text-blue-500",
@@ -581,6 +587,7 @@ const DOMAINS = [
           title: "Advanced Cyber Security Specialist & Chief Information Security Track",
           subtitle: "Red & Blue Team Operations, Cloud Security, Forensics & Malware Analysis",
           duration: "12 Months",
+          durationId: "12-months",
           level: "EXPERT LEVEL",
           levelColor: "border-fuchsia-400 text-fuchsia-700 bg-fuchsia-50",
           checkColor: "text-fuchsia-500",
@@ -637,6 +644,7 @@ const DOMAINS = [
           title: "Generative AI & Prompt Engineering for Professionals",
           subtitle: "ChatGPT, Claude 3.5, Midjourney, Advanced Prompting & Workflows",
           duration: "3 Months",
+          durationId: "3-months",
           level: "BEGINNER LEVEL",
           levelColor: "border-amber-400 text-amber-700 bg-amber-50",
           checkColor: "text-amber-500",
@@ -677,6 +685,7 @@ const DOMAINS = [
           title: "Autonomous AI Agents & Multi-Agent Teams",
           subtitle: "CrewAI, AutoGen, Model Context Protocol (MCP) & LangGraph",
           duration: "6 Months",
+          durationId: "6-months",
           level: "ADVANCED LEVEL",
           levelColor: "border-blue-400 text-blue-700 bg-blue-50",
           checkColor: "text-blue-500",
@@ -717,6 +726,7 @@ const DOMAINS = [
           title: "Generative AI Engineer & Foundation Model Fine-Tuning Masterclass",
           subtitle: "Llama 3, Mistral, Hugging Face, LoRA/QLoRA, PyTorch & vLLM",
           duration: "12 Months",
+          durationId: "12-months",
           level: "EXPERT LEVEL",
           levelColor: "border-fuchsia-400 text-fuchsia-700 bg-fuchsia-50",
           checkColor: "text-fuchsia-500",
@@ -756,20 +766,249 @@ const DOMAINS = [
 ];
 
 // ==========================================
+// DURATION PILL STYLING HELPER
+// ==========================================
+const getDurationPillStyle = (durationId) => {
+  switch (durationId) {
+    case "3-months":
+      return "bg-amber-100/90 text-amber-900 border-amber-300";
+    case "4-months":
+      return "bg-emerald-100/90 text-emerald-900 border-emerald-300";
+    case "6-months":
+      return "bg-blue-100/90 text-blue-900 border-blue-300";
+    case "12-months":
+      return "bg-purple-100/90 text-purple-900 border-purple-300";
+    default:
+      return "bg-slate-100 text-slate-800 border-slate-300";
+  }
+};
+
+// ==========================================
+// 3D INTERACTIVE DURATION TRACK CARD COMPONENT
+// ==========================================
+function DurationTrackCard3D({ course, isPopular, onSelect, index }) {
+  const cardRef = useRef(null);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const [glare, setGlare] = useState({ x: 50, y: 50 });
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+
+    // Pitch & Yaw rotation (smooth spring-like bounds)
+    const rotX = (0.5 - y) * 16;
+    const rotY = (x - 0.5) * 16;
+
+    setRotateX(rotX);
+    setRotateY(rotY);
+    setGlare({ x: x * 100, y: y * 100 });
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setRotateX(0);
+    setRotateY(0);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+      className="relative flex h-full"
+      style={{ perspective: "1200px" }}
+    >
+      {/* 3D Elevated Floating Badge for Popular Card */}
+      {isPopular && (
+        <div
+          className="absolute -top-3 left-1/2 -translate-x-1/2 z-30 pointer-events-none transition-transform duration-200"
+          style={{
+            transform: `translateX(-50%) translateZ(${isHovered ? 45 : 30}px)`,
+          }}
+        >
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider text-slate-950 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 shadow-[0_6px_18px_rgba(245,158,11,0.45)] border border-yellow-200 ring-2 ring-white/70">
+            <FaStar className="text-[10px] text-amber-900" />
+            <span>MOST POPULAR</span>
+          </div>
+        </div>
+      )}
+
+      {/* Main 3D Tilted Card */}
+      <div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onClick={onSelect}
+        style={{
+          transform: isHovered
+            ? `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.025, 1.025, 1.025)`
+            : "rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
+          transformStyle: "preserve-3d",
+          transition: isHovered
+            ? "transform 0.12s ease-out, box-shadow 0.2s ease"
+            : "transform 0.45s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.45s ease",
+        }}
+        className={`relative w-full rounded-3xl p-6 sm:p-7 cursor-pointer flex flex-col justify-between transition-all duration-300 group ${
+          isPopular
+            ? "bg-white border-2 border-amber-400 ring-2 ring-amber-300/30 shadow-[0_16px_40px_rgba(245,158,11,0.18)] hover:shadow-[0_25px_60px_rgba(245,158,11,0.28)]"
+            : "bg-white border-2 border-slate-200/90 hover:border-[#7C2D12]/50 shadow-[0_10px_30px_rgba(15,23,42,0.06)] hover:shadow-[0_22px_45px_rgba(15,23,42,0.14)]"
+        }`}
+      >
+        {/* Holographic / Metallic Glare Overlay */}
+        <div
+          className="absolute inset-0 rounded-3xl pointer-events-none overflow-hidden transition-opacity duration-300"
+          style={{
+            opacity: isHovered ? 1 : 0,
+            background: isPopular
+              ? `radial-gradient(circle at ${glare.x}% ${glare.y}%, rgba(251, 191, 36, 0.22) 0%, rgba(255, 255, 255, 0.15) 35%, transparent 70%)`
+              : `radial-gradient(circle at ${glare.x}% ${glare.y}%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 75%)`,
+          }}
+        />
+
+        {/* Card Content Top Section */}
+        <div>
+          {/* Top Pill Tag & Weekly Hours */}
+          <div
+            className="flex items-center justify-between gap-2 mb-4"
+            style={{ transform: "translateZ(20px)" }}
+          >
+            <span
+              className={`text-[11px] font-extrabold px-3 py-1 rounded-full border ${getDurationPillStyle(
+                course.durationId
+              )}`}
+            >
+              {course.duration} Track
+            </span>
+            <span className="text-xs font-semibold text-slate-500 flex items-center gap-1">
+              <FaClock className="text-[11px] text-slate-400" />
+              {course.hoursPerWeek || "10 - 12 Hours / Week"}
+            </span>
+          </div>
+
+          {/* Big Duration Title & Program Name */}
+          <div style={{ transform: "translateZ(30px)" }}>
+            <h4 className="text-2xl sm:text-3xl font-black text-[#0B1220] tracking-tight">
+              {course.duration}
+            </h4>
+            <p className="text-sm sm:text-base font-bold text-[#7C2D12] mt-1 leading-snug">
+              {course.title}
+            </p>
+          </div>
+
+          {/* Modules & AI Tools Pill */}
+          <div
+            className="mt-3.5 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/90 text-xs font-bold text-slate-800"
+            style={{ transform: "translateZ(22px)" }}
+          >
+            <span>
+              {course.modulesPill ||
+                `${course.modulesCount || 40} Focused Modules • ${
+                  course.aiToolsCount || "50+"
+                } AI Tools Overview`}
+            </span>
+          </div>
+
+          {/* Short Description */}
+          <p
+            className="text-xs sm:text-sm text-slate-600 mt-4 leading-relaxed line-clamp-3 min-h-[48px]"
+            style={{ transform: "translateZ(18px)" }}
+          >
+            {course.shortDesc ||
+              course.perfectFor ||
+              course.subtitle ||
+              "Master foundational concepts, core practical tools & build real working prototypes quickly."}
+          </p>
+
+          {/* Elevated Price Container */}
+          <div
+            className="mt-5 p-4 rounded-2xl bg-slate-50/90 border border-slate-100 shadow-inner"
+            style={{ transform: "translateZ(26px)" }}
+          >
+            <div className="flex items-baseline gap-2">
+              <span className="text-2xl sm:text-3xl font-black text-[#0B1220]">
+                ₹{course.price.toLocaleString("en-IN")}
+              </span>
+              {course.originalPrice && (
+                <span className="text-xs sm:text-sm font-semibold text-slate-400 line-through">
+                  ₹{course.originalPrice.toLocaleString("en-IN")}
+                </span>
+              )}
+            </div>
+            <div className="text-xs font-bold text-emerald-600 mt-1">
+              EMI from {course.emi}
+            </div>
+          </div>
+
+          {/* Inclusions Highlights */}
+          <div
+            className="mt-4 space-y-2.5 pt-1"
+            style={{ transform: "translateZ(22px)" }}
+          >
+            <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-700">
+              <FaBriefcase className="text-[#7C2D12] text-xs flex-shrink-0" />
+              <span>
+                {course.projectsHighlight ||
+                  course.projects ||
+                  "Guided & Mini Projects"}
+              </span>
+            </div>
+            <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-700">
+              <FaGraduationCap className="text-[#7C2D12] text-xs flex-shrink-0" />
+              <span>
+                {course.certHighlight ||
+                  course.certification ||
+                  "Completion Certificate"}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Action Button */}
+        <div className="mt-6 pt-2" style={{ transform: "translateZ(38px)" }}>
+          <button
+            className={`w-full py-3.5 px-4 rounded-2xl font-black text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-300 shadow-md group/btn ${
+              isPopular
+                ? "bg-[#7C2D12] hover:bg-[#63240e] text-white hover:shadow-xl hover:shadow-orange-950/20"
+                : "bg-[#0B1220] hover:bg-[#7C2D12] text-white hover:shadow-lg"
+            }`}
+          >
+            <span>Select {course.duration}</span>
+            <FaArrowRight className="text-xs transition-transform duration-300 group-hover/btn:translate-x-1" />
+          </button>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+// ==========================================
 // MAIN SKILLING COMPONENT
 // ==========================================
 function Skilling() {
   const navigate = useNavigate();
 
-  // Multi-step State Flow:
+  // Multi-step Streamlined State:
   // Step 1: Select Domain
-  // Step 2: Select Duration / Months
-  // Step 3: View & Select Specific Course Card
-  // Step 4: Final Master Course Card & Enrollment Overview
+  // Step 2: Choose Program / Duration Card (All duration cards shown side-by-side)
+  // Step 3: Master Program Details & Enrollment (Syllabus, Inclusions & Actions)
   const [step, setStep] = useState(1);
   const [selectedDomain, setSelectedDomain] = useState(null);
-  const [selectedDuration, setSelectedDuration] = useState(null);
   const [selectedCourse, setSelectedCourse] = useState(null);
+  const [selectedDuration, setSelectedDuration] = useState(null);
+
+  // Step 3 Interactive Tabs & Deep Dive State
+  const [activeDetailTab, setActiveDetailTab] = useState("curriculum"); // curriculum | projects | aiTools | journey | whoCanJoin | fees
+  const [expandedCurriculumIdx, setExpandedCurriculumIdx] = useState(0);
+  const [curriculumSearch, setCurriculumSearch] = useState("");
 
   // Counselor Modal State
   const [showCounselorModal, setShowCounselorModal] = useState(false);
@@ -780,27 +1019,26 @@ function Skilling() {
     email: "",
   });
 
-  // Step 1: Select Domain -> Advance to Duration Selection (Step 2)
+  // Step 1: Select Domain -> Directly go to Step 2 (Duration Program Cards)
   const handleDomainSelect = (domain) => {
     setSelectedDomain(domain);
-    setSelectedDuration(null);
     setSelectedCourse(null);
+    setSelectedDuration(null);
     setStep(2);
     window.scrollTo({ top: 400, behavior: "smooth" });
   };
 
-  // Step 2: Select Duration -> Advance to Course Selection (Step 3)
-  const handleDurationSelect = (duration) => {
-    setSelectedDuration(duration);
-    setSelectedCourse(null);
-    setStep(3);
-    window.scrollTo({ top: 400, behavior: "smooth" });
-  };
-
-  // Step 3: Select Course -> Advance to Final Details (Step 4)
+  // Step 2: Select Course / Duration Card -> Directly go to Step 3 (Program Details)
   const handleCourseSelect = (course) => {
     setSelectedCourse(course);
-    setStep(4);
+    const dur =
+      DURATION_OPTIONS.find((d) => d.id === course.durationId) ||
+      DURATION_OPTIONS[0];
+    setSelectedDuration(dur);
+    setActiveDetailTab("curriculum");
+    setExpandedCurriculumIdx(0);
+    setCurriculumSearch("");
+    setStep(3);
     window.scrollTo({ top: 400, behavior: "smooth" });
   };
 
@@ -808,8 +1046,8 @@ function Skilling() {
   const handleReset = () => {
     setStep(1);
     setSelectedDomain(null);
-    setSelectedDuration(null);
     setSelectedCourse(null);
+    setSelectedDuration(null);
   };
 
   // Handle Counselor Form Submit
@@ -824,18 +1062,12 @@ function Skilling() {
     }, 2500);
   };
 
-  // Get available durations for the selected domain
-  const availableDurations = selectedDomain
-    ? DURATION_OPTIONS.filter((d) =>
-        selectedDomain.availableDurationIds.includes(d.id)
-      )
+  // Collect all duration course cards for the selected domain
+  const domainCourses = selectedDomain
+    ? selectedDomain.availableDurationIds
+        .map((durId) => selectedDomain.coursesByDuration[durId]?.[0])
+        .filter(Boolean)
     : [];
-
-  // Get current courses for selected domain and duration
-  const currentCourses =
-    selectedDomain && selectedDuration
-      ? selectedDomain.coursesByDuration[selectedDuration.id] || []
-      : [];
 
   return (
     <div className="min-h-screen bg-[#f8fafc] text-slate-800 font-sans">
@@ -908,8 +1140,8 @@ function Skilling() {
           <div className="w-24 h-1 bg-[#D4A017] mx-auto mt-6 rounded-full"></div>
 
           <p className="text-slate-300 mt-6 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed">
-            Select your technology domain, choose your duration track (3, 4, 6, or 12 Months),
-            and launch your career with verified certifications, live projects, and 100% placement assistance.
+            Select your technology domain, explore specialized duration programs (3, 4, 6, or 12 Months),
+            and launch your career with verified certifications and 100% placement support.
           </p>
 
           {/* Quick Metrics */}
@@ -935,23 +1167,22 @@ function Skilling() {
       </section>
 
       {/* ==========================================
-          INTERACTIVE STEPPER & BREADCRUMBS
+          INTERACTIVE STEPPER & BREADCRUMBS (3 STEPS)
       ========================================== */}
       <div className="max-w-6xl mx-auto px-6 mt-10">
         {/* Stepper Circles */}
-        <div className="flex items-center justify-between relative max-w-3xl mx-auto">
+        <div className="flex items-center justify-between relative max-w-2xl mx-auto">
           <div className="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-slate-200 w-full z-0"></div>
           <div
             className="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-[#7C2D12] transition-all duration-500 z-0"
-            style={{ width: `${((step - 1) / 3) * 100}%` }}
+            style={{ width: `${((step - 1) / 2) * 100}%` }}
           ></div>
 
           {/* Stepper Items */}
           {[
             { num: 1, label: "1. Select Domain" },
-            { num: 2, label: "2. Pick Duration" },
-            { num: 3, label: "3. Choose Course" },
-            { num: 4, label: "4. Program Details" },
+            { num: 2, label: "2. Choose Program" },
+            { num: 3, label: "3. Program Details" },
           ].map((item) => (
             <div
               key={item.num}
@@ -963,7 +1194,7 @@ function Skilling() {
               }`}
             >
               <div
-                className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center font-bold text-sm sm:text-base border-2 transition-all shadow-md ${
+                className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-base border-2 transition-all shadow-md ${
                   step === item.num
                     ? "bg-[#7C2D12] text-white border-[#D4A017] scale-110 ring-4 ring-orange-200"
                     : step > item.num
@@ -1006,27 +1237,11 @@ function Skilling() {
               </>
             )}
 
-            {selectedDuration && (
-              <>
-                <FaChevronRight className="text-xs text-slate-400" />
-                <span
-                  onClick={() => setStep(3)}
-                  className={`font-medium cursor-pointer ${
-                    step === 3
-                      ? "text-[#7C2D12] font-bold"
-                      : "hover:text-[#7C2D12]"
-                  }`}
-                >
-                  {selectedDuration.duration} Track
-                </span>
-              </>
-            )}
-
             {selectedCourse && (
               <>
                 <FaChevronRight className="text-xs text-slate-400" />
                 <span className="font-bold text-[#7C2D12]">
-                  {selectedCourse.title}
+                  {selectedCourse.title} ({selectedCourse.duration})
                 </span>
               </>
             )}
@@ -1046,7 +1261,7 @@ function Skilling() {
       {/* ==========================================
           MAIN INTERACTIVE CONTAINER
       ========================================== */}
-      <main className="max-w-6xl mx-auto px-6 py-10">
+      <main className="max-w-7xl mx-auto px-6 py-10">
         {/* ==========================================
             STEP 1: SELECT DOMAIN
         ========================================== */}
@@ -1118,7 +1333,8 @@ function Skilling() {
         )}
 
         {/* ==========================================
-            STEP 2: SELECT DURATION / MONTHS
+            STEP 2: CHOOSE PROGRAM / DURATION CARDS
+            (DIRECT CARD VIEW MATCHING USER SCREENSHOTS)
         ========================================== */}
         {step === 2 && selectedDomain && (
           <div>
@@ -1156,111 +1372,49 @@ function Skilling() {
               </button>
             </div>
 
-            <div className="text-center mb-8">
-              <h3 className="text-3xl font-black text-[#0B1220]">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider text-orange-700 bg-orange-100/80 border border-orange-200 mb-3">
+                <span>Step 02 • Duration Roadmap</span>
+              </div>
+              <h3 className="text-3xl sm:text-4xl font-black text-[#0B1220] tracking-tight">
                 Step 2: Choose Your Duration Track
               </h3>
-              <p className="text-slate-600 mt-1">
-                Select your preferred duration track under {selectedDomain.title}.
+              <p className="text-slate-600 mt-2 text-sm sm:text-base max-w-2xl mx-auto">
+                Select your preferred duration track under <strong className="text-slate-900">{selectedDomain.title}</strong>.
               </p>
             </div>
 
-            {/* Durations Comparison Grid */}
-            <div className={`grid grid-cols-1 gap-6 ${
-              availableDurations.length === 4 ? "md:grid-cols-2 lg:grid-cols-4" : "lg:grid-cols-3"
-            }`}>
-              {availableDurations.map((tier) => {
-                const coursePreview = selectedDomain.coursesByDuration[tier.id]?.[0];
+            {/* Ambient 3D Glow Orbs */}
+            <div className="relative">
+              <div className="absolute -top-10 left-1/4 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl pointer-events-none"></div>
+              <div className="absolute -bottom-10 right-1/4 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
-                return (
-                  <div
-                    key={tier.id}
-                    className={`bg-white rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 relative border-2 ${
-                      tier.popular
-                        ? "border-[#D4A017] shadow-2xl ring-2 ring-amber-300/60 lg:-translate-y-2"
-                        : "border-slate-200 shadow-md hover:shadow-xl hover:border-slate-300"
-                    }`}
-                  >
-                    {/* Floating Ribbon */}
-                    {tier.popular && (
-                      <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 to-[#D4A017] text-[#0B1220] text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-md">
-                        {tier.badge}
-                      </div>
-                    )}
-
-                    <div>
-                      {/* Top Info */}
-                      <div className="flex items-center justify-between mb-3">
-                        <span
-                          className={`text-xs px-2.5 py-1 rounded-full font-bold border ${tier.badgeColor}`}
-                        >
-                          {tier.duration} Track
-                        </span>
-                        <span className="text-xs font-semibold text-slate-400">
-                          {tier.hoursPerWeek}
-                        </span>
-                      </div>
-
-                      <h4 className="text-2xl font-black text-[#0B1220]">
-                        {tier.duration}
-                      </h4>
-                      <p className="text-sm font-bold text-[#7C2D12] mt-0.5">
-                        {coursePreview ? coursePreview.title : tier.name}
-                      </p>
-
-                      {coursePreview && (
-                        <div className="mt-3 inline-block bg-slate-50 border border-slate-200 text-slate-700 text-xs font-bold px-2.5 py-1 rounded-lg">
-                          {coursePreview.modulesCount} {coursePreview.modulesType} • {coursePreview.aiToolsCount} {coursePreview.aiToolsType}
-                        </div>
-                      )}
-
-                      <p className="text-slate-600 text-sm mt-3 leading-relaxed">
-                        {tier.tagline}
-                      </p>
-
-                      {/* Price & EMI */}
-                      <div className="mt-5 p-3.5 bg-slate-50 rounded-2xl border border-slate-100">
-                        <div className="flex items-baseline gap-2">
-                          <span className="text-2xl font-black text-[#0B1220]">
-                            ₹{tier.basePrice.toLocaleString("en-IN")}
-                          </span>
-                          <span className="text-xs line-through text-slate-400">
-                            ₹{tier.originalPrice.toLocaleString("en-IN")}
-                          </span>
-                        </div>
-                        <p className="text-xs font-semibold text-emerald-700 mt-1">
-                          EMI from {tier.emiStartsAt}
-                        </p>
-                      </div>
-
-                      {/* Key Metrics */}
-                      <div className="mt-5 space-y-2 text-xs sm:text-sm text-slate-700">
-                        <div className="flex items-center gap-2">
-                          <FaBriefcase className="text-[#7C2D12] flex-shrink-0" />
-                          <span>{tier.projects}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <FaGraduationCap className="text-[#7C2D12] flex-shrink-0" />
-                          <span>{tier.certification}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="mt-6 pt-4 border-t border-slate-100">
-                      <button
-                        onClick={() => handleDurationSelect(tier)}
-                        className={`w-full py-3 rounded-2xl font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2 ${
-                          tier.popular
-                            ? "bg-[#7C2D12] hover:bg-[#60230e] text-white ring-2 ring-orange-300"
-                            : "bg-[#0B1220] hover:bg-[#1E293B] text-white"
-                        }`}
-                      >
-                        Select {tier.duration} <FaArrowRight className="text-xs" />
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
+              {/* 3D Course Cards Grid */}
+              <div
+                className={`relative z-10 grid grid-cols-1 gap-6 ${
+                  domainCourses.length === 4
+                    ? "md:grid-cols-2 lg:grid-cols-4"
+                    : domainCourses.length === 3
+                    ? "md:grid-cols-3"
+                    : "md:grid-cols-2"
+                }`}
+              >
+                {domainCourses.map((course, idx) => {
+                  const isPopular =
+                    course.isPopular ||
+                    course.durationId === "6-months" ||
+                    course.id?.includes("advanced");
+                  return (
+                    <DurationTrackCard3D
+                      key={course.id}
+                      course={course}
+                      isPopular={isPopular}
+                      onSelect={() => handleCourseSelect(course)}
+                      index={idx}
+                    />
+                  );
+                })}
+              </div>
             </div>
 
             <div className="flex justify-center mt-10">
@@ -1275,202 +1429,45 @@ function Skilling() {
         )}
 
         {/* ==========================================
-            STEP 3: CHOOSE COURSE (MATCHING SCREENSHOTS)
+            STEP 3: MASTER PROGRAM DETAILS & ENROLLMENT
         ========================================== */}
-        {step === 3 && selectedDomain && selectedDuration && (
-          <div>
-            {/* Filter Summary Banner */}
-            <div className="bg-white border-2 border-orange-200 rounded-3xl p-6 mb-10 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <div>
-                <div className="flex flex-wrap items-center gap-2 mb-1">
-                  <span className="text-xs font-bold uppercase tracking-wider text-orange-600">
-                    {selectedDomain.title}
-                  </span>
-                  <span className="text-xs text-slate-400">•</span>
-                  <span className="text-xs font-bold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full">
-                    {selectedDuration.duration} ({selectedDuration.name})
-                  </span>
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-black text-[#0B1220]">
-                  Step 3: Program Cards & Curriculum
-                </h3>
-                <p className="text-sm text-slate-500 mt-0.5">
-                  Detailed curriculum, AI tools, and modules for the selected {selectedDuration.duration} track.
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-2">
-                <button
-                  onClick={() => setStep(1)}
-                  className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-700 hover:text-[#7C2D12] bg-slate-100 hover:bg-slate-200 px-3.5 py-2 rounded-xl transition"
-                >
-                  <FaUndo className="text-xs" /> Change Domain
-                </button>
-                <button
-                  onClick={() => setStep(2)}
-                  className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-700 hover:text-[#7C2D12] bg-slate-100 hover:bg-slate-200 px-3.5 py-2 rounded-xl transition"
-                >
-                  <FaUndo className="text-xs" /> Change Duration
-                </button>
-              </div>
-            </div>
-
-            {/* Courses Grid - Faithfully styled according to user screenshots */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {currentCourses.map((course) => (
-                <div
-                  key={course.id}
-                  onClick={() => handleCourseSelect(course)}
-                  className="bg-white rounded-3xl p-7 sm:p-8 border-2 border-slate-200 hover:border-[#7C2D12] shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col justify-between group"
-                >
-                  <div>
-                    {/* Top Level Pill Tag */}
-                    <div className="mb-4">
-                      <span
-                        className={`inline-block text-xs font-extrabold px-3 py-1 rounded-full border uppercase tracking-wider ${course.levelColor}`}
-                      >
-                        {course.level}
-                      </span>
-                    </div>
-
-                    {/* Course Title */}
-                    <h4 className="text-2xl sm:text-3xl font-black text-[#0B1220] group-hover:text-[#7C2D12] transition-colors leading-snug">
-                      {course.title}
-                    </h4>
-
-                    {/* Duration with Clock Icon */}
-                    <div className="flex items-center gap-2 text-slate-500 text-sm font-medium mt-2">
-                      <FaClock className="text-slate-400 text-xs" />
-                      <span>{course.duration}</span>
-                    </div>
-
-                    <div className="w-full h-px bg-slate-100 my-6"></div>
-
-                    {/* Feature Bullets (Exactly matching the uploaded screenshots) */}
-                    <div className="space-y-3.5">
-                      {/* 1. Modules Count Highlight */}
-                      <div className="flex items-start gap-3 text-slate-800 font-medium">
-                        <span className={`mt-1 flex-shrink-0 text-sm ${course.checkColor}`}>
-                          ✓
-                        </span>
-                        <span>
-                          <strong className="text-lg font-black text-slate-900 mr-1.5">
-                            {course.modulesCount}
-                          </strong>
-                          {course.modulesType}
-                        </span>
-                      </div>
-
-                      {/* 2. AI Tools Highlight */}
-                      <div className="flex items-start gap-3 text-slate-800 font-medium">
-                        <span className={`mt-1 flex-shrink-0 text-sm ${course.checkColor}`}>
-                          ✓
-                        </span>
-                        <span>
-                          <strong className="text-lg font-black text-slate-900 mr-1.5">
-                            {course.aiToolsCount}
-                          </strong>
-                          {course.aiToolsType}
-                        </span>
-                      </div>
-
-                      {/* Remaining Bullet Points from screenshot */}
-                      {course.featureList.slice(2).map((feature, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-start gap-3 text-slate-700 text-sm font-medium"
-                        >
-                          <span className={`mt-0.5 flex-shrink-0 text-sm ${course.checkColor}`}>
-                            ✓
-                          </span>
-                          <span>{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* PERFECT FOR: Box (from Image 2) */}
-                    <div
-                      className={`mt-8 p-4 rounded-2xl border text-xs sm:text-sm font-medium leading-relaxed ${course.perfectForBg}`}
-                    >
-                      <span className="block font-black uppercase tracking-widest text-[11px] mb-1 opacity-80">
-                        PERFECT FOR:
-                      </span>
-                      <span className="font-bold text-slate-900 text-sm">
-                        {course.perfectFor}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Card Bottom CTA */}
-                  <div className="mt-8 pt-4 border-t border-slate-100 flex items-center justify-between">
-                    <div>
-                      <span className="text-2xl font-black text-[#0B1220]">
-                        ₹{course.price.toLocaleString("en-IN")}
-                      </span>
-                      <span className="text-xs text-slate-400 line-through ml-2">
-                        ₹{course.originalPrice.toLocaleString("en-IN")}
-                      </span>
-                      <span className="block text-xs font-semibold text-emerald-700 mt-0.5">
-                        EMI from {course.emi}
-                      </span>
-                    </div>
-
-                    <button className="inline-flex items-center gap-2 bg-[#0B1220] group-hover:bg-[#7C2D12] text-white text-sm font-bold px-5 py-3 rounded-xl transition-colors shadow-sm">
-                      Select Course <FaArrowRight className="text-xs" />
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex justify-center mt-10">
-              <button
-                onClick={() => setStep(2)}
-                className="inline-flex items-center gap-2 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-6 py-3 rounded-xl transition"
-              >
-                <FaArrowLeft /> Back to Duration Selection
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* ==========================================
-            STEP 4: FINAL PROGRAM CARD & ENROLLMENT
-        ========================================== */}
-        {step === 4 && selectedDomain && selectedDuration && selectedCourse && (
+        {step === 3 && selectedDomain && selectedCourse && selectedDuration && (
           <div>
             {/* Header */}
             <div className="text-center mb-8">
               <span className="text-xs font-bold uppercase tracking-wider text-emerald-700 bg-emerald-100 px-3 py-1 rounded-full">
-                Course Selected Successfully
+                Program Selected
               </span>
               <h2 className="text-3xl sm:text-4xl font-black text-[#0B1220] mt-3">
-                Your Customized Skilling Program
+                {selectedCourse.title}
               </h2>
-              <p className="text-slate-600 mt-1">
-                Review your {selectedCourse.title} program overview, modules, and enrollment options.
+              <p className="text-slate-600 mt-1 max-w-2xl mx-auto text-sm sm:text-base">
+                Official syllabus, live projects, AI tools stack, and career roadmap for the {selectedCourse.duration} track.
               </p>
             </div>
 
             {/* MASTER PROGRAM CARD */}
             <div className="bg-white rounded-3xl border-2 border-[#D4A017] shadow-2xl overflow-hidden mb-12">
               {/* Card Banner */}
-              <div className="bg-[#0B1220] text-white p-8 sm:p-10 border-b-4 border-[#D4A017] relative">
-                <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="bg-[#0B1220] text-white p-6 sm:p-10 border-b-4 border-[#D4A017] relative">
+                <div className="flex flex-wrap items-center justify-between gap-6">
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-2xl bg-[#7C2D12] text-white flex items-center justify-center text-3xl shadow-lg border border-[#D4A017]/40">
+                    <div className="w-16 h-16 rounded-2xl bg-[#7C2D12] text-white flex items-center justify-center text-3xl shadow-lg border border-[#D4A017]/40 flex-shrink-0">
                       {selectedDomain.icon}
                     </div>
                     <div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex flex-wrap items-center gap-2">
                         <span className="text-xs uppercase font-bold tracking-widest text-[#D4A017]">
                           {selectedDomain.title}
                         </span>
-                        <span className={`text-xs px-2 py-0.5 rounded-full font-bold border ${selectedCourse.levelColor}`}>
+                        <span className={`text-xs px-2.5 py-0.5 rounded-full font-bold border ${selectedCourse.levelColor}`}>
                           {selectedCourse.level}
                         </span>
+                        <span className="inline-flex items-center gap-1 text-xs font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30 px-2 py-0.5 rounded-full">
+                          <FaStar className="text-amber-400 text-[10px]" /> {selectedCourse.rating || 4.9} ({selectedCourse.ratingsCount || "1,000+ ratings"})
+                        </span>
                       </div>
-                      <h3 className="text-2xl sm:text-4xl font-black text-white mt-1">
+                      <h3 className="text-2xl sm:text-4xl font-black text-white mt-1.5 leading-tight">
                         {selectedCourse.title}
                       </h3>
                       <p className="text-sm sm:text-base text-orange-200 mt-1 font-medium">
@@ -1479,38 +1476,32 @@ function Skilling() {
                     </div>
                   </div>
 
-                  <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 text-center sm:text-right">
+                  <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 text-center sm:text-right min-w-[170px]">
                     <span className="text-xs text-slate-300 block font-medium">
                       Duration Track
                     </span>
                     <span className="text-xl sm:text-2xl font-black text-[#D4A017]">
                       {selectedCourse.duration}
                     </span>
-                    <span className="text-xs text-slate-300 block mt-0.5">
-                      Batch starts Next Monday
+                    <span className="text-xs text-emerald-400 font-semibold block mt-0.5">
+                      ● Next Batch Monday
                     </span>
                   </div>
                 </div>
 
                 {/* Quick Navigation / Change Buttons */}
-                <div className="flex flex-wrap gap-2 mt-6 pt-6 border-t border-slate-800 text-xs">
+                <div className="flex flex-wrap items-center gap-2 mt-6 pt-6 border-t border-slate-800 text-xs">
                   <button
                     onClick={() => setStep(1)}
-                    className="bg-white/10 hover:bg-white/20 text-slate-200 px-3 py-1.5 rounded-lg transition"
+                    className="bg-white/10 hover:bg-white/20 text-slate-200 px-3 py-1.5 rounded-lg transition inline-flex items-center gap-1"
                   >
-                    Change Domain
+                    <FaArrowLeft className="text-[10px]" /> Change Domain
                   </button>
                   <button
                     onClick={() => setStep(2)}
-                    className="bg-white/10 hover:bg-white/20 text-slate-200 px-3 py-1.5 rounded-lg transition"
+                    className="bg-white/10 hover:bg-white/20 text-slate-200 px-3 py-1.5 rounded-lg transition inline-flex items-center gap-1"
                   >
-                    Change Duration ({selectedCourse.duration})
-                  </button>
-                  <button
-                    onClick={() => setStep(3)}
-                    className="bg-white/10 hover:bg-white/20 text-slate-200 px-3 py-1.5 rounded-lg transition"
-                  >
-                    Change Course
+                    <FaUndo className="text-[10px]" /> Change Duration
                   </button>
                   <button
                     onClick={handleReset}
@@ -1521,152 +1512,845 @@ function Skilling() {
                 </div>
               </div>
 
-              {/* Card Body */}
-              <div className="p-8 sm:p-10 space-y-10">
-                {/* 4 Feature Badges */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="p-4 bg-orange-50 rounded-2xl border border-orange-100">
-                    <FaClock className="text-2xl text-[#7C2D12] mb-2" />
-                    <p className="text-xs text-slate-500 font-semibold">Total Modules</p>
-                    <p className="text-base font-bold text-[#0B1220]">
-                      {selectedCourse.modulesCount} {selectedCourse.modulesType}
-                    </p>
-                  </div>
-                  <div className="p-4 bg-orange-50 rounded-2xl border border-orange-100">
-                    <FaBriefcase className="text-2xl text-[#7C2D12] mb-2" />
-                    <p className="text-xs text-slate-500 font-semibold">AI Tools</p>
-                    <p className="text-base font-bold text-[#0B1220]">
-                      {selectedCourse.aiToolsCount} {selectedCourse.aiToolsType}
-                    </p>
-                  </div>
-                  <div className="p-4 bg-orange-50 rounded-2xl border border-orange-100">
-                    <FaAward className="text-2xl text-[#7C2D12] mb-2" />
-                    <p className="text-xs text-slate-500 font-semibold">Certification</p>
-                    <p className="text-base font-bold text-[#0B1220]">
-                      {selectedCourse.certification}
-                    </p>
-                  </div>
-                  <div className="p-4 bg-orange-50 rounded-2xl border border-orange-100">
-                    <FaUsers className="text-2xl text-[#7C2D12] mb-2" />
-                    <p className="text-xs text-slate-500 font-semibold">Mentorship</p>
-                    <p className="text-base font-bold text-[#0B1220]">
-                      {selectedCourse.mentorship}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Perfect For Banner */}
-                <div className={`p-5 rounded-2xl border ${selectedCourse.perfectForBg}`}>
-                  <span className="block text-xs font-black uppercase tracking-wider mb-1">
-                    TARGET AUDIENCE / PERFECT FOR:
-                  </span>
-                  <p className="text-base font-bold text-slate-900">
-                    {selectedCourse.perfectFor}
-                  </p>
-                </div>
-
-                {/* What's Covered List */}
-                <div className="border-t border-slate-200 pt-8">
-                  <h4 className="text-xl font-bold text-[#0B1220] mb-4 flex items-center gap-2">
-                    <FaCalendarAlt className="text-[#7C2D12]" />
-                    <span>Included in this Program</span>
-                  </h4>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
-                    {selectedCourse.featureList.map((feature, idx) => (
+              {/* IF COURSE HAS RICH OFFICIAL DETAILS (EXPERT DIGITAL MARKETING) */}
+              {selectedCourse.details ? (
+                <div className="p-6 sm:p-10 space-y-10">
+                  {/* 6 Key Performance Metrics Strip */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                    {selectedCourse.details.keyMetrics.map((km, idx) => (
                       <div
                         key={idx}
-                        className="flex items-center gap-2.5 p-3.5 bg-slate-50 border border-slate-200 rounded-xl"
+                        className="p-4 bg-orange-50/70 border border-orange-200/80 rounded-2xl text-center flex flex-col justify-center"
                       >
-                        <FaCheckCircle className={`text-sm ${selectedCourse.checkColor}`} />
-                        <span className="text-sm font-semibold text-slate-800">
-                          {feature}
+                        <span className="text-xs text-slate-500 font-bold uppercase tracking-wider block">
+                          {km.label}
+                        </span>
+                        <span className="text-lg sm:text-xl font-black text-[#0B1220] mt-1 block">
+                          {km.value}
+                        </span>
+                        <span className="text-[11px] text-[#7C2D12] font-semibold mt-0.5 block">
+                          {km.subtext}
                         </span>
                       </div>
                     ))}
                   </div>
-                </div>
 
-                {/* Modules Covered Preview */}
-                <div className="border-t border-slate-200 pt-8">
-                  <h4 className="text-xl font-bold text-[#0B1220] mb-2">
-                    Curriculum Modules Overview
-                  </h4>
-                  <p className="text-sm text-slate-500 mb-4">
-                    Complete syllabus modules designed by industry experts with hands-on exercises.
-                  </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {selectedCourse.modules.map((mod, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-3 p-3.5 bg-white border border-slate-200 rounded-xl shadow-xs"
-                      >
-                        <span className="w-7 h-7 rounded-full bg-slate-100 text-slate-700 font-bold text-xs flex items-center justify-center flex-shrink-0">
-                          {idx + 1}
+                  {/* Official Course Overview Callout */}
+                  <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8">
+                    <div className="flex flex-col lg:flex-row gap-6 items-start">
+                      <div className="lg:w-2/3">
+                        <span className="inline-block text-xs font-extrabold uppercase tracking-widest text-[#7C2D12] bg-orange-100 px-3 py-1 rounded-full mb-3">
+                          Official Course Overview
                         </span>
-                        <span className="text-sm font-semibold text-slate-800">
-                          {mod}
-                        </span>
+                        <h4 className="text-2xl font-black text-[#0B1220] leading-snug">
+                          Master Modern Digital Marketing with Real Budgets & AI
+                        </h4>
+                        <p className="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed">
+                          {selectedCourse.details.overviewDescription}
+                        </p>
                       </div>
-                    ))}
-                  </div>
-                </div>
 
-                {/* Pricing, Inclusions and Action CTA */}
-                <div className="border-t border-slate-200 pt-8 bg-slate-50 -mx-8 -mb-10 p-8 sm:p-10 rounded-b-3xl">
-                  <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-                    <div>
-                      <div className="flex items-baseline gap-3">
-                        <span className="text-4xl sm:text-5xl font-black text-[#0B1220]">
-                          ₹{selectedCourse.price.toLocaleString("en-IN")}
-                        </span>
-                        <span className="text-lg line-through text-slate-400">
-                          ₹{selectedCourse.originalPrice.toLocaleString("en-IN")}
-                        </span>
-                        <span className="text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full">
-                          Save 50%
-                        </span>
+                      <div className="lg:w-1/3 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm w-full">
+                        <h5 className="font-black text-slate-900 text-sm mb-3 flex items-center gap-2">
+                          <FaAward className="text-[#D4A017]" /> Program Highlights
+                        </h5>
+                        <ul className="space-y-2 text-xs font-semibold text-slate-700">
+                          {(selectedCourse.details.highlights || []).slice(0, 5).map((hl, hIdx) => (
+                            <li key={hIdx} className="flex items-start gap-2">
+                              <FaCheck className="text-emerald-600 mt-0.5 flex-shrink-0" />
+                              <span>{hl}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <p className="text-sm text-slate-600 mt-1 font-medium">
-                        Flexible EMI Options:{" "}
-                        <span className="font-bold text-[#7C2D12]">
-                          Starting at {selectedCourse.emi}
-                        </span>
-                      </p>
-                      <p className="text-xs text-slate-400 mt-1">
-                        *Inclusive of all GST, live training, projects review, and official certification.
-                      </p>
                     </div>
+                  </div>
 
-                    {/* Action Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                  {/* Interactive Navigation Tabs for Course Deep Dive */}
+                  <div>
+                    <div className="flex items-center gap-2 overflow-x-auto pb-2 border-b border-slate-200 text-sm font-bold no-scrollbar">
                       <button
-                        onClick={() => setShowCounselorModal(true)}
-                        className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-100 text-slate-800 border-2 border-slate-300 font-bold px-6 py-4 rounded-2xl transition shadow-sm"
+                        onClick={() => setActiveDetailTab("curriculum")}
+                        className={`px-5 py-3 rounded-2xl transition whitespace-nowrap flex items-center gap-2 ${
+                          activeDetailTab === "curriculum"
+                            ? "bg-[#7C2D12] text-white shadow-md"
+                            : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+                        }`}
                       >
-                        <FaPhoneAlt className="text-xs" /> Talk to Counselor
+                        <FaBookOpen />
+                        <span>{selectedCourse.details.modulesCount} Modules Roadmap</span>
+                        <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full">
+                          {selectedCourse.details.curriculumCategories.length} Categories
+                        </span>
                       </button>
 
                       <button
-                        onClick={() => {
-                          navigate("/courses", {
-                            state: {
-                              preselectedCategory: "Skilling",
-                              courseTitle: selectedCourse.title,
-                              domain: selectedDomain.title,
-                              duration: selectedCourse.duration,
-                              price: selectedCourse.price,
-                            },
-                          });
-                        }}
-                        className="inline-flex items-center justify-center gap-2 bg-[#7C2D12] hover:bg-[#60230e] text-white font-bold px-8 py-4 rounded-2xl transition shadow-xl text-lg hover:scale-105"
+                        onClick={() => setActiveDetailTab("projects")}
+                        className={`px-5 py-3 rounded-2xl transition whitespace-nowrap flex items-center gap-2 ${
+                          activeDetailTab === "projects"
+                            ? "bg-[#7C2D12] text-white shadow-md"
+                            : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+                        }`}
                       >
-                        Enroll Now <FaArrowRight />
+                        <FaRocket />
+                        <span>{selectedCourse.details.liveProjects.length} Live Projects</span>
+                        <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full">
+                          Real Budgets
+                        </span>
                       </button>
+
+                      <button
+                        onClick={() => setActiveDetailTab("aiTools")}
+                        className={`px-5 py-3 rounded-2xl transition whitespace-nowrap flex items-center gap-2 ${
+                          activeDetailTab === "aiTools"
+                            ? "bg-[#7C2D12] text-white shadow-md"
+                            : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+                        }`}
+                      >
+                        <FaRobot />
+                        <span>{selectedCourse.details.aiToolsCount} AI Tools Stack</span>
+                        <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full">
+                          {selectedCourse.details.toolClusters?.length || 6} Clusters
+                        </span>
+                      </button>
+
+                      <button
+                        onClick={() => setActiveDetailTab("journey")}
+                        className={`px-5 py-3 rounded-2xl transition whitespace-nowrap flex items-center gap-2 ${
+                          activeDetailTab === "journey"
+                            ? "bg-[#7C2D12] text-white shadow-md"
+                            : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+                        }`}
+                      >
+                        <FaGraduationCap />
+                        <span>Learning Journey</span>
+                        <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full">
+                          {selectedCourse.details.journeySteps?.length || 6} Steps
+                        </span>
+                      </button>
+
+                      <button
+                        onClick={() => setActiveDetailTab("whoCanJoin")}
+                        className={`px-5 py-3 rounded-2xl transition whitespace-nowrap flex items-center gap-2 ${
+                          activeDetailTab === "whoCanJoin"
+                            ? "bg-[#7C2D12] text-white shadow-md"
+                            : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+                        }`}
+                      >
+                        <FaUsers />
+                        <span>Who Should Join</span>
+                        <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full">
+                          {selectedCourse.details.whoShouldJoin?.length || 6} Profiles
+                        </span>
+                      </button>
+
+                      <button
+                        onClick={() => setActiveDetailTab("fees")}
+                        className={`px-5 py-3 rounded-2xl transition whitespace-nowrap flex items-center gap-2 ${
+                          activeDetailTab === "fees"
+                            ? "bg-[#7C2D12] text-white shadow-md"
+                            : "bg-slate-100 hover:bg-slate-200 text-slate-700"
+                        }`}
+                      >
+                        <FaAward />
+                        <span>Fees & Certifications</span>
+                      </button>
+                    </div>
+
+                    {/* TAB 1: 70 MODULES ROADMAP ACCORDION */}
+                    {activeDetailTab === "curriculum" && (
+                      <div className="mt-8 space-y-6 animate-fadeIn">
+                        {/* Search in Curriculum */}
+                        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                          <div>
+                            <h5 className="font-black text-slate-900 text-base">
+                              Explore {selectedCourse.details.modulesCount} Modules Across {selectedCourse.details.curriculumCategories.length} Domains
+                            </h5>
+                            <p className="text-xs text-slate-500">
+                              Click any domain category below to inspect module topics and learned skills.
+                            </p>
+                          </div>
+                          <div className="relative w-full sm:w-72">
+                            <FaSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs" />
+                            <input
+                              type="text"
+                              placeholder="Search SEO, Meta Ads, Canva, AEO..."
+                              value={curriculumSearch}
+                              onChange={(e) => setCurriculumSearch(e.target.value)}
+                              className="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-300 text-xs focus:outline-none focus:ring-2 focus:ring-[#7C2D12] bg-white"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Category Cards */}
+                        <div className="space-y-4">
+                          {selectedCourse.details.curriculumCategories
+                            .map((cat, catIdx) => {
+                              const q = curriculumSearch.toLowerCase().trim();
+                              const filteredModules = q
+                                ? cat.modules.filter(
+                                    (m) =>
+                                      m.title.toLowerCase().includes(q) ||
+                                      m.topics.some((t) => t.toLowerCase().includes(q)) ||
+                                      m.skills.some((s) => s.toLowerCase().includes(q))
+                                  )
+                                : cat.modules;
+
+                              if (q && filteredModules.length === 0) return null;
+
+                              const isExpanded =
+                                Boolean(q) || expandedCurriculumIdx === catIdx;
+
+                              return (
+                                <div
+                                  key={cat.id}
+                                  className="border-2 border-slate-200 rounded-2xl overflow-hidden transition bg-white"
+                                >
+                                  {/* Category Header */}
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      setExpandedCurriculumIdx(
+                                        expandedCurriculumIdx === catIdx ? -1 : catIdx
+                                      )
+                                    }
+                                    className="w-full p-5 flex items-center justify-between text-left hover:bg-slate-50 transition"
+                                  >
+                                    <div className="flex items-center gap-3">
+                                      <span className="w-8 h-8 rounded-xl bg-[#7C2D12] text-white flex items-center justify-center font-black text-xs">
+                                        0{catIdx + 1}
+                                      </span>
+                                      <div>
+                                        <h5 className="text-base sm:text-lg font-black text-slate-900">
+                                          {cat.categoryTitle}
+                                        </h5>
+                                        <p className="text-xs text-slate-500 mt-0.5">
+                                          {cat.categoryDesc}
+                                        </p>
+                                      </div>
+                                    </div>
+
+                                    <div className="flex items-center gap-3">
+                                      <span className="text-xs font-bold bg-orange-100 text-[#7C2D12] px-2.5 py-1 rounded-full whitespace-nowrap">
+                                        {filteredModules.length} Modules
+                                      </span>
+                                      {isExpanded ? (
+                                        <FaChevronUp className="text-slate-400 text-xs" />
+                                      ) : (
+                                        <FaChevronDown className="text-slate-400 text-xs" />
+                                      )}
+                                    </div>
+                                  </button>
+
+                                  {/* Category Modules */}
+                                  {isExpanded && (
+                                    <div className="p-5 border-t border-slate-100 bg-slate-50/50">
+                                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                        {filteredModules.map((mod) => (
+                                          <div
+                                            key={mod.num}
+                                            className="bg-white p-5 rounded-2xl border border-slate-200 shadow-xs flex flex-col justify-between hover:border-[#D4A017] transition"
+                                          >
+                                            <div>
+                                              <div className="flex items-center justify-between gap-2 mb-2">
+                                                <span className="text-[11px] font-bold text-[#7C2D12] uppercase tracking-wider">
+                                                  Module {mod.num}
+                                                </span>
+                                              </div>
+                                              <h6 className="font-black text-slate-900 text-base leading-snug mb-3">
+                                                {mod.title}
+                                              </h6>
+
+                                              {/* Topics */}
+                                              <ul className="space-y-1.5 text-xs text-slate-600 mb-4">
+                                                {mod.topics.map((topic, tIdx) => (
+                                                  <li
+                                                    key={tIdx}
+                                                    className="flex items-start gap-1.5"
+                                                  >
+                                                    <span className="text-emerald-500 font-bold">
+                                                      •
+                                                    </span>
+                                                    <span>{topic}</span>
+                                                  </li>
+                                                ))}
+                                              </ul>
+                                            </div>
+
+                                            {/* Skill Tags */}
+                                            <div className="pt-3 border-t border-slate-100 flex flex-wrap gap-1.5">
+                                              {mod.skills.map((skill, sIdx) => (
+                                                <span
+                                                  key={sIdx}
+                                                  className="text-[10px] font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md"
+                                                >
+                                                  #{skill}
+                                                </span>
+                                              ))}
+                                            </div>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  )}
+                                </div>
+                              );
+                            })
+                            .filter(Boolean)}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* TAB 2: LIVE BRAND PROJECTS */}
+                    {activeDetailTab === "projects" && (
+                      <div className="mt-8 space-y-6 animate-fadeIn">
+                        <div className="bg-orange-50 border border-orange-200 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                          <div>
+                            <span className="text-xs font-black text-orange-700 uppercase tracking-widest block">
+                              Real Work Experience
+                            </span>
+                            <h5 className="text-xl font-black text-slate-900 mt-1">
+                              {selectedCourse.details.liveProjects.length} Live Projects with Real Ad Budgets
+                            </h5>
+                            <p className="text-xs text-slate-600 mt-0.5">
+                              You will execute campaigns on actual brand accounts, generate leads, and defend your results before mentors.
+                            </p>
+                          </div>
+                          <span className="text-xs font-bold bg-white text-[#7C2D12] border border-orange-300 px-3 py-1.5 rounded-xl whitespace-nowrap shadow-xs">
+                            *Brands change every batch
+                          </span>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          {selectedCourse.details.liveProjects.map((proj) => (
+                            <div
+                              key={proj.num}
+                              className="bg-white rounded-3xl border-2 border-slate-200 hover:border-[#7C2D12] p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between"
+                            >
+                              <div>
+                                <div className="flex items-center justify-between gap-2 mb-3">
+                                  <span className="w-8 h-8 rounded-xl bg-[#0B1220] text-[#D4A017] flex items-center justify-center font-black text-xs">
+                                    P{proj.num}
+                                  </span>
+                                  <span className="text-xs font-bold px-3 py-0.5 rounded-full bg-orange-100 text-[#7C2D12] border border-orange-200">
+                                    {proj.badge}
+                                  </span>
+                                </div>
+
+                                <h5 className="text-xl font-black text-slate-900">
+                                  {proj.title}
+                                </h5>
+
+                                <div className="flex items-center gap-1.5 text-xs text-slate-500 font-semibold mt-1">
+                                  <FaClock className="text-slate-400" />
+                                  <span>{proj.duration}</span>
+                                </div>
+
+                                <p className="text-xs text-slate-600 mt-3 leading-relaxed">
+                                  {proj.description}
+                                </p>
+
+                                <div className="mt-4 pt-4 border-t border-slate-100">
+                                  <span className="text-[11px] font-black uppercase text-slate-400 tracking-wider block mb-2">
+                                    Key Project Deliverables:
+                                  </span>
+                                  <ul className="space-y-1.5 text-xs font-medium text-slate-700">
+                                    {proj.deliverables.map((del, dIdx) => (
+                                      <li
+                                        key={dIdx}
+                                        className="flex items-start gap-2"
+                                      >
+                                        <FaCheckCircle className="text-emerald-500 text-[11px] mt-0.5 flex-shrink-0" />
+                                        <span>{del}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+
+                              <div className="mt-5 pt-3 border-t border-slate-100 bg-orange-50/50 -mx-6 -mb-6 p-4 rounded-b-3xl">
+                                <span className="text-[11px] font-bold text-[#7C2D12] flex items-center gap-1.5">
+                                  <FaAward className="text-amber-500" />
+                                  {proj.highlight}
+                                </span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* TAB 3: AI TOOLS STACK */}
+                    {activeDetailTab === "aiTools" && (
+                      <div className="mt-8 space-y-8 animate-fadeIn">
+                        <div className="text-center max-w-2xl mx-auto">
+                          <h5 className="text-2xl font-black text-slate-900">
+                            Hands-on Exposure to {selectedCourse.details.aiToolsCount} Industry & AI Tools
+                          </h5>
+                          <p className="text-slate-600 text-xs sm:text-sm mt-1">
+                            Gain practical mastery over the modern software stack used by top global marketing agencies.
+                          </p>
+                        </div>
+
+                        <div className="space-y-6">
+                          {selectedCourse.details.toolClusters.map((cluster, cIdx) => (
+                            <div
+                              key={cIdx}
+                              className="bg-slate-50 border border-slate-200 rounded-3xl p-6"
+                            >
+                              <div className="flex items-center justify-between gap-3 mb-4">
+                                <h6 className="text-base sm:text-lg font-black text-slate-900 flex items-center gap-2">
+                                  <FaRobot className="text-[#7C2D12]" />
+                                  <span>{cluster.name}</span>
+                                </h6>
+                                <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-white border border-slate-200 text-slate-700">
+                                  {cluster.badge}
+                                </span>
+                              </div>
+
+                              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                                {cluster.tools.map((tool, tIdx) => (
+                                  <div
+                                    key={tIdx}
+                                    className="p-3.5 bg-white rounded-2xl border border-slate-200 shadow-xs hover:border-[#7C2D12] transition"
+                                  >
+                                    <div className="flex items-center gap-2 mb-1">
+                                      <span
+                                        className="w-2.5 h-2.5 rounded-full"
+                                        style={{ backgroundColor: tool.accent }}
+                                      ></span>
+                                      <span className="font-bold text-xs text-slate-900 truncate">
+                                        {tool.name}
+                                      </span>
+                                    </div>
+                                    <p className="text-[11px] text-slate-500 line-clamp-2">
+                                      {tool.desc}
+                                    </p>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* TAB 4: LEARNING JOURNEY */}
+                    {activeDetailTab === "journey" && (
+                      <div className="mt-8 space-y-6 animate-fadeIn">
+                        <div className="text-center max-w-2xl mx-auto mb-8">
+                          <span className="text-xs font-black uppercase tracking-widest text-[#7C2D12]">
+                            Your Path to Success
+                          </span>
+                          <h5 className="text-2xl sm:text-3xl font-black text-slate-900 mt-1">
+                            Your {selectedCourse.duration} Journey With Us
+                          </h5>
+                          <p className="text-slate-600 text-xs sm:text-sm mt-1">
+                            From day one to your dream marketing role — step by step.
+                          </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {selectedCourse.details.journeySteps.map((js) => (
+                            <div
+                              key={js.step}
+                              className="bg-white p-6 rounded-3xl border-2 border-slate-200 hover:border-[#D4A017] shadow-sm flex flex-col justify-between"
+                            >
+                              <div>
+                                <span className="inline-block text-xs font-black px-3 py-1 rounded-full bg-[#0B1220] text-[#D4A017] mb-3">
+                                  Step {js.step}
+                                </span>
+                                <h6 className="text-lg font-black text-slate-900">
+                                  {js.title}
+                                </h6>
+                                <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                                  {js.desc}
+                                </p>
+                              </div>
+
+                              <div className="mt-4 pt-4 border-t border-slate-100 flex flex-wrap gap-1.5">
+                                {js.pills.map((pill, pIdx) => (
+                                  <span
+                                    key={pIdx}
+                                    className="text-[10px] font-bold bg-orange-50 text-[#7C2D12] border border-orange-200 px-2 py-0.5 rounded-md"
+                                  >
+                                    ✓ {pill}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* TAB 5: WHO SHOULD JOIN */}
+                    {activeDetailTab === "whoCanJoin" && (
+                      <div className="mt-8 space-y-6 animate-fadeIn">
+                        <div className="text-center max-w-2xl mx-auto mb-8">
+                          <span className="text-xs font-black uppercase tracking-widest text-[#7C2D12]">
+                            Tailored for You
+                          </span>
+                          <h5 className="text-2xl sm:text-3xl font-black text-slate-900 mt-1">
+                            Who Should Join This {selectedCourse.level}?
+                          </h5>
+                          <p className="text-slate-600 text-xs sm:text-sm mt-1">
+                            Built for ambitious individuals who want real campaigns and proven career acceleration.
+                          </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {selectedCourse.details.whoShouldJoin.map((w, idx) => (
+                            <div
+                              key={idx}
+                              className="bg-white p-6 rounded-3xl border-2 border-slate-200 hover:border-[#7C2D12] shadow-sm"
+                            >
+                              <div className="w-10 h-10 rounded-2xl bg-orange-100 text-[#7C2D12] flex items-center justify-center text-lg font-bold mb-3">
+                                {idx === 0 ? <FaUserTie /> : idx === 1 ? <FaGraduationCap /> : idx === 2 ? <FaBriefcase /> : idx === 3 ? <FaUndo /> : idx === 4 ? <FaLaptopCode /> : <FaUsers />}
+                              </div>
+                              <h6 className="text-lg font-black text-slate-900">
+                                {w.role}
+                              </h6>
+                              <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                                {w.desc}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* TAB 6: FEES & CERTIFICATIONS */}
+                    {activeDetailTab === "fees" && (
+                      <div className="mt-8 space-y-8 animate-fadeIn">
+                        {/* Certifications Grid */}
+                        <div>
+                          <h5 className="text-xl font-black text-slate-900 mb-2">
+                            10+ Globally Recognized Certifications
+                          </h5>
+                          <p className="text-xs text-slate-500 mb-4">
+                            Each certificate is earned upon passing module capstones and live practical assessments.
+                          </p>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                            {selectedCourse.details.certificationsList.map((cert, cIdx) => (
+                              <div
+                                key={cIdx}
+                                className="p-4 rounded-2xl border border-slate-200 bg-slate-50 flex items-center justify-between gap-3"
+                              >
+                                <div className="flex items-center gap-3">
+                                  <FaAward className="text-[#D4A017] text-xl flex-shrink-0" />
+                                  <div>
+                                    <span className="font-bold text-xs text-slate-900 block leading-tight">
+                                      {cert.name}
+                                    </span>
+                                    <span className="text-[11px] text-slate-500 block">
+                                      Issuer: {cert.issuer}
+                                    </span>
+                                  </div>
+                                </div>
+                                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white border border-slate-200 text-slate-600 flex-shrink-0">
+                                  {cert.badge}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Fee Table */}
+                        <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8">
+                          <h5 className="text-xl font-black text-slate-900 mb-4">
+                            Transparent Fee Structure & EMI Options
+                          </h5>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="bg-white p-6 rounded-2xl border-2 border-[#7C2D12] shadow-sm">
+                              <span className="text-xs font-black uppercase tracking-wider text-[#7C2D12] bg-orange-100 px-3 py-1 rounded-full inline-block mb-3">
+                                Offline Classroom Training
+                              </span>
+                              <div className="flex items-baseline gap-2">
+                                <span className="text-3xl font-black text-[#0B1220]">
+                                  ₹{(selectedCourse.details.offlinePrice || selectedCourse.price).toLocaleString("en-IN")}
+                                </span>
+                                <span className="text-sm line-through text-slate-400">
+                                  ₹{selectedCourse.originalPrice.toLocaleString("en-IN")}
+                                </span>
+                                <span className="text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
+                                  Save ₹{(selectedCourse.originalPrice - (selectedCourse.details.offlinePrice || selectedCourse.price)).toLocaleString("en-IN")}
+                                </span>
+                              </div>
+                              <p className="text-xs text-slate-600 mt-2">
+                                Includes classroom lab access, personal workstation, physical mentor reviews, and in-person agency internship.
+                              </p>
+                              <span className="text-xs font-bold text-[#7C2D12] block mt-3">
+                                EMI: Starting at {selectedCourse.emi} (No-Cost EMI)
+                              </span>
+                            </div>
+
+                            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                              <span className="text-xs font-black uppercase tracking-wider text-blue-700 bg-blue-100 px-3 py-1 rounded-full inline-block mb-3">
+                                Live Interactive Online
+                              </span>
+                              <div className="flex items-baseline gap-2">
+                                <span className="text-3xl font-black text-[#0B1220]">
+                                  ₹{(selectedCourse.details.onlinePrice || selectedCourse.price).toLocaleString("en-IN")}
+                                </span>
+                                <span className="text-sm line-through text-slate-400">
+                                  ₹{selectedCourse.originalPrice.toLocaleString("en-IN")}
+                                </span>
+                                <span className="text-xs font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
+                                  Save ₹{(selectedCourse.originalPrice - (selectedCourse.details.onlinePrice || selectedCourse.price)).toLocaleString("en-IN")}
+                                </span>
+                              </div>
+                              <p className="text-xs text-slate-600 mt-2">
+                                Live 2-way audio/video sessions, cloud lab, recordings on LMS, and remote paid agency internship.
+                              </p>
+                              <span className="text-xs font-bold text-[#7C2D12] block mt-3">
+                                EMI: Starting at {selectedCourse.emi} (No-Cost EMI)
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Pricing, Official Links & Action CTAs Strip */}
+                  <div className="border-t-2 border-slate-200 pt-8 bg-slate-50 -mx-6 sm:-mx-10 -mb-6 sm:-mb-10 p-6 sm:p-10 rounded-b-3xl">
+                    <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+                      <div>
+                        <div className="flex items-baseline gap-3">
+                          <span className="text-3xl sm:text-4xl font-black text-[#0B1220]">
+                            ₹{selectedCourse.price.toLocaleString("en-IN")}
+                          </span>
+                          <span className="text-base line-through text-slate-400">
+                            ₹{selectedCourse.originalPrice.toLocaleString("en-IN")}
+                          </span>
+                          <span className="text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full">
+                            Official Special Offer
+                          </span>
+                        </div>
+                        <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
+                          Flexible EMI: <strong className="text-[#7C2D12]">{selectedCourse.emi}</strong> • Online track at ₹{(selectedCourse.details.onlinePrice || selectedCourse.price).toLocaleString("en-IN")}
+                        </p>
+                        <p className="text-[11px] text-slate-400 mt-0.5">
+                          *Includes GST, {selectedCourse.details.liveProjects.length} Live Campaign Ad Budgets, Agency Internship, and Certifications.
+                        </p>
+                      </div>
+
+                      {/* Action Buttons */}
+                      <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+                        <button
+                          onClick={() => setShowCounselorModal(true)}
+                          className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-100 text-slate-800 border-2 border-slate-300 font-bold px-4 py-3.5 rounded-2xl transition shadow-xs text-xs sm:text-sm"
+                        >
+                          <FaPhoneAlt className="text-xs" /> Talk to Counselor
+                        </button>
+
+                        <a
+                          href={selectedCourse.whatsappUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-3.5 rounded-2xl transition shadow-md text-xs sm:text-sm"
+                        >
+                          <FaWhatsapp className="text-base" /> WhatsApp
+                        </a>
+
+                        <a
+                          href={selectedCourse.enrollUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#7C2D12] hover:bg-[#60230e] text-white font-black px-6 py-3.5 rounded-2xl transition shadow-xl text-sm hover:scale-105"
+                        >
+                          <span>Official Portal</span>
+                          <FaExternalLinkAlt className="text-xs" />
+                        </a>
+
+                        <button
+                          onClick={() => {
+                            navigate("/courses", {
+                              state: {
+                                preselectedCategory: "Skilling",
+                                courseTitle: selectedCourse.title,
+                                domain: selectedDomain.title,
+                                duration: selectedCourse.duration,
+                                price: selectedCourse.price,
+                              },
+                            });
+                          }}
+                          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#0B1220] hover:bg-slate-900 text-[#D4A017] font-black px-6 py-3.5 rounded-2xl transition shadow-md text-sm"
+                        >
+                          <span>Enroll via LMS</span>
+                          <FaArrowRight className="text-xs" />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                /* DEFAULT STANDARD STEP 3 CARD (FOR OTHER COURSES) */
+                <div className="p-8 sm:p-10 space-y-10">
+                  {/* 4 Feature Badges */}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="p-4 bg-orange-50 rounded-2xl border border-orange-100">
+                      <FaClock className="text-2xl text-[#7C2D12] mb-2" />
+                      <p className="text-xs text-slate-500 font-semibold">Total Modules</p>
+                      <p className="text-base font-bold text-[#0B1220]">
+                        {selectedCourse.modulesCount} {selectedCourse.modulesType}
+                      </p>
+                    </div>
+                    <div className="p-4 bg-orange-50 rounded-2xl border border-orange-100">
+                      <FaBriefcase className="text-2xl text-[#7C2D12] mb-2" />
+                      <p className="text-xs text-slate-500 font-semibold">AI Tools</p>
+                      <p className="text-base font-bold text-[#0B1220]">
+                        {selectedCourse.aiToolsCount} {selectedCourse.aiToolsType}
+                      </p>
+                    </div>
+                    <div className="p-4 bg-orange-50 rounded-2xl border border-orange-100">
+                      <FaAward className="text-2xl text-[#7C2D12] mb-2" />
+                      <p className="text-xs text-slate-500 font-semibold">Certification</p>
+                      <p className="text-base font-bold text-[#0B1220]">
+                        {selectedCourse.certification}
+                      </p>
+                    </div>
+                    <div className="p-4 bg-orange-50 rounded-2xl border border-orange-100">
+                      <FaUsers className="text-2xl text-[#7C2D12] mb-2" />
+                      <p className="text-xs text-slate-500 font-semibold">Mentorship</p>
+                      <p className="text-base font-bold text-[#0B1220]">
+                        {selectedCourse.mentorship}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Target Audience Box */}
+                  <div className={`p-5 rounded-2xl border ${selectedCourse.perfectForBg}`}>
+                    <span className="block text-xs font-black uppercase tracking-wider mb-1">
+                      TARGET AUDIENCE / PERFECT FOR:
+                    </span>
+                    <p className="text-base font-bold text-slate-900">
+                      {selectedCourse.perfectFor}
+                    </p>
+                  </div>
+
+                  {/* What's Included Grid */}
+                  <div className="border-t border-slate-200 pt-8">
+                    <h4 className="text-xl font-bold text-[#0B1220] mb-4 flex items-center gap-2">
+                      <FaCalendarAlt className="text-[#7C2D12]" />
+                      <span>Included in this Program</span>
+                    </h4>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+                      {selectedCourse.featureList.map((feature, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center gap-2.5 p-3.5 bg-slate-50 border border-slate-200 rounded-xl"
+                        >
+                          <FaCheckCircle className={`text-sm ${selectedCourse.checkColor}`} />
+                          <span className="text-sm font-semibold text-slate-800">
+                            {feature}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Modules Covered Preview */}
+                  <div className="border-t border-slate-200 pt-8">
+                    <h4 className="text-xl font-bold text-[#0B1220] mb-2">
+                      Curriculum Modules Overview
+                    </h4>
+                    <p className="text-sm text-slate-500 mb-4">
+                      Complete syllabus modules designed by industry experts with hands-on exercises.
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {selectedCourse.modules.map((mod, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center gap-3 p-3.5 bg-white border border-slate-200 rounded-xl shadow-xs"
+                        >
+                          <span className="w-7 h-7 rounded-full bg-slate-100 text-slate-700 font-bold text-xs flex items-center justify-center flex-shrink-0">
+                            {idx + 1}
+                          </span>
+                          <span className="text-sm font-semibold text-slate-800">
+                            {mod}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Pricing, Inclusions and Action CTA */}
+                  <div className="border-t border-slate-200 pt-8 bg-slate-50 -mx-8 -mb-10 p-8 sm:p-10 rounded-b-3xl">
+                    <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+                      <div>
+                        <div className="flex items-baseline gap-3">
+                          <span className="text-4xl sm:text-5xl font-black text-[#0B1220]">
+                            ₹{selectedCourse.price.toLocaleString("en-IN")}
+                          </span>
+                          <span className="text-lg line-through text-slate-400">
+                            ₹{selectedCourse.originalPrice.toLocaleString("en-IN")}
+                          </span>
+                          <span className="text-xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full">
+                            Save Special Offer
+                          </span>
+                        </div>
+                        <p className="text-sm text-slate-600 mt-1 font-medium">
+                          Flexible EMI Options:{" "}
+                          <span className="font-bold text-[#7C2D12]">
+                            Starting at {selectedCourse.emi}
+                          </span>
+                        </p>
+                        <p className="text-xs text-slate-400 mt-1">
+                          *Inclusive of all GST, live training, projects review, and official certification.
+                        </p>
+                      </div>
+
+                      {/* Action Buttons */}
+                      <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                        <button
+                          onClick={() => setShowCounselorModal(true)}
+                          className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-100 text-slate-800 border-2 border-slate-300 font-bold px-6 py-4 rounded-2xl transition shadow-sm"
+                        >
+                          <FaPhoneAlt className="text-xs" /> Talk to Counselor
+                        </button>
+
+                        {selectedCourse.whatsappUrl && (
+                          <a
+                            href={selectedCourse.whatsappUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-4 rounded-2xl transition shadow-md"
+                          >
+                            <FaWhatsapp className="text-base" /> WhatsApp
+                          </a>
+                        )}
+
+                        <button
+                          onClick={() => {
+                            navigate("/checkout", {
+                              state: {
+                                course: {
+                                  id: selectedCourse.id,
+                                  title: selectedCourse.title,
+                                  price: selectedCourse.price,
+                                  original_price: selectedCourse.originalPrice,
+                                  duration: selectedCourse.duration,
+                                  level: selectedCourse.level,
+                                  thumbnail:
+                                    selectedCourse.thumbnail ||
+                                    "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
+                                  category: selectedDomain?.title || "Digital Marketing",
+                                },
+                              },
+                            });
+                          }}
+                          className="inline-flex items-center justify-center gap-2 bg-[#7C2D12] hover:bg-[#60230e] text-white font-bold px-8 py-4 rounded-2xl transition shadow-xl text-lg hover:scale-105 cursor-pointer"
+                        >
+                          Enroll Now <FaArrowRight />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}

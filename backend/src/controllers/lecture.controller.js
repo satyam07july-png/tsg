@@ -122,12 +122,13 @@ const getLectures = async (req, res, next) => {
           COALESCE(vp.completed, false) as is_completed,
           COALESCE(vp.watched_seconds, 0) as watched_seconds
         FROM lectures l
+        JOIN courses c ON l.course_id = c.id
         LEFT JOIN sections s ON l.section_id = s.id
         LEFT JOIN video_progress vp ON (vp.lecture_id = l.id AND vp.user_id = $2)
-        WHERE l.course_id = $1
+        WHERE (c.id::text = $1 OR c.course_id = $1)
         ORDER BY COALESCE(l.section_id, 0) ASC, l.order_num ASC, l.id ASC
       `;
-      params = [Number(courseId), userId || 0];
+      params = [String(courseId), userId || 0];
     } else {
       query = `
         SELECT l.*, c.title as course_title

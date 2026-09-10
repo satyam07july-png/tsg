@@ -122,18 +122,87 @@ router.post("/", verifyToken, checkRole("admin"), async (req, res, next) => {
 });
 
 // ==========================================
+// GET LOGGED-IN STUDENT PROFILE WITH PURCHASED COURSE
+// ==========================================
+router.get("/me/profile", verifyToken, async (req, res, next) => {
+  try {
+    const userId = req.user.id;
+
+    const result = await pool.query(
+      `SELECT 
+         s.id,
+         s.user_id,
+         s.student_id,
+         s.course_id,
+         s.course_code,
+         s.name,
+         s.email,
+         s.phone,
+         s.course,
+         s.teacher,
+         s.teacher_id,
+         s.image,
+         s.status,
+         s.created_at,
+         u.avatar,
+         u.role,
+         c.id as course_numeric_id,
+         c.course_id as course_code_val,
+         c.title as course_title,
+         c.thumbnail as course_thumbnail,
+         c.duration as course_duration,
+         c.level as course_level
+       FROM students s
+       LEFT JOIN users u ON s.user_id = u.id
+       LEFT JOIN courses c ON (s.course_id = c.id OR s.course_code = c.course_id)
+       WHERE s.user_id = $1
+       ORDER BY s.id DESC
+       LIMIT 1`,
+      [userId]
+    );
+
+    if (result.rows.length === 0) {
+      // Fallback: user might not have a separate students row yet
+      const userRes = await pool.query(
+        "SELECT id, name, email, phone, role, avatar, created_at FROM users WHERE id = $1",
+        [userId]
+      );
+      return res.json({
+        success: true,
+        student: null,
+        user: userRes.rows[0] || null,
+      });
+    }
+
+    res.json({
+      success: true,
+      student: result.rows[0],
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// ==========================================
 // GET SINGLE STUDENT PROFILE
 // ==========================================
 router.get("/:id", verifyToken, async (req, res, next) => {
   try {
     const { id } = req.params;
+    const numId = isNaN(Number(id)) ? null : Number(id);
 
     const result = await pool.query(
-      `SELECT s.*, u.avatar, u.created_at as registered_at
+      `SELECT 
+         s.*,
+         u.avatar,
+         u.created_at as registered_at,
+         c.title as course_title,
+         c.course_id as course_slug
        FROM students s
        LEFT JOIN users u ON s.user_id = u.id
-       WHERE s.id = $1 OR s.student_id = $1 OR s.user_id = $1`,
-      [isNaN(Number(id)) ? null : Number(id)]
+       LEFT JOIN courses c ON (s.course_id = c.id OR s.course_code = c.course_id)
+       WHERE s.id = $1 OR s.user_id = $1 OR s.student_id = $2`,
+      [numId, String(id)]
     );
 
     if (result.rows.length === 0) {

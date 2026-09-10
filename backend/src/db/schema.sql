@@ -1,8 +1,9 @@
 -- =========================================================
 -- DIZITAL ADDA LMS - PRODUCTION POSTGRESQL DATABASE SCHEMA
+-- Strict Relational Integrity (PK & FK Interlinking)
 -- =========================================================
 
--- 1. USERS TABLE
+-- 1. USERS TABLE (Primary Identity Entity)
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -22,29 +23,10 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 CREATE INDEX IF NOT EXISTS idx_users_role ON users(role);
 
--- 2. STUDENTS TABLE (Extends user details & supports existing student management UI)
-CREATE TABLE IF NOT EXISTS students (
-    id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-    student_id VARCHAR(100) UNIQUE,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255),
-    password VARCHAR(255),
-    phone VARCHAR(50),
-    course VARCHAR(255),
-    teacher VARCHAR(255),
-    teacher_id INTEGER REFERENCES users(id) ON DELETE SET NULL,
-    image TEXT,
-    status VARCHAR(50) DEFAULT 'Active',
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE INDEX IF NOT EXISTS idx_students_student_id ON students(student_id);
-CREATE INDEX IF NOT EXISTS idx_students_user_id ON students(user_id);
-
--- 3. COURSES TABLE
+-- 2. COURSES TABLE (Catalog with Unique Business course_id)
 CREATE TABLE IF NOT EXISTS courses (
     id SERIAL PRIMARY KEY,
+    course_id VARCHAR(100) UNIQUE NOT NULL,
     title VARCHAR(255) NOT NULL,
     description TEXT,
     price NUMERIC(10, 2) NOT NULL DEFAULT 0,
@@ -60,10 +42,36 @@ CREATE TABLE IF NOT EXISTS courses (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE INDEX IF NOT EXISTS idx_courses_course_id ON courses(course_id);
 CREATE INDEX IF NOT EXISTS idx_courses_category ON courses(category);
 CREATE INDEX IF NOT EXISTS idx_courses_teacher_id ON courses(teacher_id);
 
--- 4. SECTIONS TABLE
+-- 3. STUDENTS TABLE (Extends users & interlinks to purchased course_id)
+CREATE TABLE IF NOT EXISTS students (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    student_id VARCHAR(100) UNIQUE NOT NULL,
+    course_id INTEGER REFERENCES courses(id) ON DELETE SET NULL,
+    course_code VARCHAR(100) REFERENCES courses(course_id) ON DELETE SET NULL,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255),
+    password VARCHAR(255),
+    phone VARCHAR(50),
+    course VARCHAR(255),
+    teacher VARCHAR(255),
+    teacher_id INTEGER REFERENCES users(id) ON DELETE SET NULL,
+    image TEXT,
+    status VARCHAR(50) DEFAULT 'Active',
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_students_student_id ON students(student_id);
+CREATE INDEX IF NOT EXISTS idx_students_user_id ON students(user_id);
+CREATE INDEX IF NOT EXISTS idx_students_course_id ON students(course_id);
+CREATE INDEX IF NOT EXISTS idx_students_course_code ON students(course_code);
+
+-- 4. SECTIONS TABLE (Course Curriculum Chapters)
 CREATE TABLE IF NOT EXISTS sections (
     id SERIAL PRIMARY KEY,
     course_id INTEGER NOT NULL REFERENCES courses(id) ON DELETE CASCADE,
@@ -74,7 +82,7 @@ CREATE TABLE IF NOT EXISTS sections (
 
 CREATE INDEX IF NOT EXISTS idx_sections_course_id ON sections(course_id);
 
--- 5. LECTURES TABLE
+-- 5. LECTURES TABLE (Course Video & PDF Lessons)
 CREATE TABLE IF NOT EXISTS lectures (
     id SERIAL PRIMARY KEY,
     course_id INTEGER NOT NULL REFERENCES courses(id) ON DELETE CASCADE,
@@ -92,10 +100,11 @@ CREATE TABLE IF NOT EXISTS lectures (
 CREATE INDEX IF NOT EXISTS idx_lectures_course_id ON lectures(course_id);
 CREATE INDEX IF NOT EXISTS idx_lectures_section_id ON lectures(section_id);
 
--- 6. ORDERS TABLE
+-- 6. ORDERS TABLE (Payment Orders linked to Student & Course)
 CREATE TABLE IF NOT EXISTS orders (
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    student_id INTEGER REFERENCES students(id) ON DELETE SET NULL,
     course_id INTEGER NOT NULL REFERENCES courses(id) ON DELETE CASCADE,
     razorpay_order_id VARCHAR(255) UNIQUE NOT NULL,
     amount NUMERIC(10, 2) NOT NULL,
@@ -106,12 +115,15 @@ CREATE TABLE IF NOT EXISTS orders (
 
 CREATE INDEX IF NOT EXISTS idx_orders_razorpay_order ON orders(razorpay_order_id);
 CREATE INDEX IF NOT EXISTS idx_orders_user ON orders(user_id);
+CREATE INDEX IF NOT EXISTS idx_orders_student ON orders(student_id);
+CREATE INDEX IF NOT EXISTS idx_orders_course ON orders(course_id);
 
--- 7. PAYMENTS TABLE
+-- 7. PAYMENTS TABLE (Successful Transactions linked to Order, Student & Course)
 CREATE TABLE IF NOT EXISTS payments (
     id SERIAL PRIMARY KEY,
     order_id INTEGER REFERENCES orders(id) ON DELETE SET NULL,
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    student_id INTEGER REFERENCES students(id) ON DELETE SET NULL,
     course_id INTEGER NOT NULL REFERENCES courses(id) ON DELETE CASCADE,
     razorpay_payment_id VARCHAR(255) UNIQUE,
     razorpay_order_id VARCHAR(255),
@@ -123,13 +135,14 @@ CREATE TABLE IF NOT EXISTS payments (
 );
 
 CREATE INDEX IF NOT EXISTS idx_payments_user ON payments(user_id);
+CREATE INDEX IF NOT EXISTS idx_payments_student ON payments(student_id);
 CREATE INDEX IF NOT EXISTS idx_payments_course ON payments(course_id);
 
--- 8. ENROLLMENTS TABLE
+-- 8. ENROLLMENTS TABLE (Active Access Authorization linked to User, Student & Course)
 CREATE TABLE IF NOT EXISTS enrollments (
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    student_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    student_id INTEGER REFERENCES students(id) ON DELETE CASCADE,
     course_id INTEGER NOT NULL REFERENCES courses(id) ON DELETE CASCADE,
     status VARCHAR(50) DEFAULT 'Active',
     enrolled_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -137,14 +150,15 @@ CREATE TABLE IF NOT EXISTS enrollments (
 );
 
 CREATE INDEX IF NOT EXISTS idx_enrollments_user_course ON enrollments(user_id, course_id);
+CREATE INDEX IF NOT EXISTS idx_enrollments_student ON enrollments(student_id);
 
--- 9. VIDEO PROGRESS TABLE
+-- 9. VIDEO PROGRESS TABLE (Lesson Completion Tracking)
 CREATE TABLE IF NOT EXISTS video_progress (
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    student_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    student_id INTEGER REFERENCES students(id) ON DELETE CASCADE,
+    course_id INTEGER NOT NULL REFERENCES courses(id) ON DELETE CASCADE,
     lecture_id INTEGER NOT NULL REFERENCES lectures(id) ON DELETE CASCADE,
-    course_id INTEGER REFERENCES courses(id) ON DELETE CASCADE,
     completed BOOLEAN DEFAULT false,
     watched_seconds INTEGER DEFAULT 0,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -152,6 +166,8 @@ CREATE TABLE IF NOT EXISTS video_progress (
 );
 
 CREATE INDEX IF NOT EXISTS idx_video_progress_user ON video_progress(user_id);
+CREATE INDEX IF NOT EXISTS idx_video_progress_course ON video_progress(course_id);
+CREATE INDEX IF NOT EXISTS idx_video_progress_lecture ON video_progress(lecture_id);
 
 -- 10. ASSIGNMENTS TABLE
 CREATE TABLE IF NOT EXISTS assignments (
@@ -163,16 +179,22 @@ CREATE TABLE IF NOT EXISTS assignments (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE INDEX IF NOT EXISTS idx_assignments_course ON assignments(course_id);
+
 -- 11. ASSIGNMENT SUBMISSIONS TABLE
 CREATE TABLE IF NOT EXISTS assignment_submissions (
     id SERIAL PRIMARY KEY,
     assignment_id INTEGER NOT NULL REFERENCES assignments(id) ON DELETE CASCADE,
-    student_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    student_id INTEGER NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     submission_url TEXT NOT NULL,
     marks NUMERIC(5, 2),
     feedback TEXT,
     submitted_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE INDEX IF NOT EXISTS idx_submissions_assignment ON assignment_submissions(assignment_id);
+CREATE INDEX IF NOT EXISTS idx_submissions_student ON assignment_submissions(student_id);
 
 -- 12. QUIZZES TABLE
 CREATE TABLE IF NOT EXISTS quizzes (
@@ -181,6 +203,8 @@ CREATE TABLE IF NOT EXISTS quizzes (
     title VARCHAR(255) NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE INDEX IF NOT EXISTS idx_quizzes_course ON quizzes(course_id);
 
 -- 13. QUIZ QUESTIONS TABLE
 CREATE TABLE IF NOT EXISTS quiz_questions (
@@ -195,20 +219,27 @@ CREATE TABLE IF NOT EXISTS quiz_questions (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE INDEX IF NOT EXISTS idx_quiz_questions_quiz ON quiz_questions(quiz_id);
+
 -- 14. QUIZ ATTEMPTS TABLE
 CREATE TABLE IF NOT EXISTS quiz_attempts (
     id SERIAL PRIMARY KEY,
     quiz_id INTEGER NOT NULL REFERENCES quizzes(id) ON DELETE CASCADE,
-    student_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    student_id INTEGER NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     score INTEGER NOT NULL DEFAULT 0,
     total_questions INTEGER DEFAULT 0,
     attempted_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE INDEX IF NOT EXISTS idx_quiz_attempts_quiz ON quiz_attempts(quiz_id);
+CREATE INDEX IF NOT EXISTS idx_quiz_attempts_student ON quiz_attempts(student_id);
+
 -- 15. CERTIFICATES TABLE
 CREATE TABLE IF NOT EXISTS certificates (
     id SERIAL PRIMARY KEY,
-    student_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    student_id INTEGER NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     course_id INTEGER NOT NULL REFERENCES courses(id) ON DELETE CASCADE,
     certificate_code VARCHAR(100) UNIQUE NOT NULL,
     issue_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
@@ -216,11 +247,14 @@ CREATE TABLE IF NOT EXISTS certificates (
 );
 
 CREATE INDEX IF NOT EXISTS idx_certificates_code ON certificates(certificate_code);
+CREATE INDEX IF NOT EXISTS idx_certificates_student ON certificates(student_id);
+CREATE INDEX IF NOT EXISTS idx_certificates_course ON certificates(course_id);
 
 -- 16. ACTIVITIES TABLE
 CREATE TABLE IF NOT EXISTS activities (
     id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(id) ON DELETE SET NULL,
+    student_id INTEGER REFERENCES students(id) ON DELETE SET NULL,
     title VARCHAR(255) NOT NULL,
     description TEXT,
     type VARCHAR(50) DEFAULT 'General',
@@ -230,7 +264,8 @@ CREATE TABLE IF NOT EXISTS activities (
 -- 17. DOUBTS TABLE
 CREATE TABLE IF NOT EXISTS doubts (
     id SERIAL PRIMARY KEY,
-    student_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    student_id INTEGER NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     course_id INTEGER REFERENCES courses(id) ON DELETE SET NULL,
     question TEXT NOT NULL,
     answer TEXT,
@@ -238,12 +273,19 @@ CREATE TABLE IF NOT EXISTS doubts (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE INDEX IF NOT EXISTS idx_doubts_student ON doubts(student_id);
+CREATE INDEX IF NOT EXISTS idx_doubts_course ON doubts(course_id);
+
 -- 18. TEST RESULTS TABLE
 CREATE TABLE IF NOT EXISTS test_results (
     id SERIAL PRIMARY KEY,
-    student_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    student_id INTEGER NOT NULL REFERENCES students(id) ON DELETE CASCADE,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     course_id INTEGER REFERENCES courses(id) ON DELETE CASCADE,
     score NUMERIC(5, 2) DEFAULT 0,
     status VARCHAR(50) DEFAULT 'Passed',
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE INDEX IF NOT EXISTS idx_test_results_student ON test_results(student_id);
+CREATE INDEX IF NOT EXISTS idx_test_results_course ON test_results(course_id);

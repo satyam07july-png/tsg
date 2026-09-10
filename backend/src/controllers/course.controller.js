@@ -48,7 +48,7 @@ const getSingleCourse = async (req, res, next) => {
     const { id } = req.params;
 
     const courseResult = await pool.query(
-      `SELECT * FROM courses WHERE id = $1`,
+      `SELECT * FROM courses WHERE id::text = $1 OR course_id = $1`,
       [id]
     );
 
@@ -61,19 +61,19 @@ const getSingleCourse = async (req, res, next) => {
 
     const course = courseResult.rows[0];
 
-    // Fetch sections
+    // Fetch sections using numeric course.id
     const sectionsResult = await pool.query(
       `SELECT * FROM sections WHERE course_id = $1 ORDER BY order_num ASC, id ASC`,
-      [id]
+      [course.id]
     );
 
-    // Fetch lectures
+    // Fetch lectures using numeric course.id
     const lecturesResult = await pool.query(
       `SELECT id, section_id, course_id, title, description, video_url, pdf_url, duration, order_num, is_free_preview
        FROM lectures
        WHERE course_id = $1
        ORDER BY order_num ASC, id ASC`,
-      [id]
+      [course.id]
     );
 
     // Structure sections with lectures
