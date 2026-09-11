@@ -104,8 +104,14 @@ const authLimiter = rateLimit({
 app.use("/api", globalLimiter);
 app.use("/api/auth/login", authLimiter);
 
+// Frontend SPA dist path
+const frontendDist = path.join(__dirname, "..", "..", "frontend", "dist");
+
 // Root & Health check
 app.get("/", (req, res) => {
+  if (fs.existsSync(path.join(frontendDist, "index.html"))) {
+    return res.sendFile(path.join(frontendDist, "index.html"));
+  }
   res.json({
     success: true,
     message: "Dizital Adda LMS Production API is operational 🚀",
@@ -145,7 +151,6 @@ app.use("/api/teachers", teacherRoutes);
 app.use("/api/user", userRoutes);
 
 // Serve compiled frontend SPA if dist exists
-const frontendDist = path.join(__dirname, "..", "..", "frontend", "dist");
 if (fs.existsSync(frontendDist)) {
   app.use(express.static(frontendDist));
   app.use((req, res, next) => {

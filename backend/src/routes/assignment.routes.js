@@ -4,19 +4,30 @@ const router = express.Router();
 
 const {
   createAssignment,
+  getAssignments,
+  deleteAssignment,
   submitAssignment,
   reviewSubmission,
 } = require("../controllers/assignment.controller");
 
-const { verifyToken } = require("../middleware/auth.middleware");
-
+const { verifyToken, optionalAuth } = require("../middleware/auth.middleware");
 const { checkRole } = require("../middleware/role.middleware");
+
+// Get assignments (filtered by courseId if query param present)
+router.get("/", optionalAuth, getAssignments);
 
 router.post(
   "/create",
   verifyToken,
   checkRole("admin", "teacher"),
   createAssignment
+);
+
+router.delete(
+  "/:id",
+  verifyToken,
+  checkRole("admin", "teacher"),
+  deleteAssignment
 );
 
 router.post(

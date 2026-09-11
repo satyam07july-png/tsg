@@ -43,7 +43,8 @@ const createOrder = async (req, res, next) => {
     }
 
     const course = courseQuery.rows[0];
-    const amountInPaise = Math.round(Number(course.price) * 100);
+    const targetPrice = req.body.amount && Number(req.body.amount) > 0 ? Number(req.body.amount) : Number(course.price);
+    const amountInPaise = Math.round(targetPrice * 100);
 
     // If guest user provided studentDetails, find or create account
     if (!userId && studentDetails?.email) {
@@ -154,6 +155,7 @@ const verifyPayment = async (req, res, next) => {
       razorpay_signature,
       courseId,
       studentDetails,
+      amount,
     } = req.body;
 
     if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature || !courseId) {
@@ -290,12 +292,13 @@ const verifyPayment = async (req, res, next) => {
     }
 
     // 4. Update order status and attach student_id & user_id
+    const finalAmount = amount && Number(amount) > 0 ? Number(amount) : (course.price || 0);
     await client.query(
       `INSERT INTO orders (user_id, student_id, course_id, razorpay_order_id, amount, currency, status)
        VALUES ($1, $2, $3, $4, $5, 'INR', 'paid')
        ON CONFLICT (razorpay_order_id) DO UPDATE
        SET status = 'paid', student_id = EXCLUDED.student_id, user_id = EXCLUDED.user_id`,
-      [userId, studentRecordId, course.id, razorpay_order_id, course.price || 0]
+      [userId, studentRecordId, course.id, razorpay_order_id, finalAmount]
     );
 
     // 5. Insert payment record linked to student_id and course_id

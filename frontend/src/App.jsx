@@ -13,6 +13,7 @@ import RevenuePage from "./pages/admin/RevenuePage";
 import UsersPage from "./pages/admin/UsersPage";
 import AddCourse from "./pages/admin/AddCourse";
 import ActivityPage from "./pages/admin/ActivityPage";
+import AdminContentManager from "./pages/admin/AdminContentManager";
 
 import LearningPage from "./pages/student/LearningPage";
 import TeacherDashboard from "./pages/teacher/TeacherDashboard";
@@ -116,6 +117,22 @@ function App() {
         element={
           <ProtectedRoute allowedRoles={["admin"]}>
             <CoursesPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/content-manager"
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <AdminContentManager />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/admin/content-manager/:courseId"
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <AdminContentManager />
           </ProtectedRoute>
         }
       />

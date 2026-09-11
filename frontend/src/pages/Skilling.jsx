@@ -36,6 +36,16 @@ import {
 import { EXPERT_DIGITAL_MARKETING_DETAILS } from "../data/expertDigitalMarketingData.js";
 import { ADVANCED_DIGITAL_MARKETING_DETAILS } from "../data/advancedDigitalMarketingData.js";
 import { PROFESSIONAL_DIGITAL_MARKETING_DETAILS } from "../data/professionalDigitalMarketingData.js";
+import { BEGINNER_DIGITAL_MARKETING_DETAILS } from "../data/beginnerDigitalMarketingData.js";
+import {
+  NIDADS_CERTIFICATION_DATA_ANALYTICS,
+  NIDADS_ADVANCED_DATA_ANALYTICS,
+  NIDADS_DIPLOMA_DATA_ANALYTICS,
+} from "../data/nidadsDataAnalyticsData.js";
+import {
+  NIDADS_ADVANCED_DATA_SCIENCE,
+  NIDADS_DIPLOMA_DATA_SCIENCE,
+} from "../data/nidadsDataScienceData.js";
 
 // ==========================================
 // DURATION DEFINITIONS
@@ -133,7 +143,8 @@ const DOMAINS = [
       "3-months": [
         {
           id: "dm-beginners",
-          title: "Digital Marketing For Beginners",
+          title: "Digital Marketing for Beginners Course in Delhi",
+          details: BEGINNER_DIGITAL_MARKETING_DETAILS,
           subtitle: "30 Basic Modules • 40+ AI Tools Introduction",
           duration: "3 Months",
           durationId: "3-months",
@@ -345,44 +356,362 @@ const DOMAINS = [
     },
   },
 
-  // 2. Data science & data analystic
+  // 2. Data science & data analystic (NIDADS & DIZITAL ADDA)
   {
     id: "data-science",
     title: "Data Science & Data Analytics",
-    subtitle: "Python, SQL, Power BI, Tableau, Machine Learning & Statistics",
+    subtitle: "Two Distinct Career Specializations: Data Analytics (BI & SQL) & Data Science (ML & AI)",
     icon: <FaDatabase />,
     badge: "High Growth",
     badgeColor: "bg-blue-100 text-blue-900 border-blue-300",
-    avgSalary: "₹6 - ₹22 LPA",
+    avgSalary: "₹6 - ₹24 LPA",
     description:
-      "Transform complex raw data into actionable business decisions. Master data wrangling with Python, advanced SQL, interactive business intelligence dashboards, and predictive modeling.",
+      "Choose between Data Analytics (Business Intelligence, SQL, Power BI, Tableau & KPI Dashboards) or Data Science (Python, Applied Statistics, Machine Learning, Deep Learning & Big Data).",
+    hasSpecializations: true,
+    specializationTracks: [
+      {
+        id: "data-analytics",
+        backendCourseId: "data-analytics",
+        numericCourseId: 5,
+        name: "Data Analytics Course",
+        shortTitle: "Data Analytics",
+        badge: "BI, SQL & Dashboards",
+        badgeColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
+        durationSummary: "3 - 12 Months",
+        description:
+          "Focus on Business Intelligence, SQL data warehousing, interactive Power BI & Tableau dashboards, and product analytics to drive business decisions.",
+        availableDurationIds: ["3-months", "6-months", "12-months"],
+        coursesByDuration: {
+          "3-months": [
+            {
+              id: "da-3m-bi",
+              backendCourseId: "data-analytics",
+              courseId: 5,
+              title: "Certification in Data Analytics & AI",
+              subtitle: "3 Months Foundation • Excel Modeling, SQL Queries & Power BI Dashboards",
+              duration: "3 Months",
+              durationId: "3-months",
+              level: "BEGINNER LEVEL",
+              levelColor: "border-amber-400 text-amber-700 bg-amber-50",
+              checkColor: "text-amber-500",
+              modulesCount: "24",
+              modulesType: "Core Analytics Modules",
+              aiToolsCount: "25+",
+              aiToolsType: "AI & BI Tools",
+              hoursPerWeek: "8 - 10 Hours / Week",
+              modulesPill: "24 Core Modules • 25+ AI & BI Tools",
+              shortDesc:
+                "Master foundational analytics, Excel modeling, SQL queries & dynamic Power BI dashboards.",
+              projectsHighlight: "4 Interactive Business Dashboards",
+              certHighlight: "Foundation Certificate in BI",
+              price: 9999,
+              originalPrice: 24999,
+              onlinePrice: 9999,
+              offlinePrice: 25000,
+              emi: "₹3,499/mo",
+              projects: "4 Interactive Dashboards (Sales, Finance, HR)",
+              mentorship: "Weekly Live Mentorship with Mr. Deepanshu Soni & Dr. Gulshan Kumar",
+              certification: "NIDADS & Dizital Adda Official Certificate in Data Analytics",
+              perfectFor: "Students, Career Starters & Business Analysts",
+              perfectForBg: "bg-amber-50/80 border-amber-200 text-amber-900",
+              details: NIDADS_CERTIFICATION_DATA_ANALYTICS,
+              featureList: [
+                "24 Core Analytics Modules",
+                "25+ AI Tools & Copilot Overview",
+                "Advanced Excel & Power Query",
+                "SQL Queries & Database Joins",
+                "Power BI Data Modeling & DAX",
+                "Interactive Visual Dashboards",
+                "Weekly Live Doubt Clearing",
+                "Official Certificate of Completion",
+              ],
+              modules: [
+                "Month 1: Data Fundamentals & Advanced Excel Modeling",
+                "Month 2: Database Fundamentals, Relational Schemas & SQL Queries",
+                "Month 3: Business Intelligence & Power BI Executive Dashboards",
+              ],
+            },
+          ],
+          "6-months": [
+            {
+              id: "da-6m-pro",
+              backendCourseId: "data-analytics",
+              courseId: 5,
+              title: "Advanced Certification in Data Analytics & AI",
+              subtitle: "6 Months Intensive • Advanced SQL, Power BI, Python EDA, Statistics & Tableau",
+              duration: "6 Months",
+              durationId: "6-months",
+              level: "ADVANCED LEVEL",
+              levelColor: "border-blue-400 text-blue-700 bg-blue-50",
+              checkColor: "text-blue-500",
+              modulesCount: "48",
+              modulesType: "Advanced Engineering Modules",
+              aiToolsCount: "45+",
+              aiToolsType: "AI Tools & Code Assistants",
+              hoursPerWeek: "12 - 15 Hours / Week",
+              modulesPill: "48 Advanced Modules • 45+ Tools & Libraries",
+              shortDesc:
+                "Complete analytics engineering with advanced SQL window functions, Python data pipelines, and Tableau.",
+              projectsHighlight: "8 Live Business Intelligence Capstones",
+              certHighlight: "Professional BI Analyst Certificate + ISO Verified",
+              isPopular: true,
+              price: 18999,
+              originalPrice: 38999,
+              onlinePrice: 18999,
+              offlinePrice: 50000,
+              emi: "₹3,299/mo",
+              projects: "8 Real-world Portfolio Projects",
+              mentorship: "Industry Expert Mentorship & 1:1 Reviews with Mr. Deepanshu Soni & Dr. Gulshan Kumar",
+              certification: "NIDADS Advanced Certificate + ISO 9001:2015 Verified",
+              placementGuarantee: "100% Placement Support (500+ Hiring Partners)",
+              perfectFor: "Working Professionals, Analysts & Switchers",
+              perfectForBg: "bg-blue-50/80 border-blue-200 text-blue-900",
+              details: NIDADS_ADVANCED_DATA_ANALYTICS,
+              featureList: [
+                "48 Detailed Analytics Modules",
+                "45+ Modern BI & Analytics Tools",
+                "Advanced SQL & Complex Window Functions",
+                "Python for Data Wrangling (Pandas/NumPy)",
+                "Tableau Desktop & Server Publishing",
+                "Dark Store Demand Twin Capstone",
+                "Midnight Basket Drop Analysis",
+                "100% Placement Assistance & Resume Review",
+              ],
+              modules: [
+                "Month 1: Foundation of Data Analytics & Modern Tooling",
+                "Month 2: Power BI & Executive Visual Storytelling",
+                "Month 3: SQL for Data Analysis, Window Functions & CTEs",
+                "Month 4: Python for Data Analysis & Exploratory Analytics",
+                "Month 5: Statistics & Advanced Business Inference",
+                "Month 6: Capstone Projects (Dark Store & Basket Drop) & Placement",
+              ],
+            },
+          ],
+          "12-months": [
+            {
+              id: "da-12m-diploma",
+              backendCourseId: "data-analytics",
+              courseId: 5,
+              title: "Diploma in Data Analytics & AI | Get Job-Ready",
+              subtitle: "12 Months Comprehensive Master • 12 Monthly Specializations • Paid Internship & Placement Guarantee",
+              duration: "12 Months",
+              durationId: "12-months",
+              level: "EXPERT LEVEL",
+              levelColor: "border-fuchsia-400 text-fuchsia-700 bg-fuchsia-50",
+              checkColor: "text-fuchsia-500",
+              modulesCount: "92",
+              modulesType: "Comprehensive Master Modules",
+              aiToolsCount: "60+",
+              aiToolsType: "Enterprise BI & AI Stack",
+              hoursPerWeek: "15 - 20 Hours / Week",
+              modulesPill: "92 Master Modules • 60+ AI Tools • Paid Internship",
+              shortDesc:
+                "Complete 12-month master diploma with full portfolio, 1-on-1 mentorship, paid internship, and guaranteed placement.",
+              projectsHighlight: "12 Major Portfolio Projects + Capstone",
+              certHighlight: "National Diploma + 3-Month Paid Internship Letter",
+              price: 34999,
+              originalPrice: 69999,
+              onlinePrice: 34999,
+              offlinePrice: 95000,
+              emi: "₹3,199/mo",
+              projects: "12 Major Portfolio Projects + Capstone",
+              mentorship: "1-on-1 Chief Mentor Guidance with Dr. Gulshan Kumar, Mr. Deepanshu Soni & Miss Shagun Shrivastav",
+              certification: "National Diploma in Data Analytics & AI + 3-Month Paid Internship Letter",
+              placementGuarantee: "100% Placement Guarantee (with formal agreement)",
+              perfectFor: "Future Data Analytics Leads, BI Consultants & Corporate Strategists",
+              perfectForBg: "bg-fuchsia-50/80 border-fuchsia-200 text-fuchsia-900",
+              details: NIDADS_DIPLOMA_DATA_ANALYTICS,
+              featureList: [
+                "92 In-Depth Modules across 12 Monthly Phases",
+                "60+ Enterprise BI & AI Tools",
+                "12 Major Capstones (Dark Store, Basket Drop, Hospital Radar)",
+                "Guaranteed 3-Month Paid Corporate Internship",
+                "1-on-1 Senior Mentorship with Dr. Gulshan Kumar",
+                "Microsoft Power BI (PL-300) Certification Prep",
+                "100% Placement Guarantee with Legal Agreement",
+                "Dedicated Executive Placement Desk",
+              ],
+              modules: [
+                "Month 1: Data Fundamentals & Advanced Excel",
+                "Month 2: Advanced Excel & Introduction to Business Intelligence",
+                "Month 3: Database Fundamentals & SQL Queries",
+                "Month 4: Introduction to Programming & Python",
+                "Month 5: Data Visualization & Storytelling with Tableau & Power BI",
+                "Month 6: Statistics & Data Analysis",
+                "Month 7: Advanced Data Analysis Techniques",
+                "Month 8: Automation & Efficiency",
+                "Month 9: Industry Applications & Case Studies",
+                "Month 10: Advanced Machine Learning Applications",
+                "Month 11: Specialization & Advanced Projects",
+                "Month 12: Capstone Project & Career Placement Drives",
+              ],
+            },
+          ],
+        },
+      },
+      {
+        id: "data-science",
+        backendCourseId: "data-science",
+        numericCourseId: 8,
+        name: "Data Science Course",
+        shortTitle: "Data Science",
+        badge: "Python, ML & AI",
+        badgeColor: "bg-purple-100 text-purple-800 border-purple-300",
+        durationSummary: "6 - 12 Months",
+        description:
+          "Focus on Python programming, mathematical statistics, machine learning algorithms, deep learning neural networks, and AI predictive model deployment.",
+        availableDurationIds: ["6-months", "12-months"],
+        coursesByDuration: {
+          "6-months": [
+            {
+              id: "ds-6m-ml",
+              backendCourseId: "data-science",
+              courseId: 8,
+              title: "Advanced Certification in Data Science & AI Program",
+              subtitle: "6 Months Intensive • Python, Machine Learning, Deep Learning, Statistics & MLOps",
+              duration: "6 Months",
+              durationId: "6-months",
+              level: "ADVANCED LEVEL",
+              levelColor: "border-blue-400 text-blue-700 bg-blue-50",
+              checkColor: "text-blue-500",
+              modulesCount: "52",
+              modulesType: "Data Science & ML Modules",
+              aiToolsCount: "50+",
+              aiToolsType: "AI Frameworks & Libraries",
+              hoursPerWeek: "12 - 15 Hours / Week",
+              modulesPill: "52 Detailed Modules • 50+ ML Tools",
+              shortDesc:
+                "Master statistical modeling, supervised/unsupervised algorithms, and full-stack model deployment.",
+              projectsHighlight: "8 Real-world ML Projects + Cloud Deployment",
+              certHighlight: "NIDADS Advanced Certificate + ISO Verified",
+              isPopular: true,
+              price: 24999,
+              originalPrice: 49999,
+              onlinePrice: 24999,
+              offlinePrice: 60000,
+              emi: "₹4,299/mo",
+              projects: "8 Real-world ML Projects + Streamlit Cloud Deployment",
+              mentorship: "Senior Data Scientist Mentorship with Miss Shagun Shrivastav & Dr. Gulshan Kumar",
+              certification: "NIDADS Advanced Certificate in Data Science & AI + ISO Verified",
+              placementGuarantee: "100% Placement Support (500+ Hiring Partners)",
+              perfectFor: "Coders, STEM Graduates, Software Engineers & Data Enthusiasts",
+              perfectForBg: "bg-blue-50/80 border-blue-200 text-blue-900",
+              details: NIDADS_ADVANCED_DATA_SCIENCE,
+              featureList: [
+                "52 Comprehensive ML Modules",
+                "50+ Data Science & AI Libraries",
+                "Python Core & Scientific Computing Stack",
+                "Applied Statistics, Probability & Hypothesis Testing",
+                "Supervised Learning: Regressions, Trees, Ensemble Models",
+                "Unsupervised Learning: Clustering, PCA & Dimensionality",
+                "Model Deployment with Streamlit & FastAPI REST APIs",
+                "100% Placement Assistance & Kaggle Portfolio",
+              ],
+              modules: [
+                "Month 1: Foundations, Anaconda, Jupyter, Colab & GitHub",
+                "Month 2: Python for Data Science & Vectorized Math with NumPy & Pandas",
+                "Month 3: Advanced Machine Learning & Ensemble Modeling",
+                "Month 4: Deep Learning & Neural Networks with PyTorch",
+                "Month 5: Statistical Techniques & Hypothesis Testing",
+                "Month 6: AI Deployment & MLOps Engineering with FastAPI & Docker",
+              ],
+            },
+          ],
+          "12-months": [
+            {
+              id: "ds-12m-master",
+              backendCourseId: "data-science",
+              courseId: 8,
+              title: "Diploma in Data Science & AI",
+              subtitle: "12 Months Comprehensive Master • PyTorch, PySpark, Big Data Cloud, LLMs, MLOps & Paid Internship",
+              duration: "12 Months",
+              durationId: "12-months",
+              level: "EXPERT LEVEL",
+              levelColor: "border-fuchsia-400 text-fuchsia-700 bg-fuchsia-50",
+              checkColor: "text-fuchsia-500",
+              modulesCount: "140",
+              modulesType: "Complete AI & Big Data Modules",
+              aiToolsCount: "70+",
+              aiToolsType: "AI, Cloud & Distributed Stack",
+              hoursPerWeek: "15 - 20 Hours / Week",
+              modulesPill: "140 Comprehensive Modules • 70+ AI Tools • Paid Internship",
+              shortDesc:
+                "Flagship master diploma with PySpark distributed computing, Deep Learning, LLMOps, and paid internship.",
+              projectsHighlight: "16+ Production AI & Big Data Capstones",
+              certHighlight: "National Diploma in Data Science & AI + 3-Month Paid Internship Letter",
+              price: 39999,
+              originalPrice: 79999,
+              onlinePrice: 39999,
+              offlinePrice: 110000,
+              emi: "₹3,499/mo",
+              projects: "16+ Production AI & Big Data Capstones",
+              mentorship: "1-on-1 Chief Data Scientist Mentorship with Miss Shagun Shrivastav & Dr. Gulshan Kumar",
+              certification: "National Diploma in Data Science & AI + 3-Month Paid Internship Letter",
+              placementGuarantee: "100% Placement Guarantee (with formal agreement)",
+              perfectFor: "Future AI Researchers, Big Data Engineers, Machine Learning Engineers & Tech Leaders",
+              perfectForBg: "bg-fuchsia-50/80 border-fuchsia-200 text-fuchsia-900",
+              details: NIDADS_DIPLOMA_DATA_SCIENCE,
+              featureList: [
+                "140 Comprehensive Modules across 12 Monthly Stages",
+                "70+ Cloud AI, Big Data & LLM Tools",
+                "Distributed Big Data with Apache Spark & PySpark",
+                "Deep Learning Architecture with PyTorch & CUDA",
+                "Computer Vision (CNNs) & Natural Language Processing (NLP)",
+                "Large Language Models (LLMs) Fine-Tuning & RAG Pipelines",
+                "Guaranteed 3-Month Paid Industry Internship",
+                "100% Placement Guarantee with Dedicated Placement Desk",
+              ],
+              modules: [
+                "Month 1: Foundations & Setup (Anaconda, Colab, GitHub)",
+                "Month 2: Python for Data Science (NumPy, Pandas)",
+                "Month 3: Data Visualization & Exploratory Data Analysis",
+                "Month 4: Statistics & Probability",
+                "Month 5: SQL & NoSQL (PostgreSQL, MongoDB)",
+                "Month 6: Machine Learning Fundamentals",
+                "Month 7: Advanced Machine Learning & XGBoost",
+                "Month 8: Deep Learning & Neural Networks with PyTorch",
+                "Month 9: Big Data & Cloud Computing (Apache Spark)",
+                "Month 10: Model Deployment & Production Systems (FastAPI, Docker)",
+                "Month 11: Advanced Specializations & Capstone Project",
+                "Month 12: Career Preparation & Placement Drives",
+              ],
+            },
+          ],
+        },
+      },
+    ],
     availableDurationIds: ["3-months", "6-months", "12-months"],
     coursesByDuration: {
       "3-months": [
         {
-          id: "ds-3m-bi",
-          title: "Business Intelligence & Data Analytics with Power BI",
-          subtitle: "Power BI, Advanced Excel, DAX & Executive Dashboards",
+          id: "da-3m-bi",
+          backendCourseId: "data-analytics",
+          courseId: 5,
+          title: "Certification in Data Analytics & AI",
+          subtitle: "3 Months Foundation • Excel Modeling, SQL Queries & Power BI Dashboards",
           duration: "3 Months",
           durationId: "3-months",
           level: "BEGINNER LEVEL",
           levelColor: "border-amber-400 text-amber-700 bg-amber-50",
           checkColor: "text-amber-500",
-          modulesCount: "25",
-          modulesType: "Core Modules",
-          aiToolsCount: "20+",
-          aiToolsType: "AI Tools & Copilot",
+          modulesCount: "24",
+          modulesType: "Core Analytics Modules",
+          aiToolsCount: "25+",
+          aiToolsType: "AI & BI Tools",
           price: 9999,
-          originalPrice: 19999,
+          originalPrice: 24999,
+          onlinePrice: 9999,
+          offlinePrice: 25000,
           emi: "₹3,499/mo",
           projects: "4 Interactive Dashboards",
-          mentorship: "Weekly Group Q&A",
-          certification: "Foundation Certificate in BI",
+          mentorship: "Weekly Live Mentorship with Mr. Deepanshu Soni & Dr. Gulshan Kumar",
+          certification: "NIDADS & Dizital Adda Official Certificate in Data Analytics",
           perfectFor: "Students & Business Analysts",
           perfectForBg: "bg-amber-50/80 border-amber-200 text-amber-900",
+          details: NIDADS_CERTIFICATION_DATA_ANALYTICS,
           featureList: [
-            "25 Core Analytics Modules",
-            "20+ AI Tools & Copilot Overview",
+            "24 Core Analytics Modules",
+            "25+ AI Tools & Copilot Overview",
             "Excel & Power Query Mastery",
             "Power BI Data Modeling & DAX",
             "Interactive Visual Dashboards",
@@ -391,80 +720,89 @@ const DOMAINS = [
             "Completion Certificate",
           ],
           modules: [
-            "Advanced Excel: Pivot Tables, VLOOKUP, XLOOKUP & Power Pivot",
-            "Power Query Data Extraction, Transformation & Cleansing",
-            "Data Modeling with Star & Snowflake Schemas in Power BI",
-            "Advanced DAX Measures, KPI Cards & Time Intelligence",
-            "Executive Dashboard Capstone (Sales, HR & Finance)",
+            "Month 1: Data Fundamentals & Advanced Excel Modeling",
+            "Month 2: Database Fundamentals, Relational Schemas & SQL Queries",
+            "Month 3: Business Intelligence & Power BI Executive Dashboards",
           ],
         },
       ],
       "6-months": [
         {
-          id: "ds-6m-python",
-          title: "Data Science with Python & Machine Learning",
-          subtitle: "Python, Pandas, NumPy, Scikit-Learn, Statistics & EDA",
+          id: "da-6m-pro",
+          backendCourseId: "data-analytics",
+          courseId: 5,
+          title: "Advanced Certification in Data Analytics & AI",
+          subtitle: "6 Months Intensive • Advanced SQL, Power BI, Python EDA, Statistics & Tableau",
           duration: "6 Months",
           durationId: "6-months",
           level: "ADVANCED LEVEL",
           levelColor: "border-blue-400 text-blue-700 bg-blue-50",
           checkColor: "text-blue-500",
-          modulesCount: "50",
+          modulesCount: "48",
           modulesType: "Detailed Modules",
-          aiToolsCount: "40+",
+          aiToolsCount: "45+",
           aiToolsType: "AI Tools & Code Assistants",
           price: 18999,
-          originalPrice: 35999,
+          originalPrice: 38999,
+          onlinePrice: 18999,
+          offlinePrice: 50000,
           emi: "₹3,299/mo",
-          projects: "8 Machine Learning Projects + Capstone",
+          projects: "8 Business Intelligence Projects + Capstone",
           mentorship: "Group Mentorship & 1:1 Reviews",
-          certification: "Professional Certificate + ISO Verified",
+          certification: "NIDADS Advanced Certificate + ISO Verified",
           perfectFor: "Data Aspirants & Career Switchers",
           perfectForBg: "bg-blue-50/80 border-blue-200 text-blue-900",
+          details: NIDADS_ADVANCED_DATA_ANALYTICS,
           featureList: [
-            "50 Detailed Modules",
-            "40+ AI Tools & Code Assistants",
+            "48 Detailed Modules",
+            "45+ AI Tools & Code Assistants",
             "Exploratory Data Analysis (EDA)",
             "Advanced SQL & Python Wrangling",
-            "Supervised & Unsupervised ML",
+            "Tableau Desktop & Business Dashboards",
             "Dedicated Mentorship",
             "8 Industry Capstones",
             "Course Certification",
           ],
           modules: [
-            "Python Programming Core & Vectorized Math with NumPy",
-            "Data Cleansing, Wrangling & Aggregation with Pandas",
-            "Statistical Distributions, Hypothesis Testing & A/B Experiments",
-            "Supervised Learning: Regression, Classification & Random Forests",
-            "Unsupervised Learning: K-Means, PCA & End-to-End Capstone",
+            "Month 1: Foundation of Data Analytics & Modern Tooling",
+            "Month 2: Power BI & Executive Visual Storytelling",
+            "Month 3: SQL for Data Analysis, Window Functions & CTEs",
+            "Month 4: Python for Data Analysis & Exploratory Analytics",
+            "Month 5: Statistics & Advanced Business Inference",
+            "Month 6: Capstone Projects (Dark Store & Basket Drop) & Placement",
           ],
         },
       ],
       "12-months": [
         {
           id: "ds-12m-master",
-          title: "Data Science, Big Data & Deep Learning Master Track",
-          subtitle: "PySpark, Databricks, Deep Learning, TensorFlow & NLP",
+          backendCourseId: "data-science",
+          courseId: 8,
+          title: "Diploma in Data Science & AI",
+          subtitle: "12 Months Comprehensive Master • PyTorch, PySpark, Big Data Cloud, LLMs & MLOps",
           duration: "12 Months",
           durationId: "12-months",
           level: "EXPERT LEVEL",
           levelColor: "border-fuchsia-400 text-fuchsia-700 bg-fuchsia-50",
           checkColor: "text-fuchsia-500",
-          modulesCount: "70",
+          modulesCount: "140",
           modulesType: "Comprehensive Modules",
-          aiToolsCount: "60+",
+          aiToolsCount: "70+",
           aiToolsType: "AI Tools & LLM Ops",
-          price: 34999,
-          originalPrice: 69999,
-          emi: "₹3,199/mo",
+          price: 39999,
+          originalPrice: 79999,
+          onlinePrice: 39999,
+          offlinePrice: 110000,
+          emi: "₹3,499/mo",
           projects: "16+ Production & Big Data Projects",
           mentorship: "1-on-1 Mentorship & Internship",
           certification: "Dual Global Certificate + Internship Letter",
           perfectFor: "Future Data Leaders & Enterprise Engineers",
           perfectForBg: "bg-fuchsia-50/80 border-fuchsia-200 text-fuchsia-900",
+          details: NIDADS_DIPLOMA_DATA_SCIENCE,
           featureList: [
-            "70 Comprehensive Modules",
-            "60+ AI & LLM Tools Integration",
+            "140 Comprehensive Modules",
+            "70+ AI & LLM Tools Integration",
             "Distributed Big Data with Apache Spark",
             "Deep Learning with PyTorch & TensorFlow",
             "Paid 3-Month Internship Guarantee",
@@ -473,11 +811,12 @@ const DOMAINS = [
             "Dual Global Certification",
           ],
           modules: [
-            "Advanced Python, Algorithms & Data Structures for Data Science",
-            "Distributed Computing with Apache Spark, RDDs & PySpark SQL",
-            "Data Pipeline Orchestration with Apache Airflow & Delta Lake",
-            "Deep Neural Networks with TensorFlow & PyTorch",
-            "Enterprise Capstone: Real-time Big Data Pipeline & Placement Drives",
+            "Month 1: Foundations & Setup (Anaconda, Colab, GitHub)",
+            "Month 2: Python for Data Science (NumPy, Pandas)",
+            "Month 3: Advanced Machine Learning & Deep Learning",
+            "Month 4: Big Data with Apache Spark & Distributed Computing",
+            "Month 5: Generative AI, LLMOps & Production Deployment",
+            "Month 6: Enterprise Capstone & Placement Drives",
           ],
         },
       ],
@@ -1002,6 +1341,7 @@ function Skilling() {
   const [selectedDomain, setSelectedDomain] = useState(null);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [selectedDuration, setSelectedDuration] = useState(null);
+  const [selectedDataTrack, setSelectedDataTrack] = useState("data-analytics");
 
   // Step 3 Interactive Tabs & Deep Dive State
   const [activeDetailTab, setActiveDetailTab] = useState("curriculum"); // curriculum | projects | aiTools | journey | whoCanJoin | fees
@@ -1018,10 +1358,13 @@ function Skilling() {
   });
 
   // Step 1: Select Domain -> Directly go to Step 2 (Duration Program Cards)
-  const handleDomainSelect = (domain) => {
+  const handleDomainSelect = (domain, trackId = null) => {
     setSelectedDomain(domain);
     setSelectedCourse(null);
     setSelectedDuration(null);
+    if (domain.hasSpecializations) {
+      setSelectedDataTrack(trackId || domain.specializationTracks[0]?.id || "data-analytics");
+    }
     setStep(2);
     window.scrollTo({ top: 400, behavior: "smooth" });
   };
@@ -1046,6 +1389,7 @@ function Skilling() {
     setSelectedDomain(null);
     setSelectedCourse(null);
     setSelectedDuration(null);
+    setSelectedDataTrack("data-analytics");
   };
 
   // Handle Counselor Form Submit
@@ -1060,8 +1404,20 @@ function Skilling() {
     }, 2500);
   };
 
-  // Collect all duration course cards for the selected domain
-  const domainCourses = selectedDomain
+  // Active Specialization Track (e.g. Data Analytics vs Data Science)
+  const activeSpecialization =
+    selectedDomain?.hasSpecializations && selectedDomain.specializationTracks
+      ? selectedDomain.specializationTracks.find(
+          (t) => t.id === selectedDataTrack
+        ) || selectedDomain.specializationTracks[0]
+      : null;
+
+  // Collect all duration course cards for the selected domain or active track
+  const domainCourses = activeSpecialization
+    ? activeSpecialization.availableDurationIds
+        .map((durId) => activeSpecialization.coursesByDuration[durId]?.[0])
+        .filter(Boolean)
+    : selectedDomain
     ? selectedDomain.availableDurationIds
         .map((durId) => selectedDomain.coursesByDuration[durId]?.[0])
         .filter(Boolean)
@@ -1223,15 +1579,36 @@ function Skilling() {
               <>
                 <FaChevronRight className="text-xs text-slate-400" />
                 <span
-                  onClick={() => setStep(2)}
+                  onClick={() => {
+                    setStep(2);
+                    setSelectedCourse(null);
+                  }}
                   className={`font-medium cursor-pointer ${
-                    step === 2
+                    step === 2 && !selectedCourse
                       ? "text-[#7C2D12] font-bold"
                       : "hover:text-[#7C2D12]"
                   }`}
                 >
                   {selectedDomain.title}
                 </span>
+                {activeSpecialization && (
+                  <>
+                    <FaChevronRight className="text-xs text-slate-400" />
+                    <span
+                      onClick={() => {
+                        setStep(2);
+                        setSelectedCourse(null);
+                      }}
+                      className={`font-medium cursor-pointer ${
+                        step === 2 && !selectedCourse
+                          ? "text-[#D4A017] bg-[#0B1220] px-2 py-0.5 rounded-md text-xs font-bold"
+                          : "text-slate-700 hover:text-[#7C2D12]"
+                      }`}
+                    >
+                      {activeSpecialization.name}
+                    </span>
+                  </>
+                )}
               </>
             )}
 
@@ -1308,6 +1685,34 @@ function Skilling() {
                     <p className="text-slate-600 text-sm mt-3 line-clamp-3 leading-relaxed">
                       {domain.description}
                     </p>
+
+                    {domain.hasSpecializations && domain.specializationTracks && (
+                      <div className="mt-3 pt-2.5 border-t border-slate-100">
+                        <span className="text-[10px] font-black uppercase tracking-wider text-[#7C2D12] block mb-1.5">
+                          Choose Specialization Track:
+                        </span>
+                        <div className="grid grid-cols-2 gap-1.5">
+                          {domain.specializationTracks.map((trk) => (
+                            <button
+                              key={trk.id}
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleDomainSelect(domain, trk.id);
+                              }}
+                              className="text-left p-2 rounded-xl bg-slate-50 hover:bg-orange-50 border border-slate-200 hover:border-[#7C2D12] transition"
+                            >
+                              <div className="font-bold text-[11px] text-[#0B1220] leading-tight truncate">
+                                {trk.shortTitle}
+                              </div>
+                              <div className="text-[10px] text-slate-500 font-semibold mt-0.5">
+                                {trk.durationSummary}
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
@@ -1370,7 +1775,7 @@ function Skilling() {
               </button>
             </div>
 
-            <div className="text-center mb-10">
+            <div className="text-center mb-8">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-black uppercase tracking-wider text-orange-700 bg-orange-100/80 border border-orange-200 mb-3">
                 <span>Step 02 • Duration Roadmap</span>
               </div>
@@ -1381,6 +1786,58 @@ function Skilling() {
                 Select your preferred duration track under <strong className="text-slate-900">{selectedDomain.title}</strong>.
               </p>
             </div>
+
+            {/* Specialization Track Switcher (For Data Science & Data Analytics) */}
+            {selectedDomain.hasSpecializations && selectedDomain.specializationTracks && (
+              <div className="mb-10">
+                <div className="text-center mb-3">
+                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                    Select Specialization Field
+                  </span>
+                </div>
+                <div className="max-w-2xl mx-auto bg-slate-100 p-1.5 rounded-2xl border-2 border-slate-200 shadow-inner flex items-center gap-2">
+                  {selectedDomain.specializationTracks.map((trk) => {
+                    const isActive = (selectedDataTrack || "data-analytics") === trk.id;
+                    return (
+                      <button
+                        key={trk.id}
+                        type="button"
+                        onClick={() => setSelectedDataTrack(trk.id)}
+                        className={`flex-1 py-3.5 px-4 rounded-xl font-bold text-sm sm:text-base transition-all flex flex-col sm:flex-row items-center justify-center gap-2 cursor-pointer ${
+                          isActive
+                            ? "bg-[#0B1220] text-[#D4A017] shadow-lg scale-[1.02] ring-2 ring-[#D4A017]/40"
+                            : "text-slate-600 hover:text-slate-900 hover:bg-white/70"
+                        }`}
+                      >
+                        <span>{trk.name}</span>
+                        <span
+                          className={`text-xs px-2.5 py-0.5 rounded-full font-bold ${
+                            isActive
+                              ? "bg-[#D4A017] text-slate-950"
+                              : "bg-slate-200 text-slate-700"
+                          }`}
+                        >
+                          {trk.durationSummary}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {activeSpecialization && (
+                  <div className="max-w-3xl mx-auto text-center mt-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
+                    <span
+                      className={`inline-block text-xs px-3 py-1 rounded-full font-bold border mb-1.5 ${activeSpecialization.badgeColor}`}
+                    >
+                      {activeSpecialization.badge}
+                    </span>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      {activeSpecialization.description}
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* Ambient 3D Glow Orbs */}
             <div className="relative">
@@ -1458,6 +1915,11 @@ function Skilling() {
                         <span className="text-xs uppercase font-bold tracking-widest text-[#D4A017]">
                           {selectedDomain.title}
                         </span>
+                        {activeSpecialization && (
+                          <span className="text-xs px-2.5 py-0.5 rounded-full font-bold bg-[#D4A017] text-[#0B1220]">
+                            {activeSpecialization.name}
+                          </span>
+                        )}
                         <span className={`text-xs px-2.5 py-0.5 rounded-full font-bold border ${selectedCourse.levelColor}`}>
                           {selectedCourse.level}
                         </span>
@@ -2086,7 +2548,7 @@ function Skilling() {
                                   navigate("/checkout", {
                                     state: {
                                       course: {
-                                        id: selectedCourse.id,
+                                        id: selectedCourse.backendCourseId || selectedCourse.courseId || selectedCourse.id,
                                         title: `${selectedCourse.title} (Offline Classroom)`,
                                         price: selectedCourse.details.offlinePrice || selectedCourse.price,
                                         originalPrice: selectedCourse.originalPrice,
@@ -2140,7 +2602,7 @@ function Skilling() {
                                   navigate("/checkout", {
                                     state: {
                                       course: {
-                                        id: selectedCourse.id,
+                                        id: selectedCourse.backendCourseId || selectedCourse.courseId || selectedCourse.id,
                                         title: `${selectedCourse.title} (Online Live)`,
                                         price: selectedCourse.details.onlinePrice || selectedCourse.price,
                                         originalPrice: selectedCourse.originalPrice,
@@ -2402,7 +2864,7 @@ function Skilling() {
                             navigate("/checkout", {
                               state: {
                                 course: {
-                                  id: selectedCourse.id,
+                                  id: selectedCourse.backendCourseId || selectedCourse.courseId || selectedCourse.id,
                                   title: selectedCourse.title,
                                   price: selectedCourse.price,
                                   original_price: selectedCourse.originalPrice,
@@ -2410,8 +2872,10 @@ function Skilling() {
                                   level: selectedCourse.level,
                                   thumbnail:
                                     selectedCourse.thumbnail ||
-                                    "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
-                                  category: selectedDomain?.title || "Digital Marketing",
+                                    (selectedDataTrack === "data-science"
+                                      ? "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&auto=format&fit=crop"
+                                      : "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop"),
+                                  category: activeSpecialization ? activeSpecialization.shortTitle : (selectedDomain?.title || "Digital Marketing"),
                                 },
                               },
                             });

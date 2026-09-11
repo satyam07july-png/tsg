@@ -1,11 +1,11 @@
 // =========================================================================
 // DIGITAL MARKETING FOR PROFESSIONALS (4 MONTHS) - OFFICIAL DIZITAL ADDA DATA
-// Source: https://dizitaladda.com/courses/digital-marketing-for-professional
+// Scraped & Synced from: https://dizitaladda.com/courses/digital-marketing-for-professional
 // =========================================================================
 
 export const PROFESSIONAL_DIGITAL_MARKETING_DETAILS = {
   id: "dm-professionals",
-  title: "Digital Marketing For Professionals",
+  title: "Digital Marketing Course for Professionals",
   subtitle: "40 Focused Modules • 50+ AI Tools Overview • 10 Live Brand Projects",
   duration: "4 Months",
   durationId: "4-months",
@@ -15,8 +15,8 @@ export const PROFESSIONAL_DIGITAL_MARKETING_DETAILS = {
   badge: "Job-Ready Professional Diploma",
   rating: 4.9,
   ratingsCount: "1,043+ students (312 reviews)",
-  price: 30000,
-  originalPrice: 40000,
+  price: 14999,
+  originalPrice: 45000,
   onlinePrice: 30000,
   offlinePrice: 45000,
   emi: "₹2,199/mo",
@@ -60,834 +60,845 @@ export const PROFESSIONAL_DIGITAL_MARKETING_DETAILS = {
   ],
 
   curriculumCategories: [
-    {
-      id: "foundation",
-      categoryTitle: "1. Digital Marketing Foundation & Strategy",
-      categoryDesc: "Master digital marketing fundamentals, consumer psychology, market research, and customer acquisition funnels.",
-      modules: [
-        {
-          num: 1,
-          title: "Introduction to Digital Marketing and AI in 2026",
-          topics: [
-            "Evolution of Digital Marketing & The 2026 AI-Driven Landscape",
-            "Understanding Online Consumer Behavior & Digital Decision Journeys",
-            "Market Research, Competitor Benchmarking & Gap Analysis",
-            "Branding, Positioning Strategies & Unique Value Proposition (UVP)",
-            "Digital Marketing Funnels: TOFU, MOFU, and BOFU Architecture",
-          ],
-          skills: ["Digital Marketing", "Consumer Psychology", "Market Research", "Brand Positioning", "Funnel Strategy"],
-        },
-      ],
-    },
-    {
-      id: "google-suite",
-      categoryTitle: "2. Google Marketer Suite & Web Management",
-      categoryDesc: "Leverage Google Workspace productivity tools and webmaster platforms for marketing operations.",
-      modules: [
-        {
-          num: 2,
-          title: "Google World & Marketer Productivity Suite",
-          topics: [
-            "Google Drive, Gmail & Gemini AI Assistant for Marketers",
-            "Google Calendar & Google Maps for Business Operations",
-            "Google Sheets, Google Docs & Google Slides for Agency Reporting",
-            "Google Meet & Google Translate for International Client Pitching",
-            "Google One, Classrooms & Cloud Asset Management",
-          ],
-          skills: ["Google Workspace", "Gemini AI", "Spreadsheets", "Client Reporting"],
-        },
-        {
-          num: 3,
-          title: "Google Web Products & Search Console",
-          topics: [
-            "Google Search Console Verification & Crawl Error Fixes",
-            "Google Trends for Consumer Search Intent Mining",
-            "Google AdSense Publisher Monetization Model",
-            "Google My Business (GMB) Local Verification",
-          ],
-          skills: ["Search Console", "Google Trends", "AdSense", "Local Verification"],
-        },
-      ],
-    },
-    {
-      id: "creative-media",
-      categoryTitle: "3. Creative Design & Video Production",
-      categoryDesc: "Design high-converting ad banners, social media creatives, and short-form videos using AI-assisted tools.",
-      modules: [
-        {
-          num: 4,
-          title: "Graphic Designing with Canva & Canva AI",
-          topics: [
-            "Brand Kit Creation (Colors, Typography & Visual Identity)",
-            "Social Media Post, Story & Reel Cover Design",
-            "Display Ad Creatives & Click-Worthy Banner Design",
-            "Infographics, Pitch Decks & E-Book Layouts",
-            "Magic Studio, AI Image Generation & Background Removal",
-          ],
-          skills: ["Canva Pro", "Graphic Design", "Brand Kits", "AI Image Generation"],
-        },
-        {
-          num: 5,
-          title: "Video Editing & Content Production (Filmora & CapCut AI)",
-          topics: [
-            "Short-Form Video Strategy for Reels, TikTok & YouTube Shorts",
-            "Timeline Editing, B-Roll Selection & Sound Design in Filmora",
-            "Auto-Captions, Subtitle Styling & Motion Graphics with AI",
-            "Long-Form YouTube Video Structure, Hooks & Retention Hacks",
-            "Export Settings for Ultra-HD Cross-Platform Video Ads",
-          ],
-          skills: ["Video Editing", "Filmora", "CapCut", "Reels Production", "Shorts"],
-        },
-      ],
-    },
-    {
-      id: "web-development",
-      categoryTitle: "4. Website Development with WordPress",
-      categoryDesc: "Build professional, mobile-responsive, lightning-fast business websites without coding.",
-      modules: [
-        {
-          num: 6,
-          title: "WordPress Architecture, Hosting & Domain Setup",
-          topics: [
-            "Domain Registration, DNS Routing & CPanel / SSL Setup",
-            "WordPress Core Installation, Databases & Admin Dashboard",
-            "Theme Selection, Customizer Configuration & Typography",
-            "Essential Plugins for SEO, Speed, Security & Forms",
-          ],
-          skills: ["WordPress", "Domain & Hosting", "CMS Management", "SSL"],
-        },
-        {
-          num: 7,
-          title: "Landing Page Design with Elementor & Core Web Vitals",
-          topics: [
-            "Drag-and-Drop Page Building with Elementor",
-            "High-Converting Sales Landing Page Architecture",
-            "Mobile Responsiveness & Breakpoint Optimization",
-            "Image Compression, Caching & Core Web Vitals Speed Tuning",
-          ],
-          skills: ["Elementor", "Landing Page Design", "Core Web Vitals", "Speed Optimization"],
-        },
-      ],
-    },
-    {
-      id: "content-copywriting",
-      categoryTitle: "5. Content Writing & AI Copywriting",
-      categoryDesc: "Craft compelling marketing copy, persuasive sales letters, and rank-ready SEO blog articles.",
-      modules: [
-        {
-          num: 8,
-          title: "Fundamentals of Copywriting & Persuasion",
-          topics: [
-            "AIDA, PAS & BAB Copywriting Frameworks",
-            "Headline Writing, Hooks & Emotional Triggers",
-            "Writing High-Converting Ad Copy for Meta & Google Ads",
-            "Sales Page Copywriting & Call-to-Action (CTA) Optimization",
-          ],
-          skills: ["Copywriting", "Persuasive Writing", "Ad Copy", "Conversion Copy"],
-        },
-        {
-          num: 9,
-          title: "SEO Blog Writing & Content Marketing",
-          topics: [
-            "Search Intent Mapping & Topic Clustering for Blog Posts",
-            "Long-Form Article Writing (1,500+ Words) that Ranks",
-            "Internal Linking Structures & Content Refresh Audits",
-            "Content Calendars, Distribution & Publishing Workflows",
-          ],
-          skills: ["Blogging", "Content Marketing", "Editorial Calendar", "SEO Writing"],
-        },
-      ],
-    },
-    {
-      id: "organic-seo",
-      categoryTitle: "6. Search Engine Optimization (SEO)",
-      categoryDesc: "Master On-Page, Off-Page, Technical SEO, and local search to dominate organic Google rankings.",
-      modules: [
-        {
-          num: 10,
-          title: "Keyword Research & Search Intent Architecture",
-          topics: [
-            "Keyword Research with Semrush, Ahrefs & Google Keyword Planner",
-            "Informational, Navigational, Commercial & Transactional Intent",
-            "Long-Tail Keyword Opportunities & Competitor Gap Analysis",
-            "Keyword Clustering & Content Hub Architecture",
-          ],
-          skills: ["Keyword Research", "Semrush", "Search Intent", "Competitor Analysis"],
-        },
-        {
-          num: 11,
-          title: "On-Page SEO & Content Optimization",
-          topics: [
-            "Meta Title, Meta Description & Header Tag (H1-H6) Optimization",
-            "URL Slug Structuring & Canonical Tag Management",
-            "Image SEO: Alt Text, WebP Compression & Lazy Loading",
-            "On-Page Content Scoring with Yoast SEO & Rank Math",
-          ],
-          skills: ["On-Page SEO", "Rank Math", "Yoast SEO", "Metadata"],
-        },
-        {
-          num: 12,
-          title: "Technical SEO & Schema Markup",
-          topics: [
-            "Robots.txt Configuration, XML Sitemaps & Crawl Budgets",
-            "Technical Site Audits with Screaming Frog SEO Spider",
-            "Structured Data & Schema.org JSON-LD Implementation",
-            "Fixing 404 Errors, 301 Redirects & Broken Links",
-          ],
-          skills: ["Technical SEO", "Screaming Frog", "Schema Markup", "JSON-LD"],
-        },
-        {
-          num: 13,
-          title: "Off-Page SEO & Ethical Link Building",
-          topics: [
-            "Domain Authority (DA/DR), Page Authority & Backlink Equity",
-            "White-Hat Link Acquisition Strategies & Guest Blogging",
-            "Digital PR Outreach & Broken Link Reclamation",
-            "Competitor Backlink Audits & Toxic Link Disavowal",
-          ],
-          skills: ["Off-Page SEO", "Link Building", "Digital PR", "Outreach"],
-        },
-        {
-          num: 14,
-          title: "Local SEO & Google Business Profile (GMB)",
-          topics: [
-            "Google Business Profile Setup, Claiming & Verification",
-            "Local Keyword Optimization & Local 3-Pack Ranking Signals",
-            "NAP Consistency & Local Citation Building Across Directories",
-            "Review Generation Framework & Reputation Management",
-          ],
-          skills: ["Local SEO", "GMB", "Local 3-Pack", "Reputation Management"],
-        },
-      ],
-    },
-    {
-      id: "search-ai",
-      categoryTitle: "7. Next-Gen Search AI (AEO, LLMO & GEO)",
-      categoryDesc: "Optimize content for Google AI Overviews, Perplexity, ChatGPT Search, and Answer Engines.",
-      modules: [
-        {
-          num: 15,
-          title: "Answer Engine & LLM Optimization (AEO & LLMO)",
-          topics: [
-            "Understanding AI Overviews, Perplexity & ChatGPT Search Engine",
-            "Direct Answer Optimization & FAQ Schema Structuring",
-            "LLM Training Corpus Visibility & Brand Mention Citations",
-            "Generative Engine Optimization (GEO) Best Practices",
-          ],
-          skills: ["AEO", "LLMO", "GEO", "AI Overviews", "Perplexity"],
-        },
-      ],
-    },
-    {
-      id: "organic-social",
-      categoryTitle: "8. Organic Social Media Marketing (SSM / SMO)",
-      categoryDesc: "Build engaged communities and organic viral reach across Instagram, LinkedIn, Facebook, and X.",
-      modules: [
-        {
-          num: 16,
-          title: "Instagram & Facebook Organic Growth",
-          topics: [
-            "Instagram Algorithm Decoding for Reels, Carousels & Stories",
-            "Content Pillar Design, Hashtag Strategy & Viral Audio Curation",
-            "Audience Engagement Tactics & DM Funnel Automation",
-            "Facebook Group Community Building & Brand Advocates",
-          ],
-          skills: ["Instagram Marketing", "Facebook Growth", "Reels Algorithm", "Community Building"],
-        },
-        {
-          num: 17,
-          title: "LinkedIn Thought Leadership & B2B Branding",
-          topics: [
-            "Personal Profile Optimization for High-Ticket Client Inbound",
-            "LinkedIn Content Formats: PDF Carousels, Text Hooks & Polls",
-            "Company Page Growth & Organic Employee Advocacy",
-            "B2B Networking Strategies for Freelancers & Agency Owners",
-          ],
-          skills: ["LinkedIn Marketing", "B2B Branding", "Thought Leadership", "Networking"],
-        },
-        {
-          num: 18,
-          title: "YouTube Channel Optimization & Video SEO",
-          topics: [
-            "YouTube Channel Art, Branding & Playlists Setup",
-            "Video Title, Description, Tags & Thumbnail CTR Optimization",
-            "Audience Retention, Watch Time Signals & End Screens",
-            "YouTube Community Tab Engagement & Shorts Strategy",
-          ],
-          skills: ["YouTube SEO", "Video CTR", "Watch Time Optimization", "YouTube Shorts"],
-        },
-      ],
-    },
-    {
-      id: "inorganic-meta",
-      categoryTitle: "9. Meta Ads & Paid Social Advertising",
-      categoryDesc: "Run profitable paid advertising campaigns on Facebook, Instagram, and WhatsApp.",
-      modules: [
-        {
-          num: 19,
-          title: "Meta Business Suite & Pixel Setup",
-          topics: [
-            "Meta Business Manager Architecture & Account Verification",
-            "Meta Pixel Installation & Conversions API (CAPI) Integration",
-            "Event Setup Tool, Custom Conversions & Standard Events",
-            "Domain Verification & Aggregated Event Measurement",
-          ],
-          skills: ["Meta Business Suite", "Meta Pixel", "Conversions API", "Event Setup"],
-        },
-        {
-          num: 20,
-          title: "Meta Ads Targeting & Audience Segmentation",
-          topics: [
-            "Core Audiences: Demographics, Interests & Behavioral Targeting",
-            "Custom Audiences: Website Visitors, Video Viewers & Customer Lists",
-            "Lookalike Audiences (LAL 1%-10%) for Scale",
-            "Meta Advantage+ Shopping & Catalog Ads",
-          ],
-          skills: ["Meta Ads", "Audience Targeting", "Custom Audiences", "Lookalike Audiences"],
-        },
-        {
-          num: 21,
-          title: "Campaign Objectives, Budgeting & Creative Testing",
-          topics: [
-            "Awareness, Traffic, Leads, Engagement, App Promotion & Sales",
-            "Campaign Budget Optimization (CBO) vs. Ad Set Budget (ABO)",
-            "Dynamic Creative Testing (DCT) & Ad Copy Angles",
-            "Analyzing ROAS, CPA, CTR & Relevance Scores",
-          ],
-          skills: ["Campaign Budgeting", "CBO", "ROAS", "A/B Testing", "Creative Strategy"],
-        },
-      ],
-    },
-    {
-      id: "inorganic-google",
-      categoryTitle: "10. Google Ads (Search, Display, Shopping & YouTube)",
-      categoryDesc: "Capture high-intent searchers and scale paid revenue using Google Ads.",
-      modules: [
-        {
-          num: 22,
-          title: "Google Ads Account & Search Campaign Architecture",
-          topics: [
-            "Google Ads Account Setup & Billing Configuration",
-            "Search Campaign Structure: Account, Campaign, Ad Group, Keywords",
-            "Match Types: Exact, Phrase, and Broad Match Strategy",
-            "Negative Keywords Management & Quality Score Optimization",
-          ],
-          skills: ["Google Ads", "Search Ads", "Keyword Match Types", "Quality Score"],
-        },
-        {
-          num: 23,
-          title: "Ad Copy, Assets & Smart Bidding Strategies",
-          topics: [
-            "Responsive Search Ads (RSA) Copywriting & Pinning Best Practices",
-            "Ad Assets (Sitelinks, Callouts, Structured Snippets, Call Extensions)",
-            "Smart Bidding: Target CPA, Target ROAS, Maximize Conversions",
-            "Conversion Tracking Setup with Google Tag Manager (GTM)",
-          ],
-          skills: ["RSA Copywriting", "Ad Extensions", "Smart Bidding", "Conversion Tracking"],
-        },
-        {
-          num: 24,
-          title: "Display Network, Performance Max & YouTube Ads",
-          topics: [
-            "Google Display Network (GDN) Targeting & Responsive Display Ads",
-            "Performance Max (PMax) Campaigns: Asset Groups & Audience Signals",
-            "YouTube In-Stream Skippable & Non-Skippable Video Ad Formats",
-            "Google Shopping Ads & Merchant Center Feed Basics",
-          ],
-          skills: ["Performance Max", "Display Ads", "YouTube Ads", "Google Shopping"],
-        },
-      ],
-    },
-    {
-      id: "whatsapp-email",
-      categoryTitle: "11. WhatsApp Marketing & Email Automation",
-      categoryDesc: "Automate customer retention, broadcasts, drip sequences, and conversational sales.",
-      modules: [
-        {
-          num: 25,
-          title: "WhatsApp Business API & Chatbot Automation",
-          topics: [
-            "WhatsApp Business App vs. WhatsApp Business API (WABA)",
-            "Green Tick Verification & Official Meta BSP Setup",
-            "Creating Interactive Broadcasts, Catalogs & Quick Replies",
-            "Automating Chatbots for Lead Capture & Instant FAQ Resolution",
-          ],
-          skills: ["WhatsApp API", "Chatbot Automation", "Broadcast Campaigns", "WABA"],
-        },
-        {
-          num: 26,
-          title: "Email Marketing & Automated Drip Sequences",
-          topics: [
-            "Email Marketing Platforms Setup (Mailchimp / Brevo)",
-            "Email List Building, Opt-In Forms & GDPR/CAN-SPAM Compliance",
-            "Writing High-Open-Rate Subject Lines & HTML Newsletters",
-            "Automated Welcome Series, Abandoned Cart & Re-engagement Drips",
-          ],
-          skills: ["Email Marketing", "Mailchimp", "Brevo", "Drip Sequences", "Automation"],
-        },
-      ],
-    },
-    {
-      id: "analytics-reporting",
-      categoryTitle: "12. Performance Marketing & Google Analytics 4 (GA4)",
-      categoryDesc: "Measure user journeys, track conversions, analyze data, and build executive BI dashboards.",
-      modules: [
-        {
-          num: 27,
-          title: "Google Analytics 4 (GA4) Architecture & Data Streams",
-          topics: [
-            "GA4 Account Creation, Data Streams & Measurement ID Setup",
-            "Event-Based Data Model: Automatic, Enhanced & Custom Events",
-            "User Acquisition vs. Traffic Acquisition Reports",
-            "Engagement Rate, Bounce Rate Comparison & Session Metrics",
-          ],
-          skills: ["Google Analytics 4", "GA4", "Event Tracking", "Traffic Analysis"],
-        },
-        {
-          num: 28,
-          title: "Google Tag Manager (GTM) Configuration",
-          topics: [
-            "GTM Container Creation & Website Header/Footer Tag Injection",
-            "Tags, Triggers, and Variables Architecture",
-            "Tracking Button Clicks, Form Submissions & Outbound Links",
-            "GTM Preview & Debug Mode Troubleshooting",
-          ],
-          skills: ["Google Tag Manager", "GTM", "Triggers", "Variables", "Debugging"],
-        },
-        {
-          num: 29,
-          title: "Looker Studio Executive Dashboards",
-          topics: [
-            "Connecting GA4, Google Ads, and Search Console to Looker Studio",
-            "Designing Clean Executive Dashboards with Key Marketing KPIs",
-            "Scorecards, Time Series Charts, Geo Maps & Table Calculations",
-            "Automated PDF Scheduled Reports for Management & Clients",
-          ],
-          skills: ["Looker Studio", "Data Visualization", "Client Dashboards", "Reporting"],
-        },
-      ],
-    },
-    {
-      id: "remarketing-retargeting",
-      categoryTitle: "13. Remarketing & Retargeting Mastery",
-      categoryDesc: "Re-engage abandoned visitors and multiply conversions across Google and Meta ecosystems.",
-      modules: [
-        {
-          num: 30,
-          title: "Omnichannel Retargeting Strategies",
-          topics: [
-            "The Retargeting Funnel: Window Periods (3, 7, 14, 30, 90 Days)",
-            "Cross-Platform Retargeting: Meta Ads to Google Search Visitors",
-            "Dynamic Product Remarketing for E-Commerce Stores",
-            "Frequency Capping, Ad Fatigue Mitigation & Creative Refresh",
-          ],
-          skills: ["Retargeting", "Remarketing", "Omnichannel Ads", "Ad Fatigue Mitigation"],
-        },
-      ],
-    },
-    {
-      id: "ai-marketing-tools",
-      categoryTitle: "14. 50+ AI Marketing Tools Workshop",
-      categoryDesc: "Supercharge your daily marketing speed 10x with generative AI and automated agents.",
-      modules: [
-        {
-          num: 31,
-          title: "ChatGPT & Prompt Engineering for Marketers",
-          topics: [
-            "Advanced Prompt Engineering Frameworks for Copy, SEO & Ads",
-            "Creating Custom GPTs for Automated Content & Market Analysis",
-            "Automating Social Media Calendars & Email Copy Generation",
-            "Analyzing Data & Consumer Personas with Code Interpreter",
-          ],
-          skills: ["ChatGPT-4o", "Prompt Engineering", "Custom GPTs", "Persona Building"],
-        },
-        {
-          num: 32,
-          title: "Visual AI: Midjourney, DALL-E 3 & Gamma Presentations",
-          topics: [
-            "Generating Photorealistic Product & Lifestyle Ad Images",
-            "Prompt Crafting for Stylized Visuals & Brand Consistency",
-            "Creating Complete Client Pitch Decks in Minutes with Gamma App",
-            "Upscaling, Editing & Inpainting Visual Assets for Paid Campaigns",
-          ],
-          skills: ["Midjourney", "DALL-E 3", "Gamma App", "Visual AI"],
-        },
-        {
-          num: 33,
-          title: "AI Tools for SEO, Research & Video (Perplexity, Surfer, CapCut AI)",
-          topics: [
-            "Deep Market & Competitor Research with Perplexity AI",
-            "Content Scoring & Semantic Optimization with Surfer SEO / Semrush AI",
-            "Automating Voiceovers & Realistic Talking Avatars",
-            "AI Scriptwriting, Transcription & Video Repurposing Workflows",
-          ],
-          skills: ["Perplexity", "Surfer SEO", "Voice AI", "Video Repurposing"],
-        },
-      ],
-    },
-    {
-      id: "freelancing-placement",
-      categoryTitle: "15. Freelancing, Agency Operations & Career Placement",
-      categoryDesc: "Land high-paying client contracts, build an agency, or crack top-tier marketing job interviews.",
-      modules: [
-        {
-          num: 34,
-          title: "Freelance Marketplace Mastery (Upwork & Fiverr)",
-          topics: [
-            "Optimizing 100% Complete Upwork Profile with Portfolio Case Studies",
-            "Fiverr Gig Creation, SEO Ranking & Tiered Pricing Architecture",
-            "Writing Winning Project Proposals & Bidding Strategies",
-            "Client Communication, Scope Creep Prevention & Milestone Delivery",
-          ],
-          skills: ["Upwork", "Fiverr", "Freelancing", "Proposal Writing"],
-        },
-        {
-          num: 35,
-          title: "International Invoicing, Contracts & Client Retainers",
-          topics: [
-            "Service Agreements, NDAs & Commercial Scope Contracts",
-            "International Payments & Forex Setup (PayPal, Wise, RazorpayX)",
-            "Pitching Monthly Retainers ($500 - $2,000/mo) to US/UK Clients",
-            "Client Onboarding Systems & Automated Weekly Status Updates",
-          ],
-          skills: ["Client Retainers", "International Invoicing", "Wise", "Agency Contracts"],
-        },
-        {
-          num: 36,
-          title: "In-House Agency Paid Internship Sprint",
-          topics: [
-            "Managing Live Brand Accounts at DizitalAdda's Partner Agency",
-            "Real Budget Allocation & Cross-Channel Campaign Execution",
-            "Weekly Performance Standups with Senior Account Managers",
-            "Portfolio Documentation with Client Proof-of-Work Metrics",
-          ],
-          skills: ["Agency Experience", "Account Management", "Live Ad Budgets", "Client Ops"],
-        },
-        {
-          num: 37,
-          title: "Resume Building, LinkedIn Optimization & Interview Prep",
-          topics: [
-            "Crafting an ATS-Friendly Performance Marketer Resume",
-            "Optimizing LinkedIn Headline, About, and Featured Proof-of-Work",
-            "Mock Technical Interviews: Performance Metrics, SEO & Ad Audits",
-            "Salary Negotiation Strategies & DizitalAdda 250+ Recruiter Connect",
-          ],
-          skills: ["ATS Resume", "LinkedIn Optimization", "Mock Interviews", "Salary Negotiation"],
-        },
-      ],
-    },
-  ],
-
-  aiToolsList: [
-    { name: "ChatGPT-4o", category: "Copywriting & Strategy", use: "Copy, funnel strategies, email drips, prompt workflows" },
-    { name: "Google Gemini", category: "Research & Content", use: "Search intent, content synthesis, Google Workspace sync" },
-    { name: "DALL-E 3", category: "Visual Generation", use: "Photorealistic ad visuals, product renders, blog headers" },
-    { name: "Midjourney", category: "Creative Design", use: "Brand imagery, stylized social media graphics" },
-    { name: "Canva AI / Magic Studio", category: "Design Automation", use: "Instant resize, magic eraser, branded templates" },
-    { name: "Perplexity AI", category: "Market Research", use: "Deep competitor research, citation analysis, live stats" },
-    { name: "Gamma App", category: "Presentations & Pitches", use: "AI-generated executive decks & proposals" },
-    { name: "Semrush AI", category: "SEO & Keyword Intel", use: "AI content outline, keyword gap, SERP analysis" },
-    { name: "Surfer SEO", category: "Content Optimization", use: "NLP semantic content scoring & keyword density" },
-    { name: "Meta Advantage+", category: "Ad Automation", use: "AI automated audience targeting and creative placement" },
-    { name: "Google Performance Max", category: "Paid Search AI", use: "Machine-learning asset optimization across 7 channels" },
-    { name: "CapCut AI", category: "Video Production", use: "Auto-captioning, viral hook templates, background removal" },
-    { name: "Filmora AI", category: "Video Editing", use: "Smart silence detection, audio ducking, text-to-video" },
-    { name: "Mailchimp AI", category: "Email Optimization", use: "Subject line optimization, send-time personalization" },
-    { name: "Screaming Frog", category: "Technical Audit", use: "Crawling, redirect mapping, broken links, schema audit" },
-    { name: "Google Search Console", category: "Search Analytics", use: "Crawl errors, impressions, keyword ranking queries" },
-    { name: "Google Analytics 4", category: "Web Analytics", use: "User journeys, conversion events, attribution modeling" },
-    { name: "Google Tag Manager", category: "Tracking Automation", use: "Custom event triggers, pixel injection without code" },
-    { name: "Looker Studio", category: "BI Reporting", use: "Live client dashboards, automated PDF reports" },
-    { name: "WordPress & Elementor", category: "Web Development", use: "Drag-and-drop landing page design and lead funnels" },
-    { name: "Yoast / Rank Math", category: "On-Page SEO", use: "Snippet previews, schema markup, content readability" },
-    { name: "Ahrefs Webmaster Tools", category: "Backlink Analysis", use: "Backlink profiles, referring domains, competitor audits" },
-    { name: "Meta Business Suite", category: "Social & Ad Ops", use: "Scheduling, pixel management, unified inbox" },
-    { name: "Brevo (Sendinblue)", category: "CRM & Email", use: "Transactional emails, automated marketing sequences" },
-    { name: "WATI / AiSensy", category: "WhatsApp Marketing", use: "Official WhatsApp Business API broadcast and chatbots" },
-  ],
+  {
+    "num": 1,
+    "section": "Foundation",
+    "sectionTitle": "1. Foundation — Digital Marketing Fundamentals",
+    "sectionDesc": "Introduction to digital marketing, consumer behaviour, market research, branding, positioning, and digital marketing funnels.",
+    "lectures": [
+      {
+        "num": 1,
+        "title": "1.1 Introduction to Digital Marketing & Modern Landscape",
+        "duration": "25:00",
+        "desc": "Digital ecosystem evolution, online consumer mindsets, and inbound vs outbound channels."
+      },
+      {
+        "num": 2,
+        "title": "1.2 Consumer Psychology & Buyer Persona Mapping",
+        "duration": "28:30",
+        "desc": "Understanding audience journey, micro-moments, and defining target customer avatars."
+      },
+      {
+        "num": 3,
+        "title": "1.3 Market Research, Competitor Benchmarking & UVP",
+        "duration": "32:15",
+        "desc": "Competitive gap analysis, value propositions, and positioning frameworks."
+      },
+      {
+        "num": 4,
+        "title": "1.4 Digital Marketing Funnels (TOFU, MOFU, BOFU)",
+        "duration": "30:00",
+        "desc": "Full-funnel customer acquisition, nurturing workflows, and retention strategy."
+      }
+    ],
+    "skills": [
+      "Digital Marketing",
+      "Consumer Behavior",
+      "Market Research",
+      "Branding",
+      "Funnel Strategy"
+    ]
+  },
+  {
+    "num": 2,
+    "section": "Google World",
+    "sectionTitle": "2. Google Marketer Productivity Suite",
+    "sectionDesc": "Google Drive, Gmail, Gemini, Maps, Calendar, Meet, Translate, Sheets, Docs, Slides, and cloud collaboration.",
+    "lectures": [
+      {
+        "num": 5,
+        "title": "2.1 Google Workspace Cloud & Marketer Productivity",
+        "duration": "22:45",
+        "desc": "Mastering Drive, Docs, Sheets, and Slides for marketing plans and campaign reports."
+      },
+      {
+        "num": 6,
+        "title": "2.2 Gemini AI & Google Business Tools Integration",
+        "duration": "26:10",
+        "desc": "Using Gemini AI inside Google Workspace for automated research, copy generation, and data synthesis."
+      }
+    ],
+    "skills": [
+      "Google Tools",
+      "Cloud Storage",
+      "Productivity",
+      "Gemini AI",
+      "Collaboration"
+    ]
+  },
+  {
+    "num": 3,
+    "section": "Google Products",
+    "sectionTitle": "3. Google Web & Performance Products",
+    "sectionDesc": "Google Search Console, Google Ads, AdSense, Google My Business, Google Analytics (Basic & Advanced), GTM, and Google Trends.",
+    "lectures": [
+      {
+        "num": 7,
+        "title": "3.1 Google Search Console Setup & Indexing Diagnostics",
+        "duration": "35:20",
+        "desc": "Submitting sitemaps, monitoring crawl status, resolving coverage errors, and tracking search queries."
+      },
+      {
+        "num": 8,
+        "title": "3.2 Google Tag Manager (GTM) & Event Tracking",
+        "duration": "38:45",
+        "desc": "Creating tags, triggers, custom variables, and tracking conversions without developer dependency."
+      },
+      {
+        "num": 9,
+        "title": "3.3 Google Trends & AdSense Publisher Fundamentals",
+        "duration": "24:15",
+        "desc": "Identifying breakout market trends and understanding publisher revenue monetization models."
+      }
+    ],
+    "skills": [
+      "Google Search Console",
+      "Google Tag Manager",
+      "Google Trends",
+      "AdSense",
+      "Analytics"
+    ]
+  },
+  {
+    "num": 4,
+    "section": "Graphic Designing (Canva)",
+    "sectionTitle": "4. Graphic Design with Canva & Canva AI",
+    "sectionDesc": "Social media posts, banners, branding, infographics, and advanced Canva automation.",
+    "lectures": [
+      {
+        "num": 10,
+        "title": "4.1 Canva Workspace, Typography & Brand Identity",
+        "duration": "27:50",
+        "desc": "Building brand color palettes, visual harmony, typography rules, and custom logo design."
+      },
+      {
+        "num": 11,
+        "title": "4.2 Social Media Creatives, Ad Banners & Thumbnails",
+        "duration": "31:10",
+        "desc": "Designing high-converting Instagram carousels, Facebook ad banners, and YouTube thumbnails."
+      },
+      {
+        "num": 12,
+        "title": "4.3 Canva AI (Magic Studio) & Bulk Content Automation",
+        "duration": "29:40",
+        "desc": "Using AI image generation, Magic Eraser, bulk create workflows, and brand kit automation."
+      }
+    ],
+    "skills": [
+      "Canva",
+      "Social Media Design",
+      "Branding",
+      "Infographics",
+      "Automation"
+    ]
+  },
+  {
+    "num": 5,
+    "section": "Video Editing",
+    "sectionTitle": "5. Video Editing with Canva & Filmora",
+    "sectionDesc": "Reels, YouTube videos, transitions, effects, and short-form content production using Canva and Filmora.",
+    "lectures": [
+      {
+        "num": 13,
+        "title": "5.1 Video Editing Foundations & Timeline Architecture",
+        "duration": "34:00",
+        "desc": "Cuts, trims, sequencing, multi-track audio, and pacing principles for digital viewers."
+      },
+      {
+        "num": 14,
+        "title": "5.2 High-Retention Instagram Reels & Shorts Editing",
+        "duration": "36:20",
+        "desc": "Adding dynamic captions, sound effects, B-rolls, visual hooks, and viral pacing."
+      },
+      {
+        "num": 15,
+        "title": "5.3 Filmora Audio Cleanup, Color Grading & Video Ad Export",
+        "duration": "30:15",
+        "desc": "Audio equalization, noise removal, color grading presets, and export settings for all social platforms."
+      }
+    ],
+    "skills": [
+      "Video Editing",
+      "Filmora",
+      "Transitions",
+      "Reels Production",
+      "YouTube Editing"
+    ]
+  },
+  {
+    "num": 6,
+    "section": "Website (WordPress)",
+    "sectionTitle": "6. Website Development with WordPress",
+    "sectionDesc": "Theme selection, plugin installation, speed optimization, and landing page creation.",
+    "lectures": [
+      {
+        "num": 16,
+        "title": "6.1 WordPress Architecture, Domains, DNS & Hosting Setup",
+        "duration": "32:50",
+        "desc": "Setting up hosting environments, installing WordPress, SSL configuration, and security."
+      },
+      {
+        "num": 17,
+        "title": "6.2 Theme Customization & Elementor Visual Builder",
+        "duration": "42:15",
+        "desc": "Designing custom headers, footers, responsive landing pages, and lead capture forms."
+      },
+      {
+        "num": 18,
+        "title": "6.3 Website Speed Optimization & Core Web Vitals",
+        "duration": "28:30",
+        "desc": "Caching plugins, image compression, CDN setup, and achieving green scores on Google PageSpeed."
+      }
+    ],
+    "skills": [
+      "WordPress",
+      "Elementor",
+      "Plugins",
+      "Speed Optimization",
+      "Landing Pages"
+    ]
+  },
+  {
+    "num": 7,
+    "section": "Content Writing",
+    "sectionTitle": "7. Content Writing & Copywriting",
+    "sectionDesc": "Blog writing, SEO content, ad copywriting, social media strategy, and AI-assisted writing tools.",
+    "lectures": [
+      {
+        "num": 19,
+        "title": "7.1 Persuasive Copywriting Principles (AIDA, PAS & BAB)",
+        "duration": "29:10",
+        "desc": "Structuring ad copy, emotional triggers, curiosity hooks, and irresistible CTAs."
+      },
+      {
+        "num": 20,
+        "title": "7.2 SEO Content Writing & Long-Form Articles",
+        "duration": "35:40",
+        "desc": "Writing rank-ready 2,000+ word guides with keyword density, header hierarchy, and internal linking."
+      },
+      {
+        "num": 21,
+        "title": "7.3 AI-Assisted Writing with ChatGPT, Claude & Gemini",
+        "duration": "26:30",
+        "desc": "Prompt engineering for marketers: creating blog outlines, social calendars, and newsletter drafts."
+      }
+    ],
+    "skills": [
+      "Content Writing",
+      "Copywriting",
+      "SEO Content",
+      "AI Writing Tools",
+      "Storytelling"
+    ]
+  },
+  {
+    "num": 8,
+    "section": "Organic Marketing (SEO)",
+    "sectionTitle": "8. Search Engine Optimization (SEO)",
+    "sectionDesc": "On-page, off-page, technical SEO, local SEO, Google My Business, and AI automation in SEO.",
+    "lectures": [
+      {
+        "num": 22,
+        "title": "8.1 Keyword Research & Search Intent Mining",
+        "duration": "40:00",
+        "desc": "Keyword research with Semrush, Ahrefs, and Google Keyword Planner. Intent classification."
+      },
+      {
+        "num": 23,
+        "title": "8.2 On-Page SEO, Content Optimization & Schema Markup",
+        "duration": "38:20",
+        "desc": "Meta tags, H1-H6 structure, slug optimization, alt text, and JSON-LD schema generation."
+      },
+      {
+        "num": 24,
+        "title": "8.3 Technical SEO, Sitemaps & Crawlability Audits",
+        "duration": "36:15",
+        "desc": "Robots.txt, XML sitemaps, canonical tags, 301 redirects, and Screaming Frog site crawls."
+      },
+      {
+        "num": 25,
+        "title": "8.4 Off-Page SEO, Backlink Acquisition & Link Equity",
+        "duration": "33:45",
+        "desc": "White-hat link building, guest posting outreach, digital PR, and competitor backlink profiling."
+      },
+      {
+        "num": 26,
+        "title": "8.5 Local SEO & Google Business Profile (GMB) Domination",
+        "duration": "31:00",
+        "desc": "GMB optimization, local citations, geo-tagged images, reviews strategy, and Google 3-pack ranking."
+      },
+      {
+        "num": 27,
+        "title": "8.6 Search AI, Answer Engine Optimization (AEO) & LLMO",
+        "duration": "34:30",
+        "desc": "Optimizing for Google AI Overviews, Perplexity, ChatGPT Search, and brand entity authority."
+      }
+    ],
+    "skills": [
+      "On-Page SEO",
+      "Off-Page SEO",
+      "Technical SEO",
+      "Local SEO",
+      "AEO / LLMO"
+    ]
+  },
+  {
+    "num": 9,
+    "section": "Organic Marketing (SMM)",
+    "sectionTitle": "9. Social Media Marketing (Organic)",
+    "sectionDesc": "Organic growth on Facebook, Instagram, LinkedIn, Twitter. Content planning, hashtag strategy, and community engagement.",
+    "lectures": [
+      {
+        "num": 28,
+        "title": "9.1 Social Media Algorithm Secrets (Meta & LinkedIn)",
+        "duration": "27:40",
+        "desc": "How ranking algorithms prioritize watch time, saves, shares, and meaningful interactions."
+      },
+      {
+        "num": 29,
+        "title": "9.2 Content Strategy, Monthly Editorial Calendars & Growth",
+        "duration": "30:15",
+        "desc": "Theme buckets, carousel storytelling, hashtag strategy, and consistent publishing systems."
+      }
+    ],
+    "skills": [
+      "Facebook Growth",
+      "Instagram Growth",
+      "LinkedIn Strategy",
+      "Community Building",
+      "Scheduling"
+    ]
+  },
+  {
+    "num": 10,
+    "section": "Inorganic Marketing (Meta)",
+    "sectionTitle": "10. Meta Ads — Facebook & Instagram Advertising",
+    "sectionDesc": "Meta Business Suite, ad creatives, audience targeting, retargeting, budgeting, and campaign performance analysis.",
+    "lectures": [
+      {
+        "num": 30,
+        "title": "10.1 Meta Business Suite & Ad Account Infrastructure",
+        "duration": "35:10",
+        "desc": "Business manager setup, ad accounts, pixel integration, and domain verification."
+      },
+      {
+        "num": 31,
+        "title": "10.2 Audience Targeting: Broad, Interests, Custom & Lookalikes",
+        "duration": "37:45",
+        "desc": "Building high-intent customer segments, LAL audiences, and exclusion lists."
+      },
+      {
+        "num": 32,
+        "title": "10.3 Ad Creatives, Dynamic Creative Testing & Budget Scaling",
+        "duration": "39:20",
+        "desc": "CBO vs ABO, creative fatigue prevention, cost per acquisition (CPA) reduction, and ROAS scaling."
+      }
+    ],
+    "skills": [
+      "Meta Ads",
+      "Ad Creatives",
+      "Audience Targeting",
+      "Retargeting",
+      "Ad Analysis"
+    ]
+  },
+  {
+    "num": 11,
+    "section": "Inorganic Marketing (Google Ads)",
+    "sectionTitle": "11. Google Ads — Search, Display & YouTube Campaigns",
+    "sectionDesc": "Search, Display, Shopping and YouTube Ads. Keyword research, ad copy, quality score, conversion tracking.",
+    "lectures": [
+      {
+        "num": 33,
+        "title": "11.1 Google Search Ads & Match Types Architecture",
+        "duration": "41:00",
+        "desc": "Exact, phrase, broad match strategies, negative keywords, and quality score optimization."
+      },
+      {
+        "num": 34,
+        "title": "11.2 Performance Max (PMax) & Display Network Campaigns",
+        "duration": "36:30",
+        "desc": "Asset groups, audience signals, responsive display ads, and Google partner placements."
+      },
+      {
+        "num": 35,
+        "title": "11.3 YouTube Video Ads & Bidding Strategies",
+        "duration": "33:15",
+        "desc": "Skippable in-stream ads, bumper ads, target CPA vs maximize conversions, and conversion tracking."
+      }
+    ],
+    "skills": [
+      "Google Ads",
+      "Search Ads",
+      "PMax",
+      "Conversion Tracking",
+      "Ad Copy"
+    ]
+  },
+  {
+    "num": 12,
+    "section": "WhatsApp & Email Marketing",
+    "sectionTitle": "12. WhatsApp & Email Marketing Automation",
+    "sectionDesc": "WhatsApp Business API, chatbots, email campaigns, list segmentation, A/B testing, and automation.",
+    "lectures": [
+      {
+        "num": 36,
+        "title": "12.1 WhatsApp Business API, Green Tick & Chatbots",
+        "duration": "29:40",
+        "desc": "Setting up official WABA, interactive message templates, broadcast compliance, and automated chatbots."
+      },
+      {
+        "num": 37,
+        "title": "12.2 Email Marketing Automation, Lead Nurturing & Deliverability",
+        "duration": "31:50",
+        "desc": "Welcome drip series, abandoned cart recovery, newsletter templates, SPF/DKIM/DMARC authentication."
+      }
+    ],
+    "skills": [
+      "WhatsApp Marketing",
+      "Chatbots",
+      "Email Marketing",
+      "Segmentation",
+      "Email Automation"
+    ]
+  },
+  {
+    "num": 13,
+    "section": "Performance Marketing",
+    "sectionTitle": "13. Performance Marketing & GA4 Analytics",
+    "sectionDesc": "KPIs, user behaviour analysis, conversion tracking, custom reports, GA4 advanced, and audience segmentation.",
+    "lectures": [
+      {
+        "num": 38,
+        "title": "13.1 GA4 (Google Analytics 4) Deep Dive & Event Data Modeling",
+        "duration": "44:10",
+        "desc": "Event-based data model, user acquisition vs traffic acquisition, custom explorations, and funnels."
+      },
+      {
+        "num": 39,
+        "title": "13.2 Looker Studio Executive Dashboard Creation",
+        "duration": "36:25",
+        "desc": "Connecting GA4, Google Ads, and Meta Ads to build automated client reporting dashboards."
+      }
+    ],
+    "skills": [
+      "Google Analytics 4",
+      "Looker Studio",
+      "Conversion Tracking",
+      "Data Interpretation",
+      "KPIs"
+    ]
+  },
+  {
+    "num": 14,
+    "section": "Remarketing & Retargeting",
+    "sectionTitle": "14. Remarketing & Retargeting Mastery",
+    "sectionDesc": "Google and Meta remarketing, dynamic remarketing, custom audiences, retargeting automation, and conversion optimization.",
+    "lectures": [
+      {
+        "num": 40,
+        "title": "14.1 Full-Funnel Retargeting Architecture & Frequency Capping",
+        "duration": "32:00",
+        "desc": "Cart abandoner retargeting, pageview retargeting sequences, dynamic catalog ads, and ROAS maximization."
+      }
+    ],
+    "skills": [
+      "Retargeting",
+      "Dynamic Remarketing",
+      "Meta Custom Audiences",
+      "Conversion Optimization"
+    ]
+  },
+  {
+    "num": 15,
+    "section": "Freelancing Work",
+    "sectionTitle": "15. Freelancing, Agency Operations & Client Acquisition",
+    "sectionDesc": "Platforms: Upwork, Fiverr, Freelancer, PeoplePerHour, Toptal. Proposal writing, client management, portfolio building.",
+    "lectures": [
+      {
+        "num": 41,
+        "title": "15.1 Upwork & Fiverr Profile Optimization & Winning Proposals",
+        "duration": "38:00",
+        "desc": "High-converting proposal scripts, pricing your agency packages, handling objections, and international client contracts."
+      }
+    ],
+    "skills": [
+      "Freelancing",
+      "Upwork",
+      "Fiverr",
+      "Client Acquisition",
+      "Proposal Writing"
+    ]
+  }
+],
 
   liveProjects: [
-    {
-      num: 1,
-      title: "Meta Ads Campaign",
-      duration: "15 Hours • 15-Day Live Run",
-      description: "Set up Meta Business Suite, configure Pixel & CAPI, conduct audience research, design creatives in Canva, and manage live ad spends with A/B testing.",
-      deliverables: ["Pixel Configuration", "Audience Targeting Matrix", "Live ROAS Report"],
-    },
-    {
-      num: 2,
-      title: "Google Ads Search Campaign",
-      duration: "15 Hours • 10-Day Live Run",
-      description: "Conduct keyword research with match types, write Responsive Search Ads, configure ad extensions, and optimize Quality Scores and Smart Bidding.",
-      deliverables: ["Keyword Match Plan", "Live Search Campaign", "Cost-Per-Lead Audit"],
-    },
-    {
-      num: 3,
-      title: "Full Website SEO & Content Strategy",
-      duration: "20 Hours • 30-Day Project",
-      description: "Perform comprehensive technical audit with Screaming Frog, map search intent, write optimized on-page content, and implement Schema JSON-LD.",
-      deliverables: ["Technical Audit Report", "On-Page Keyword Matrix", "30-Day Traffic Growth Report"],
-    },
-    {
-      num: 4,
-      title: "Search AI & Generative Search (AEO / LLMO)",
-      duration: "10 Hours • 14-Day Sprint",
-      description: "Audit website visibility on Google AI Overviews and Perplexity. Structure FAQ and knowledge graphs for Answer Engine Optimization.",
-      deliverables: ["AI Search Audit", "FAQ Schema Snippet", "Generative Visibility Report"],
-    },
-    {
-      num: 5,
-      title: "Content Writing & SEO Blogging",
-      duration: "15 Hours • 21-Day Publishing",
-      description: "Research high-intent topics, draft and publish 3 comprehensive SEO-optimized blog posts with internal links, and track performance in Search Console.",
-      deliverables: ["3 Live Published Articles", "Internal Linking Map", "Search Console Query Data"],
-    },
-    {
-      num: 6,
-      title: "WordPress Business Website Build",
-      duration: "15 Hours • 14-Day Sprint",
-      description: "Register domain and hosting, install WordPress, customize Elementor landing pages, configure security and speed plugins, and test Core Web Vitals.",
-      deliverables: ["Live Responsive Website", "Contact Funnel", "90+ PageSpeed Score"],
-    },
-    {
-      num: 7,
-      title: "Email & WhatsApp Automated Marketing Campaign",
-      duration: "10 Hours • 10-Day Run",
-      description: "Build lead capture forms, segment subscriber lists, configure automated welcome drip sequences in Mailchimp, and launch a WhatsApp broadcast.",
-      deliverables: ["Email Drip Template", "WhatsApp Catalog", "Open & Click Rate Analytics"],
-    },
-    {
-      num: 8,
-      title: "Google My Business (Local SEO) Optimization",
-      duration: "10 Hours • 14-Day Project",
-      description: "Set up and verify Google Business Profile, optimize categories, photos, and local keywords, and implement a customer review generation system.",
-      deliverables: ["Verified GMB Profile", "Local Citation Matrix", "Customer Review Funnel"],
-    },
-    {
-      num: 9,
-      title: "Canva Brand Identity & Visual Design Suite",
-      duration: "10 Hours • 7-Day Sprint",
-      description: "Build a complete Brand Kit (logo, typography, color palette, voice), create 10 social media templates, and develop high-converting ad banners.",
-      deliverables: ["Brand Style Guide", "Social Media Pack", "Ad Banner Kit"],
-    },
-    {
-      num: 10,
-      title: "Video Editing for YouTube & Instagram Reels",
-      duration: "10 Hours • 10-Day Sprint",
-      description: "Script, storyboard, and edit high-retention short-form Reels and YouTube videos in Filmora, adding captions, sound effects, and motion graphics.",
-      deliverables: ["3 Edited Instagram Reels", "1 Long-Form YouTube Video", "Video Retention Analytics"],
-    },
-  ],
+  {
+    "title": "Meta Ads Campaign",
+    "tag": "Paid Advertising",
+    "description": "Build an end-to-end Meta Ads campaign for an active D2C e-commerce brand. Define custom and lookalike audiences, design dynamic video creatives, and achieve a verifiable 3.5+ ROAS.",
+    "skills": [
+      "Meta Business Suite",
+      "Custom Audiences",
+      "ROAS Scaling",
+      "Ad Copywriting",
+      "Dynamic Ads"
+    ],
+    "deliverable": "Live campaign report with verified impression and conversion metrics."
+  },
+  {
+    "title": "Google Ads Campaign",
+    "tag": "Search & Performance Max",
+    "description": "Plan, structure, and launch high-intent Google Search and Performance Max campaigns with live ad spends, optimizing Quality Scores, target CPA, and negative keyword lists.",
+    "skills": [
+      "Google Ads",
+      "Performance Max",
+      "Target CPA",
+      "Keyword Matching",
+      "Asset Groups"
+    ],
+    "deliverable": "Google Ads account build-out with real-time conversion tracking."
+  },
+  {
+    "title": "SEO & Content Strategy",
+    "tag": "Organic Search",
+    "description": "Conduct a comprehensive technical, on-page, and competitive SEO audit for a live commercial website. Execute keyword clustering, schema markups, and backlink outreach to rank on Page 1.",
+    "skills": [
+      "Semrush",
+      "Screaming Frog",
+      "Schema Markup",
+      "On-Page SEO",
+      "Link Building"
+    ],
+    "deliverable": "Complete SEO audit deck and published Page-1 ranking content pieces."
+  },
+  {
+    "title": "Search AI & AEO Strategy",
+    "tag": "Modern Search Tech",
+    "description": "Optimize digital brand entities for Google AI Overviews, Perplexity AI, and ChatGPT Search. Implement Answer Engine Optimization (AEO) and LLMO structured knowledge graphs.",
+    "skills": [
+      "Search AI",
+      "AEO",
+      "LLMO",
+      "Knowledge Graph",
+      "Entity Authority"
+    ],
+    "deliverable": "Entity optimization report showing brand inclusion in generative AI citations."
+  },
+  {
+    "title": "Content Writing & Blogging Hub",
+    "tag": "Content Marketing",
+    "description": "Develop a content marketing hub with 5 pillar articles and 15 cluster posts (1,500+ words each) mapped against commercial intent queries to drive sustained organic traffic.",
+    "skills": [
+      "Content Writing",
+      "Topic Clusters",
+      "Copywriting",
+      "Internal Linking",
+      "ChatGPT"
+    ],
+    "deliverable": "Live published blog hub with indexed articles and organic impressions."
+  },
+  {
+    "title": "WordPress Website Build",
+    "tag": "Web Development",
+    "description": "Build a responsive, blazing-fast business website from scratch using WordPress and Elementor. Implement contact forms, CRM webhooks, SSL, caching, and Core Web Vitals optimization.",
+    "skills": [
+      "WordPress",
+      "Elementor",
+      "Speed Optimization",
+      "Core Web Vitals",
+      "Lead Forms"
+    ],
+    "deliverable": "Fully responsive, live WordPress website with <1.5s load time."
+  },
+  {
+    "title": "Email & WhatsApp Marketing",
+    "tag": "Retention & CRM",
+    "description": "Architect automated lead nurturing drip sequences using WhatsApp Business API and email automation tools. Setup chatbots, cart recovery triggers, and compliance-first broadcast campaigns.",
+    "skills": [
+      "WhatsApp Business API",
+      "Chatbots",
+      "Email Automation",
+      "A/B Testing",
+      "Deliverability"
+    ],
+    "deliverable": "Working chatbot workflow and automated 5-part email nurture sequence."
+  },
+  {
+    "title": "Google My Business & Local SEO",
+    "tag": "Local Dominance",
+    "description": "Claim, verify, and fully optimize a local business on Google Business Profile (GMB). Build local citations, review collection workflows, and geo-targeted landing pages to dominate the Local 3-Pack.",
+    "skills": [
+      "Google Business Profile",
+      "Local Citations",
+      "NAP Consistency",
+      "Map Ranking",
+      "Review Funnels"
+    ],
+    "deliverable": "Ranked Google Maps profile with visible increase in call and direction requests."
+  },
+  {
+    "title": "Canva Brand Design & Visual Identity",
+    "tag": "Creative Design",
+    "description": "Establish a complete corporate brand kit in Canva Pro including brand colors, typography, logos, social media templates, ad banners, client pitch decks, and automated bulk-created assets.",
+    "skills": [
+      "Canva Pro",
+      "Visual Identity",
+      "Brand Kits",
+      "Magic Studio",
+      "Social Templates"
+    ],
+    "deliverable": "Exported professional brand style guide and full campaign creative collateral."
+  },
+  {
+    "title": "Video Editing & Social Reels",
+    "tag": "Video Production",
+    "description": "Produce high-retention short-form video reels for Instagram and YouTube Shorts using Filmora and AI caption tools. Master visual hooks, sound design, transitions, and export compression.",
+    "skills": [
+      "Filmora",
+      "CapCut",
+      "Reels Pacing",
+      "Sound Design",
+      "Auto Captions"
+    ],
+    "deliverable": "5 production-grade short-form video reels ready for social distribution."
+  }
+],
 
-  certificationsList: [
-    { title: "Google Ads Search Certification", issuer: "Google", badge: "Global" },
-    { title: "Google Analytics 4 (GA4) Certification", issuer: "Google", badge: "Global" },
-    { title: "Meta Certified Digital Marketing Associate", issuer: "Meta Blueprint", badge: "Global" },
-    { title: "Inbound Marketing Certification", issuer: "HubSpot Academy", badge: "Industry Standard" },
-    { title: "Content Marketing Certification", issuer: "HubSpot Academy", badge: "Industry Standard" },
-    { title: "SEO Fundamentals & Toolkit Certification", issuer: "Semrush", badge: "Industry Standard" },
-    { title: "Digital Marketing Skills Certificate", issuer: "Skill India (NSDC)", badge: "Govt Recognized" },
-    { title: "DizitalAdda Professional Marketing Diploma", issuer: "DizitalAdda", badge: "ISO 9001:2015" },
-    { title: "In-House Agency Live Internship Letter", issuer: "DizitalAdda Agency", badge: "Work Experience" },
-  ],
+  trainers: [
+  {
+    "name": "Dr. Gulshan Kumar",
+    "title": "Founder & Head Trainer",
+    "experience": "10+ Years Experience",
+    "bio": "Training Head with over 10 years of experience in digital marketing and data science. Specializes in building strong fundamentals, marketing strategies, and content writing.",
+    "specialties": [
+      "Digital Marketing",
+      "Data Science",
+      "Marketing Strategy",
+      "Content Writing"
+    ],
+    "avatar": "https://dizitaladda.com/assets/img/trainers/gulshan.webp"
+  },
+  {
+    "name": "Ram Kumar",
+    "title": "Lead Trainer — WordPress & Affiliate Marketing",
+    "experience": "12+ Years Experience",
+    "bio": "Lead Trainer with 12+ years of experience in web development and affiliate marketing. Expert in WordPress and high-conversion e-commerce websites.",
+    "specialties": [
+      "WordPress",
+      "E-commerce",
+      "Affiliate Marketing",
+      "Web Development"
+    ],
+    "avatar": "https://dizitaladda.com/assets/img/trainers/ram.webp"
+  },
+  {
+    "name": "Saurabh Kumar",
+    "title": "Trainer — Performance Marketing & Paid Ads",
+    "experience": "15+ Years Experience",
+    "bio": "15+ years in performance marketing. Managed ₹10+ crore ad spend across Google, Meta, LinkedIn, and Jio Hotstar campaigns.",
+    "specialties": [
+      "Performance Marketing",
+      "Google Ads",
+      "Meta Ads",
+      "LinkedIn Ads",
+      "Media Buying"
+    ],
+    "avatar": "https://dizitaladda.com/assets/img/trainers/saurabh.webp"
+  },
+  {
+    "name": "Shagun Srivastav",
+    "title": "Trainer — Data Science, AI & Automation",
+    "experience": "7+ Years Experience",
+    "bio": "7+ years in data science and AI technologies. Teaches generative AI, data analytics, and marketing automation tools.",
+    "specialties": [
+      "Data Science",
+      "Generative AI",
+      "AI Automation",
+      "Data Analytics"
+    ],
+    "avatar": "https://dizitaladda.com/assets/img/trainers/shagun.webp"
+  },
+  {
+    "name": "Ravi Kumar",
+    "title": "Trainer — SEO Specialist",
+    "experience": "7+ Years Experience",
+    "bio": "7+ years in SEO. Specializes in keyword research, website optimization, Google Analytics, and Search Console.",
+    "specialties": [
+      "SEO",
+      "Keyword Research",
+      "Google Analytics",
+      "Search Console"
+    ],
+    "avatar": "https://dizitaladda.com/assets/img/trainers/ravi.webp"
+  },
+  {
+    "name": "Kaushal",
+    "title": "Trainer — Local SEO & Google Business Profile",
+    "experience": "5+ Years Experience",
+    "bio": "5+ years in local SEO and paid marketing. Specializes in Google Business Profile optimization and local search ads.",
+    "specialties": [
+      "Local SEO",
+      "Google Business Profile",
+      "Meta Ads",
+      "Local Search Ads"
+    ],
+    "avatar": "https://dizitaladda.com/assets/img/trainers/kaushal.webp"
+  },
+  {
+    "name": "Deepanshu Soni",
+    "title": "Trainer — Data Analytics & Web Development",
+    "experience": "5+ Years Experience",
+    "bio": "5+ years in data analytics and web development. Teaches SQL, Python, Power BI, and frontend development.",
+    "specialties": [
+      "SQL",
+      "Python",
+      "Power BI",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "avatar": "https://dizitaladda.com/assets/img/trainers/deepanshu.webp"
+  },
+  {
+    "name": "Govind Bisht",
+    "title": "Trainer — Search AI & Modern SEO",
+    "experience": "Specialist",
+    "bio": "Specialist in Search AI and modern SEO including Google AI Overviews, Answer Engine Optimization (AEO), and LLM Optimization (LLMO).",
+    "specialties": [
+      "Search AI",
+      "SEO",
+      "AI Overviews",
+      "AEO",
+      "LLMO"
+    ],
+    "avatar": "https://dizitaladda.com/assets/img/trainers/govind.webp"
+  }
+],
 
   faqs: [
-    {
-      question: "What is the duration of the Digital Marketing Course for Professionals?",
-      answer: "The course is 4 months in duration with 80+ live training hours. It offers flexible batch options including weekend batches (Saturday & Sunday) and weekday evening batches designed specifically to accommodate working professionals' schedules.",
-    },
-    {
-      question: "What is the fee for the Digital Marketing for Professionals course?",
-      answer: "The fee for the 4-month course starts at ₹30,000 for online mode and ₹45,000 for offline classroom training in Delhi. Flexible no-cost EMI options starting at ₹2,199/month are available with zero percent interest.",
-    },
-    {
-      question: "What is the difference between the 4-Month Professional and 6-Month Advanced Course?",
-      answer: "The 4-month Professional course (40 modules, 80+ hours) is designed for working professionals who need core digital marketing skills efficiently — it covers all essential disciplines without extended deep-dives. The 6-month Advanced course (60 modules, 150+ hours) goes deeper into each channel, adds advanced CRM, programmatic advertising, and 10 live client campaigns. If you want to add marketing skills to your existing career or freelance, the 4-month Professional course is ideal.",
-    },
-    {
-      question: "How quickly can I get a job or freelance clients after completing the 4-month course?",
-      answer: "Most DizitalAdda graduates find their first job or land paying freelance clients within 4 to 12 weeks of completing the programme — provided they have completed their live projects, earned at least 2–3 industry certifications, and actively participate in our placement mock interviews.",
-    },
-    {
-      question: "Is this course suitable for someone with no prior marketing background?",
-      answer: "Yes. The course begins with Digital Marketing Fundamentals — covering consumer behavior, market research, branding, and funnel strategy — building the strategic foundation before platform-specific training. No prior marketing, design, or technical coding skills are required.",
-    },
-    {
-      question: "What live projects are included in the course?",
-      answer: "The course includes 10 live projects: (1) Meta Ads campaign; (2) Google Ads campaign; (3) SEO and Content Strategy; (4) Search AI optimization; (5) Content Writing and Blogging; (6) WordPress website build; (7) Email and WhatsApp marketing; (8) Google My Business and Local SEO; (9) Canva brand design; and (10) Video editing for YouTube and Reels. All projects use real brands and live ad budgets.",
-    },
-    {
-      question: "Where is DizitalAdda located?",
-      answer: "DizitalAdda's offline campus is located at 2nd Floor, Spacetime Management Pvt Ltd Design House, behind Savitri Cinema Complex, Greater Kailash II, Chittaranjan Park, New Delhi, Delhi 110048. Fully interactive live online training is also available with lifetime recordings.",
-    },
-    {
-      question: "What digital marketing skills do employers look for in 2025–2026?",
-      answer: "The most in-demand skills are: Google Ads (Search & Performance Max), Meta Ads with retargeting, SEO (especially Technical SEO & Schema), Google Analytics 4 & Looker Studio dashboards, AI tool proficiency (ChatGPT, Gemini), Email & WhatsApp marketing automation, WordPress management, and short-form video creation.",
-    },
-    {
-      question: "Can working professionals learn digital marketing without quitting their jobs?",
-      answer: "Absolutely. The course requires only 5–7 hours per week with dedicated weekend and late evening batches. All sessions are recorded and uploaded to the LMS within 24 hours with lifetime access, ensuring you never miss a lesson.",
-    },
-    {
-      question: "What AI tools are covered in this course?",
-      answer: "The course covers 50+ AI tools including: ChatGPT-4o, Google Gemini, DALL-E 3, Midjourney, Canva AI / Magic Studio, Perplexity AI, Gamma App, Semrush AI, Surfer SEO, Meta Advantage+, Google Performance Max, CapCut AI, Filmora AI, and Mailchimp AI.",
-    },
-    {
-      question: "What awards and recognition has DizitalAdda received?",
-      answer: "DizitalAdda has received three major industry awards: the Indian Icon Award presented by Dr. Kiran Bedi; the Bharat Business Award presented by Ashneer Grover (Shark Tank India); and the Excellence Award by The Hotel School. Rated 4.9/5 across 1,043+ verified reviews.",
-    },
-    {
-      question: "What is the batch size at DizitalAdda?",
-      answer: "DizitalAdda caps all batches at a maximum of 15 students to ensure personalized mentor attention, 1-on-1 doubt resolution, and hands-on project reviews.",
-    },
-  ],
+  {
+    "q": "What is DizitalAdda's Digital Marketing for Professionals course?",
+    "a": "It is a 4-month, 80+ hour hybrid digital marketing training programme in Delhi/NCR, covering 40 modules across SEO, Google Ads, Meta Ads, Content Writing, Email and WhatsApp Marketing, Social Media, WordPress, Canva, Video Editing, GA4, Performance Marketing, Remarketing, and Freelancing — with 50+ AI tools integrated throughout. Batches are capped at 15 students for personalised mentorship. The course includes a paid in-house internship and 100% placement assistance. DizitalAdda is rated 4.9/5 across 1,043+ Google reviews."
+  },
+  {
+    "q": "What is the fee for the Digital Marketing for Professionals course?",
+    "a": "The course fee is ₹45,000. EMI options are available through Razorpay and PayU. The fee includes all study materials, LMS access, live project resources, certification exam fees for Google and Meta Blueprint, and lifetime placement assistance. Contact DizitalAdda at +91-8810606010 to discuss current batch discounts and EMI plans."
+  },
+  {
+    "q": "How long does the Digital Marketing for Professionals course take?",
+    "a": "The course runs for 4 months with 80+ hours of live training. Classes require approximately 5–7 hours per week, making it suitable for working professionals with full-time jobs. All sessions are recorded and available on the LMS, so missed classes can be caught up at any time."
+  },
+  {
+    "q": "Is this digital marketing course suitable for working professionals?",
+    "a": "Yes. The course is specifically designed for working professionals — with flexible morning, evening, and weekend batch options; hybrid online and offline mode; LMS recordings for all sessions; and a 4-month compressed format that avoids unnecessary beginner theory. Working professionals across IT, sales, finance, HR, and operations have successfully completed the course without affecting their primary job performance."
+  },
+  {
+    "q": "What certifications will I get after this course?",
+    "a": "You will earn 10+ certifications: Google Ads Certification (Search, Display, YouTube) from Google Skillshop; Meta Blueprint Certification (Facebook and Instagram Ads); Google Analytics 4 Certification from Google Skillshop; HubSpot Content Marketing Certification; Semrush SEO Toolkit Certification; Skill India Digital Marketing Certification; Digital India Certification; and DizitalAdda Professional Digital Marketing Certification — each tied to a module you completed and a live project you delivered."
+  },
+  {
+    "q": "What is the placement support like after the course?",
+    "a": "DizitalAdda provides 100% placement assistance with 250+ recruiting partner companies. The placement process includes resume building, LinkedIn profile optimisation, mock interviews, and direct recruiter introductions — starting before graduation. The institute reports a 97% placement rate, with graduates placed at companies including Performics, HiveMinds, Growisto, Dentsu, Tata CLiQ, Coursera, and Adyog. Average starting salary is ₹4.5–8 LPA, with the highest CTC at ₹10.05 LPA."
+  },
+  {
+    "q": "Can I do this course online?",
+    "a": "Yes. The course is available in both online and offline (Delhi/NCR campus) modes. The online mode delivers the same live expert-led sessions, project work, LMS access, and placement support as the offline mode. Students can also switch between online and offline depending on batch availability."
+  },
+  {
+    "q": "What is the difference between the 4-month Professional course and the 6-month Advanced course?",
+    "a": "The 4-month Professional course (40 modules, 80+ hours) is designed for working professionals who need core digital marketing skills efficiently — it covers all essential disciplines without extended deep-dives. The 6-month Advanced course (60 modules, 120+ hours) goes deeper into each channel, adds advanced strategy, CRM, programmatic advertising, and more complex campaign management. If you are making a career switch or need to lead digital marketing strategy, the Advanced course is recommended. If you want to add digital marketing skills to your existing career or start freelancing, the Professional course is the right fit."
+  },
+  {
+    "q": "How quickly can I get a job after completing the 4-month course?",
+    "a": "Most DizitalAdda graduates find their first job within 4 to 12 weeks of completing the programme — provided they have completed their live projects, earned at least 2–3 industry certifications, optimised their LinkedIn profile, and actively applied during the final month of training. The placement team begins recruiter introductions and mock interviews before graduation to accelerate this timeline."
+  },
+  {
+    "q": "Is this course good for someone with no marketing background?",
+    "a": "Yes. The course begins with Digital Marketing Fundamentals — covering consumer behaviour, market research, branding, and funnel strategy — building the strategic foundation before platform-specific training. No prior marketing, design, or technical skills are required. IT professionals, sales executives, finance professionals, and HR managers have all completed this course successfully, often bringing domain advantages that accelerate their learning of analytics and campaign strategy."
+  },
+  {
+    "q": "What live projects are included in the course?",
+    "a": "The course includes 10 live projects: (1) Meta Ads campaign — 15 hours with 15-day live campaign; (2) Google Ads campaign — 15 hours with 10-day live campaign; (3) SEO and Content Strategy — 20 hours over 30 days; (4) Search AI optimisation — 10 hours with 14-day implementation; (5) Content Writing and Blogging — 15 hours with 21-day publishing; (6) WordPress website build — 15 hours with 14-day optimisation; (7) Email and WhatsApp marketing campaign — 10 hours; (8) Google My Business and Local SEO — 10 hours; (9) Canva brand design and visual identity — 10 hours; (10) Video editing for YouTube and Reels — 10 hours. All projects use real brands that change every batch."
+  },
+  {
+    "q": "Where is DizitalAdda located?",
+    "a": "DizitalAdda's offline campus is located at 2nd Floor, Spacetime Management Pvt Ltd Design House, behind Savitri Cinema Complex, Greater Kailash II, Chittaranjan Park, New Delhi, Delhi 110048. The institute also offers a fully online mode for students outside Delhi/NCR. Contact: +91-8810606010 or info@dizitaladda.com."
+  },
+  {
+    "q": "What is a digital marketing course for working professionals?",
+    "a": "A digital marketing course for working professionals is a structured training programme designed around the constraints of people who already have full-time jobs. It differs from a regular course in three ways: flexible batch timings (morning, evening, weekend), a faster-paced curriculum that skips beginner hand-holding, and direct career application — whether a salary increase, a role switch, or a freelance income. DizitalAdda's 4-month Professional course is one of the most time-efficient structured digital marketing programmes in Delhi/NCR, requiring only 5–7 hours per week while covering all core channels: SEO, Google Ads, Meta Ads, Social Media, Email Marketing, Analytics, and AI tools."
+  },
+  {
+    "q": "What digital marketing skills do employers look for in 2025–2026?",
+    "a": "The most in-demand digital marketing skills for Indian employers in 2025–2026 are: Google Ads (Search and Performance Max), Meta Ads with retargeting, SEO especially Technical SEO and content strategy, Google Analytics 4 and Looker Studio reporting, AI tool proficiency (ChatGPT, Gemini, marketing automation), Email marketing and CRM (HubSpot, Mailchimp), Social media content strategy, WordPress website management, video content creation for YouTube and Instagram Reels, and Conversion Rate Optimisation. Employers increasingly prioritise candidates who can demonstrate live campaign results over those who only hold certifications."
+  },
+  {
+    "q": "Can a homemaker learn digital marketing and work from home?",
+    "a": "Yes. Digital marketing is one of the most accessible income-generating skills for homemakers because all work is laptop-based, clients can be served remotely, and the freelance market for digital marketing services is large. Homemakers who complete the course can offer social media management, content writing, SEO, email marketing, and Google or Meta Ads management as freelance services. Starting freelance income typically ranges from ₹15,000 to ₹50,000 per month depending on number of clients and services, growing significantly with experience."
+  },
+  {
+    "q": "How do I book a free demo class at DizitalAdda?",
+    "a": "Book a free demo class at DizitalAdda by: (1) filling the demo booking form at dizitaladda.com/courses/digital-marketing-for-professional, (2) calling +91-8810606010, or (3) messaging on WhatsApp at the same number. The demo is a 1-hour live session using actual course curriculum delivered by the same trainer who teaches the full programme — giving you a genuine preview before any financial commitment. After the demo, a no-obligation career counselling session helps confirm which course is right for you."
+  },
+  {
+    "q": "What AI tools are covered in the course?",
+    "a": "The course covers 50+ AI tools including: ChatGPT and Google Gemini for content creation and strategy; DALL-E and Canva AI for visual design; Perplexity for AI-powered research; Gamma for AI-generated presentations; AI tools for SEO including Semrush AI features and SurferSEO; Meta Advantage+ for AI-powered ad targeting; Google Performance Max for automated ad campaigns; InShot and CapCut AI for video editing; Mailchimp AI features for email optimisation; and tools for Answer Engine Optimisation (AEO), LLM Optimisation (LLMO), and Generative Search (GEO)."
+  },
+  {
+    "q": "Is the salary after a 4-month digital marketing course worth it?",
+    "a": "Working professionals who complete the course and switch to a digital marketing role typically see salary increases of 30–70% within 12–18 months. DizitalAdda graduates report average starting salaries in the ₹4.5–8 LPA range, with the highest recorded CTC at ₹10.05 LPA. Professionals from non-marketing backgrounds (IT, sales, HR) who switch to specialist roles often see the largest jumps. For those who add digital marketing skills within their existing company, the increase is typically 20–40% through role expansions or promotions."
+  },
+  {
+    "q": "What is the batch size at DizitalAdda?",
+    "a": "DizitalAdda caps all batches at a maximum of 15 students. This small batch size ensures every student receives personalised attention from trainers, individualised feedback on live projects, and direct mentor interaction — unlike large-batch institutes where trainers cannot address individual doubts or learning pace differences."
+  },
+  {
+    "q": "Does DizitalAdda provide class recordings?",
+    "a": "Yes. All live sessions are recorded and uploaded to the LMS (Learning Management System) within 24 hours. Students have lifetime access to these recordings, study materials, and updated course content — including updates to the curriculum when new AI tools, platform changes, or industry shifts require it. This makes the course accessible for working professionals who occasionally miss sessions due to work commitments."
+  },
+  {
+    "q": "What awards has DizitalAdda received?",
+    "a": "DizitalAdda has received three major industry awards: the Indian Icon Award, presented by Dr. Kiran Bedi, recognising excellence in skill-based education; the Bharat Business Award, presented by Ashneer Grover (Shark Tank India), recognising business innovation and impact; and the Excellence Award by The Hotel School. The institute is also rated 4.9 out of 5 across 1,043+ verified Google reviews and has trained 25,000+ students across India."
+  }
+],
 
-  awards: [
-    { title: "Indian Icon Award", presenter: "Presented by Dr. Kiran Bedi", desc: "Recognising excellence in skill-based practical digital education" },
-    { title: "Bharat Business Award", presenter: "Presented by Ashneer Grover (Shark Tank India)", desc: "Recognising business innovation and entrepreneurship impact" },
-    { title: "Excellence Award", presenter: "Presented by The Hotel School", desc: "Honouring outstanding industry-aligned curriculum and placement track record" },
-  ],
-
-  toolClusters: [
-    {
-      name: "Generative AI & LLM Assistants",
-      badge: "AI Frontier",
-      tools: [
-        { name: "ChatGPT-4o", desc: "Strategy, Persona & Ad Copy Generation", accent: "#3ddc97" },
-        { name: "Google Gemini", desc: "Google Suite & Workspace Marketing AI", accent: "#4285f4" },
-        { name: "Perplexity AI", desc: "Real-Time Fact-Checked Market Research", accent: "#8fd3ff" },
-        { name: "Claude 3.5 Sonnet", desc: "Long-Form Content & In-Depth Reasoning", accent: "#d97706" },
-        { name: "Microsoft Copilot", desc: "Enterprise Marketing Productivity & Excel", accent: "#0078d4" },
-      ],
-    },
-    {
-      name: "AI Visual, Creative & Video Tech",
-      badge: "Visual & Motion",
-      tools: [
-        { name: "Midjourney v6", desc: "Hyper-Realistic Commercial Imagery", accent: "#6366f1" },
-        { name: "DALL-E 3", desc: "Prompt-to-Image Generation in ChatGPT", accent: "#10b981" },
-        { name: "Canva Pro & AI", desc: "Magic Studio, Brand Kits & Bulk Create", accent: "#00c4cc" },
-        { name: "Gamma App", desc: "Instant AI Pitch Decks & Proposals", accent: "#9b5cff" },
-        { name: "Filmora AI", desc: "Smart Video Editing & Cut Detection", accent: "#00bfa5" },
-        { name: "CapCut Pro", desc: "Reels, Shorts & Viral Dynamic Captions", accent: "#ff4d8d" },
-        { name: "InShot", desc: "Fast Mobile Video Editing & Story Layouts", accent: "#ff647f" },
-        { name: "Adobe Photoshop", desc: "Ad Creatives & Visual Brand Identity", accent: "#31a8ff" },
-      ],
-    },
-    {
-      name: "SEO, Content & Search AI Stack",
-      badge: "Organic Dominance",
-      tools: [
-        { name: "Semrush", desc: "Keyword Research & Competitor Gap Audits", accent: "#ff642d" },
-        { name: "Ahrefs", desc: "Backlink Analysis & Domain Authority", accent: "#ff8800" },
-        { name: "Screaming Frog", desc: "Deep Technical Site Crawls & Architecture", accent: "#7cc242" },
-        { name: "Google Search Console", desc: "Organic Indexing & Query Performance", accent: "#4285f4" },
-        { name: "Google Trends", desc: "Search Trend & Seasonality Forecasting", accent: "#7baaf7" },
-        { name: "Surfer SEO", desc: "Content Score & Semantic NLP Optimization", accent: "#f59e0b" },
-        { name: "Yoast / RankMath", desc: "WordPress On-Page SEO Engine", accent: "#a855f7" },
-      ],
-    },
-    {
-      name: "Paid Ads & Media Buying Platforms",
-      badge: "Performance Ad Stack",
-      tools: [
-        { name: "Google Ads Manager", desc: "Search, Display, Shopping & PMax Ads", accent: "#4285f4" },
-        { name: "Meta Business Suite", desc: "Facebook & Instagram Ad Campaigns", accent: "#0081fb" },
-        { name: "YouTube Ads", desc: "Video Action & In-Stream Bumper Ads", accent: "#ff0000" },
-        { name: "Google Shopping", desc: "E-Commerce Merchant Center Feeds", accent: "#34a853" },
-        { name: "LinkedIn Campaign Mgr", desc: "B2B Lead Generation & ABM Targeting", accent: "#0a66c2" },
-      ],
-    },
-    {
-      name: "Analytics, CRO & Data Scraping",
-      badge: "Data & Insights",
-      tools: [
-        { name: "Google Analytics 4", desc: "Attribution, Event Streams & User Flows", accent: "#f9ab00" },
-        { name: "Google Tag Manager", desc: "Conversion Tracking & DataLayer Tags", accent: "#2460ed" },
-        { name: "Looker Studio", desc: "Interactive Real-Time Client Dashboards", accent: "#4285f4" },
-        { name: "Microsoft Clarity", desc: "Session Recordings & Heatmap Analytics", accent: "#0078d4" },
-        { name: "Hotjar", desc: "Visitor Behavior & Funnel Drop-Offs", accent: "#fd3a13" },
-      ],
-    },
-    {
-      name: "Web CMS, E-Commerce & Direct CRM",
-      badge: "Funnels & Retention",
-      tools: [
-        { name: "WordPress CMS", desc: "Fast High-Converting Custom Websites", accent: "#21759b" },
-        { name: "Elementor Pro", desc: "Visual Drag-and-Drop Landing Page Design", accent: "#92003b" },
-        { name: "Mailchimp", desc: "Automated Drip Sequences & List Growth", accent: "#ffe01b" },
-        { name: "Brevo (Sendinblue)", desc: "Multi-Channel Email & SMS Marketing", accent: "#0092ff" },
-        { name: "WhatsApp Business API", desc: "Automated Chatbots & High-Open Broadcasts", accent: "#25d366" },
-      ],
-    },
-  ],
-
-  journeySteps: [
-    {
-      step: "01",
-      title: "Enrollment & Batch Allocation",
-      desc: "Connect with your personal course counsellor, choose between flexible weekend or weekday evening batches, and get set up on the LMS.",
-      pills: ["Course Selection", "1-on-1 Counselling", "Flexible Batches"],
-    },
-    {
-      step: "02",
-      title: "Live Training (40 Modules)",
-      desc: "Attend 80+ hours of live interactive sessions led by industry practitioners, master 50+ AI tools, with lifetime recording access.",
-      pills: ["Live Expert Classes", "40 Modules", "50+ AI Tools"],
-    },
-    {
-      step: "03",
-      title: "10 Live Brand Projects",
-      desc: "Run actual campaigns on real brand accounts — SEO, Google Ads, Meta Ads, and video — building a verified portfolio with measurable results.",
-      pills: ["Real Ad Budgets", "Verified Portfolio", "Mentor Reviews"],
-    },
-    {
-      step: "04",
-      title: "10+ Global Certifications",
-      desc: "Earn recognised certifications from Google, Meta Blueprint, HubSpot, Semrush, Skill India, and DizitalAdda.",
-      pills: ["Google Certified", "Meta Blueprint", "10+ Certificates"],
-    },
-    {
-      step: "05",
-      title: "Paid In-House Agency Internship",
-      desc: "Complete a paid in-house internship at DizitalAdda's agency — manage live client accounts and build professional work experience.",
-      pills: ["Paid Internship", "Live Client Accounts", "Agency Experience"],
-    },
-    {
-      step: "06",
-      title: "Placement / Freelancing",
-      desc: "Get placed through 250+ recruiter partners or launch your freelance career with complete client acquisition training.",
-      pills: ["100% Placement Assistance", "250+ Recruiters", "Freelance Support"],
-    },
-  ],
-
-  whoShouldJoin: [
-    {
-      role: "Working Professionals",
-      desc: "Upskill to earn promotions or switch smoothly into high-paying digital marketing roles (₹4.5–8 LPA) with evening/weekend batches.",
-    },
-    {
-      role: "Career Switchers",
-      desc: "Transition from non-tech or non-marketing fields (sales, operations, IT, HR) into performance marketing with hands-on proof-of-work.",
-    },
-    {
-      role: "Entrepreneurs & Business Owners",
-      desc: "Eliminate expensive agency dependencies, run profitable Meta and Google ads, and scale online sales with measurable ROAS.",
-    },
-    {
-      role: "Freelancers & Remote Workers",
-      desc: "Build a recurring client roster on Upwork and Fiverr, charging international clients $500–$2,000/month for marketing retainers.",
-    },
-  ],
-
-  careerPaths: [
-    { title: "Performance Marketing Specialist", avgSalary: "₹5.5 - ₹10 LPA", growth: "+38% YoY" },
-    { title: "SEO Strategist & Organic Growth Lead", avgSalary: "₹4.5 - ₹9 LPA", growth: "+32% YoY" },
-    { title: "Paid Media Manager (Google & Meta)", avgSalary: "₹6 - ₹12 LPA", growth: "+45% YoY" },
-    { title: "Digital Marketing Consultant / Freelancer", avgSalary: "₹6 - ₹15+ LPA", growth: "+50% YoY" },
-  ],
-
-  hiringPartners: [
-    "Amazon", "Flipkart", "Swiggy", "Zomato", "Nykaa", "Paytm", "MakeMyTrip", "Dentsu", "Ogilvy", "GroupM"
-  ],
+  reviews: [
+  {
+    "author": "Tulika Biswas",
+    "rating": 5,
+    "date": "2025-11-15",
+    "text": "As a working professional, I needed a course that was practical and updated with current trends. The Digital Marketing Course for Professionals helped me switch my career successfully."
+  },
+  {
+    "author": "Abhinav Sharma",
+    "rating": 5,
+    "date": "2025-10-20",
+    "text": "The practical training was honestly better than I expected. The live projects helped me understand real industry work and I got placed quickly after completing the course."
+  },
+  {
+    "author": "Harvinder Singh",
+    "rating": 5,
+    "date": "2025-09-10",
+    "text": "The trainers explained everything in a very simple way, even advanced SEO and paid ads. I started freelancing within a few months after completing the course."
+  },
+  {
+    "author": "Sahil Chauhan",
+    "rating": 5,
+    "date": "2025-12-01",
+    "text": "Before joining, I only knew social media basics. Now I can run paid ad campaigns, optimize websites for SEO, and create marketing strategies independently."
+  },
+  {
+    "author": "Neha Singh",
+    "rating": 5,
+    "date": "2025-08-22",
+    "text": "What I liked most was the focus on real projects instead of only theory. We worked on live campaigns and learned tools that companies actually use."
+  },
+  {
+    "author": "Purav Singh",
+    "rating": 5,
+    "date": "2025-07-18",
+    "text": "I was already working in sales but wanted to move into digital marketing. This course helped me build confidence and land a better job role."
+  }
+]
 };

@@ -104,14 +104,24 @@ const Checkout = () => {
 
   const loadRazorpayScript = () => {
     return new Promise((resolve) => {
-      if (window.Razorpay) {
+      if (typeof window !== "undefined" && window.Razorpay) {
         return resolve(true);
+      }
+      const existingScript = document.querySelector('script[src*="checkout.razorpay.com"]');
+      if (existingScript) {
+        if (window.Razorpay) return resolve(true);
+        existingScript.addEventListener("load", () => resolve(true));
+        existingScript.addEventListener("error", () => resolve(false));
+        setTimeout(() => resolve(Boolean(window.Razorpay)), 3000);
+        return;
       }
       const script = document.createElement("script");
       script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.async = true;
       script.onload = () => resolve(true);
       script.onerror = () => resolve(false);
       document.body.appendChild(script);
+      setTimeout(() => resolve(Boolean(window.Razorpay)), 4000);
     });
   };
 
@@ -142,8 +152,8 @@ const Checkout = () => {
       setErrorMsg("");
 
       const isLoaded = await loadRazorpayScript();
-      if (!isLoaded) {
-        setErrorMsg("Unable to load Razorpay payment SDK. Please check your internet connection.");
+      if (!isLoaded || typeof window.Razorpay !== "function") {
+        setErrorMsg("Unable to load Razorpay payment SDK. Please check your internet connection or disable ad-blockers and try again.");
         setIsProcessing(false);
         return;
       }
@@ -151,6 +161,7 @@ const Checkout = () => {
       // 1. Create real order on backend with student details
       const orderRes = await api.post("/api/payment/create-order", {
         courseId: course.id,
+        amount: course.price,
         studentDetails: {
           firstName: formData.firstName.trim(),
           lastName: formData.lastName.trim(),
@@ -160,6 +171,10 @@ const Checkout = () => {
           city: formData.city.trim(),
         },
       });
+
+      if (!orderRes.data?.success || !orderRes.data?.order) {
+        throw new Error(orderRes.data?.message || "Failed to generate payment order from server.");
+      }
 
       const { order, keyId } = orderRes.data;
 
@@ -194,6 +209,7 @@ const Checkout = () => {
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
               courseId: course.id,
+              amount: course.price,
               studentDetails: {
                 firstName: formData.firstName.trim(),
                 lastName: formData.lastName.trim(),
@@ -220,7 +236,7 @@ const Checkout = () => {
             console.error("Verification failed:", err);
             setErrorMsg(
               err.response?.data?.message ||
-                "Payment was successful, but auto-activation encountered a delay. Please contact support."
+                "Payment was successful, but auto-activation encountered a delay. Please contact support at +91 8810606010."
             );
           } finally {
             setIsProcessing(false);
@@ -230,13 +246,21 @@ const Checkout = () => {
 
       const rzp = new window.Razorpay(options);
       rzp.on("payment.failed", function (response) {
-        setErrorMsg(`Payment Failed: ${response.error?.description || "Transaction declined"}`);
+        setErrorMsg(`Payment Failed: ${response.error?.description || response.error?.reason || "Transaction declined"}`);
         setIsProcessing(false);
       });
       rzp.open();
     } catch (error) {
       console.error("Order creation failed:", error);
-      setErrorMsg(error.response?.data?.message || "Failed to initialize Razorpay payment gateway.");
+      let userFriendlyMsg = "Failed to initialize Razorpay payment gateway.";
+      if (error.response?.data?.message) {
+        userFriendlyMsg = error.response.data.message;
+      } else if (error.code === "ERR_NETWORK" || error.message?.includes("Network Error")) {
+        userFriendlyMsg = "Unable to connect to LMS backend server. Please verify the backend service is running on port 5000.";
+      } else if (error.message) {
+        userFriendlyMsg = error.message;
+      }
+      setErrorMsg(userFriendlyMsg);
       setIsProcessing(false);
     }
   };

@@ -9,6 +9,7 @@ import {
   FaBookOpen,
   FaMoneyBillWave,
   FaChartLine,
+  FaVideo,
 } from "react-icons/fa";
 
 function AdminDashboard() {
@@ -140,6 +141,21 @@ function AdminDashboard() {
             <FaBookOpen />
 
             Courses
+
+          </button>
+
+          {/* CONTENT MANAGER */}
+
+          <button
+            onClick={() =>
+              navigate("/admin/content-manager")
+            }
+            className="w-full flex items-center gap-4 hover:bg-white/10 px-5 py-4 rounded-2xl transition text-left"
+          >
+
+            <FaVideo />
+
+            Content Manager
 
           </button>
 

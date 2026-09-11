@@ -1,13 +1,10 @@
 import {
 
   FaHome,
-
   FaBook,
-
+  FaVideo,
   FaUsers,
-
   FaCog,
-
   FaSignOutAlt,
 
 } from "react-icons/fa";
@@ -69,6 +66,17 @@ function DashboardSidebar() {
             <FaBook />
 
             Courses
+
+          </Link>
+
+          <Link
+            to="/admin/content-manager"
+            className="flex items-center gap-5 text-2xl font-semibold hover:text-blue-300 transition"
+          >
+
+            <FaVideo />
+
+            Content Manager
 
           </Link>
 
