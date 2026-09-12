@@ -244,7 +244,7 @@
       "id": 3,
       "course_id": "dm-professionals",
       "title": "Digital Marketing Course for Professionals",
-      "description": "A 4-month, 80+ hour hybrid digital marketing course for working professionals, career switchers, and business owners. Covers 40 modules including SEO, Google Ads, Meta Ads, Content Writing, WhatsApp & Email Marketing, Social Media, WordPress, Canva, Video Editing, GA4, Performance Marketing, Remarketing, and 50+ AI tools. Includes live brand projects, paid internship, 10+ certifications, and 100% placement assistance.",
+      "description": "A 4-month, 80+ hour hybrid digital marketing course for working professionals, career switchers, and business owners. Covers 40 modules including SEO, Google Ads, Meta Ads, Content Writing, WhatsApp & Email Marketing, Social Media, WordPress, Canva, Video Editing, GA4, Performance Marketing, Remarketing, and 50+ AI tools. Includes 10 live brand projects, paid internship, 10+ certifications, and 100% placement assistance.",
       "price": 14999,
       "original_price": 45000,
       "duration": "4 Months",
@@ -254,7 +254,7 @@
       "teacher_id": 2,
       "thumbnail": "https://dizitaladda.com/images/digital-marketing-institute.webp",
       "is_published": true,
-      "total_lectures": 40,
+      "total_lectures": 41,
       "total_students": 1043,
       "created_at": "2026-09-10T10:39:50.937Z",
       "rating": 4.9
@@ -263,9 +263,9 @@
       "id": 4,
       "course_id": "dm-beginners",
       "title": "Digital Marketing for Beginners Course in Delhi",
-      "description": "DizitalAdda's 3-month Digital Marketing for Beginners course covers SEO, Google Ads, Meta Ads, Social Media Marketing, Content Writing, Email Marketing, Analytics, and 40+ AI tools — with 5 live brand projects, 10+ certifications from Google, Meta, HubSpot and Semrush, and 100% placement assistance. No prior experience required.",
-      "price": 9999,
-      "original_price": 25000,
+      "description": "DizitalAdda's 3-month Digital Marketing for Beginners course covers SEO, Google Ads, Meta Ads, Social Media Marketing, Content Writing, Email Marketing, Analytics, and 40+ AI tools — with 10 live brand projects, 10+ certifications from Google, Meta, HubSpot and Semrush, and 100% placement assistance. No prior experience required.",
+      "price": 25000,
+      "original_price": 30000,
       "duration": "3 Months",
       "level": "Beginner",
       "category": "Digital Marketing",
@@ -273,7 +273,7 @@
       "teacher_id": 2,
       "thumbnail": "https://dizitaladda.com/images/digital-marketing-institute.webp",
       "is_published": true,
-      "total_lectures": 30,
+      "total_lectures": 31,
       "total_students": 2100,
       "created_at": "2026-09-10T10:39:50.937Z",
       "rating": 4.9
@@ -4784,6 +4784,28 @@
       "currency": "INR",
       "status": "created",
       "created_at": "2026-09-11T08:03:10.497Z"
+    },
+    {
+      "id": 73,
+      "user_id": 6,
+      "student_id": 4,
+      "course_id": 1,
+      "razorpay_order_id": "order_test_05474358",
+      "amount": 18999,
+      "currency": "INR",
+      "status": "created",
+      "created_at": "2026-09-12T09:31:14.358Z"
+    },
+    {
+      "id": 74,
+      "user_id": 6,
+      "student_id": 4,
+      "course_id": 5,
+      "razorpay_order_id": "order_test_06320702",
+      "amount": 34999,
+      "currency": "INR",
+      "status": "created",
+      "created_at": "2026-09-12T09:45:20.702Z"
     }
   ],
   "enrollments": [
@@ -5475,6 +5497,56 @@
       "max_marks": 100,
       "resource_url": "https://dizitaladda.com/curriculum/forensics-case-file.pdf",
       "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 21,
+      "title": "Live Project 1: Meta Ads Brand Campaign & ROAS Optimization",
+      "description": "Plan, launch, and optimize a live Facebook and Instagram ad campaign for a client brand — covering Meta Business Suite setup, custom audiences, ad creative copywriting, and ROAS performance reporting.",
+      "course_id": 3,
+      "due_date": "2026-10-30",
+      "max_marks": 100,
+      "resource_url": "https://dizitaladda.com/resources/meta-ads-guide.pdf",
+      "created_at": "2026-09-12T11:17:31.530Z"
+    },
+    {
+      "id": 22,
+      "title": "Live Project 2: Google Ads Search & Display Campaign Setup",
+      "description": "Build and manage a live Google Ads campaign — covering keyword match types, negative keywords, responsive search ads, bidding strategy, and conversion tracking.",
+      "course_id": 3,
+      "due_date": "2026-11-10",
+      "max_marks": 100,
+      "resource_url": "https://dizitaladda.com/resources/google-ads-setup.pdf",
+      "created_at": "2026-09-12T11:17:31.532Z"
+    },
+    {
+      "id": 23,
+      "title": "Live Project 3: SEO & Content Strategy Audit",
+      "description": "Build a complete SEO and content strategy for an active brand — from technical site audit and keyword mapping to on-page optimization and Google Search Console tracking.",
+      "course_id": 3,
+      "due_date": "2026-11-25",
+      "max_marks": 100,
+      "resource_url": "https://dizitaladda.com/resources/seo-audit-matrix.pdf",
+      "created_at": "2026-09-12T11:17:31.532Z"
+    },
+    {
+      "id": 24,
+      "title": "Live Project 4: WordPress E-Commerce / Lead Gen Site Build",
+      "description": "Design and build a mobile-responsive WordPress website with Elementor, contact forms, speed optimization, and on-page SEO integration.",
+      "course_id": 3,
+      "due_date": "2026-12-10",
+      "max_marks": 100,
+      "resource_url": "https://dizitaladda.com/resources/wordpress-rubric.pdf",
+      "created_at": "2026-09-12T11:17:31.532Z"
+    },
+    {
+      "id": 25,
+      "title": "Live Project 5: Automated Email & WhatsApp Drip Sequences",
+      "description": "Create an end-to-end automated email and WhatsApp nurture funnel in Mailchimp and WhatsApp Business API with audience segmentation and A/B split testing.",
+      "course_id": 3,
+      "due_date": "2026-12-20",
+      "max_marks": 100,
+      "resource_url": "https://dizitaladda.com/resources/email-whatsapp-sop.pdf",
+      "created_at": "2026-09-12T11:17:31.532Z"
     }
   ],
   "assignment_submissions": [
