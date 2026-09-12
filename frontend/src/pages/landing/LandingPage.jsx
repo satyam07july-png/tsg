@@ -310,7 +310,7 @@ mb-8">
 
       </div>
 
-      {/* ================= PORTALS ================= */}
+      {/* ================= LOGIN PORTAL ================= */}
 
       <div
         className="
@@ -320,7 +320,6 @@ right-0
 top-0
 flex
 flex-col
-gap-3
 w-full
 sm:w-[320px]
 lg:w-[220px]
@@ -338,43 +337,14 @@ lg:mt-0
           border-[#D4A017]
           py-3
           font-semibold
+          text-white
           hover:bg-[#7C2D12]
+          hover:border-amber-400
           transition
+          shadow-lg
           "
         >
-          Student Portal
-        </Link>
-
-        <Link
-          to="/login"
-          className="
-          text-center
-          bg-[#1E293B]
-          border
-          border-[#D4A017]
-          py-3
-          font-semibold
-          hover:bg-[#7C2D12]
-          transition
-          "
-        >
-          Admin Portal
-        </Link>
-
-        <Link
-          to="/login"
-          className="
-          text-center
-          bg-[#1E293B]
-          border
-          border-[#D4A017]
-          py-3
-          font-semibold
-          hover:bg-[#7C2D12]
-          transition
-          "
-        >
-          Teacher Portal
+          Login Portal
         </Link>
 
       </div>
