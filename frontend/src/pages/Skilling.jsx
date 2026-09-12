@@ -2260,17 +2260,18 @@ function Skilling() {
 
                         {/* Category Cards */}
                         <div className="space-y-4">
-                          {selectedCourse.details.curriculumCategories
+                          {(selectedCourse.details?.curriculumCategories || [])
                             .map((cat, catIdx) => {
                               const q = curriculumSearch.toLowerCase().trim();
+                              const modules = Array.isArray(cat.modules) ? cat.modules : [];
                               const filteredModules = q
-                                ? cat.modules.filter(
+                                ? modules.filter(
                                     (m) =>
-                                      m.title.toLowerCase().includes(q) ||
-                                      m.topics.some((t) => t.toLowerCase().includes(q)) ||
-                                      m.skills.some((s) => s.toLowerCase().includes(q))
+                                      (m.title || "").toLowerCase().includes(q) ||
+                                      (m.topics || []).some((t) => t.toLowerCase().includes(q)) ||
+                                      (m.skills || []).some((s) => s.toLowerCase().includes(q))
                                   )
-                                : cat.modules;
+                                : modules;
 
                               if (q && filteredModules.length === 0) return null;
 
@@ -2339,7 +2340,7 @@ function Skilling() {
 
                                               {/* Topics */}
                                               <ul className="space-y-1.5 text-xs text-slate-600 mb-4">
-                                                {mod.topics.map((topic, tIdx) => (
+                                                {(mod.topics || []).map((topic, tIdx) => (
                                                   <li
                                                     key={tIdx}
                                                     className="flex items-start gap-1.5"
@@ -2355,7 +2356,7 @@ function Skilling() {
 
                                             {/* Skill Tags */}
                                             <div className="pt-3 border-t border-slate-100 flex flex-wrap gap-1.5">
-                                              {mod.skills.map((skill, sIdx) => (
+                                              {(mod.skills || []).map((skill, sIdx) => (
                                                 <span
                                                   key={sIdx}
                                                   className="text-[10px] font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md"
@@ -2431,7 +2432,7 @@ function Skilling() {
                                     Key Project Deliverables:
                                   </span>
                                   <ul className="space-y-1.5 text-xs font-medium text-slate-700">
-                                    {proj.deliverables.map((del, dIdx) => (
+                                    {(proj.deliverables || []).map((del, dIdx) => (
                                       <li
                                         key={dIdx}
                                         className="flex items-start gap-2"
@@ -2485,7 +2486,7 @@ function Skilling() {
                               </div>
 
                               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-                                {cluster.tools.map((tool, tIdx) => (
+                                {(cluster.tools || []).map((tool, tIdx) => (
                                   <div
                                     key={tIdx}
                                     className="p-3.5 bg-white rounded-2xl border border-slate-200 shadow-xs hover:border-[#7C2D12] transition"
@@ -2545,7 +2546,7 @@ function Skilling() {
                               </div>
 
                               <div className="mt-4 pt-4 border-t border-slate-100 flex flex-wrap gap-1.5">
-                                {js.pills.map((pill, pIdx) => (
+                                {(js.pills || []).map((pill, pIdx) => (
                                   <span
                                     key={pIdx}
                                     className="text-[10px] font-bold bg-orange-50 text-[#7C2D12] border border-orange-200 px-2 py-0.5 rounded-md"
