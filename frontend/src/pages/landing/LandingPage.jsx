@@ -16,8 +16,46 @@ function LandingPage() {
   // STATES
   // ==========================
 
-  const [courses, setCourses] =
-    useState([]);
+  const DEFAULT_LANDING_COURSES = [
+    {
+      id: 1,
+      title: "Advanced Digital Marketing Course",
+      description: "6-month Advanced Digital Marketing Course — 10 live brand campaigns, 54+ AI tools, Google & Meta certifications, and agency internship.",
+      duration: "6 Months",
+      level: "Advanced",
+      category: "Digital Marketing",
+      price: 18999,
+      original_price: 35999,
+      total_lectures: 60,
+      total_students: 1420,
+    },
+    {
+      id: 5,
+      title: "Diploma in Data Analytics & AI | Job-Ready Program (NIDADS)",
+      description: "Complete 12-month National Diploma from NIDADS & Dizital Adda. Master Advanced Excel, SQL, Power BI, Tableau, Python EDA, and real portfolio capstones.",
+      duration: "12 Months",
+      level: "Job-Ready Diploma",
+      category: "Data Analytics",
+      price: 34999,
+      original_price: 69999,
+      total_lectures: 87,
+      total_students: 520,
+    },
+    {
+      id: 6,
+      title: "Expert Training in Cyber Security & Ethical Hacking | DizitalAdda",
+      description: "Master 12-month Expert Cyber Security & Ethical Hacking with Dizital Adda. From Python automation, networking, and VAPT to digital forensics and SOC operations.",
+      duration: "12 Months",
+      level: "Expert",
+      category: "Cyber Security",
+      price: 95000,
+      original_price: 135000,
+      total_lectures: 48,
+      total_students: 480,
+    },
+  ];
+
+  const [courses, setCourses] = useState(DEFAULT_LANDING_COURSES);
 
 
  const ministers = [
@@ -203,9 +241,11 @@ const prevSlide = () => {
     try {
       const response = await api.get("/api/courses");
       const courseData = response.data?.courses || response.data || [];
-      setCourses(Array.isArray(courseData) ? courseData : []);
+      if (Array.isArray(courseData) && courseData.length > 0) {
+        setCourses(courseData);
+      }
     } catch (error) {
-      console.error("COURSE FETCH ERROR:", error);
+      console.warn("LMS courses API offline or reconnecting, keeping fallback data:", error.message);
     }
   };
 

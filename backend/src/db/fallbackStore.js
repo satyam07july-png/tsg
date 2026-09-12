@@ -121,19 +121,19 @@ const INITIAL_COURSES = [
   {
     id: 6,
     course_id: "cyber-advanced",
-    title: "Cyber Security & Ethical Hacking",
-    description: "Comprehensive network security, penetration testing, CEH certification prep, incident response, and cloud security labs.",
-    price: 50000,
-    original_price: 70000,
-    duration: "6 Months",
-    level: "Advanced",
+    title: "Expert Training in Cyber Security & Ethical Hacking | DizitalAdda",
+    description: "Master 12-month Expert Cyber Security & Ethical Hacking with Dizital Adda. From Python automation, networking, and VAPT to digital forensics, reverse engineering, and Splunk SOC operations with Dr. Gulshan Kumar.",
+    price: 95000,
+    original_price: 135000,
+    duration: "12 Months",
+    level: "Expert / Professional",
     category: "Cyber Security",
-    teacher: "Dr. Gulshan Kumar",
+    teacher: "Dr. Gulshan Kumar & Senior Security Architects",
     teacher_id: 2,
     thumbnail: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
     is_published: true,
     total_lectures: 48,
-    total_students: 390,
+    total_students: 480,
     created_at: new Date().toISOString(),
   },
   {
@@ -1545,6 +1545,7 @@ class FallbackStore {
       let idOrSlug = String(params[0]);
       if (idOrSlug === "da-3m-bi" || idOrSlug === "da-6m-pro" || idOrSlug === "da-12m-diploma" || idOrSlug === "ds-3m-bi") idOrSlug = "data-analytics";
       if (idOrSlug === "ds-6m-ml" || idOrSlug === "ds-12m-master" || idOrSlug === "ds-6m-python") idOrSlug = "data-science";
+      if (idOrSlug === "cs-4m-found" || idOrSlug === "cs-6m-ceh" || idOrSlug === "cs-12m-master" || idOrSlug === "cyber-security" || idOrSlug === "cyber-security-ethical-hacking") idOrSlug = "cyber-advanced";
       const course = this.data.courses.find(
         (c) => String(c.id) === idOrSlug || c.course_id === idOrSlug
       );

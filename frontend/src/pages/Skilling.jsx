@@ -46,6 +46,16 @@ import {
   NIDADS_ADVANCED_DATA_SCIENCE,
   NIDADS_DIPLOMA_DATA_SCIENCE,
 } from "../data/nidadsDataScienceData.js";
+import {
+  FOUNDATION_CYBER_SECURITY_DETAILS,
+  ADVANCED_CYBER_SECURITY_DETAILS,
+  EXPERT_CYBER_SECURITY_DETAILS,
+} from "../data/cyberSecurityData.js";
+import {
+  FOUNDATION_AI_PROMPT_DETAILS,
+  ADVANCED_AI_AGENTS_DETAILS,
+  MASTER_AI_ENGINEERING_DETAILS,
+} from "../data/aiPromptEngineeringData.js";
 
 // ==========================================
 // DURATION DEFINITIONS
@@ -823,7 +833,7 @@ const DOMAINS = [
     },
   },
 
-  // 3. Cyber Security
+  // 3. Cyber Security (DIZITAL ADDA OFFICIAL)
   {
     id: "cyber-security",
     title: "Cyber Security",
@@ -834,128 +844,225 @@ const DOMAINS = [
     avgSalary: "₹6 - ₹24 LPA",
     description:
       "Defend digital infrastructure against modern threats, detect cyber attacks in real time, identify system vulnerabilities, and master ethical hacking techniques.",
-    availableDurationIds: ["3-months", "6-months", "12-months"],
+    availableDurationIds: ["4-months", "6-months", "12-months"],
     coursesByDuration: {
       "3-months": [
         {
-          id: "cs-3m-found",
-          title: "Cyber Security & Ethical Hacking Fundamentals",
-          subtitle: "Kali Linux, Network Protocols, Scanning & Vulnerability Tools",
-          duration: "3 Months",
-          durationId: "3-months",
+          id: "cs-4m-found",
+          backendCourseId: "cyber-advanced",
+          courseId: 6,
+          title: "Foundation in Cyber Security and Ethical Hacking",
+          subtitle: "4 Months Foundation • Python, Networking, Linux & Ethical Hacking Basics",
+          duration: "4 Months",
+          durationId: "4-months",
           level: "BEGINNER LEVEL",
           levelColor: "border-amber-400 text-amber-700 bg-amber-50",
           checkColor: "text-amber-500",
-          modulesCount: "25",
-          modulesType: "Basic Modules",
+          modulesCount: "12",
+          modulesType: "Core Security Modules",
           aiToolsCount: "25+",
-          aiToolsType: "AI Security Tools",
-          price: 9999,
-          originalPrice: 19999,
+          aiToolsType: "Security & Recon Tools",
+          hoursPerWeek: "8 - 10 Hours / Week",
+          modulesPill: "12 Core Modules • 25+ Security Tools",
+          shortDesc:
+            "Master cybersecurity fundamentals, Python automation, networking, and ethical hacking basics in isolated labs.",
+          projectsHighlight: "4 Virtual Lab Projects",
+          certHighlight: "Dizital Adda Certificate + Security+ Prep",
+          price: 30000,
+          originalPrice: 40000,
+          onlinePrice: 30000,
+          offlinePrice: 40000,
           emi: "₹3,499/mo",
-          projects: "3 Virtual Lab Exploits",
-          mentorship: "Group Learning",
-          certification: "Completion Certificate",
-          perfectFor: "Students & IT Beginners",
+          projects: "4 Hands-on Virtual Lab Projects",
+          mentorship: "Weekly Mentorship with Dr. Gulshan Kumar & Ethical Hackers",
+          certification: "Dizital Adda Official Certification + Security+ Prep",
+          perfectFor: "Students, IT Freshers & System Admins",
           perfectForBg: "bg-amber-50/80 border-amber-200 text-amber-900",
+          details: FOUNDATION_CYBER_SECURITY_DETAILS,
+          enrollUrl: "https://dizitaladda.com/courses/foundation-in-cyber-security-and-ethical-hacking",
+          whatsappUrl: "https://wa.me/918810606010?text=Hi%2C+I+want+to+enquire+about+the+Foundation+in+Cyber+Security+and+Ethical+Hacking+Course",
           featureList: [
-            "25 Basic Security Modules",
-            "25+ AI Security Tools Introduction",
-            "Kali Linux & Bash Scripting",
-            "Network Scanning with Nmap",
-            "Packet Analysis with Wireshark",
-            "Group Mentorship",
-            "Guided Virtual Lab Projects",
-            "Completion Certificate",
+            "12 Core Security Modules",
+            "25+ Industry Security Tools",
+            "Python Security Scripting & Automation",
+            "TCP/IP & Packet Analysis with Wireshark",
+            "Linux System Hardening & Bash",
+            "Ethical Hacking & Vulnerability Scanning",
+            "Weekly Live Doubt Clearing",
+            "Official Certificate of Completion",
           ],
           modules: [
-            "Introduction to Cyber Security & Ethical Frameworks",
-            "Linux Fundamentals & Command Line Security Tools",
-            "Networking Essentials (TCP/IP, DNS, Subnetting & Ports)",
-            "Network Scanning & Reconnaissance with Nmap & Wireshark",
-            "Lab Capstone: Vulnerability Assessment of a Virtual Target",
+            "Month 1: Foundation of Cyber Security & Python Automation",
+            "Month 2: Enterprise Networking & Packet Sniffing with Wireshark",
+            "Month 3: Linux for Cybersecurity & System Hardening",
+            "Month 4: Ethical Hacking Fundamentals, Footprinting & Password Attacks",
+          ],
+        },
+      ],
+      "4-months": [
+        {
+          id: "cs-4m-found",
+          backendCourseId: "cyber-advanced",
+          courseId: 6,
+          title: "Foundation in Cyber Security and Ethical Hacking",
+          subtitle: "4 Months Foundation • Python, Networking, Linux & Ethical Hacking Basics",
+          duration: "4 Months",
+          durationId: "4-months",
+          level: "BEGINNER LEVEL",
+          levelColor: "border-amber-400 text-amber-700 bg-amber-50",
+          checkColor: "text-amber-500",
+          modulesCount: "12",
+          modulesType: "Core Security Modules",
+          aiToolsCount: "25+",
+          aiToolsType: "Security & Recon Tools",
+          hoursPerWeek: "8 - 10 Hours / Week",
+          modulesPill: "12 Core Modules • 25+ Security Tools",
+          shortDesc:
+            "Master cybersecurity fundamentals, Python automation, networking, and ethical hacking basics in isolated labs.",
+          projectsHighlight: "4 Virtual Lab Projects",
+          certHighlight: "Dizital Adda Certificate + Security+ Prep",
+          price: 30000,
+          originalPrice: 40000,
+          onlinePrice: 30000,
+          offlinePrice: 40000,
+          emi: "₹3,499/mo",
+          projects: "4 Hands-on Virtual Lab Projects",
+          mentorship: "Weekly Mentorship with Dr. Gulshan Kumar & Ethical Hackers",
+          certification: "Dizital Adda Official Certification + Security+ Prep",
+          perfectFor: "Students, IT Freshers & System Admins",
+          perfectForBg: "bg-amber-50/80 border-amber-200 text-amber-900",
+          details: FOUNDATION_CYBER_SECURITY_DETAILS,
+          enrollUrl: "https://dizitaladda.com/courses/foundation-in-cyber-security-and-ethical-hacking",
+          whatsappUrl: "https://wa.me/918810606010?text=Hi%2C+I+want+to+enquire+about+the+Foundation+in+Cyber+Security+and+Ethical+Hacking+Course",
+          featureList: [
+            "12 Core Security Modules",
+            "25+ Industry Security Tools",
+            "Python Security Scripting & Automation",
+            "TCP/IP & Packet Analysis with Wireshark",
+            "Linux System Hardening & Bash",
+            "Ethical Hacking & Vulnerability Scanning",
+            "Weekly Live Doubt Clearing",
+            "Official Certificate of Completion",
+          ],
+          modules: [
+            "Month 1: Foundation of Cyber Security & Python Automation",
+            "Month 2: Enterprise Networking & Packet Sniffing with Wireshark",
+            "Month 3: Linux for Cybersecurity & System Hardening",
+            "Month 4: Ethical Hacking Fundamentals, Footprinting & Password Attacks",
           ],
         },
       ],
       "6-months": [
         {
           id: "cs-6m-ceh",
-          title: "Certified Ethical Hacker (CEH) & Penetration Testing",
-          subtitle: "Metasploit, Burp Suite, Web App Pentesting & Privilege Escalation",
+          backendCourseId: "cyber-advanced",
+          courseId: 6,
+          title: "Advanced Certification in Cyber Security and Ethical Hacking",
+          subtitle: "6 Months Intensive • Professional VAPT, Web App Pentesting & Digital Forensics",
           duration: "6 Months",
           durationId: "6-months",
           level: "ADVANCED LEVEL",
           levelColor: "border-blue-400 text-blue-700 bg-blue-50",
           checkColor: "text-blue-500",
-          modulesCount: "55",
-          modulesType: "Detailed Modules",
+          modulesCount: "20",
+          modulesType: "VAPT & DFIR Modules",
           aiToolsCount: "45+",
-          aiToolsType: "AI Exploitation & Defense Tools",
-          price: 18999,
-          originalPrice: 35999,
+          aiToolsType: "Exploitation & Forensic Tools",
+          hoursPerWeek: "12 - 15 Hours / Week",
+          modulesPill: "20 Advanced Modules • 45+ Tools • CEH Prep",
+          shortDesc:
+            "Master enterprise VAPT, Metasploit, Burp Suite Pro, OWASP Top 10, and digital forensics investigations.",
+          projectsHighlight: "8 Live Enterprise Pentest Projects",
+          certHighlight: "CEH Prep + ISO Verified Certificate",
+          isPopular: true,
+          price: 45000,
+          originalPrice: 60000,
+          onlinePrice: 45000,
+          offlinePrice: 60000,
           emi: "₹3,299/mo",
-          projects: "8 Simulated Penetration Tests",
-          mentorship: "Group Mentorship & 1:1 Labs",
-          certification: "Professional Certificate + ISO Verified",
-          perfectFor: "Security Analysts & IT Professionals",
+          projects: "8 Live Enterprise Pentest & Forensics Projects",
+          mentorship: "Industry Expert Mentorship & 1:1 Code Reviews with Dr. Gulshan Kumar",
+          certification: "Dizital Adda Advanced Certificate + CEH Prep",
+          placementGuarantee: "100% Placement Support (500+ Hiring Partners)",
+          perfectFor: "Security Analysts, System Engineers & Switchers",
           perfectForBg: "bg-blue-50/80 border-blue-200 text-blue-900",
+          details: ADVANCED_CYBER_SECURITY_DETAILS,
+          enrollUrl: "https://dizitaladda.com/courses/advanced-certification-in-cyber-security-and-ethical-hacking",
+          whatsappUrl: "https://wa.me/918810606010?text=Hi%2C+I+am+interested+in+the+Advanced+Certification+in+Cyber+Security+and+Ethical+Hacking+Course",
           featureList: [
-            "55 Detailed Modules",
-            "45+ AI Pentesting & Defense Tools",
-            "OWASP Top 10 Web Exploitation",
-            "System Takeovers with Metasploit",
-            "Privilege Escalation on Win/Linux",
-            "Dedicated Mentor Guidance",
-            "Simulated Pen Test Reports",
-            "Course Certification",
+            "20 Advanced Security Modules",
+            "45+ Modern Offensive & DFIR Tools",
+            "Metasploit Pro Exploitation Framework",
+            "OWASP Top 10 Web Application Pentesting",
+            "Burp Suite Pro Advanced Interception & Fuzzing",
+            "Memory Forensics (Volatility) & Disk (Autopsy)",
+            "Certified Ethical Hacker (CEH) Exam Prep",
+            "100% Placement Assistance & Resume Review",
           ],
           modules: [
-            "Ethical Hacking Methodologies & Attack Lifecycles",
-            "Vulnerability Scanning & Exploitation with Metasploit",
-            "Web Application Pentesting (OWASP Top 10 Vulnerabilities)",
-            "Privilege Escalation on Windows & Linux Systems",
-            "Full Pentest Capstone: Target Takeover & Executive Report",
+            "Month 1: Cyber Security Landscape & Advanced Python Security Tooling",
+            "Month 2: Enterprise Networking, Routing & Wireshark Triage",
+            "Month 3: Linux Security Auditing & Shell Scripting for Pentesters",
+            "Month 4: Offensive Ethical Hacking & Active Directory Recon",
+            "Month 5: Vulnerability Assessment & Penetration Testing (VAPT)",
+            "Month 6: Digital & Cyber Forensic Investigation (DFIR) & Placement",
           ],
         },
       ],
       "12-months": [
         {
           id: "cs-12m-master",
-          title: "Advanced Cyber Security Specialist & Chief Information Security Track",
-          subtitle: "Red & Blue Team Operations, Cloud Security, Forensics & Malware Analysis",
+          backendCourseId: "cyber-advanced",
+          courseId: 6,
+          title: "Expert Training in Cyber Security and Ethical Hacking",
+          subtitle: "12 Months Comprehensive Master • Web/Mobile Pentest, Cloud Security, Malware & SOC Ops",
           duration: "12 Months",
           durationId: "12-months",
           level: "EXPERT LEVEL",
           levelColor: "border-fuchsia-400 text-fuchsia-700 bg-fuchsia-50",
           checkColor: "text-fuchsia-500",
-          modulesCount: "70",
-          modulesType: "Comprehensive Modules",
+          modulesCount: "32",
+          modulesType: "Master Specialization Modules",
           aiToolsCount: "60+",
-          aiToolsType: "AI Threat Hunting & SOC Tools",
-          price: 34999,
-          originalPrice: 69999,
-          emi: "₹3,199/mo",
-          projects: "16+ Enterprise Cyber Labs",
-          mentorship: "1-on-1 Mentorship & Internship",
-          certification: "Dual Global Certificate + Internship Letter",
-          perfectFor: "Future CISOs & Cyber Defense Leaders",
+          aiToolsType: "Enterprise Defense & Threat Hunting Stack",
+          hoursPerWeek: "15 - 20 Hours / Week",
+          modulesPill: "32 Master Modules • 60+ Tools • Paid Internship",
+          shortDesc:
+            "Complete 12-month master program with Web/Mobile pentesting, AWS Cloud Security, Malware Analysis, and paid internship.",
+          projectsHighlight: "16+ Enterprise Cyber Capstones",
+          certHighlight: "Expert Diploma + 3-Month Paid Internship Letter",
+          price: 95000,
+          originalPrice: 135000,
+          onlinePrice: 95000,
+          offlinePrice: 135000,
+          emi: "₹4,199/mo",
+          projects: "16+ Enterprise Cyber Capstones & Red/Blue Team Drills",
+          mentorship: "1-on-1 Chief Mentor Guidance with Dr. Gulshan Kumar & Senior Red Team Leads",
+          certification: "Expert Diploma in Cyber Security + Paid Internship Letter",
+          placementGuarantee: "100% Placement Guarantee (with formal agreement)",
+          perfectFor: "Future CISOs, Red Team Specialists & Security Architects",
           perfectForBg: "bg-fuchsia-50/80 border-fuchsia-200 text-fuchsia-900",
+          details: EXPERT_CYBER_SECURITY_DETAILS,
+          enrollUrl: "https://dizitaladda.com/courses/expert-training-in-cyber-security-and-ethical-hacking",
+          whatsappUrl: "https://wa.me/918810606010?text=Hi%2C+I+want+to+enquire+about+the+Expert+Training+In+Cyber+Security+and+Ethical+Hacking+Course",
           featureList: [
-            "70 Comprehensive Modules",
-            "60+ AI & SIEM Tools Integration",
-            "Red & Blue Team Live Simulations",
-            "Cloud Security (AWS/Azure) & Forensics",
-            "Paid 3-Month Internship Guarantee",
-            "1-on-1 Senior Mentorship",
-            "100% Placement Guarantee",
-            "Industry Certification",
+            "32 Comprehensive Specialization Modules",
+            "60+ Enterprise Cyber, Cloud & SOC Tools",
+            "Web & API Security (GraphQL, JWT, SSRF)",
+            "Mobile App Pentesting (Android/iOS with Frida)",
+            "AWS Cloud Security Architecture & DevSecOps",
+            "Malware Reverse Engineering with IDA Pro & Ghidra",
+            "Splunk SIEM, Wazuh EDR & SOC Operations",
+            "Guaranteed 3-Month Paid In-House Corporate Internship",
+            "100% Placement Guarantee with Formal Agreement",
           ],
           modules: [
-            "Advanced Red Teaming & Active Directory Exploitation",
-            "Cloud Security Architecture (AWS IAM, GuardDuty, KMS)",
-            "Digital Forensics Acquisition & Reverse Engineering Basics",
-            "Security Compliance (ISO 27001, SOC2, GDPR) & Governance",
-            "Enterprise Defense Capstone & Multi-Stage Red Team Exercise",
+            "Month 1-3: Security Fundamentals, Networking, Linux Hardening & Python",
+            "Month 4-6: Advanced Ethical Hacking, VAPT & Digital Forensics (DFIR)",
+            "Month 7-8: Advanced Web App Pentesting (API/SSRF) & Mobile App Pentesting (Frida)",
+            "Month 9-10: AWS Cloud Security, Container Hardening & IoT Firmware Analysis",
+            "Month 11: Malware Reverse Engineering (IDA Pro, Ghidra, Sandbox)",
+            "Month 12: Endpoint Security, Splunk SIEM, Wazuh EDR & Placement Drives",
           ],
         },
       ],
@@ -978,6 +1085,9 @@ const DOMAINS = [
       "3-months": [
         {
           id: "ai-3m-prompt",
+          backendCourseId: "ai-expert",
+          courseId: 7,
+          details: FOUNDATION_AI_PROMPT_DETAILS,
           title: "Generative AI & Prompt Engineering for Professionals",
           subtitle: "ChatGPT, Claude 3.5, Midjourney, Advanced Prompting & Workflows",
           duration: "3 Months",
@@ -1019,6 +1129,9 @@ const DOMAINS = [
       "6-months": [
         {
           id: "ai-6m-agents",
+          backendCourseId: "ai-expert",
+          courseId: 7,
+          details: ADVANCED_AI_AGENTS_DETAILS,
           title: "Autonomous AI Agents & Multi-Agent Teams",
           subtitle: "CrewAI, AutoGen, Model Context Protocol (MCP) & LangGraph",
           duration: "6 Months",
@@ -1060,6 +1173,9 @@ const DOMAINS = [
       "12-months": [
         {
           id: "ai-12m-finetune",
+          backendCourseId: "ai-expert",
+          courseId: 7,
+          details: MASTER_AI_ENGINEERING_DETAILS,
           title: "Generative AI Engineer & Foundation Model Fine-Tuning Masterclass",
           subtitle: "Llama 3, Mistral, Hugging Face, LoRA/QLoRA, PyTorch & vLLM",
           duration: "12 Months",
@@ -1414,12 +1530,12 @@ function Skilling() {
 
   // Collect all duration course cards for the selected domain or active track
   const domainCourses = activeSpecialization
-    ? activeSpecialization.availableDurationIds
-        .map((durId) => activeSpecialization.coursesByDuration[durId]?.[0])
+    ? (activeSpecialization.availableDurationIds || [])
+        .map((durId) => activeSpecialization.coursesByDuration?.[durId]?.[0])
         .filter(Boolean)
     : selectedDomain
-    ? selectedDomain.availableDurationIds
-        .map((durId) => selectedDomain.coursesByDuration[durId]?.[0])
+    ? (selectedDomain.availableDurationIds || [])
+        .map((durId) => selectedDomain.coursesByDuration?.[durId]?.[0])
         .filter(Boolean)
     : [];
 
@@ -1679,7 +1795,7 @@ function Skilling() {
                     </h3>
 
                     <p className="text-xs font-semibold text-slate-400 mt-1 uppercase tracking-wider">
-                      {domain.availableDurationIds.length} Duration Tracks Available
+                      {domain.availableDurationIds?.length || 0} Duration Tracks Available
                     </p>
 
                     <p className="text-slate-600 text-sm mt-3 line-clamp-3 leading-relaxed">
@@ -1847,9 +1963,9 @@ function Skilling() {
               {/* 3D Course Cards Grid */}
               <div
                 className={`relative z-10 grid grid-cols-1 gap-6 ${
-                  domainCourses.length === 4
+                  (domainCourses?.length || 0) === 4
                     ? "md:grid-cols-2 lg:grid-cols-4"
-                    : domainCourses.length === 3
+                    : (domainCourses?.length || 0) === 3
                     ? "md:grid-cols-3"
                     : "md:grid-cols-2"
                 }`}
@@ -1977,7 +2093,7 @@ function Skilling() {
                 <div className="p-6 sm:p-10 space-y-10">
                   {/* 6 Key Performance Metrics Strip */}
                   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-                    {selectedCourse.details.keyMetrics.map((km, idx) => (
+                    {(selectedCourse.details?.keyMetrics || []).map((km, idx) => (
                       <div
                         key={idx}
                         className="p-4 bg-orange-50/70 border border-orange-200/80 rounded-2xl text-center flex flex-col justify-center"
@@ -2040,7 +2156,7 @@ function Skilling() {
                         <FaBookOpen />
                         <span>{selectedCourse.details.modulesCount} Modules Roadmap</span>
                         <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full">
-                          {selectedCourse.details.curriculumCategories.length} Categories
+                          {selectedCourse.details?.curriculumCategories?.length || 0} Categories
                         </span>
                       </button>
 
@@ -2053,7 +2169,7 @@ function Skilling() {
                         }`}
                       >
                         <FaRocket />
-                        <span>{selectedCourse.details.liveProjects.length} Live Projects</span>
+                        <span>{selectedCourse.details?.liveProjects?.length || 0} Live Projects</span>
                         <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full">
                           Real Budgets
                         </span>
@@ -2124,7 +2240,7 @@ function Skilling() {
                         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200">
                           <div>
                             <h5 className="font-black text-slate-900 text-base">
-                              Explore {selectedCourse.details.modulesCount} Modules Across {selectedCourse.details.curriculumCategories.length} Domains
+                              Explore {selectedCourse.details?.modulesCount || selectedCourse.modulesCount || 30} Modules Across {selectedCourse.details?.curriculumCategories?.length || 0} Domains
                             </h5>
                             <p className="text-xs text-slate-500">
                               Click any domain category below to inspect module topics and learned skills.
@@ -2270,7 +2386,7 @@ function Skilling() {
                               Real Work Experience
                             </span>
                             <h5 className="text-xl font-black text-slate-900 mt-1">
-                              {selectedCourse.details.liveProjects.length} Live Projects with Real Ad Budgets
+                              {selectedCourse.details?.liveProjects?.length || 0} Live Projects with Real Ad Budgets
                             </h5>
                             <p className="text-xs text-slate-600 mt-0.5">
                               You will execute campaigns on actual brand accounts, generate leads, and defend your results before mentors.
@@ -2282,7 +2398,7 @@ function Skilling() {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          {selectedCourse.details.liveProjects.map((proj) => (
+                          {(selectedCourse.details?.liveProjects || []).map((proj) => (
                             <div
                               key={proj.num}
                               className="bg-white rounded-3xl border-2 border-slate-200 hover:border-[#7C2D12] p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between"
@@ -2353,7 +2469,7 @@ function Skilling() {
                         </div>
 
                         <div className="space-y-6">
-                          {selectedCourse.details.toolClusters.map((cluster, cIdx) => (
+                          {(selectedCourse.details?.toolClusters || []).map((cluster, cIdx) => (
                             <div
                               key={cIdx}
                               className="bg-slate-50 border border-slate-200 rounded-3xl p-6"
@@ -2411,7 +2527,7 @@ function Skilling() {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                          {selectedCourse.details.journeySteps.map((js) => (
+                          {(selectedCourse.details?.journeySteps || []).map((js) => (
                             <div
                               key={js.step}
                               className="bg-white p-6 rounded-3xl border-2 border-slate-200 hover:border-[#D4A017] shadow-sm flex flex-col justify-between"
@@ -2460,7 +2576,7 @@ function Skilling() {
                         </div>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                          {selectedCourse.details.whoShouldJoin.map((w, idx) => (
+                          {(selectedCourse.details?.whoShouldJoin || []).map((w, idx) => (
                             <div
                               key={idx}
                               className="bg-white p-6 rounded-3xl border-2 border-slate-200 hover:border-[#7C2D12] shadow-sm"
@@ -2492,7 +2608,7 @@ function Skilling() {
                             Each certificate is earned upon passing module capstones and live practical assessments.
                           </p>
                           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                            {selectedCourse.details.certificationsList.map((cert, cIdx) => (
+                            {(selectedCourse.details?.certificationsList || []).map((cert, cIdx) => (
                               <div
                                 key={cIdx}
                                 className="p-4 rounded-2xl border border-slate-200 bg-slate-50 flex items-center justify-between gap-3"
@@ -2652,7 +2768,7 @@ function Skilling() {
                           Flexible EMI: <strong className="text-[#7C2D12]">{selectedCourse.emi}</strong> • Online track at ₹{(selectedCourse.details.onlinePrice || selectedCourse.price).toLocaleString("en-IN")}
                         </p>
                         <p className="text-[11px] text-slate-400 mt-0.5">
-                          *Includes GST, {selectedCourse.details.liveProjects.length} Live Campaign Ad Budgets, Agency Internship, and Certifications.
+                          *Includes GST, {selectedCourse.details?.liveProjects?.length || 0} Live Campaign Ad Budgets, Agency Internship, and Certifications.
                         </p>
                       </div>
 
@@ -2774,7 +2890,7 @@ function Skilling() {
                     </h4>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
-                      {selectedCourse.featureList.map((feature, idx) => (
+                      {(selectedCourse.featureList || []).map((feature, idx) => (
                         <div
                           key={idx}
                           className="flex items-center gap-2.5 p-3.5 bg-slate-50 border border-slate-200 rounded-xl"
@@ -2797,7 +2913,7 @@ function Skilling() {
                       Complete syllabus modules designed by industry experts with hands-on exercises.
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {selectedCourse.modules.map((mod, idx) => (
+                      {(selectedCourse.modules || []).map((mod, idx) => (
                         <div
                           key={idx}
                           className="flex items-center gap-3 p-3.5 bg-white border border-slate-200 rounded-xl shadow-xs"

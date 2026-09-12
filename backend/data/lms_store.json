@@ -299,19 +299,19 @@
     {
       "id": 6,
       "course_id": "cyber-advanced",
-      "title": "Cyber Security & Ethical Hacking",
-      "description": "Comprehensive network security, penetration testing, CEH certification prep, incident response, and cloud security labs.",
-      "price": 50000,
-      "original_price": 70000,
-      "duration": "6 Months",
-      "level": "Advanced",
+      "title": "Expert Training in Cyber Security & Ethical Hacking | DizitalAdda",
+      "description": "Master 12-month Expert Cyber Security & Ethical Hacking with Dizital Adda. From Python automation, networking, and VAPT to digital forensics, reverse engineering, and Splunk SOC operations with Dr. Gulshan Kumar.",
+      "price": 95000,
+      "original_price": 135000,
+      "duration": "12 Months",
+      "level": "Expert / Professional",
       "category": "Cyber Security",
-      "teacher": "Dr. Gulshan Kumar",
+      "teacher": "Dr. Gulshan Kumar & Senior Security Architects",
       "teacher_id": 2,
       "thumbnail": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
       "is_published": true,
       "total_lectures": 48,
-      "total_students": 390,
+      "total_students": 480,
       "created_at": "2026-09-10T10:39:50.937Z"
     },
     {
@@ -692,6 +692,78 @@
       "id": 57,
       "course_id": 8,
       "title": "Month 12: Career Preparation & Placement",
+      "order_num": 12
+    },
+    {
+      "id": 58,
+      "course_id": 6,
+      "title": "Month 1: Foundation of Cyber Security & Python Automation",
+      "order_num": 1
+    },
+    {
+      "id": 59,
+      "course_id": 6,
+      "title": "Month 2: Enterprise Networking & Packet Analysis",
+      "order_num": 2
+    },
+    {
+      "id": 60,
+      "course_id": 6,
+      "title": "Month 3: Linux for Cybersecurity & System Hardening",
+      "order_num": 3
+    },
+    {
+      "id": 61,
+      "course_id": 6,
+      "title": "Month 4: Ethical Hacking Fundamentals & Footprinting",
+      "order_num": 4
+    },
+    {
+      "id": 62,
+      "course_id": 6,
+      "title": "Month 5: Professional VAPT & Exploitation Frameworks",
+      "order_num": 5
+    },
+    {
+      "id": 63,
+      "course_id": 6,
+      "title": "Month 6: Digital Forensics & Cyber Investigation (DFIR)",
+      "order_num": 6
+    },
+    {
+      "id": 64,
+      "course_id": 6,
+      "title": "Month 7: Advanced Web App Pentesting & API Security",
+      "order_num": 7
+    },
+    {
+      "id": 65,
+      "course_id": 6,
+      "title": "Month 8: Mobile Application Penetration Testing",
+      "order_num": 8
+    },
+    {
+      "id": 66,
+      "course_id": 6,
+      "title": "Month 9: AWS Cloud Security & DevSecOps",
+      "order_num": 9
+    },
+    {
+      "id": 67,
+      "course_id": 6,
+      "title": "Month 10: IoT Security & Hardware Exploitation",
+      "order_num": 10
+    },
+    {
+      "id": 68,
+      "course_id": 6,
+      "title": "Month 11: Malware Reverse Engineering & Analysis",
+      "order_num": 11
+    },
+    {
+      "id": 69,
+      "course_id": 6,
+      "title": "Month 12: Endpoint Security, SIEM & SOC Operations",
       "order_num": 12
     }
   ],
@@ -3156,6 +3228,582 @@
       "order_num": 4,
       "is_free_preview": false,
       "created_at": "2026-09-11T08:25:27.088Z"
+    },
+    {
+      "id": 206,
+      "course_id": 6,
+      "section_id": 58,
+      "title": "Week 1: Cybersecurity Landscape, Threat Modeling & CIA Triad",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "description": "Hands-on masterclass lecture on Week 1: Cybersecurity Landscape, Threat Modeling & CIA Triad. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 1,
+      "is_free_preview": true,
+      "created_at": "2026-09-11T13:53:21.847Z"
+    },
+    {
+      "id": 207,
+      "course_id": 6,
+      "section_id": 58,
+      "title": "Week 2: Python Scripting for Security & Automation",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "description": "Hands-on masterclass lecture on Week 2: Python Scripting for Security & Automation. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 2,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.849Z"
+    },
+    {
+      "id": 208,
+      "course_id": 6,
+      "section_id": 58,
+      "title": "Week 3: Socket Programming & Building Multi-Threaded Port Scanner",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+      "description": "Hands-on masterclass lecture on Week 3: Socket Programming & Building Multi-Threaded Port Scanner. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 3,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 209,
+      "course_id": 6,
+      "section_id": 58,
+      "title": "Week 4: Automating OSINT & Reconnaissance Scripts with Python",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "description": "Hands-on masterclass lecture on Week 4: Automating OSINT & Reconnaissance Scripts with Python. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 4,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 210,
+      "course_id": 6,
+      "section_id": 59,
+      "title": "Week 5: OSI 7-Layer, Subnetting & Enterprise TCP/IP Protocols",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+      "description": "Hands-on masterclass lecture on Week 5: OSI 7-Layer, Subnetting & Enterprise TCP/IP Protocols. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 1,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 211,
+      "course_id": 6,
+      "section_id": 59,
+      "title": "Week 6: Deep Packet Inspection & Traffic Analysis with Wireshark",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "description": "Hands-on masterclass lecture on Week 6: Deep Packet Inspection & Traffic Analysis with Wireshark. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 2,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 212,
+      "course_id": 6,
+      "section_id": 59,
+      "title": "Week 7: Network Protocols Vulnerabilities (ARP Poisoning, DNS Spoofing)",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      "description": "Hands-on masterclass lecture on Week 7: Network Protocols Vulnerabilities (ARP Poisoning, DNS Spoofing). Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 3,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 213,
+      "course_id": 6,
+      "section_id": 59,
+      "title": "Week 8: Next-Gen Firewalls (pfSense), IDS/IPS & Network Hardening",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "description": "Hands-on masterclass lecture on Week 8: Next-Gen Firewalls (pfSense), IDS/IPS & Network Hardening. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 4,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 214,
+      "course_id": 6,
+      "section_id": 60,
+      "title": "Week 9: Linux Architecture, Permissions & Privilege Model",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      "description": "Hands-on masterclass lecture on Week 9: Linux Architecture, Permissions & Privilege Model. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 1,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 215,
+      "course_id": 6,
+      "section_id": 60,
+      "title": "Week 10: Advanced Bash Scripting for Red Team Reconnaissance",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "description": "Hands-on masterclass lecture on Week 10: Advanced Bash Scripting for Red Team Reconnaissance. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 2,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 216,
+      "course_id": 6,
+      "section_id": 60,
+      "title": "Week 11: Linux Privilege Escalation Vectors (SUID, Sudo, Cron)",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "description": "Hands-on masterclass lecture on Week 11: Linux Privilege Escalation Vectors (SUID, Sudo, Cron). Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 3,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 217,
+      "course_id": 6,
+      "section_id": 60,
+      "title": "Week 12: System Hardening, Auditd & CIS Benchmark Implementation",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "description": "Hands-on masterclass lecture on Week 12: System Hardening, Auditd & CIS Benchmark Implementation. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 4,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 218,
+      "course_id": 6,
+      "section_id": 61,
+      "title": "Week 13: Active & Passive Reconnaissance with Nmap, Amass & Shodan",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "description": "Hands-on masterclass lecture on Week 13: Active & Passive Reconnaissance with Nmap, Amass & Shodan. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 1,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 219,
+      "course_id": 6,
+      "section_id": 61,
+      "title": "Week 14: Vulnerability Scanning & Risk Rating (Nessus, OpenVAS, CVSS)",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "description": "Hands-on masterclass lecture on Week 14: Vulnerability Scanning & Risk Rating (Nessus, OpenVAS, CVSS). Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 2,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 220,
+      "course_id": 6,
+      "section_id": 61,
+      "title": "Week 15: Password Attacks, Hash Cracking & Wordlist Generation (John, Hashcat)",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+      "description": "Hands-on masterclass lecture on Week 15: Password Attacks, Hash Cracking & Wordlist Generation (John, Hashcat). Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 3,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 221,
+      "course_id": 6,
+      "section_id": 61,
+      "title": "Week 16: Foundation Capstone: Isolated Enterprise Target Vulnerability Assessment",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "description": "Hands-on masterclass lecture on Week 16: Foundation Capstone: Isolated Enterprise Target Vulnerability Assessment. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 4,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 222,
+      "course_id": 6,
+      "section_id": 62,
+      "title": "Week 17: Metasploit Unleashed: Exploits, Payloads, Meterpreter & Encoders",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+      "description": "Hands-on masterclass lecture on Week 17: Metasploit Unleashed: Exploits, Payloads, Meterpreter & Encoders. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 1,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 223,
+      "course_id": 6,
+      "section_id": 62,
+      "title": "Week 18: OWASP Top 10 Exploitation: SQL Injection & Cross-Site Scripting (XSS)",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "description": "Hands-on masterclass lecture on Week 18: OWASP Top 10 Exploitation: SQL Injection & Cross-Site Scripting (XSS). Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 2,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 224,
+      "course_id": 6,
+      "section_id": 62,
+      "title": "Week 19: Advanced Burp Suite Pro: Intruder, Repeater & Custom Extensions",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      "description": "Hands-on masterclass lecture on Week 19: Advanced Burp Suite Pro: Intruder, Repeater & Custom Extensions. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 3,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 225,
+      "course_id": 6,
+      "section_id": 62,
+      "title": "Week 20: Professional VAPT Deliverables: Executive Reports & Remediation Roadmaps",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "description": "Hands-on masterclass lecture on Week 20: Professional VAPT Deliverables: Executive Reports & Remediation Roadmaps. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 4,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 226,
+      "course_id": 6,
+      "section_id": 63,
+      "title": "Week 21: Digital Evidence Preservation, Hash Verification & Chain of Custody",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      "description": "Hands-on masterclass lecture on Week 21: Digital Evidence Preservation, Hash Verification & Chain of Custody. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 1,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 227,
+      "course_id": 6,
+      "section_id": 63,
+      "title": "Week 22: Live RAM Extraction & Volatility Framework Memory Analysis",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "description": "Hands-on masterclass lecture on Week 22: Live RAM Extraction & Volatility Framework Memory Analysis. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 2,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 228,
+      "course_id": 6,
+      "section_id": 63,
+      "title": "Week 23: Disk Forensics & File System Carving with Autopsy & FTK Imager",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "description": "Hands-on masterclass lecture on Week 23: Disk Forensics & File System Carving with Autopsy & FTK Imager. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 3,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 229,
+      "course_id": 6,
+      "section_id": 63,
+      "title": "Week 24: Mid-Term Capstone: Enterprise Incident Containment & Forensic Case",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "description": "Hands-on masterclass lecture on Week 24: Mid-Term Capstone: Enterprise Incident Containment & Forensic Case. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 4,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 230,
+      "course_id": 6,
+      "section_id": 64,
+      "title": "Week 25: REST & GraphQL API Penetration Testing (Postman, OWASP API Top 10)",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "description": "Hands-on masterclass lecture on Week 25: REST & GraphQL API Penetration Testing (Postman, OWASP API Top 10). Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 1,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 231,
+      "course_id": 6,
+      "section_id": 64,
+      "title": "Week 26: Broken Object Level Authorization (BOLA) & Authentication Bypass",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "description": "Hands-on masterclass lecture on Week 26: Broken Object Level Authorization (BOLA) & Authentication Bypass. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 2,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 232,
+      "course_id": 6,
+      "section_id": 64,
+      "title": "Week 27: Server-Side Template Injection (SSTI) & Remote Code Execution (RCE)",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+      "description": "Hands-on masterclass lecture on Week 27: Server-Side Template Injection (SSTI) & Remote Code Execution (RCE). Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 3,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 233,
+      "course_id": 6,
+      "section_id": 64,
+      "title": "Week 28: Server-Side Request Forgery (SSRF) & Cloud Metadata Exploitation",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "description": "Hands-on masterclass lecture on Week 28: Server-Side Request Forgery (SSRF) & Cloud Metadata Exploitation. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 4,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 234,
+      "course_id": 6,
+      "section_id": 65,
+      "title": "Week 29: Android Security Model & APK Decompilation (JADX, APKTool)",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+      "description": "Hands-on masterclass lecture on Week 29: Android Security Model & APK Decompilation (JADX, APKTool). Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 1,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 235,
+      "course_id": 6,
+      "section_id": 65,
+      "title": "Week 30: Static Application Security Testing (SAST) for Android Apps",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "description": "Hands-on masterclass lecture on Week 30: Static Application Security Testing (SAST) for Android Apps. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 2,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 236,
+      "course_id": 6,
+      "section_id": 65,
+      "title": "Week 31: Dynamic Runtime Hooking & SSL Pinning Bypass with Frida & Objection",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      "description": "Hands-on masterclass lecture on Week 31: Dynamic Runtime Hooking & SSL Pinning Bypass with Frida & Objection. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 3,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 237,
+      "course_id": 6,
+      "section_id": 65,
+      "title": "Week 32: iOS Application Architecture, Insecure Storage & Keychain Analysis",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "description": "Hands-on masterclass lecture on Week 32: iOS Application Architecture, Insecure Storage & Keychain Analysis. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 4,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 238,
+      "course_id": 6,
+      "section_id": 66,
+      "title": "Week 33: AWS Cloud Security Architecture & IAM Least Privilege Hardening",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      "description": "Hands-on masterclass lecture on Week 33: AWS Cloud Security Architecture & IAM Least Privilege Hardening. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 1,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 239,
+      "course_id": 6,
+      "section_id": 66,
+      "title": "Week 34: Cloud Misconfigurations, S3 Bucket Audits & AWS GuardDuty",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "description": "Hands-on masterclass lecture on Week 34: Cloud Misconfigurations, S3 Bucket Audits & AWS GuardDuty. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 2,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 240,
+      "course_id": 6,
+      "section_id": 66,
+      "title": "Week 35: Docker Container Security, Image Scanning & Kubernetes Hardening",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "description": "Hands-on masterclass lecture on Week 35: Docker Container Security, Image Scanning & Kubernetes Hardening. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 3,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 241,
+      "course_id": 6,
+      "section_id": 66,
+      "title": "Week 36: DevSecOps CI/CD Pipeline Integration with Trivy, SonarQube & SAST",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "description": "Hands-on masterclass lecture on Week 36: DevSecOps CI/CD Pipeline Integration with Trivy, SonarQube & SAST. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 4,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 242,
+      "course_id": 6,
+      "section_id": 67,
+      "title": "Week 37: IoT Architecture, Attack Surfaces & Embedded Linux Systems",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "description": "Hands-on masterclass lecture on Week 37: IoT Architecture, Attack Surfaces & Embedded Linux Systems. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 1,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 243,
+      "course_id": 6,
+      "section_id": 67,
+      "title": "Week 38: Firmware Extraction, Binary Unpacking (Binwalk) & Static Analysis",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "description": "Hands-on masterclass lecture on Week 38: Firmware Extraction, Binary Unpacking (Binwalk) & Static Analysis. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 2,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 244,
+      "course_id": 6,
+      "section_id": 67,
+      "title": "Week 39: Hardware Debug Interfaces: UART, JTAG & SPI Exploitation",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+      "description": "Hands-on masterclass lecture on Week 39: Hardware Debug Interfaces: UART, JTAG & SPI Exploitation. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 3,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 245,
+      "course_id": 6,
+      "section_id": 67,
+      "title": "Week 40: Wireless IoT Protocol Analysis: Zigbee, Bluetooth BLE & MQTT Security",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "description": "Hands-on masterclass lecture on Week 40: Wireless IoT Protocol Analysis: Zigbee, Bluetooth BLE & MQTT Security. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 4,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 246,
+      "course_id": 6,
+      "section_id": 68,
+      "title": "Week 41: Malware Analysis Lab Setup & Safe Detonation Environments",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+      "description": "Hands-on masterclass lecture on Week 41: Malware Analysis Lab Setup & Safe Detonation Environments. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 1,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 247,
+      "course_id": 6,
+      "section_id": 68,
+      "title": "Week 42: Static Analysis: PE Headers, Strings, Imports & Disassembly (IDA Pro / Ghidra)",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+      "description": "Hands-on masterclass lecture on Week 42: Static Analysis: PE Headers, Strings, Imports & Disassembly (IDA Pro / Ghidra). Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 2,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 248,
+      "course_id": 6,
+      "section_id": 68,
+      "title": "Week 43: Dynamic Behavioral Analysis: Process Monitoring, Registry & Network Callbacks",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      "description": "Hands-on masterclass lecture on Week 43: Dynamic Behavioral Analysis: Process Monitoring, Registry & Network Callbacks. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 3,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 249,
+      "course_id": 6,
+      "section_id": 68,
+      "title": "Week 44: Debugging with x64dbg, Unpacking Ransomware & Signature Generation (YARA)",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "description": "Hands-on masterclass lecture on Week 44: Debugging with x64dbg, Unpacking Ransomware & Signature Generation (YARA). Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 4,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 250,
+      "course_id": 6,
+      "section_id": 69,
+      "title": "Week 45: SOC Tier-1 / Tier-2 Operations, Incident Response Lifecycle & Playbooks",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+      "description": "Hands-on masterclass lecture on Week 45: SOC Tier-1 / Tier-2 Operations, Incident Response Lifecycle & Playbooks. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 1,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 251,
+      "course_id": 6,
+      "section_id": 69,
+      "title": "Week 46: SIEM Deployment & Real-Time Threat Hunting with Splunk",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      "description": "Hands-on masterclass lecture on Week 46: SIEM Deployment & Real-Time Threat Hunting with Splunk. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 2,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 252,
+      "course_id": 6,
+      "section_id": 69,
+      "title": "Week 47: Endpoint Detection & Response (EDR) with Wazuh & MITRE ATT&CK Mapping",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "description": "Hands-on masterclass lecture on Week 47: Endpoint Detection & Response (EDR) with Wazuh & MITRE ATT&CK Mapping. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 3,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 253,
+      "course_id": 6,
+      "section_id": 69,
+      "title": "Week 48: Expert Grand Capstone: Enterprise Red Team vs. Blue Team Simulation",
+      "duration": "45m",
+      "video_url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "description": "Hands-on masterclass lecture on Week 48: Expert Grand Capstone: Enterprise Red Team vs. Blue Team Simulation. Includes virtual lab environment, command cheat sheets, tool configs, and live mentor demonstration from Dizital Adda cyber security lab.",
+      "order_num": 4,
+      "is_free_preview": false,
+      "created_at": "2026-09-11T13:53:21.850Z"
     }
   ],
   "students": [
@@ -4362,6 +5010,20 @@
       "title": "Deep Learning, PyTorch & Cloud MLOps Assessment",
       "passing_score": 75,
       "created_at": "2026-09-11T08:25:27.088Z"
+    },
+    {
+      "id": 9,
+      "course_id": 6,
+      "title": "Cyber Security Foundations: Networking, Linux & Ethical Reconnaissance",
+      "passing_score": 75,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 10,
+      "course_id": 6,
+      "title": "Advanced VAPT & Defensive SOC Operations: OWASP Top 10 & SIEM Hunting",
+      "passing_score": 75,
+      "created_at": "2026-09-11T13:53:21.850Z"
     }
   ],
   "quiz_questions": [
@@ -4554,6 +5216,84 @@
       ],
       "correct_option": 2,
       "created_at": "2026-09-11T08:25:27.088Z"
+    },
+    {
+      "id": 18,
+      "quiz_id": 9,
+      "question": "In the TCP three-way handshake, what is the exact packet flag sequence transmitted between client and server?",
+      "options": [
+        "SYN -> ACK -> SYN-ACK",
+        "SYN -> SYN-ACK -> ACK",
+        "ACK -> SYN -> ACK-SYN",
+        "FIN -> ACK -> SYN"
+      ],
+      "correct_option": 1,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 19,
+      "quiz_id": 9,
+      "question": "Which Nmap scan flag conducts a TCP SYN Stealth scan without completing the full TCP 3-way handshake?",
+      "options": [
+        "-sT",
+        "-sU",
+        "-sS",
+        "-sA"
+      ],
+      "correct_option": 2,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 20,
+      "quiz_id": 9,
+      "question": "Which Linux permission bit allows an executable file to run with the security privileges of the file owner?",
+      "options": [
+        "Sticky Bit",
+        "SUID bit (chmod u+s)",
+        "SGID bit (chmod g+s)",
+        "Read-only bit"
+      ],
+      "correct_option": 1,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 21,
+      "quiz_id": 10,
+      "question": "Which web application vulnerability occurs when untrusted user input is directly concatenated into SQL queries?",
+      "options": [
+        "Cross-Site Scripting (XSS)",
+        "Cross-Site Request Forgery (CSRF)",
+        "SQL Injection (SQLi)",
+        "Server-Side Request Forgery (SSRF)"
+      ],
+      "correct_option": 2,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 22,
+      "quiz_id": 10,
+      "question": "In Burp Suite, which module is purpose-built for high-speed automated attacks such as brute forcing and fuzzing?",
+      "options": [
+        "Burp Repeater",
+        "Burp Intruder",
+        "Burp Decoder",
+        "Burp Comparer"
+      ],
+      "correct_option": 1,
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 23,
+      "quiz_id": 10,
+      "question": "In the MITRE ATT&CK Matrix, which tactic describes adversary attempts to maintain their foothold across system reboots?",
+      "options": [
+        "Initial Access",
+        "Execution",
+        "Persistence",
+        "Exfiltration"
+      ],
+      "correct_option": 2,
+      "created_at": "2026-09-11T13:53:21.850Z"
     }
   ],
   "quiz_attempts": [
@@ -4695,6 +5435,46 @@
       "max_marks": 100,
       "resource_url": "https://nidads.com/curriculum/medical-rag-brief.pdf",
       "created_at": "2026-09-11T08:25:27.088Z"
+    },
+    {
+      "id": 14,
+      "course_id": 6,
+      "title": "Capstone 1: Comprehensive Penetration Testing Report",
+      "description": "Execute an end-to-end simulated penetration test against a multi-subnet enterprise environment using Nmap, Metasploit, and Burp Suite. Document technical vulnerabilities, exploit proof-of-concepts, CVSS 3.1 risk scores, and executive remediation strategies.",
+      "due_date": "2026-10-30",
+      "max_marks": 100,
+      "resource_url": "https://dizitaladda.com/curriculum/pentest-capstone-brief.pdf",
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 15,
+      "course_id": 6,
+      "title": "Capstone 2: Enterprise Incident Response Framework & Threat Hunting",
+      "description": "Analyze enterprise log data following a ransomware outbreak. Construct Splunk search queries (SPL), correlate Windows event logs & Sysmon telemetry, map attacker techniques to MITRE ATT&CK, and author containment/eradication playbooks.",
+      "due_date": "2026-11-15",
+      "max_marks": 100,
+      "resource_url": "https://dizitaladda.com/curriculum/incident-response-brief.pdf",
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 16,
+      "course_id": 6,
+      "title": "Capstone 3: Advanced Malware Reverse Engineering & YARA Signatures",
+      "description": "Perform static and dynamic binary analysis on an obfuscated malware sample inside an isolated flare-vm sandbox. Disassemble key routines in IDA Pro / Ghidra, unpack payload stages, uncover C2 callback mechanisms, and formulate detection YARA rules.",
+      "due_date": "2026-11-30",
+      "max_marks": 100,
+      "resource_url": "https://dizitaladda.com/curriculum/malware-analysis-spec.pdf",
+      "created_at": "2026-09-11T13:53:21.850Z"
+    },
+    {
+      "id": 17,
+      "course_id": 6,
+      "title": "Capstone 4: Cyber Crime Investigation & Forensic Evidence Dossier",
+      "description": "Conduct forensic acquisition and analysis of compromised hard drive images and live memory dumps. Recover deleted artifacts, reconstruct timeline of exfiltration using Autopsy and Volatility, and generate a court-admissible forensic audit report.",
+      "due_date": "2026-12-15",
+      "max_marks": 100,
+      "resource_url": "https://dizitaladda.com/curriculum/forensics-case-file.pdf",
+      "created_at": "2026-09-11T13:53:21.850Z"
     }
   ],
   "assignment_submissions": [
